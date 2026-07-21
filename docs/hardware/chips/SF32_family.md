@@ -1,5 +1,6 @@
 ---
 icon: lucide/cpu
+description: "SF32LB5xx family overview: heterogeneous Cortex-M33 cores, Bluetooth, ePicasso graphics, and edge AI, with a comparison table and quick chip-selection guide."
 tags:
   - Hardware
   - Chip
@@ -22,9 +23,9 @@ The **LB** (Low-Power Bluetooth) series is the first member of the SF32 product 
     SF32LB microcontrollers employ an Arm Cortex-M33 STAR-MC1 based heterogeneous multi-core architecture that balances high-performance application processing with ultra-low-power background operation. Depending on the device, the architecture may include one or more application processors alongside dedicated low-power processors responsible for Bluetooth connectivity, sensor processing, and always-on system functions.
 
     !!! info "STAR-MC1 Processor"
-        The STAR-MC1 processor is an enhanced implementation of the Arm Cortex-M33 architecture developed by Arm China, fully compatible with the Cortex-M33 instruction set and software ecosystem — existing Cortex-M33 applications, middleware, RTOSes, and tools run without modification. Following SiFli's documentation, it is generally referred to interchangeably as ***Arm Cortex-M33 STAR-MC1*** or simply ***Arm Cortex-M33*** throughout our context.
+        STAR-MC1 is a configurable Armv8-M Mainline CPU IP from Arm China, used as the Cortex-M33-class application processor in compatible SF32 devices. Cortex-M33-oriented firmware, middleware, RTOS ports, and tools remain relevant, subject to normal device-specific integration work. Its CU, SP, and SE configurations differ chiefly in cache, TCM, XIPU, and TrustZone capability; Arm Custom Instructions/CDE and the coprocessor interface are optional capabilities. SiFli documentation may use ***Arm Cortex-M33 STAR-MC1*** or ***Arm Cortex-M33*** according to context.
 
-        For a deeper look at its microarchitecture, caches, the Custom Datapath Extension (CDE), and how it compares to Cortex-M33/M7 on performance vs. power, see [STAR-MC1 Architecture Deep Dive](../../learn/architecture/star-mc1.md).
+        For device-specific guidance on configuration, TCM, caches, CDE, coprocessors, and representative performance measurement, see [STAR-MC1 Architecture Deep Dive](../../learn/architecture/star-mc1.md).
 
 
 2. **Ultra-Low-Power Wireless Connectivity**

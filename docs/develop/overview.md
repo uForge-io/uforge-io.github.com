@@ -1,5 +1,6 @@
 ---
 icon: lucide/code-2
+description: "Develop section overview: choosing between SiFli-SDK, CodeKit, Zephyr, Arduino, MicroPython, and Rust for SF32 firmware, tools, and firmware-topic guidance."
 tags:
     - Develop
     - Software

@@ -1,5 +1,6 @@
 ---
 icon: lucide/bluetooth
+description: "How SF32's dedicated Bluetooth processor offloads radio timing and link control from the application CPU, enabling low-power always-connected products."
 tags:
   - Architecture
 ---

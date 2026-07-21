@@ -1,5 +1,6 @@
 ---
 icon: lucide/rocket
+description: "Choosing your first SF32 software path — SiFli-SDK, CodeKit, Zephyr, Arduino, Rust, or MicroPython — with current status and what hardware you'll need."
 tags:
     - Getting started
     - SF32
@@ -7,7 +8,7 @@ tags:
 
 # Getting Started
 
-SF32 devices support several software paths. SiFli-SDK and CodeKit are the official first-run paths today. OpenSiFli also has active downstream Zephyr and beta ArduinoCore-zephyr work for SF32LB52. MicroPython still needs official firmware images and board-specific instructions before it can become a verified tutorial.
+SF32 devices support several software paths. SiFli-SDK and CodeKit are the official first-run paths today. OpenSiFli also has active downstream Zephyr, beta ArduinoCore-zephyr, and work-in-progress Rust support for SF32LB52. MicroPython still needs official firmware images and board-specific instructions before it can become a verified tutorial.
 
 ## Choose Your Path
 
@@ -21,6 +22,7 @@ SF32 devices support several software paths. SiFli-SDK and CodeKit are the offic
 | **SiFli CodeKit** | Official SiFli VS Code workflow for SDK setup, project creation, build, flash, and serial monitor. | [SiFli CodeKit](sifli/getting-started-sifli-codekit.md) |
 | **Zephyr** | OpenSiFli downstream Zephyr support exists for `sf32lb52_devkit_lcd`, with SiFli HAL, board files, drivers, and sample overlays. | [Zephyr Downstream](zephyr/getting-started-zephyr-upstream.md) |
 | **Arduino** | OpenSiFli beta ArduinoCore-zephyr package exists for the SF32LB52 DevKit LCD. | [Arduino](arduino/getting-started-arduino.md) |
+| **Rust** | OpenSiFli `sifli-rs` provides a work-in-progress Rust evaluation path; not production-ready. | [Rust](rust/getting-started-rust.md) |
 | **MicroPython** | Needs official firmware images, flash commands, REPL settings, and supported API details. | [MicroPython](micropython/getting-started-micropython.md) |
 
 </div>

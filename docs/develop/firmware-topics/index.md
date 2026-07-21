@@ -1,5 +1,6 @@
 ---
 icon: lucide/blocks
+description: "Overview of cross-platform SF32 firmware topics: partition tables, OTA/DFU, USB, power management, and logging/crash analysis."
 tags:
     - Develop
     - Firmware

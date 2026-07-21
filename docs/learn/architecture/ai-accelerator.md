@@ -1,5 +1,6 @@
 ---
 icon: lucide/brain-circuit
+description: "How the SF32 AI accelerator hardware speeds up on-device machine learning and signal processing, and why edge AI matters for wearables and AIoT products."
 tags:
   - Architecture
 ---

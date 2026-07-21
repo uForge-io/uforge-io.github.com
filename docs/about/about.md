@@ -1,5 +1,6 @@
 ---
 icon: lucide/info
+description: "Contact information for μForge.io — sales, technical support, and general inquiries — plus a link to the message form."
 ---
 
 # About μForge.io

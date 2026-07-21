@@ -1,5 +1,6 @@
 ---
 icon: lucide/book-a
+description: "Quick-reference glossary of embedded, wireless, graphics, and SiFli-specific terms and acronyms used across the μForge.io SF32 documentation."
 tags:
     - About
 ---
@@ -12,8 +13,8 @@ Quick reference for acronyms and terms used across the μForge.io site — both 
 * **MCU** — **Microcontroller Unit.** An integrated circuit combining a CPU core, memory, and programmable input/output peripherals, optimized to run dedicated, low-overhead firmware rather than a general-purpose operating system.
 * **SoC** — **System on Chip.** An integrated circuit that consolidates all necessary electronic circuits and components of a computer system onto a single substrate. On this site, SF32 parts are categorized as MCUs since they target microcontroller-class firmware rather than a full application-processor OS envelope.
 * **Arm Cortex-M33** — A 32-bit Armv8-M mainline processor architecture that SF32 application and Bluetooth cores are built on. Armv8-M mainline supports an optional TrustZone security extension (isolating trusted from non-trusted code/data at the hardware level) versus earlier Cortex-M3/M4 cores, but TrustZone is a configuration choice made per silicon implementation, not a guaranteed feature of every Cortex-M33 — it is not configured on the current SF32LB52x through SF32LB58x parts. See STAR-MC1, below, and the [SF32LB52x chip page](../hardware/chips/SF32LB52x.md) for more.
-* **STAR-MC1** — Arm China's enhanced implementation of the Arm Cortex-M33 architecture. Fully instruction-set and ecosystem compatible with standard Cortex-M33, with added instruction/data caches, CDE (Custom Datapath Extension) support, and microarchitectural optimizations for higher performance at the same power envelope. SiFli's own documentation uses "Arm Cortex-M33 STAR-MC1" and "Arm Cortex-M33" interchangeably. [See the SF32LB52x chip page](../hardware/chips/SF32LB52x.md) for the full explanation.
-* **CDE** — **Custom Datapath Extension.** An Armv8-M feature that lets a processor implementation add custom instructions; part of what makes STAR-MC1 an enhanced Cortex-M33 rather than a plain one.
+* **STAR-MC1** — A configurable Armv8-M Mainline embedded CPU IP from Arm China, used as the Cortex-M33-class application processor in compatible SF32 devices. Its CU, SP, and SE configurations vary in cache, TCM, XIPU, and TrustZone capability; the feature set exposed by an SF32 part is device-specific. SiFli documentation may use "Arm Cortex-M33 STAR-MC1" or "Arm Cortex-M33" according to context. See the [STAR-MC1 architecture page](../learn/architecture/star-mc1.md).
+* **CDE** — **Custom Datapath Extension.** An Arm Custom Instruction mechanism for selected acceleration. Arm China's STAR-MC1 material uses CRC32 as a CDE example; actual SF32 availability and software support must be verified per device.
 * **DSP** — **Digital Signal Processor / digital signal processing.** Extensions built into the Cortex-M33 core, used for math-heavy workloads like audio and sensor fusion.
 * **MPU** — **Memory Protection Unit.** Hardware that restricts which memory regions code can access, used for fault isolation and security.
 * **HAL** — **Hardware Abstraction Layer.** The SDK layer that exposes peripherals through a consistent API independent of the exact chip variant.

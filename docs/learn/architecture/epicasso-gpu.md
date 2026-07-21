@@ -1,5 +1,6 @@
 ---
 icon: lucide/image
+description: "How SiFli's ePicasso 2D/2.5D GPU accelerates image blending, scaling, and layer composition on SF32, and where it fits alongside LVGL and the display controller."
 tags:
     - Architecture
 ---

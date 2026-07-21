@@ -1,5 +1,6 @@
 ---
 icon: lucide/circuit-board
+description: "How the SiFli-SDK --board name ties firmware to real SF32 hardware: flash/PSRAM layout, pin mux, display and audio paths, and a board bring-up checklist."
 tags:
     - Develop
     - SiFli-SDK

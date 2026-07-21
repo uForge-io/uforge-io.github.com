@@ -11,26 +11,23 @@ tags:
 
 For SF32 devices, STAR-MC1 is important because it gives the platform a stronger application processor while preserving the low-power and software-friendly character of Cortex-M-class microcontrollers. In SiFli and SF32 documentation, the application CPU may therefore be described as **Arm Cortex-M33**, **Cortex-M33 STAR-MC1**, or simply **STAR-MC1**, depending on the level of detail being discussed.
 
-At a high level, STAR-MC1 sits between a standard Cortex-M33 and a Cortex-M7:
+## Positioning for Developers
 
-- It keeps Cortex-M33 compatibility, TrustZone support, and embedded-friendly power behavior.
-- It adds implementation-level performance improvements such as instruction and data caches.
-- It can improve real-world application responsiveness in memory-sensitive workloads, especially when code or data is fetched from slower memory.
-- It remains a better fit than Cortex-M7 for many battery-powered AIoT, wearable, audio, and display products.
+The most useful mental model is **not** “a fixed processor between Cortex-M33 and Cortex-M7.” STAR-MC1 is a configurable, Cortex-M33-compatible **Armv8-M Mainline** CPU IP. Its value is the ability to pair that familiar MCU software model with optional memory-system and acceleration features—such as cache, tightly coupled memory (TCM), DSP instructions, a coprocessor interface, and TrustZone—when the final SoC implements them.
 
-```text
-Performance
-▲
-│                              Cortex-M7
-│                                  ▲
-│                                  │
-│                      STAR-MC1
-│                          ▲
-│                          │
-│              Cortex-M33
-└────────────────────────────────────────► Power Consumption
-      Lower                         Higher
-```
+<div align="center"><em>Table: Where STAR-MC1 Fits in the Cortex-M Landscape</em></div>
+
+<div align="center" markdown>
+
+| If you know | What remains familiar with STAR-MC1 | The practical difference | Do not assume |
+|:------------|:------------------------------------|:-------------------------|:--------------|
+| Cortex-M4 | Bare-metal and RTOS development, interrupts, DMA, and peripheral-driver work. | STAR-MC1 uses the newer Armv8-M software model and can expose stronger memory and acceleration options. | Cortex-M4 binaries, Armv7E-M assumptions, or identical debug/security features apply unchanged. |
+| Cortex-M33 | The Armv8-M programming, exception, and toolchain model. | The SoC can add memory-system headroom for Flash/PSRAM-heavy, UI, audio, or connected workloads. | Every STAR-MC1-based part has cache, TCM, DSP, FPU, CDE, or TrustZone enabled. |
+| Cortex-M7 | The need to manage memory placement, cache behavior, DMA coherency, and real-time latency. | STAR-MC1 keeps an MCU-class Armv8-M foundation and targets flexible, power-conscious IoT designs. | It is a drop-in Cortex-M7 replacement or has the same throughput, memory system, and software ecosystem. |
+
+</div>
+
+For an SF32 project, select the device for its documented memory, peripherals, and SDK support—not for the STAR-MC1 label alone. The public STAR-MC1 material highlights Armv8-M, cache and TCM options, DSP and coprocessor interfaces, and TrustZone as IP capabilities; the exact implementation belongs to the SoC documentation.
 
 ## Why STAR-MC1 Matters
 
@@ -51,15 +48,15 @@ The following table summarizes where STAR-MC1 fits among common Cortex-M process
 | Feature | Cortex-M3 | Cortex-M4 | Cortex-M33 | STAR-MC1 | Cortex-M7 |
 |:--------|:---------:|:---------:|:----------:|:--------:|:---------:|
 | Arm architecture | Armv7-M | Armv7E-M | Armv8-M | Armv8-M | Armv7E-M |
-| TrustZone support | No | No | Yes | Yes | No |
+| TrustZone support | No | No | Armv8-M feature | When implemented by the SoC | No |
 | DSP instructions | Basic | Yes | Yes | Yes | Yes |
 | Floating-point unit | Optional | Optional | Optional | Optional | Single / double precision |
-| Instruction cache | No | No | Implementation dependent | Yes | Yes |
-| Data cache | No | No | Implementation dependent | Yes | Yes |
-| Custom Datapath Extension (CDE) | No | No | Implementation dependent | Yes | No |
+| Instruction cache | No | No | Implementation dependent | Optional IP capability | Implementation dependent |
+| Data cache | No | No | Implementation dependent | Optional IP capability | Implementation dependent |
+| Custom Datapath Extension (CDE) | No | No | Armv8-M extension | When implemented by the SoC | No |
 | Software compatibility | Baseline | M3-compatible | New Armv8-M model (M4-like C code, new toolchain) | Cortex-M33 compatible | M4-compatible (same Armv7E-M family) |
-| Typical performance | Low | Medium | Medium | High | Very high |
-| Typical power profile | Very low | Low | Low | Low to medium | Medium to high |
+| Typical performance | Low | Medium | Medium | Configuration and SoC dependent | High, implementation dependent |
+| Typical power profile | Very low | Low | Low | Configuration and SoC dependent | Implementation dependent |
 | Typical use cases | General MCU control | DSP, motor control | Secure IoT, connected MCU | AIoT, graphics, audio, wearables | High-end embedded systems |
 
 </div>
@@ -170,3 +167,5 @@ Typical examples include:
 ---
 
 See also: [SF32 Family Overview](../../hardware/chips/SF32_family.md) for how STAR-MC1 fits into the broader SF32LB5x chip lineup.
+
+Primary reference: [Arm China STAR-MC1 Technical Reference Manual](https://www.armchina.com/webarm/arm/common/download/profile/resource/file/Documents/Application-Notes/Technical-Reference-Manual/Star_Technical_Reference_Manual_00903001_0100_00_en.pdf).

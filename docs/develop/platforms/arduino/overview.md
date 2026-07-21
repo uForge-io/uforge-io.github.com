@@ -1,5 +1,6 @@
 ---
 icon: lucide/infinity
+description: "ArduinoCore-zephyr for SF32LB52 DevKit LCD: platform fit, board identity, loader and build-mode choices, integration limits, and escalation paths."
 tags:
     - Develop
     - Arduino
@@ -7,28 +8,44 @@ tags:
 
 # Arduino
 
-OpenSiFli publishes a beta Arduino core for SF32 based on Zephyr: [OpenSiFli/ArduinoCore-zephyr](https://github.com/OpenSiFli/ArduinoCore-zephyr). It is useful for sketches, quick tests, and early prototypes on the SF32LB52 DevKit LCD.
+[OpenSiFli/ArduinoCore-zephyr](https://github.com/OpenSiFli/ArduinoCore-zephyr) is a Zephyr-based Arduino core for SF32. It is a useful path for sketches, peripheral experiments, demonstrations, and early prototypes on the **SiFli SF32LB52 DevKit LCD**.
 
-!!! warning "Beta"
-    The OpenSiFli README marks this core as beta. Features, APIs, loader behavior, package contents, and release mechanics may change.
+!!! warning "Beta core"
+    OpenSiFli labels this core **BETA**. Features, APIs, package contents, loader behavior, and releases may change. Confirm current behavior in the project README and Releases before committing a product to this path.
 
-Primary references:
+For the initial IDE installation, board/port selection, bootloader installation, and Blink check, use [Getting Started with Arduino](../../../getting-started/arduino/getting-started-arduino.md). This page is for deciding whether Arduino is a fit and for maintaining an Arduino-based project after that first run.
 
-- [OpenSiFli/ArduinoCore-zephyr](https://github.com/OpenSiFli/ArduinoCore-zephyr)
-- [Arduino IDE](https://docs.arduino.cc/software/ide/)
-- [Arduino CLI](https://docs.arduino.cc/arduino-cli/)
+## Where Arduino Fits
 
-## Package Details
+Choose Arduino when fast iteration and the familiar sketch model matter more than complete access to SF32-specific capabilities. It is a good fit for proof-of-concept work, simple peripheral validation, classroom or demonstration projects, and teams with an existing Arduino codebase.
 
-<div align="center"><em>Table: Package Details</em></div>
+Move to [SiFli-SDK](../sifli-sdk/overview.md) when the product depends on a production firmware baseline, Bluetooth-stack tuning, graphics-heavy applications, low-power optimization, board bring-up, or vendor middleware. Use [Zephyr](../zephyr/overview.md) when you need direct control of devicetree, Kconfig, and Zephyr-native application structure.
+
+<div align="center"><em>Table: Arduino platform fit</em></div>
+
+<div align="center" markdown>
+
+| Choose Arduino for | Prefer another path for |
+|:-------------------|:------------------------|
+| Short sketches and quick peripheral experiments. | A product with broad, validated SF32 feature requirements. |
+| Teams already productive with Arduino IDE or Arduino CLI. | Custom board bring-up or deep control of flash, power, and middleware. |
+| Demonstrations and early feasibility prototypes. | Zephyr-native configuration, drivers, and RTOS structure. |
+
+</div>
+
+## Board Identity
+
+The current public package targets the SF32LB52 DevKit LCD. Keep these values in the project record and in issue reports: they determine how the sketch is built, loaded, and mapped to the board.
+
+<div align="center"><em>Table: Arduino board identity</em></div>
 
 <div align="center" markdown>
 
 | Item | Value |
 |:-----|:------|
-| Boards Manager title | SiFli Serial Boards |
-| Arduino package | `sifli:sf32lb52` |
-| Board | SiFli SF32LB52 DevKit LCD |
+| Boards Manager title | **SiFli Serial Boards** |
+| Arduino platform | `sifli:sf32lb52` |
+| Board | **SiFli SF32LB52 DevKit LCD** |
 | FQBN | `sifli:sf32lb52:sf32lb52devkitlcd` |
 | Zephyr target | `sf32lb52_devkit_lcd` |
 | Variant | `sf32lb52_devkit_lcd_sf32lb525uc6` |
@@ -37,116 +54,77 @@ Primary references:
 
 </div>
 
-## Install
+Selecting a similarly named SiFli or Zephyr board is not interchangeable with this FQBN. The board selection controls the build and upload parameters.
 
-Add the package index in Arduino IDE 2.x:
+## Build and Loader Model
 
-```text
-https://github.com/OpenSiFli/ArduinoCore-zephyr/releases/latest/download/package_sifli_index.json
-```
+ArduinoCore-zephyr combines a sketch-facing Arduino API with a Zephyr loader and board-specific configuration. The two option menus affect startup and linking behavior rather than just compiler flags.
 
-China mirror:
-
-```text
-https://downloads.sifli.com/github_assets/OpenSiFli/ArduinoCore-zephyr/releases/latest/download/package_sifli_index_cn.json
-```
-
-Then install **SiFli Serial Boards** from Boards Manager.
-
-With Arduino CLI:
-
-```bash
-arduino-cli core install sifli:sf32lb52 \
-  --additional-urls https://github.com/OpenSiFli/ArduinoCore-zephyr/releases/latest/download/package_sifli_index.json
-```
-
-## Build and Upload
-
-Use the FQBN and serial port:
-
-```bash
-arduino-cli compile \
-  --fqbn sifli:sf32lb52:sf32lb52devkitlcd:link_mode=dynamic \
-  /path/to/YourSketch
-
-arduino-cli upload \
-  -p /dev/cu.usbserial-XXXX \
-  --fqbn sifli:sf32lb52:sf32lb52devkitlcd:link_mode=dynamic \
-  /path/to/YourSketch
-```
-
-The core exposes **Standard** and **Debug** build modes, plus **Dynamic** and **Static** link modes. Start with Standard + Dynamic.
-
-## Mode Selection
-
-<div align="center"><em>Table: Mode Selection</em></div>
+<div align="center"><em>Table: Build and loader choices</em></div>
 
 <div align="center" markdown>
 
-| Mode | Use when |
-|:-----|:---------|
-| Standard | You want the sketch to start automatically after upload. |
-| Debug | You want the Zephyr shell to wait until you run `sketch`. |
-| Dynamic | You want the normal loader-based ArduinoCore-zephyr flow. |
-| Static | You are testing a statically linked image or loader-related behavior. |
+| Option | Behavior | Engineering implication |
+|:-------|:---------|:------------------------|
+| `Standard` build mode | Starts the sketch after it is loaded. | Use for normal sketch operation. |
+| `Debug` build mode | Leaves the Zephyr shell waiting for `sketch`. | Useful only when the shell is part of the debug workflow. |
+| `Dynamic` link mode | Packages the sketch for the normal loader-based flow. | Includes the loader in the runtime and memory budget. |
+| `Static` link mode | Uses a statically linked image. | Use for loader-related investigation or when its trade-offs are explicitly understood. |
 
 </div>
 
-## First Sketch
+Start with **Standard** and **Dynamic**. In Debug mode, an uploaded sketch does not begin until `sketch` is run from the Zephyr shell; this is a common source of an apparently successful upload with no application behavior.
 
-Use serial output before relying on LED behavior:
+The loader is a separate board artifact. Burn Bootloader is normally a first-use, update, or recovery operation, not part of every sketch upload. Record the Arduino package version and any loader update together; mismatched assumptions are difficult to diagnose later.
 
-```cpp
-void setup() {
-  Serial.begin(115200);
-}
+## Integration Boundaries
 
-void loop() {
-  Serial.println("Hello from SF32 Arduino");
-  delay(1000);
-}
-```
+Treat the Arduino core as an integration layer rather than a replacement for the underlying Zephyr platform. A sketch can require Zephyr symbols or subsystems that the loader does not expose or enable. Typical symptoms are an undefined Zephyr symbol, a missing subsystem, or memory pressure from dynamic loading and the shell.
 
-Then try Blink:
+Before adding a library or feature to a product prototype, establish all of the following:
 
-```cpp
-void setup() {
-  pinMode(LED_BUILTIN, OUTPUT);
-}
+- The exact package version, FQBN, build mode, and link mode.
+- The target board revision and its serial-download/recovery procedure.
+- A tested example for the required peripheral or library.
+- A measurable RAM and flash budget with the intended loader configuration.
+- A recovery route using the Arduino loader or SiFli-SDK firmware.
 
-void loop() {
-  digitalWrite(LED_BUILTIN, HIGH);
-  delay(500);
-  digitalWrite(LED_BUILTIN, LOW);
-  delay(500);
-}
-```
+Do not infer library support solely because an Arduino API or a similarly named Zephyr driver exists. Validate the complete sketch, loader, board, and package combination on the target hardware.
 
-## Troubleshooting
+## Diagnose and Escalate
 
-<div align="center"><em>Table: Troubleshooting</em></div>
+Start with the first-run guide when a board cannot be detected, flashed, or made to run Blink. Once that baseline works, use the following boundary to shorten debugging.
+
+<div align="center"><em>Table: Arduino problem ownership</em></div>
 
 <div align="center" markdown>
 
-| Symptom | Check |
-|:--------|:------|
-| Package not found | Confirm the package index URL and Arduino IDE 2.x. |
-| Upload fails | Put the board in serial download mode and close any serial monitor. |
-| Sketch does not start | Confirm Standard vs. Debug mode; in Debug, run `sketch`. |
-| Undefined Zephyr symbol | The loader may not export the Zephyr function the sketch needs. |
-| Out of memory | Dynamic loading and Zephyr shell consume RAM; reduce usage or test Static mode. |
+| Symptom after the first-run baseline works | First investigation |
+|:-------------------------------------------|:--------------------|
+| Sketch starts only after `sketch` | Confirm that Debug mode was selected intentionally. |
+| Missing Zephyr function or subsystem | Check the Core README and loader exports/configuration. |
+| Memory failure or instability | Measure the sketch budget; account for dynamic loading and the Zephyr shell; evaluate Static only with a recovery plan. |
+| Library compiles but hardware does not work | Confirm board pin assumptions and test against a minimal, board-specific example. |
+| Upload or recovery fails | Re-establish the documented Arduino baseline, then use the board's SiFli-SDK recovery path if needed. |
 
 </div>
 
-## SiFli Team Should Add
+For a useful issue report, include the package version, IDE or CLI version, operating system, FQBN, build mode, link mode, board revision, complete upload output, and serial log.
 
-- A beta/stable policy for the Arduino core.
-- A compatibility table by package version, loader version, Zephyr downstream commit, and board revision.
-- A tested Arduino library matrix.
-- Clear loader update and recovery instructions.
-- Screenshots for IDE install, board selection, mode selection, upload, and serial monitor.
-- A documented path from Arduino sketch failure to Zephyr loader logs.
-- A "known working sketches" table for each package release.
+## What SiFli Should Add
+
+- A versioned compatibility matrix for the Arduino package, Zephyr loader, `sftool`, and supported board revisions.
+- A tested Arduino-library and peripheral-support matrix, including known limitations.
+- Loader update, rollback, and recovery instructions for every supported board.
+- Minimal, release-tested examples for GPIO, serial I/O, I2C, SPI, display, storage, and low-power behavior.
+- A support bundle format that captures the package version, FQBN, modes, upload log, and serial log.
+
+## Related Pages
+
+- [Getting Started with Arduino](../../../getting-started/arduino/getting-started-arduino.md)
+- [Zephyr](../zephyr/overview.md)
+- [SiFli-SDK](../sifli-sdk/overview.md)
+- [SF32LB52 DevKit LCD](../../../hardware/devkits/SF32LB52-DevKit-LCD.md)
 
 !!! note "Auto-generated content"
     This page was compiled/drafted without an existing source document. Verify technical claims against SiFli's official documentation before relying on them.

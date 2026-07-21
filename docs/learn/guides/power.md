@@ -1,5 +1,6 @@
 ---
 icon: lucide/battery
+description: "Practical low-power design guide for SF32: power modes, the PM middleware, what actually drains a battery, and how Bluetooth, graphics, audio, and AI affect power."
 tags:
   - Guides
 ---
@@ -105,7 +106,7 @@ See the [AI Guide](ai.md#power-aware-inference-scheduling) for the accuracy/late
 
 ## Memory and Clock Considerations
 
-Where code executes from matters for both performance and power. STAR-MC1's instruction and data caches reduce the time the system spends stalled on external Flash or PSRAM accesses — less time active generally means more time available to sleep. See [STAR-MC1](../architecture/star-mc1.md#architectural-enhancements) for how the cache and memory subsystem affects this.
+Where code executes from matters for both performance and power. On SF32 devices that implement and enable the relevant cache features, instruction and data caches can reduce time spent stalled on Flash or PSRAM accesses; shorter active time can leave more time for sleep. See [STAR-MC1](../architecture/star-mc1.md#memory-system-optimization) for cache and memory-system considerations.
 
 Beyond the CPU itself:
 
