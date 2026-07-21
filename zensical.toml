@@ -32,6 +32,9 @@ nav = [
     { "Arduino" = [
       "getting-started/arduino/getting-started-arduino.md"
     ]},
+    { "Rust" = [
+      "getting-started/rust/getting-started-rust.md"
+    ]},
     { "MicroPython" = [
       "getting-started/micropython/getting-started-micropython.md"
     ]}

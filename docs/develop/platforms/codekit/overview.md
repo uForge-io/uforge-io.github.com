@@ -1,5 +1,6 @@
 ---
 icon: lucide/app-window
+description: "How SiFli CodeKit's VS Code extension fits around SiFli-SDK development, covering project setup, build/flash/monitor workflow, and troubleshooting."
 tags:
     - Develop
     - CodeKit
@@ -40,16 +41,11 @@ CodeKit wraps the SDK workflow. It does not replace the SDK. The same underlying
 
 If a CodeKit action fails, reproduce the underlying SDK command when possible. That makes bug reports clearer and helps separate extension issues from SDK issues.
 
-## Practical Workflow
+## Operational Model
 
-1. Install VS Code.
-2. Install SiFli-SDK-CodeKit.
-3. Let CodeKit install or locate SiFli-SDK.
-4. Create or open a project.
-5. Select the board.
-6. Build.
-7. Flash.
-8. Monitor serial output.
+CodeKit is most useful when its editor actions remain reproducible from the underlying SDK. Treat the extension as the control surface and SiFli-SDK as the source of truth for the toolchain, board definition, build output, and download artifacts.
+
+The [Getting Started with CodeKit](../../../getting-started/sifli/getting-started-sifli-codekit.md) page covers installing the extension and running `hello_world`. Once that baseline works, use CodeKit to shorten the edit–build–flash–monitor loop; use the SDK command line when an action must be automated, inspected, or reproduced outside VS Code.
 
 ## What to Record
 
@@ -65,7 +61,7 @@ For every CodeKit project, record:
 
 This makes it possible to reproduce a GUI action from the command line when needed.
 
-## Troubleshooting Strategy
+## Failure Boundaries
 
 <div align="center"><em>Table: Troubleshooting Strategy</em></div>
 
@@ -75,7 +71,7 @@ This makes it possible to reproduce a GUI action from the command line when need
 |:--------|:---------------|
 | SDK not found | Re-select the SDK root and confirm the SDK install completed. |
 | Build fails | Reproduce the same project with `scons` if possible. |
-| Flash fails | Check the serial port, close monitors, and confirm download mode. |
+| Flash fails after the first-run baseline works | Compare the project board/output with the working baseline, then check port ownership and download mode. |
 | Monitor shows garbage | Confirm baud rate and selected port. |
 | UI command missing | Use the command palette and search for `SiFli`. |
 

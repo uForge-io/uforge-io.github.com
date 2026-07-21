@@ -1,5 +1,6 @@
 ---
 icon: lucide/flame
+description: "Advanced SF32 tutorials: measured low-power tuning, safe BLE OTA, custom display bring-up, crash/coredump analysis, multi-connection Bluetooth, and custom drivers."
 tags:
     - Tutorials
 ---

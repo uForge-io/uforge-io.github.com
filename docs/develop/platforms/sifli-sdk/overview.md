@@ -1,5 +1,6 @@
 ---
 icon: lucide/package
+description: "SiFli-SDK as the reference SF32 development path: core scons/menuconfig workflow, board naming, project structure, and production-readiness questions."
 tags:
     - Develop
     - SiFli-SDK
@@ -27,29 +28,11 @@ Choose SiFli-SDK when you need:
 - Board-level configuration through SDK board names such as `sf32lb52-lcd_n16r8`.
 - Access to SiFli-specific middleware, tools, partition layouts, and production flows.
 
-## Core Workflow
+## Development Model
 
-The basic SDK workflow is:
+The [SiFli-SDK Getting Started](../../../getting-started/sifli/getting-started-sifli-sdk.md) page establishes the toolchain and a `hello_world` baseline. After that, treat the SDK environment, selected board, example/project directory, configuration, generated output, and download artifact as one versioned unit. A build creates a board-specific output directory, typically `build_<board_name>_hcpu/`; use the generated download artifact for that exact build rather than reusing one from a different board or configuration.
 
-```bash
-. export.sh
-cd example/get-started/hello_world/rtt/project
-scons --board=<board_name> -j8
-```
-
-The build creates a board-specific output directory such as:
-
-```text
-build_<board_name>_hcpu/
-```
-
-The SDK-generated UART download script remains the most direct first-run flashing method:
-
-```bash
-./build_<board_name>_hcpu/uart_download.sh
-```
-
-On Windows, use the matching `.bat` script.
+For repeatable development, pin an SDK branch, record the board name, keep local board changes separate from vendor files, and make configuration changes in small, reviewable steps. The detailed build, download, and monitoring workflow is in [Build, Flash, Monitor](build-flash-monitor.md).
 
 ## Board Names
 

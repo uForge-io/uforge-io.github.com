@@ -1,5 +1,6 @@
 ---
 icon: lucide/bug
+description: "Debugging SF32 firmware with sftool, AssertDump, SiFli_Trace, and the RT-Thread shell, plus a repeatable reproduction order and crash-report checklist."
 tags:
     - Develop
     - Debugging

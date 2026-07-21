@@ -1,5 +1,6 @@
 ---
 icon: lucide/battery-charging
+description: "Measure and tune SF32 power consumption across clocking, sleep modes, display, Bluetooth, and sensor activity to turn a prototype into a battery-ready product."
 tags:
     - Develop
     - Power

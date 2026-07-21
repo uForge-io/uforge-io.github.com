@@ -1,5 +1,6 @@
 ---
 icon: lucide/terminal
+description: "From an unboxed SF32 board to a running hello_world over UART with SiFli-SDK: install the toolchain, build with scons, and flash via UART download."
 tags:
     - Getting started
     - SiFli SDK

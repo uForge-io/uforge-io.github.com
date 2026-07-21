@@ -1,5 +1,6 @@
 ---
 icon: lucide/plug
+description: "Naming rules for μForge's M2 module interface and its M2xM/M2xA/M2xN/M2xH/M2xP extension specifications, including declaration examples and design principles."
 tags:
   - Hardware
   - Module

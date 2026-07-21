@@ -1,5 +1,6 @@
 ---
 icon: lucide/file-warning
+description: "Design SF32 firmware logging and crash-analysis workflows so field failures are diagnosable, covering minimum log data, crash-report flow, and log levels by phase."
 tags:
     - Develop
     - Logging

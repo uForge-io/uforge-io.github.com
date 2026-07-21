@@ -1,5 +1,6 @@
 ---
 icon: lucide/workflow
+description: "PTM (Parallel Task Machine) on SF32LB57x: a programmable peripheral task engine for cycle-sensitive IO sequencing and custom protocols that offload the Cortex-M33 core."
 tags:
     - Architecture
     - PTM

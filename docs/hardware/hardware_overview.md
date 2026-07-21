@@ -1,5 +1,6 @@
 ---
 icon: lucide/layout-dashboard
+description: "Hardware section hub for μForge.io: entry points to SF32 chips, modules, development boards, and other hardware resources like the AVL and EDA libraries."
 tags:
     - Hardware
 ---

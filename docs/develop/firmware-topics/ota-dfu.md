@@ -1,5 +1,6 @@
 ---
 icon: lucide/upload-cloud
+description: "OTA and DFU design decisions for SF32 products: transport tradeoffs (BLE, PAN, CDC, UART), rollback and recovery, and a firmware update release checklist."
 tags:
     - Develop
     - OTA

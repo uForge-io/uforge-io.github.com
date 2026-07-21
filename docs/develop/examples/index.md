@@ -1,5 +1,6 @@
 ---
 icon: lucide/list-tree
+description: "How to choose and adapt a SiFli-SDK or Zephyr example by board, framework, and hardest peripheral, instead of building SF32 firmware from scratch."
 tags:
     - Develop
     - Examples
