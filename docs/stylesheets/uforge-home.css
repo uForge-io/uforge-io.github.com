@@ -1,0 +1,829 @@
+/* ============================================================
+   μForge Homepage — custom CSS for Zensical / MkDocs Material
+   Place this file in docs/stylesheets/uforge-home.css
+   Add to mkdocs.yml under extra_css:
+     - stylesheets/uforge-home.css
+   ============================================================ */
+
+/* ── Tokens ── */
+:root {
+  --uf-blue:        #2563eb;
+  --uf-blue-bg:     #dbeafe;
+  --uf-blue-mid:    #3b82f6;
+  --uf-purple:      #7c3aed;
+  --uf-purple-bg:   #ede9fe;
+  --uf-green:       #059669;
+  --uf-green-bg:    #d1fae5;
+  --uf-pink:        #db2777;
+  --uf-pink-bg:     #fce7f3;
+  --uf-amber:       #d97706;
+  --uf-amber-bg:    #fef3c7;
+  --uf-gray-50:     #f9fafb;
+  --uf-gray-100:    #f3f4f6;
+  --uf-gray-200:    #e5e7eb;
+  --uf-gray-400:    #9ca3af;
+  --uf-gray-500:    #6b7280;
+  --uf-gray-700:    #374151;
+  --uf-gray-900:    #111827;
+  --uf-radius:      10px;
+  --uf-radius-lg:   16px;
+  --uf-shadow:      0 4px 14px rgba(0,0,0,.08), 0 1px 3px rgba(0,0,0,.05);
+}
+
+/* ── Logo: swap to the inverted variant in dark mode ──
+   The header/sidebar logo is an <img>, so it can't inherit colors;
+   swap its source when the slate (dark) scheme is active. */
+[data-md-color-scheme="slate"] .md-logo img {
+  content: url("../assets/uforge-logo-inverted.svg");
+}
+
+/* ── Dark mode (slate scheme) token overrides ──
+   Every uf-* component on the page reads its text/border/background
+   color from these --uf-gray-* tokens, but the :root block above only
+   defines a light-mode scale (dark text, light borders). Without this
+   override, headings/body text stay dark-on-dark once the theme switches
+   to slate — this is what "fonts don't invert" was. Redefining the
+   tokens here recolors every consumer at once via the cascade, in the
+   same relative order as light mode (900 = most prominent text down to
+   400 = most muted; 50/100/200 = increasingly visible dark surfaces). */
+[data-md-color-scheme="slate"] {
+  --uf-gray-50:   #0f172a;
+  --uf-gray-100:  #1e293b;
+  --uf-gray-200:  #334155;
+  --uf-gray-400:  #94a3b8;
+  --uf-gray-500:  #cbd5e1;
+  --uf-gray-700:  #e2e8f0;
+  --uf-gray-900:  #f8fafc;
+}
+
+/* The hero's background is a hardcoded light gradient (independent of
+   --uf-gray-*), so its text — now light, via --uf-gray-900 above —
+   would otherwise sit on a light surface and disappear. */
+[data-md-color-scheme="slate"] .uf-hero {
+  background: linear-gradient(155deg, #0f172a 0%, #111827 55%, #0b1220 100%);
+}
+
+/* Quick-links card hover swaps to a hardcoded white regardless of
+   scheme; give it a dark-appropriate hover surface instead. */
+[data-md-color-scheme="slate"] .uf-quicklinks.grid.cards > ul > li:hover {
+  background: #1e293b;
+}
+
+/* ── Hide the header repo (GitHub) link on the front page only ──
+   Unlike the footer prev/next nav, the theme has no front-matter toggle
+   for the header source link — it's unconditional in partials/header.html.
+   .uf-hero only exists on index.md, so :has() scopes this to that page
+   alone without needing a per-page body class from the theme. */
+body:has(.uf-hero) .md-header__source {
+  display: none !important;
+}
+
+/* ── Suppress default MkDocs page padding on homepage ──
+   Covers every container MkDocs Material may use to add
+   top spacing before article content, plus margin-collapse
+   protection on whatever renders as the first element. */
+.md-container,
+.md-main,
+.md-main__inner {
+  margin-top: 0 !important;
+  padding-top: 0 !important;
+}
+.md-content,
+.md-content__inner {
+  padding-top: 0 !important;
+  margin-top: 0 !important;
+}
+.md-typeset {
+  margin-top: 0 !important;
+}
+.md-typeset > *:first-child,
+.md-content__inner > *:first-child,
+.md-content__inner *:first-child {
+  margin-top: 0 !important;
+  padding-top: 0 !important;
+}
+/* The theme inserts a 0.4rem spacer pseudo-element at the top of the
+   content area (.md-content__inner:before { height: .4rem }). It is a
+   pseudo-element, so none of the element resets above can catch it —
+   this is what created the white gap between the nav tabs and the hero. */
+.md-content__inner::before {
+  display: none !important;
+  height: 0 !important;
+}
+/* The *:first-child reset above also wipes the hero's own top padding
+   (.uf-hero is the first child of the article), leaving the badge flush
+   against the upper edge. Re-assert it here: higher specificity than the
+   reset, so the hero keeps its intended breathing room while the white
+   gap above the hero background stays closed. */
+.md-content__inner > .uf-hero:first-child,
+.md-content__inner .uf-hero {
+  padding-top: 36px !important;
+}
+
+/* ============================================================
+   HERO
+   ============================================================ */
+.uf-hero {
+  display: grid;
+  grid-template-columns: 3fr 2fr; /* 60% content / 40% visual */
+  gap: 48px;
+  align-items: center;
+  padding: 572px 0 40px;
+  margin-top: -24px;
+  background: linear-gradient(155deg, #eef2ff 0%, #f5f8ff 55%, #fff 100%);
+  /* Full-bleed treatment, restored: .uf-hero is `display: grid`, and
+     removing this margin/padding pair (as a previous version of this
+     rule did) doesn't just reposition the background — it changes the
+     WIDTH the grid has to divide between the two columns (hero-content
+     3fr / hero-visual 2fr both grow to fill the wider box), which shifts
+     where the heading/paragraph column ends and the chip-visual column
+     begins. The -1rem margin + 1rem padding cancel out for width
+     purposes (net grid width and content start position are unchanged
+     from a fully plain box), while still letting the *background* paint
+     1rem further out than the content does. Keep this pair; fix
+     background-edge alignment against the rows below by matching THEM
+     to this, not by removing this. */
+  margin-left: -1rem;
+  margin-right: -1rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+
+/* The rows below the hero (quicklinks, Why μForge, MCU cards, steps,
+   bottom row) aren't full-bleed like the hero — they sit inside the
+   theme's normal .md-content__inner, which insets 0.8rem from the
+   .md-grid boundary by default. Bump that to 1rem on the front page only,
+   so those rows keep matching the hero above them and the header/tabs
+   bar, instead of sitting 0.2rem further out than everything else. */
+body:has(.uf-hero) .md-content__inner {
+  margin-left: 1rem !important;
+  margin-right: 1rem !important;
+}
+
+.uf-hero-content {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  /* keep hero text painted above the (possibly overlapping) hero image */
+  position: relative;
+  z-index: 2;
+  /* Nudge the title/body/CTAs right by 2em total. This is padding on the
+     grid ITEM, not on .uf-hero itself, so it doesn't touch the 3fr/2fr
+     column math (see the comment on .uf-hero above) — it only shifts
+     content within the content column's own box. */
+  padding-left: 2em;
+}
+.uf-hero-visual {
+  position: relative;
+  z-index: 1;
+}
+
+/* Badge pill */
+.uf-badge {
+  /* flex (not inline-flex): an inline pill is anchored to the text baseline,
+     so padding changes moved the pill around the text instead of the text
+     within the pill. As a block-level flexbox, padding behaves intuitively. */
+  display: flex;
+  align-items: center;
+  background: var(--uf-blue-bg);
+  color: var(--uf-blue);
+  font-size: 11px;
+  font-weight: 700;
+  line-height: 1; /* pill height = font size + padding, no line-box slack */
+  letter-spacing: .08em;
+  padding: 10px 18px;
+}
+/* The badge is the first child of its wrapper <p>, so the global
+   *:first-child reset forces its padding-top to 0 — this is what kept
+   the text glued to the pill's top edge. Out-rank the reset here. */
+.uf-hero-content .uf-badge {
+  padding-top: 10px !important;
+  border-radius: 100px;
+  margin-bottom: 0; /* was 20px: pulls the rest of the hero up 20px */
+  width: fit-content;
+}
+/* Hero H1 */
+.uf-hero-content h1 {
+  font-size: 42px !important;
+  font-weight: 800 !important;
+  line-height: 1.15 !important;
+  color: var(--uf-gray-900) !important;
+  margin-top: -10px !important; /* badge margin exhausted; pulls headline + rest up 10px more */
+  margin-bottom: 18px !important;
+  border: none !important;
+}
+
+/* Hero body */
+.uf-hero-content > p {
+  font-size: 16px;
+  color: var(--uf-gray-500);
+  line-height: 1.7;
+  max-width: 490px;
+  margin-bottom: 32px;
+}
+
+/* CTA buttons row */
+.uf-hero-actions {
+  display: flex !important;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 36px;
+}
+.uf-hero-actions .md-button {
+  margin: 0 !important;
+  font-size: 14px;
+  /* !important: the first button is its wrapper's :first-child, so the
+     global *:first-child reset would otherwise zero its top padding
+     and knock it out of alignment with the other buttons. */
+  padding: 9px 20px !important;
+  border-radius: 7px;
+}
+.uf-hero-actions .md-button--primary {
+  background: var(--uf-blue) !important;
+  border-color: var(--uf-blue) !important;
+  color: #fff !important;
+}
+
+/* Trust bar */
+.uf-trust-bar {
+  font-size: 13px;
+  color: var(--uf-gray-500);
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 4px;
+}
+.uf-trust-bar .twemoji,
+.uf-trust-bar svg { color: var(--uf-green); }
+
+/* ── Hero visual ──
+   The hero picture itself is a real <img> in index5.md (class
+   .uf-chip-scene with inline styles there); this just centers it. */
+.uf-hero-visual {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Feather the chip-scene image's own rectangular edge so it dissolves
+   into the hero's gradient background instead of showing a hard box
+   outline. Two perpendicular linear-gradient masks, combined with
+   "intersect", fade out the outer ~8% of the image on all four sides
+   at once (a soft vignette frame) while leaving the center — and the
+   corner badges, which sit well inside that margin — fully opaque. */
+.uf-chip-scene {
+  -webkit-mask-image:
+    linear-gradient(to right, transparent 0%, #000 8%, #000 92%, transparent 100%),
+    linear-gradient(to bottom, transparent 0%, #000 8%, #000 92%, transparent 100%);
+  -webkit-mask-repeat: no-repeat;
+  -webkit-mask-size: 100% 100%;
+  -webkit-mask-composite: source-in;
+  mask-image:
+    linear-gradient(to right, transparent 0%, #000 8%, #000 92%, transparent 100%),
+    linear-gradient(to bottom, transparent 0%, #000 8%, #000 92%, transparent 100%);
+  mask-repeat: no-repeat;
+  mask-size: 100% 100%;
+  mask-composite: intersect;
+}
+
+/* ============================================================
+   QUICK-LINKS BAR (full-bleed, vertical dividers, matches source)
+   ============================================================ */
+.uf-quicklinks.grid.cards {
+  grid-template-columns: repeat(4, 1fr) !important;
+  gap: 0 !important;
+  background: var(--uf-gray-50);
+  border-top: 1px solid var(--uf-gray-200);
+  border-bottom: 1px solid var(--uf-gray-200);
+  margin: 0 !important;
+  margin-top: 0 !important;
+  /* Same -1rem/+1rem pair as .uf-hero, for the same reason: lets the
+     gray background reach the same outer edge the hero's background
+     does, while the matching padding keeps the 4 cards' own content
+     (icon/text, inset again by their own 28px card padding) exactly
+     where it was — this pair cancels out for width/position, it only
+     moves where the background paints. */
+  margin-left: -1rem !important;
+  margin-right: -1rem !important;
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+.uf-quicklinks.grid.cards > ul > li {
+  background: transparent;
+  border: none !important;
+  border-right: 1px solid var(--uf-gray-200) !important;
+  border-radius: 0 !important;
+  padding: 28px !important;
+  transition: background .15s;
+}
+.uf-quicklinks.grid.cards > ul > li:last-child {
+  border-right: none !important;
+}
+.uf-quicklinks.grid.cards > ul > li:hover {
+  background: #fff;
+}
+
+/* coloured icon backgrounds */
+/* The theme fixes .twemoji spans at height 1.125em (border-box), so chip
+   padding squeezes the inner SVG to a few px tall. Let the chips size
+   naturally and give the SVGs explicit dimensions. */
+.uf-ql-icon,
+span[class*="uf-icon-"],
+span[class*="uf-comm-icon-"] {
+  height: auto !important;
+  /* atomic inline box: padding counts toward the box, and
+     vertical-align: middle then truly centers it on the text line.
+     !important: the theme's .twemoji rule out-ranks these selectors. */
+  display: inline-flex !important;
+  align-items: center;
+  justify-content: center;
+  vertical-align: middle !important;
+  margin-right: 6px;
+  margin-bottom: 0 !important; /* stray bottom margin skews centering (uf-icon-*) */
+  aspect-ratio: 1; /* perfectly square chip: equal visual padding on all sides */
+}
+/* .md-typeset prefix: must out-rank the theme's
+   ".md-typeset .twemoji svg { width: var(--md-icon-size); max-height: 100% }" */
+.md-typeset .uf-ql-icon svg,
+.md-typeset span[class*="uf-icon-"] svg,
+.md-typeset span[class*="uf-comm-icon-"] svg {
+  width: 20px !important;
+  height: 20px !important;
+  max-height: none !important;
+}
+.uf-ql-icon { font-size: 22px !important; }
+.uf-ql-icon.uf-blue   { color: var(--uf-blue)   !important; background: var(--uf-blue-bg);   padding: 8px; border-radius: 9px; }
+.uf-ql-icon.uf-green  { color: var(--uf-green)  !important; background: var(--uf-green-bg);  padding: 8px; border-radius: 9px; }
+.uf-ql-icon.uf-pink   { color: var(--uf-pink)   !important; background: var(--uf-pink-bg);   padding: 8px; border-radius: 9px; }
+.uf-ql-icon.uf-purple { color: var(--uf-purple) !important; background: var(--uf-purple-bg); padding: 8px; border-radius: 9px; }
+
+/* "arrow" links */
+.uf-link-blue   { color: var(--uf-blue)   !important; font-weight: 600; font-size: 13px; }
+.uf-link-green  { color: var(--uf-green)  !important; font-weight: 600; font-size: 13px; }
+.uf-link-pink   { color: var(--uf-pink)   !important; font-weight: 600; font-size: 13px; }
+.uf-link-purple { color: var(--uf-purple) !important; font-weight: 600; font-size: 13px; }
+
+/* ── Centered section titles (Why μForge / MCUs / Steps) ── */
+.uf-center-heading {
+  text-align: center;
+}
+
+/* ============================================================
+   WHY UFORGE
+   ============================================================ */
+.uf-why-grid.grid.cards {
+  grid-template-columns: repeat(3, 1fr) !important;
+  /* Negative margin only (no offsetting padding, unlike the hero/
+     quicklinks full-bleed trick): this actually widens the grid's
+     content box by 1rem on each side, so the outer cards' own borders
+     stretch out to the same edge as the hero's full-bleed background,
+     instead of staying inset at .md-content__inner's normal position. */
+  margin-left: -1rem;
+  margin-right: -1rem;
+}
+.uf-why-grid.grid.cards > ul > li {
+  border: 1px solid var(--uf-gray-200) !important;
+  border-radius: var(--uf-radius) !important;
+  padding: 24px 24px 28px !important;
+  transition: box-shadow .15s;
+}
+.uf-why-grid.grid.cards > ul > li:hover {
+  box-shadow: var(--uf-shadow);
+}
+
+.uf-icon-blue   { font-size: 22px !important; color: var(--uf-blue)   !important; background: var(--uf-blue-bg);   padding: 8.1px; border-radius: 9px; display: inline-block; margin-bottom: 14px; }
+.uf-icon-purple { font-size: 22px !important; color: var(--uf-purple) !important; background: var(--uf-purple-bg); padding: 8.1px; border-radius: 9px; display: inline-block; margin-bottom: 14px; }
+.uf-icon-pink   { font-size: 22px !important; color: var(--uf-pink)   !important; background: var(--uf-pink-bg);   padding: 8.1px; border-radius: 9px; display: inline-block; margin-bottom: 14px; }
+.uf-icon-amber  { font-size: 22px !important; color: var(--uf-amber)  !important; background: var(--uf-amber-bg);  padding: 8.1px; border-radius: 9px; display: inline-block; margin-bottom: 14px; }
+.uf-icon-green  { font-size: 22px !important; color: var(--uf-green)  !important; background: var(--uf-green-bg);  padding: 8.1px; border-radius: 9px; display: inline-block; margin-bottom: 14px; }
+
+/* ============================================================
+   MCU CARDS
+   ============================================================ */
+.uf-mcu-grid.grid.cards {
+  grid-template-columns: repeat(4, 1fr) !important;
+  /* Same reasoning as .uf-why-grid above: negative margin only, so the
+     card row's own outer edges reach the hero's full-bleed background
+     edge instead of staying inset at the normal content margin. */
+  margin-left: -1rem;
+  margin-right: -1rem;
+}
+.uf-mcu-grid.grid.cards > ul > li {
+  border: 1px solid var(--uf-gray-200) !important;
+  border-radius: var(--uf-radius-lg) !important;
+  padding: 22px !important;
+  transition: box-shadow .15s, border-color .15s;
+}
+.uf-mcu-grid.grid.cards > ul > li:hover {
+  box-shadow: var(--uf-shadow);
+  border-color: var(--uf-gray-400) !important;
+}
+
+/* header row: chip thumbnail (col 1) next to title+subtitle (col 2).
+   Earlier this spanned the chip across two separate grid rows (one for
+   the title <p>, one for the subtitle <p>) to center it against both —
+   but a row-spanning item forces Grid to distribute leftover height
+   between the two auto rows it spans, and that distribution isn't
+   guaranteed to come out identically across cards whose title/subtitle
+   text sizes differ by even a hair, which is what made card 1's whole
+   header (and everything below it, including the first bullet) sit at
+   a different height than the others.
+   Fix: title + subtitle are now a single inline <span class="uf-mcu-
+   headtext"> (markdown syntax inside it still gets processed — unlike
+   a <div>, a <span> doesn't trigger raw-HTML-block mode, which is what
+   broke the rest of the card when a <div> wrapper was tried here) that
+   markdown wraps in its own <p>, giving col 2 a single grid item —
+   only one row to size, no ambiguity — and align-items: center handles
+   vertical centering directly. */
+.uf-mcu-grid.grid.cards > ul > li {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  /* Fixed row height (matches the 64px chip) instead of letting the row
+     auto-size to "whichever of chip vs. headtext is taller" — the two
+     are the same 64px on every card, so this shouldn't have mattered,
+     but pinning it explicitly removes any remaining dependency on the
+     title/subtitle's own rendered height and guarantees the divider
+     below lands at an identical spot on every card. */
+  grid-template-rows: 64px;
+  align-items: center;
+  column-gap: 12px;
+  /* Root cause of the "first bullet row" drifting between cards: the
+     outer .uf-mcu-grid is itself a CSS Grid, and its row items default
+     to align-items: stretch — every card <li> in a row is stretched to
+     match the tallest sibling (whichever card wraps the most bullet
+     lines). Each <li> is *also* a grid (for the header layout above),
+     and a stretched grid container distributes its leftover height
+     across its own auto-sized rows (align-content defaults to normal/
+     stretch) — here that's the hr row and the bullet-list row — instead
+     of leaving it untouched. So a short card sitting next to a tall one
+     got its hr/first-bullet pushed down by however much extra height it
+     was stretched to absorb. align-content: start pins every row to its
+     natural size and pushes all leftover height to the bottom of the
+     card (after the "View Series" link), where it's invisible, instead
+     of leaking into the gap above the bullet list. */
+  align-content: start;
+}
+.uf-mcu-grid li > p:nth-child(1) {
+  grid-column: 1;
+  grid-row: 1;
+  margin: 0 0 14px;
+}
+.uf-mcu-grid li > p:nth-child(2) {
+  grid-column: 2;
+  grid-row: 1;
+  margin: 0 0 14px;
+}
+.uf-mcu-headtext { display: flex; flex-direction: column; }
+.uf-mcu-grid li > hr,
+.uf-mcu-grid li > ul,
+.uf-mcu-grid li > p:nth-child(n+3) {
+  grid-column: 1 / -1;
+}
+
+.uf-mcu-chip {
+  display: flex;
+  width: 64px;
+  height: 64px;
+  background: linear-gradient(145deg, #1e293b, #0f172a);
+  border-radius: 12px;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  font-size: 12px;
+  font-weight: 800;
+  line-height: 1.2;
+  text-align: center;
+  box-shadow: 0 4px 14px rgba(0,0,0,.25);
+}
+.uf-mcu-chip small { font-size: 9px; opacity: .5; font-weight: 600; }
+
+/* The chip is a hardcoded dark navy badge (like the logo before its own
+   dark-mode swap above) — in light mode it contrasts against the white
+   card, but the card's own background goes dark in slate mode too, so
+   the badge just blends in instead of standing out. Invert it the same
+   way the logo inverts: light badge, dark text. */
+[data-md-color-scheme="slate"] .uf-mcu-chip {
+  background: linear-gradient(145deg, #f8fafc, #e2e8f0);
+  color: #0f172a;
+  box-shadow: 0 4px 14px rgba(0,0,0,.4);
+}
+
+.uf-mcu-title { font-size: 17px !important; font-weight: 800 !important; color: var(--uf-gray-900) !important; }
+.uf-mcu-sub   { font-size: 12px; color: var(--uf-gray-400); }
+
+/* bullet dots */
+.uf-mcu-grid li ul { list-style: none !important; padding: 0 !important; margin: 0 !important; }
+.uf-mcu-grid li li {
+  list-style: none !important;
+  margin: 0 !important;
+  /* hanging indent: padding-left reserves space for the dot on every
+     line (including wrapped ones), text-indent pulls just the first
+     line back by the same amount so the dot sits in that reserved gap
+     instead of the wrapped line starting underneath it. 13px ≈ dot
+     width (6px font-size × 1.125em icon sizing ≈ 6.75px) + its 6px
+     margin-right. */
+  padding: 3px 0 3px 13px;
+  text-indent: -13px;
+  font-size: 13px;
+  line-height: 1.5;
+  border-top: 1px solid var(--uf-gray-100);
+}
+/* Plain inline flow (not flex): the dot only ever occupies the first
+   line's line box, so aligning it there leaves line 2+ (on wrapped
+   items) as a separate line box it never touches — it stays pinned to
+   line 1 instead of sinking to the midpoint between both lines.
+   The previous attempt at this used vertical-align: middle on
+   .uf-dot-blue alone, but the theme's own ".md-typeset .twemoji" rule
+   sets vertical-align: text-top with *higher* specificity (two classes
+   vs. one), so it silently won and left every dot pinned to the top of
+   the line instead of centered — this is why that attempt looked wrong
+   even on single-line items. Repeating the .md-typeset prefix here
+   (same fix already used for icon sizing elsewhere in this file)
+   out-ranks it. */
+.md-typeset .uf-dot-blue {
+  font-size: 6px !important;
+  color: var(--uf-blue-mid) !important;
+  vertical-align: middle !important;
+  margin-right: 6px;
+}
+
+/* ============================================================
+   STEPS
+   ============================================================ */
+.uf-steps.grid.cards {
+  grid-template-columns: repeat(5, 1fr) !important;
+  gap: 0 !important; /* cells form one connected bar with shared borders */
+}
+.uf-steps.grid.cards > ul > li {
+  border: 1px solid var(--uf-gray-200) !important;
+  border-radius: 0 !important;
+  border-right-width: 0 !important;
+  text-align: center !important;
+  padding: 28px 16px !important;
+  position: relative;
+}
+.uf-steps.grid.cards > ul > li:first-child { border-radius: var(--uf-radius) 0 0 var(--uf-radius) !important; }
+.uf-steps.grid.cards > ul > li:last-child  { border-radius: 0 var(--uf-radius) var(--uf-radius) 0 !important; border-right-width: 1px !important; }
+
+/* step number bubble */
+.uf-step-num {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px; height: 32px;
+  border-radius: 50%;
+  font-size: 14px;
+  font-weight: 700;
+  color: #fff;
+  margin-bottom: 12px;
+}
+.uf-step-1 { background: #3b82f6; }
+.uf-step-2 { background: #8b5cf6; }
+.uf-step-3 { background: #ec4899; }
+.uf-step-4 { background: #f59e0b; }
+.uf-step-5 { background: #22c55e; }
+
+/* Step icons now double up with the .uf-icon-{color} classes used
+   elsewhere on the page (Why Choose section), so each step gets a
+   small colored badge instead of a plain uncolored glyph — this is
+   what actually makes the 5 steps visually distinguishable at a
+   glance, matching each step's numbered-circle color. inline-block
+   (not block) keeps the badge sized to its own icon instead of
+   stretching to the full card width; the parent li's text-align:
+   center still centers it, same as the Why Choose icons. */
+.uf-step-icon { font-size: 28px !important; display: inline-block; margin-bottom: 10px; }
+
+/* ============================================================
+   BOTTOM 3-COL ROW
+   ============================================================ */
+.uf-bottom-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 40px;
+  padding: 60px 0 72px;
+  border-top: 1px solid var(--uf-gray-200);
+}
+
+.uf-bottom-col h2 {
+  font-size: 18px !important;
+  font-weight: 700 !important;
+  color: var(--uf-gray-900) !important;
+  border: none !important;
+  margin-bottom: 4px !important;
+  padding-bottom: 0 !important;
+}
+
+/* Featured Projects list */
+.uf-project-list > ul { list-style: none !important; padding: 0 !important; margin: 0 0 16px !important; }
+.uf-project-list > ul > li {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 0;
+  border-bottom: 1px solid var(--uf-gray-100);
+  font-size: 14px;
+  color: var(--uf-gray-700);
+}
+.uf-project-list > ul > li:last-child { border-bottom: none; }
+
+.uf-proj-thumb {
+  width: 34px; height: 34px;
+  border-radius: 9px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 17px;
+  flex-shrink: 0;
+}
+.uf-proj-blue  { background: var(--uf-blue-bg); }
+.uf-proj-amber { background: var(--uf-amber-bg); }
+.uf-proj-green { background: var(--uf-green-bg); }
+
+/* News definition list */
+.uf-bottom-col dl { margin: 0 0 16px; }
+.uf-bottom-col dt {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--uf-gray-900);
+  border-bottom: 1px solid var(--uf-gray-100);
+  padding: 10px 0 2px;
+  margin-top: 0;
+}
+.uf-bottom-col dt a { color: var(--uf-gray-900) !important; }
+.uf-bottom-col dt a:hover { color: var(--uf-blue) !important; }
+.uf-bottom-col dd {
+  font-size: 12px;
+  color: var(--uf-gray-400);
+  margin: 2px 0 0 0;
+  padding-bottom: 2px;
+}
+.uf-news-date {
+  font-size: 11px;
+  color: var(--uf-gray-400);
+  font-weight: 400;
+  margin-left: 6px;
+}
+
+/* Community list */
+.uf-comm-list > ul { list-style: none !important; padding: 0 !important; margin: 8px 0 16px !important; }
+.uf-comm-list > ul > li {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 0;
+  border-bottom: 1px solid var(--uf-gray-100);
+  font-size: 14px;
+  color: var(--uf-gray-700);
+}
+.uf-comm-list > ul > li:last-child { border-bottom: none; }
+
+.uf-comm-icon-gray   { font-size: 18px !important; background: var(--uf-gray-100);   color: var(--uf-gray-700) !important; padding: 6.3px; border-radius: 8px; }
+.uf-comm-icon-purple { font-size: 18px !important; background: var(--uf-purple-bg);  color: var(--uf-purple)   !important; padding: 6.3px; border-radius: 8px; }
+.uf-comm-icon-blue   { font-size: 18px !important; background: var(--uf-blue-bg);    color: var(--uf-blue)     !important; padding: 6.3px; border-radius: 8px; }
+.uf-comm-icon-green  { font-size: 18px !important; background: var(--uf-green-bg);   color: var(--uf-green)    !important; padding: 6.3px; border-radius: 8px; }
+
+/* ============================================================
+   CONTACT FORM (About page)
+   ============================================================ */
+.uf-contact-form {
+  max-width: 720px;
+  margin: 24px 0 32px;
+  padding: 28px;
+  border: 1px solid var(--uf-gray-200);
+  border-radius: var(--uf-radius-lg);
+  background: var(--uf-gray-50);
+}
+.uf-form-row {
+  display: grid;
+  gap: 0 16px;
+}
+.uf-form-row-2 { grid-template-columns: 1fr 1fr; }
+.uf-form-row-3 { grid-template-columns: 1fr 1fr 1fr; }
+.uf-form-group {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 18px;
+}
+.uf-form-group label {
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: .04em;
+  text-transform: uppercase;
+  color: var(--uf-gray-500);
+  margin-bottom: 8px;
+}
+.uf-required { color: var(--uf-green); }
+.uf-contact-form input[type="text"],
+.uf-contact-form input[type="email"],
+.uf-contact-form input[type="tel"],
+.uf-contact-form select,
+.uf-contact-form textarea {
+  font: inherit;
+  font-size: 14px;
+  padding: 10px 12px;
+  border: 1px solid var(--uf-gray-200);
+  border-radius: var(--uf-radius);
+  background: var(--md-default-bg-color);
+  color: var(--uf-gray-900);
+  transition: border-color .15s, box-shadow .15s;
+}
+.uf-contact-form select {
+  appearance: none;
+  -webkit-appearance: none;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'><path fill='%239ca3af' d='M4 6l4 4 4-4z'/></svg>");
+  background-repeat: no-repeat;
+  background-position: right 12px center;
+  background-size: 12px;
+  padding-right: 34px;
+  cursor: pointer;
+}
+.uf-contact-form select:invalid { color: var(--uf-gray-400); }
+.uf-contact-form input:focus,
+.uf-contact-form select:focus,
+.uf-contact-form textarea:focus {
+  outline: none;
+  border-color: var(--uf-blue);
+  box-shadow: 0 0 0 3px var(--uf-blue-bg);
+}
+.uf-contact-form textarea { resize: vertical; min-height: 120px; }
+
+.uf-form-submit {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px 22px;
+  font-size: 14px;
+  font-weight: 700;
+  color: #fff !important;
+  background: var(--uf-blue);
+  border: none;
+  border-radius: var(--uf-radius);
+  cursor: pointer;
+  transition: background .15s, box-shadow .15s;
+}
+.uf-form-submit:hover { background: #1d4ed8; box-shadow: var(--uf-shadow); }
+
+.uf-form-status {
+  margin: 12px 0 0;
+  font-size: 13px;
+  color: var(--uf-gray-500);
+  min-height: 1.4em;
+}
+.uf-form-status--info { color: var(--uf-blue); }
+.uf-form-status--error { color: #c0392b; }
+
+/* ============================================================
+   RESET REPAIRS
+   The global "*:first-child { padding-top: 0 !important }" reset at
+   the top of this file also clips any element that happens to be the
+   first child of its parent. The :first-child in each selector below
+   both scopes the repair to the affected element and lifts specificity
+   above the reset. Values mirror the originals declared earlier.
+   ============================================================ */
+.uf-quicklinks .uf-ql-icon:first-child { padding-top: 8px !important; }
+.uf-why-grid span[class*="uf-icon-"]:first-child { padding-top: 8.1px !important; }
+.uf-comm-list span[class*="uf-comm-icon-"]:first-child { padding-top: 6.3px !important; }
+.uf-mcu-grid li li:first-child { padding-top: 3px !important; border-top: none !important; }
+.uf-project-list > ul > li:first-child,
+.uf-comm-list > ul > li:first-child { padding-top: 10px !important; }
+.uf-bottom-col dt:first-child { padding-top: 10px !important; }
+
+/* Plain markdown tables: the theme gives every td/th the same
+   padding: .9375em 1.25em (see .md-typeset table:not([class]) td/th),
+   so a row's cells normally line up flush at the same top offset even
+   when one column wraps to more lines than another. But the first
+   .md-content__inner *:first-child { padding-top: 0 !important; }
+   reset above also matches the first <td>/<th> of every <tr> (it's
+   that row's :first-child), zeroing just that column's top padding —
+   so column 1 sits glued to the top of the row while every other
+   column keeps the theme's normal padding and starts lower. Restore
+   the theme's own value, scoped to table cells only. */
+.md-typeset table:not([class]) td:first-child,
+.md-typeset table:not([class]) th:first-child {
+  padding-top: 0.9375em !important;
+}
+
+/* ============================================================
+   RESPONSIVE
+   ============================================================ */
+@media (max-width: 960px) {
+  .uf-hero { grid-template-columns: 1fr; }
+  .uf-hero-visual { display: none; }
+  .uf-hero-content h1 { font-size: 32px !important; }
+  .uf-quicklinks.grid.cards { grid-template-columns: repeat(2, 1fr) !important; }
+  .uf-why-grid.grid.cards   { grid-template-columns: repeat(2, 1fr) !important; }
+  .uf-mcu-grid.grid.cards   { grid-template-columns: repeat(2, 1fr) !important; }
+  .uf-steps.grid.cards      { grid-template-columns: repeat(3, 1fr) !important; }
+  .uf-bottom-row { grid-template-columns: 1fr; }
+  .uf-form-row-2,
+  .uf-form-row-3 { grid-template-columns: 1fr; }
+}
+
+@media (max-width: 600px) {
+  .uf-quicklinks.grid.cards { grid-template-columns: 1fr !important; }
+  .uf-why-grid.grid.cards   { grid-template-columns: 1fr !important; }
+  .uf-mcu-grid.grid.cards   { grid-template-columns: 1fr !important; }
+  .uf-steps.grid.cards      { grid-template-columns: repeat(2, 1fr) !important; }
+  .uf-steps.grid.cards > ul > li { border-radius: var(--uf-radius) !important; border-right-width: 1px !important; }
+}
