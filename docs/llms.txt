@@ -4,7 +4,7 @@
 
 Primary audience: hardware engineers, PCB designers, firmware/software engineers, and product engineers selecting parts or designing hardware around the SF32 family. Content favors practical engineering detail (part selection, pin assignments, electrical specs, PCB layout rules, integration risk) over marketing language.
 
-Use canonical release pages unless explicitly asked about development drafts. Ignore `.dev` pages, internal memo pages under `/about/others/`, local generated PDFs, and unpublished scratch files when answering general questions about μForge.io.
+Only the pages listed below are published on this site. Internal working notes (an improvement-suggestions memo and a documentation-assumptions memo) are excluded from this domain entirely and are not part of the public content set.
 
 ## Getting Started
 
@@ -15,22 +15,33 @@ Use canonical release pages unless explicitly asked about development drafts. Ig
 - [Getting Started with Arduino](https://uForge.io/getting-started/arduino/getting-started-arduino/): Using OpenSiFli's beta Zephyr-based Arduino core for the SF32LB52 DevKit LCD.
 - [MicroPython Status](https://uForge.io/getting-started/micropython/getting-started-micropython/): Readiness checklist for MicroPython on SF32; not yet a supported path pending official firmware images.
 
+## Hardware — Overview
+
+- [Hardware Overview](https://uForge.io/hardware/hardware_overview/): Entry hub linking to chips, modules, development boards, and their hardware design guides.
+
 ## Hardware — Chips
 
 - [SF32 Family Overview](https://uForge.io/hardware/chips/SF32_family/): Portfolio overview of the SF32LB5xx series of highly integrated, ultra-low-power 32-bit microcontrollers for battery-powered AIoT and wearable applications.
 - [SF32 Naming Rule](https://uForge.io/hardware/chips/SF32_namingrule/): How to read SF32 part numbers, including the numeric/alphabetic variant placeholders used across chip families.
 - [SF32LB52x Introduction](https://uForge.io/hardware/chips/SF32LB52x/): Cost-optimized dual-core Arm Cortex-M33 AIoT MCU with Bluetooth, ePicasso graphics, and low power for smart wearables.
 - [SF32LB52x Hardware Design Guide](https://uForge.io/hardware/chips/SF32LB52x_hardware_design_guide/): Power architecture, clock and RF design, display and storage interfaces, and PCB layout guidance for SF32LB52x designs.
+- [SF32LB52x Hardware Design Checklist](https://uForge.io/hardware/chips/SF32LB52x_hardware_design_checklist/): Item-by-item schematic and PCB review checklist for SF32LB52x designs, derived from SiFli's official checklist spreadsheet.
 - [SF32LB55x Introduction](https://uForge.io/hardware/chips/SF32LB55x/): Mainstream ultra-low-power AIoT MCU with big.LITTLE dual-core architecture and BLE connectivity for wearables.
+- [SF32LB55x Hardware Design Guide](https://uForge.io/hardware/chips/SF32LB55x_hardware_design_guide/): Power architecture, clock and RF design, display and storage interfaces, and PCB layout guidance for SF32LB55x designs.
+- [SF32LB55x Hardware Design Checklist](https://uForge.io/hardware/chips/SF32LB55x_hardware_design_checklist/): Item-by-item schematic and PCB review checklist for SF32LB55x designs.
 - [SF32LB56x Introduction](https://uForge.io/hardware/chips/SF32LB56x/): Advanced AIoT MCU with dual-mode Bluetooth, big.LITTLE dual-core architecture, and rich graphics, audio, and memory options.
-- [SF32LB57x Introduction](https://uForge.io/hardware/chips/SF32LB57x/): Highly integrated AIoT MCU with heterogeneous dual-core architecture, AI accelerator, camera interface, and dual-mode Bluetooth 6.0.
+- [SF32LB56x Hardware Design Guide](https://uForge.io/hardware/chips/SF32LB56x_hardware_design_guide/): Power architecture, clock and RF design, display and storage interfaces, and PCB layout guidance for SF32LB56x designs.
+- [SF32LB56x Hardware Design Checklist](https://uForge.io/hardware/chips/SF32LB56x_hardware_design_checklist/): Item-by-item schematic and PCB review checklist for SF32LB56x designs.
+- [SF32LB57x Introduction](https://uForge.io/hardware/chips/SF32LB57x/): Highly integrated AIoT MCU with heterogeneous dual-core architecture, AI accelerator, camera interface, and dual-mode Bluetooth.
 - [SF32LB57x Hardware Design Guide](https://uForge.io/hardware/chips/SF32LB57x_hardware_design_guide/): Minimum system design, power, clock, RF, display, camera, storage, and PCB layout guidance for SF32LB57x designs.
 - [SF32LB58x Introduction](https://uForge.io/hardware/chips/SF32LB58x/): Flagship AIoT MCU with heterogeneous triple-core architecture, dual-mode Bluetooth, large memory, and rich display and audio I/O.
 - [SF32LB58x Hardware Design Guide](https://uForge.io/hardware/chips/SF32LB58x_hardware_design_guide/): Power architecture, clock and RF design, display, storage, audio, and PCB layout guidance for SF32LB58x designs.
+- [SF32LB58x Hardware Design Checklist](https://uForge.io/hardware/chips/SF32LB58x_hardware_design_checklist/): Item-by-item schematic and PCB review checklist for SF32LB58x designs.
 
 ## Hardware — Modules
 
-- [M2 Interface Naming Rules](<https://uForge.io/hardware/modules/M2 Interface Naming Rules/>): The mandatory base interface implemented by every μForge module.
+- [M2 Interface Naming Rules](<https://uForge.io/hardware/modules/M2 Interface Naming Rules/>): The mandatory base module interface identifier implemented by every μForge module; electrical/mechanical pinout is still in development.
+- [M2 Interface Definition](https://uForge.io/hardware/modules/M2-interface-definition/): Draft M2 interface definition — connector, pinout, and electrical limits — a working proposal, not yet a released standard.
 - [SF32LB52-MOD-1 Introduction](https://uForge.io/hardware/modules/SF32LB52-MOD-1/): Certified Bluetooth 5.3 MCU module built on SF32LB525UC6, reducing RF certification and layout risk for wearable products.
 - [SF32LB52-MOD-1 Hardware Design Guide](https://uForge.io/hardware/modules/SF32LB52-MOD-1_hardware_design_guide/): Power, interfaces, and PCB integration guidance for the SF32LB52-MOD-1 module.
 - [SF32LB56-MOD Introduction](https://uForge.io/hardware/modules/SF32LB56-MOD/): General-purpose Bluetooth 5.3 MCU module family based on SF32LB56xV, with graphics, audio, and reduced RF layout risk.
@@ -40,11 +51,11 @@ Use canonical release pages unless explicitly asked about development drafts. Ig
 
 ## Hardware — Development Boards
 
-- [SF32LB52-DevKit-LCD](https://uForge.io/hardware/devkits/SF32LB52-DevKit-LCD/): SF32LB52-based development board with LCD for evaluation and firmware bring-up.
-- [SF32LB52-DevKit-Core-3p3](https://uForge.io/hardware/devkits/SF32LB52-DevKit-Core-3p3/): SF32LB52-based 3.3 V core development board.
-- [SF32LB52-DevKit-Nano](https://uForge.io/hardware/devkits/SF32LB52-DevKit-Nano/): Compact SF32LB52-based development board.
-- [SF32LB52-DevKit-ULP](https://uForge.io/hardware/devkits/SF32LB52-DevKit-ULP/): Ultra-low-power-focused SF32LB52-based development board.
-- [SF32LB58-DevKit-LCD](https://uForge.io/hardware/devkits/SF32LB58-DevKit-LCD/): SF32LB58-based development board with LCD for evaluation and firmware bring-up.
+- [SF32LB52-DevKit-LCD](https://uForge.io/hardware/devkits/SF32LB52-DevKit-LCD/): SF32LB52-based development board with LCD, audio amplifier, TF-card slot, and battery charger for evaluation and firmware bring-up.
+- [SF32LB52-DevKit-Core-3p3](https://uForge.io/hardware/devkits/SF32LB52-DevKit-Core-3p3/): SF32LB52-based 3.3 V core development board with maximum pin breakout for direct signal access.
+- [SF32LB52-DevKit-Nano](https://uForge.io/hardware/devkits/SF32LB52-DevKit-Nano/): Smallest SF32LB52-based development board, for size-constrained product prototyping.
+- [SF32LB52-DevKit-ULP](https://uForge.io/hardware/devkits/SF32LB52-DevKit-ULP/): Ultra-low-power-focused SF32LB52-based development board for battery-life evaluation.
+- [SF32LB58-DevKit-LCD](https://uForge.io/hardware/devkits/SF32LB58-DevKit-LCD/): SF32LB58-based development board with LCD for flagship-tier evaluation and firmware bring-up.
 
 ## Hardware — Other Resources
 
@@ -54,30 +65,64 @@ Use canonical release pages unless explicitly asked about development drafts. Ig
 ## Develop
 
 - [Develop Overview](https://uForge.io/develop/overview/): Entry point for firmware developers building, flashing, debugging, updating, and shipping software on SF32 devices.
-- [SiFli-SDK Platform Overview](https://uForge.io/develop/platforms/sifli-sdk/overview/): The reference RT-Thread-based development path for SF32 firmware, Bluetooth, graphics, audio, power management, and storage.
+- [SiFli-SDK Platform Overview](https://uForge.io/develop/platforms/sifli-sdk/overview/): How to use SiFli-SDK day to day once the toolchain works — the reference RT-Thread-based path for SF32 firmware.
+- [Build, Flash, Monitor](https://uForge.io/develop/platforms/sifli-sdk/build-flash-monitor/): The daily SiFli-SDK loop — activate the environment, build with scons, flash the board, and watch logs.
+- [Board Configuration](https://uForge.io/develop/platforms/sifli-sdk/board-configuration/): How the --board value selects the board support package controlling flash layout, PSRAM, pins, display, audio, clocking, and power rails.
+- [Components and sf_pkg](https://uForge.io/develop/platforms/sifli-sdk/components/): SiFli's reusable middleware, driver, and component ecosystem for firmware that grows beyond a copied example.
+- [Debugging and Diagnostics](https://uForge.io/develop/platforms/sifli-sdk/debugging-diagnostics/): Serial logs, crash dumps, trace capture, and shell commands for debugging SF32 firmware.
 - [CodeKit Platform Overview](https://uForge.io/develop/platforms/codekit/overview/): The VS Code extension workflow for SiFli-SDK setup, project creation, build, flash, and monitor.
 - [Zephyr Platform Overview](https://uForge.io/develop/platforms/zephyr/overview/): OpenSiFli's downstream Zephyr tree, SiFli HAL integration, and SF32LB52 board support.
 - [Arduino Platform Overview](https://uForge.io/develop/platforms/arduino/overview/): OpenSiFli's beta Zephyr-based Arduino core for SF32LB52.
 - [MicroPython Platform Status](https://uForge.io/develop/platforms/micropython/status/): Current state of MicroPython support on SF32 — no official port or firmware image yet.
-- [Rust Platform Overview](https://uForge.io/develop/platforms/rust/overview/): OpenSiFli's Rust HAL, PAC, and flash-table crates for SF32.
-- [Development Tools](https://uForge.io/develop/tools/): Download tools, serial monitors, crash analysis, trace capture, image conversion, and RF/audio tuning utilities for SF32 firmware development.
+- [Rust Platform Overview](https://uForge.io/develop/platforms/rust/overview/): OpenSiFli's work-in-progress Rust HAL, PAC, and flash-table crates for SF32.
+- [Development Tools](https://uForge.io/develop/tools/): Map of download tools, serial monitors, crash analysis, trace capture, image conversion, and RF/audio tuning utilities for SF32 firmware development.
 - [Firmware Topics](https://uForge.io/develop/firmware-topics/): Cross-platform firmware mechanics — boot layout, partition tables, OTA/DFU, USB, power management, logging, and crash analysis.
-- [Examples](https://uForge.io/develop/examples/): Board-specific working examples to adapt instead of building SF32 firmware subsystems from scratch.
+- [Partition Tables](https://uForge.io/develop/firmware-topics/partition-tables/): How flash is divided among firmware, boot data, filesystems, OTA images, and product data.
+- [OTA and DFU](https://uForge.io/develop/firmware-topics/ota-dfu/): Update-architecture decisions — transport, signing, rollback, and interrupted-update recovery.
+- [USB and CherryUSB](https://uForge.io/develop/firmware-topics/usb-cherryusb/): USB as a software stack on SF32 — descriptors, host OS behavior, power, and factory tooling considerations.
+- [Power Management](https://uForge.io/develop/firmware-topics/power-management/): Turning a working prototype into a wearable-ready product via clocking, sleep modes, display, Bluetooth interval, and sensor-wake tuning.
+- [Logging and Crash Analysis](https://uForge.io/develop/firmware-topics/logging-crash-analysis/): Designing logging and crash-dump capture before the first field test, not after a device fails.
+- [Examples](https://uForge.io/develop/examples/): Why and how to start SF32 firmware from a close working example instead of building each subsystem from scratch.
 
-## Learn
+## Learn — Architecture
 
-- [Architecture](https://uForge.io/learn/architecture/star-mc1_new3/): STAR-MC1 processor architecture used across the SF32 family.
-- [ePicasso GPU](https://uForge.io/learn/architecture/epicasso-gpu/): SF32's 2D/2.5D graphics accelerator architecture.
-- [AI Accelerator](https://uForge.io/learn/architecture/ai-accelerator/): On-chip AI/neural-network acceleration in the SF32 family.
-- [Bluetooth Processor](https://uForge.io/learn/architecture/bluetooth-processor/): Dual-mode Bluetooth subsystem architecture in the SF32 family.
+- [STAR-MC1](https://uForge.io/learn/architecture/star-mc1/): Arm China's enhanced Cortex-M33 implementation used as the application processor across the SF32 family.
+- [ePicasso GPU](https://uForge.io/learn/architecture/epicasso-gpu/): SiFli's in-house 2D/2.5D graphics acceleration engine for embedded UIs on SF32.
+- [PTM Parallel Task Machine](https://uForge.io/learn/architecture/ptm-parallel-task-machine/): SF32LB57x's programmable peripheral task engine for timing-sensitive, custom, or small offload work that doesn't justify keeping a main core busy.
+- [AI Accelerator](https://uForge.io/learn/architecture/ai-accelerator/): Hardware subsystem in selected SF32 devices for low-latency, low-power on-device machine-learning inference.
+- [Bluetooth Processor](https://uForge.io/learn/architecture/bluetooth-processor/): Dedicated wireless-control subsystem handling Bluetooth radio scheduling and link timing independent of the application CPU.
+
+## Learn — Guides
+
+- [Graphics Guide](https://uForge.io/learn/guides/graphics/): Building responsive UIs on SF32 — display selection, framebuffer strategy, LVGL integration, ePicasso acceleration, and memory placement.
+- [Bluetooth Guide](https://uForge.io/learn/guides/bluetooth/): Planning Bluetooth connectivity on SF32 — BLE vs. dual-mode, GATT/profile design, connection tuning, pairing, and LE Audio.
+- [Audio Guide](https://uForge.io/learn/guides/audio/): The local audio subsystem on SF32 — codec, DMA, and Audio Server middleware for microphone input, speaker output, and playback/recording.
+- [AI Guide](https://uForge.io/learn/guides/ai/): Getting a model onto an SF32 chip via the NNACC HAL — device selection, memory budgeting, and scheduling inference without wrecking the power budget.
+- [Power Guide](https://uForge.io/learn/guides/power/): System-level low-power design on SF32 — power modes, battery-drain sources, and structuring firmware to maximize low-power time.
+
+## Learn — Tutorials
+
+- [Beginner Tutorials](https://uForge.io/learn/tutorials/beginner/): Small, single-peripheral SF32-SDK tutorials for right after your first hello_world flash — GPIO, shell, ADC/PWM basics.
+- [Intermediate Tutorials](https://uForge.io/learn/tutorials/intermediate/): Middleware and combined workflows on SF32 — I2C sensors, graphical UI, BLE services, audio playback, and persistent storage.
+- [Advanced Tutorials](https://uForge.io/learn/tutorials/advanced/): Shippable-product-level SF32 work — measured power, safe OTA, custom hardware bring-up, crash analysis, and multi-connection Bluetooth.
+
+## Learn — Other
+
+- [Glossary](https://uForge.io/about/glossary/): Quick-reference lookup for acronyms and terms used across the site, both general embedded/wireless terminology and SiFli-specific names.
+- [Examples](https://uForge.io/learn/examples/): Placeholder page for a future catalog of ready-to-run SF32 example projects (graphics, Bluetooth, audio, AI, low-power).
+
+## Blog
+
+- [Blog](https://uForge.io/blog/blog/): Placeholder page for future announcements, release notes, and deep dives.
 
 ## About
 
-- [About μForge.io](https://uForge.io/about/about/): What μForge.io is and who it's for.
+- [About μForge.io](https://uForge.io/about/about/): What μForge.io is, and sales/support contact emails.
+- [Contact](https://uForge.io/about/contact/): Contact form for sales, support, partnership, media, and documentation-feedback inquiries.
 
 ## Notes for AI agents and coding assistants
 
 - All hardware design guides use numbered sections, tables, and figures (e.g. "Table 5.1-1", "Figure 5.2-3") scoped per H3 subsection; treat these numbers as stable anchors when quoting specific values.
-- Each chip/module family follows the same structure: an Introduction page (device overview, variants, packages, applications) and a Hardware Design Guide (schematic guidance, PCB layout, manufacturing checklist).
-- Chinese-language equivalents of the hardware design guides exist at the same path with a `_zh` suffix (e.g. `SF32LB52x_hardware_design_guide_zh`).
+- Each chip/module family follows the same structure: an Introduction page (device overview, variants, packages, applications) and a Hardware Design Guide (schematic guidance, PCB layout, manufacturing checklist); several chips also have a standalone Hardware Design Checklist page.
+- This domain publishes English content only. A separate Chinese documentation set exists but is not part of this site's published content.
 - For authoritative electrical specifications, pin mappings, and component qualification beyond what's summarized here, the guides link out to SiFli's datasheets, user manuals, and the SiFli Approved Vendor List.
