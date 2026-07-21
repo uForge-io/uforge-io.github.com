@@ -1,0 +1,159 @@
+---
+icon: lucide/flame
+tags:
+    - Tutorials
+---
+
+# Advanced Tutorials
+
+These tutorials assume the [Intermediate Tutorials](intermediate.md) are comfortable territory. You can bring up a peripheral, connect it to middleware, and you have already seen at least one coexistence problem firsthand. This tier focuses on the work that separates a working demo from a product you can ship: measured power, safe OTA, custom hardware bring-up, crash analysis, multi-connection Bluetooth, and reusable drivers.
+
+Advanced work is less about copying a single example and more about building evidence. For each tutorial, keep notes: board revision, SDK version, example base, test setup, expected result, observed result, and what changed.
+
+## Tune Low-Power Modes and Wake Sources
+
+**Goal:** get real battery-life evidence instead of assuming firmware is low power because it calls a sleep function.
+
+**Time:** 2+ hours, plus measurement setup
+
+**Start from:** `example/pm/classical`, `example/pm/raise_wrist`
+
+1. Set up current measurement as described in the [Power Guide](../guides/power.md#measuring-power-in-practice).
+2. Record a baseline for boot, active, connected idle, display-off idle, and deep sleep if available.
+3. Start from the classical PM example and identify where a driver votes for a power state and releases it.
+4. Move to the raise-to-wake example and study how an interrupt-driven accelerometer event gates display and application-processor wakeup.
+5. Apply the same pattern to your own product: replace unnecessary timers and polling loops with interrupts or event-driven work.
+6. Re-measure after each change.
+7. If deep sleep is not as deep as expected, use `list_thread`, `list_device`, PM logs, and wake-source instrumentation to find the subsystem still active.
+
+**Success criteria:** the firmware reaches the expected low-power state, current is repeatable across runs, and wake sources are intentional rather than accidental.
+
+**Troubleshooting:** if power looks good once and bad later, check error paths, reconnect paths, display teardown, audio session teardown, and any timer created after startup.
+
+**What you learned:** how to move from "should be low power" to measured low power, and how to track down a PM vote that is quietly being left open.
+
+## Add OTA Firmware Updates over BLE
+
+**Goal:** update firmware in the field without a wired connection.
+
+**Time:** 2 hours
+
+**Start from:** `example/ble/peripheral_with_ota`
+
+1. Build and flash the OTA-enabled peripheral example.
+2. Confirm normal BLE peripheral behavior still works before attempting an update.
+3. Trigger an OTA update and confirm the device boots the new image.
+4. Interrupt an OTA transfer by disconnecting mid-update, losing power if safe for the board, or moving out of range.
+5. Confirm the device falls back to the previous valid image instead of bricking.
+6. Test OTA after stale bond, phone-side forget-device, and device reboot.
+7. If your product already uses PAN for data, evaluate the PAN OTA path as a separate design choice.
+
+**Success criteria:** successful OTA updates boot the new image, failed OTA attempts recover cleanly, and the user-facing state is understandable after either result.
+
+**Troubleshooting:** check partition layout, image signing or integrity checks if used, rollback markers, connection parameters during transfer, and whether bond or storage changes survive update.
+
+**What you learned:** partition and rollback design, and why "OTA works once" is not the same as "OTA is safe to ship."
+
+## Bring Up a Custom Display Module
+
+**Goal:** port a new LCD, AMOLED, EPD, or memory display instead of using a pre-supported reference panel.
+
+**Time:** 3+ hours
+
+**Start from:** the closest existing display driver in the SDK, adapted for your panel
+
+1. Collect the panel datasheet, initialization sequence, timing parameters, interface type, reset requirements, and power sequence.
+2. Confirm the selected SF32 device and package support the required interface and pinout.
+3. Copy the closest existing display driver and replace the panel-specific init sequence and register map.
+4. Bring up solid-color fills first. Do not debug LVGL widgets until the panel can display simple patterns.
+5. Verify color order, byte order, orientation, address window, and partial update behavior.
+6. Add LVGL back from Intermediate Tutorial 2.
+7. Enable DMA, partial refresh, and ePicasso acceleration one at a time.
+8. Test display-off, sleep, wake, and reinitialization paths.
+
+**Success criteria:** the panel initializes reliably after cold boot and reset, renders known patterns correctly, and survives sleep/wake without corruption.
+
+**Troubleshooting:** if fills are wrong, check pixel format, MADCTL/orientation bits, byte order, command/data wiring, reset timing, and power-rail sequencing before changing UI code.
+
+**What you learned:** how to separate electrical/sequence correctness from UI-framework configuration.
+
+## Profile CPU Usage and Analyze a Crash
+
+**Goal:** debug problems that do not reproduce conveniently under a live debugger.
+
+**Time:** 2 hours
+
+**Start from:** `example/system/cpu_usage_profiler`, `example/system/coredump`
+
+1. Run the CPU usage profiler example against one of your Intermediate combined workloads.
+2. Identify which task is consuming CPU time and whether it matches your expectation.
+3. Add a controlled fault in a practice branch or disposable example and capture a core dump.
+4. Use the SDK's dump-analysis tooling to locate the faulting function and call stack.
+5. Compare the crash context with `list_thread`, logs, and recent events.
+6. Remove the deliberate fault and repeat the flow with a real intermittent issue if you have one.
+
+**Success criteria:** you can explain both a performance problem and a crash using captured evidence rather than guesses.
+
+**Troubleshooting:** make sure symbols match the flashed binary, logs include firmware version, and optimization level is understood before interpreting call stacks.
+
+**What you learned:** proactive profiling for slow paths and postmortem dump analysis for failures that are hard to catch live.
+
+## Build a Multi-Connection BLE Product
+
+**Goal:** support more than one simultaneous BLE role or connection.
+
+**Time:** 2 hours
+
+**Start from:** `example/ble/central_and_peripheral`, `example/ble/multi_connection`
+
+1. Start from the peripheral behavior you already have from Intermediate Tutorial 3.
+2. Add a central role alongside it, such as acting as a peripheral to a phone while acting as a central to a sensor accessory.
+3. Extend to multiple concurrent connections.
+4. Record connection intervals, slave latency, supervision timeout, and notification rate for each link.
+5. Add a throughput baseline using the SDK throughput example before blaming application code.
+6. Test reconnect, phone sleep, accessory loss, and simultaneous notification bursts.
+
+**Success criteria:** all intended roles connect, disconnect, and reconnect reliably, and connection-parameter choices remain stable under combined activity.
+
+**Troubleshooting:** look for incompatible parameter requests, too much notification traffic, blocking application callbacks, and power policy that wakes the main CPU for every link event.
+
+**What you learned:** peripheral and central roles are not mutually exclusive on SF32, and connection-parameter tradeoffs compound once multiple links share the radio schedule.
+
+## Write a Custom RT-Thread Device Driver
+
+**Goal:** integrate a peripheral that does not have an existing SDK driver as a proper RT-Thread device rather than a one-off application hack.
+
+**Time:** 3+ hours
+
+**Start from:** SDK application-development guidance plus the closest existing driver
+
+1. Review how the SDK organizes board definitions, pin mux, clocks, and peripheral drivers.
+2. Start from the existing driver that is architecturally closest to your peripheral.
+3. Keep bus access, device registration, configuration, and application logic separated.
+4. Register the device and confirm it appears under `list_device`.
+5. Exercise it the same way you exercised ADC, PWM, I2C, and storage devices in earlier tutorials.
+6. Add error handling for missing hardware, invalid arguments, timeouts, and suspend/resume.
+7. If the driver is reusable, package it as an SDK component instead of copy-pasting it between products.
+
+**Success criteria:** application code can find and use the driver through the normal RT-Thread device model, and the driver behaves predictably across init, use, error, and sleep/wake paths.
+
+**Troubleshooting:** if the driver works only from one application file, it is probably bypassing the device model. Refactor until it feels like the built-in devices.
+
+**What you learned:** how to extend the SDK ecosystem cleanly rather than creating a maintenance liability.
+
+## Advanced Release Checklist
+
+- [ ] Power numbers are measured, repeatable, and tied to named test scenarios.
+- [ ] OTA survives interruption and can roll back to a known-good image.
+- [ ] Custom display bring-up is validated with patterns before LVGL complexity.
+- [ ] Profiling and coredump workflows are documented for the team.
+- [ ] Multi-connection Bluetooth is tested across reconnect and phone/accessory edge cases.
+- [ ] Custom drivers use the RT-Thread device model and handle sleep/wake.
+- [ ] Combined-load tests include display, Bluetooth, storage, audio, sensors, and AI as applicable.
+
+## Where to Go Next
+
+At this point you have the full toolkit: peripherals, middleware, coexistence awareness, power discipline, OTA, custom hardware bring-up, postmortem debugging, and driver integration. From here, the [Examples](../examples.md) catalog and the [Guides](../guides/graphics.md) are ongoing references. Pull from them per feature rather than working through them linearly.
+
+!!! note "Auto-generated content"
+    This page was compiled/drafted without an existing source document. Verify technical claims against SiFli's official documentation before relying on them.
