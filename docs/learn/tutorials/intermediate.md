@@ -1,5 +1,6 @@
 ---
 icon: lucide/trending-up
+description: "Intermediate SF32 tutorials: I2C sensors, a basic LVGL screen, BLE peripheral service, local audio playback, filesystem storage, and combined-subsystem testing."
 tags:
     - Tutorials
 ---

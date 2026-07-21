@@ -1,5 +1,6 @@
 ---
 icon: lucide/layers
+description: "OpenSiFli's downstream Zephyr support for SF32LB52 DevKit LCD: board identity, configuration boundaries, driver coverage, and integration risk."
 tags:
     - Develop
     - Zephyr
@@ -10,6 +11,8 @@ tags:
 OpenSiFli has active Zephyr work in [OpenSiFli/zephyr-downstream](https://github.com/OpenSiFli/zephyr-downstream) and [OpenSiFli/zephyr-hal_sifli-downstream](https://github.com/OpenSiFli/zephyr-hal_sifli-downstream). The downstream tree includes the `sf32lb52_devkit_lcd` board, SiFli HAL integration, SF32LB52 devicetree files, drivers, tests, and sample overlays.
 
 Use Zephyr when you want Zephyr APIs, devicetree, Kconfig, portable RTOS structure, or a path that connects to ArduinoCore-zephyr. Use SiFli-SDK when you need the most complete vendor feature coverage today.
+
+For workspace setup, the first `hello_world` build, flashing, and console verification, use [Getting Started with Zephyr Downstream](../../../getting-started/zephyr/getting-started-zephyr-upstream.md). This page covers the downstream platform once that baseline is working.
 
 Primary references:
 
@@ -38,21 +41,11 @@ Primary references:
 
 The downstream board documentation describes the SF32LB52x-MOD-N16R8 module with 8 MB OPI-PSRAM, 128 Mb QSPI-NOR, 48 MHz and 32.768 kHz crystals, display interfaces, audio, USB, and microSD hardware.
 
-## Build Smoke Test
+## Configuration Boundaries
 
-Use the downstream tree and build:
+The board target, devicetree, Kconfig configuration, overlays, and downstream HAL revision form one compatibility boundary. Pin the downstream revision in each project and keep application overlays and configuration fragments under source control with the application.
 
-```bash
-west build -b sf32lb52_devkit_lcd samples/hello_world --pristine
-```
-
-Then flash:
-
-```bash
-west flash
-```
-
-Open the console on `usart1` at `1000000` baud and look for `Hello World!`.
+Do not copy a board name, pin mapping, or runner setting from an Arduino or SiFli-SDK project into Zephyr. The three paths use different configuration models even when they run on the same physical board.
 
 ## Board Hardware Notes
 
@@ -80,13 +73,9 @@ The downstream tree contains SF32LB-related drivers, bindings, or board-specific
 
 Presence in the tree does not mean every product scenario is production-ready. Validate the exact sample and driver combination on the target board.
 
-## Practical Next Steps
+## Integration Sequence
 
-- Start with `samples/hello_world`.
-- Validate `samples/basic/blinky`.
-- Validate `samples/drivers/uart/async_api`.
-- Try display with the LVGL sample configuration.
-- Move to storage, Bluetooth, audio, and power only after basic board I/O is stable.
+After the first-run baseline, validate one subsystem at a time: board I/O, UART behavior, display, storage, Bluetooth, audio, and power. Keep the sample, overlay, Kconfig fragments, downstream revision, and serial log together for each checkpoint. A driver being present in the tree is not evidence that the complete application combination is ready for production.
 
 ## Downstream Risk Checklist
 

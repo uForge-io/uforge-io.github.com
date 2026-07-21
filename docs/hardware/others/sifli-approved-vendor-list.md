@@ -1,5 +1,6 @@
 ---
 icon: lucide/component
+description: "SiFli's Approved Vendor List for SF32 designs: qualified crystals, buck inductors, NOR/NAND and SD-NAND Flash, and LCD drivers, with selection requirements and a BOM review checklist."
 tags:
     - Hardware
     - Vendor

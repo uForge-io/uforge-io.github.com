@@ -1,5 +1,6 @@
 ---
 icon: lucide/folder-code
+description: "Coming soon: a catalog of ready-to-run SF32 example projects covering graphics, Bluetooth, audio, AI, and low-power demos."
 tags:
     - Examples
 ---

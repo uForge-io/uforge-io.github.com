@@ -1,5 +1,6 @@
 ---
 icon: lucide/brain-circuit
+description: "Practical guide to building on-device AI on SF32: choosing a device, using the NNACC HAL, budgeting memory, and scheduling inference within the power budget."
 tags:
   - Guides
 ---
@@ -126,7 +127,7 @@ AI workloads are often bandwidth-bound rather than compute-bound. On SF32 device
 - Keep large model weights or infrequently accessed assets in external memory if SRAM can't hold everything, but account for the latency cost.
 - Follow the SDK's cache-coherency rules for any buffer shared between the CPU, DMA, and the accelerator — clean before the accelerator reads CPU-written data, invalidate before the CPU reads accelerator-written data.
 
-See [STAR-MC1](../architecture/star-mc1.md#architectural-enhancements) for how the cache and memory subsystem behaves under exactly this kind of mixed access pattern.
+See [STAR-MC1](../architecture/star-mc1.md#memory-system-optimization) for cache and memory-system considerations in this kind of mixed access pattern.
 
 ## Memory Sizing Worksheet
 

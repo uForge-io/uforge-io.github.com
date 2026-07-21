@@ -1,5 +1,6 @@
 ---
 icon: lucide/layers
+description: "First run of OpenSiFli's downstream Zephyr workspace on the SF32LB52 DevKit LCD: set up west, build hello_world, flash with sftool, and try board samples."
 tags:
     - Getting started
     - Zephyr

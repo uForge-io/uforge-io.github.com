@@ -1,5 +1,6 @@
 ---
 icon: lucide/terminal-square
+description: "Current status of MicroPython on SF32: no official port found yet, plus the acceptance criteria that would need to exist before it's a supported path."
 tags:
     - Develop
     - MicroPython

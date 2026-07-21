@@ -1,5 +1,6 @@
 ---
 icon: lucide/app-window
+description: "First run of SiFli CodeKit in VS Code: install the extension, select an SF32 board, build and flash hello_world, and open the serial console."
 tags:
     - Getting started
     - SiFli CodeKit

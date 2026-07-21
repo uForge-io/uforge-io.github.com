@@ -1,5 +1,6 @@
 ---
 icon: lucide/usb
+description: "Using SF32 USB hardware with CherryUSB: CDC, HID, MSC, audio, and MTP use cases, descriptor checklist, and cross-OS enumeration testing."
 tags:
     - Develop
     - USB

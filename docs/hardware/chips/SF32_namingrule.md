@@ -1,5 +1,6 @@
 ---
 icon: lucide/tags
+description: "How to decode an SF32LB5xyZxYx6 part number: product tier, PSRAM variant, package type, integrated Flash/PSRAM capacity, and temperature grade, with worked examples."
 tags:
   - Hardware
   - Chip

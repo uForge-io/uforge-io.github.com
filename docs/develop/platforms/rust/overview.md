@@ -1,5 +1,6 @@
 ---
 icon: lucide/code
+description: "Evaluating community Rust support for SF32 via OpenSiFli's sifli-rs (sifli-hal, sifli-pac): current maturity, good/poor fit scenarios, and a risk checklist."
 tags:
     - Develop
     - Rust
@@ -10,6 +11,8 @@ tags:
 OpenSiFli has Rust work in [OpenSiFli/sifli-rs](https://github.com/OpenSiFli/sifli-rs), including HAL, PAC, flash-table crates, examples, and flash/debug notes.
 
 The repository describes the project as work-in-progress and not ready for production use. Treat Rust on SF32 as an exploration path unless your team is ready to work close to the hardware and contribute fixes upstream.
+
+For the initial toolchain, unmodified Blinky build, and flash-runner setup, use [Getting Started with Rust](../../../getting-started/rust/getting-started-rust.md). This page is for evaluating support scope and deciding whether to carry Rust beyond that baseline.
 
 ## Crates Mentioned by OpenSiFli
 
@@ -36,14 +39,11 @@ Use Rust if you want:
 
 Use SiFli-SDK for production firmware today.
 
-## Practical Evaluation Flow
+## Evaluation Gates
 
-1. Read the repository README and support-status tables.
-2. Confirm the target chip and peripheral are listed.
-3. Build an unmodified example.
-4. Flash using the documented flash/debug guide.
-5. Verify serial output or debugger connection.
-6. Only then port product logic.
+Do not begin a product port until the first-run baseline works on the target board. Then establish a separate proof point for every required peripheral, flash layout, debug path, and runtime feature. Record the upstream commit, Rust target, Cargo configuration, board revision, and recovery procedure with each result.
+
+The repository's use of `sifli-hal`, `sifli-pac`, flash-table tooling, and Embassy-style async examples means that a successful application also depends on their interaction, not just on whether a crate compiles. Keep the smallest reproducer possible when evaluating a gap.
 
 ## Risk Checklist
 
