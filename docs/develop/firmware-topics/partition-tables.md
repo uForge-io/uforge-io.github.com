@@ -1,5 +1,6 @@
 ---
 icon: lucide/table-properties
+description: "How SF32 flash partition tables define bootloader, application, filesystem, OTA, and factory-data regions, plus common partition-layout failure modes."
 tags:
     - Develop
     - Partitions

@@ -1,5 +1,6 @@
 ---
 icon: lucide/boxes
+description: "Turning SiFli-SDK example code into reusable components and sf_pkg packages: quality bar, what to document, and common packaging traps to avoid."
 tags:
     - Develop
     - SiFli-SDK

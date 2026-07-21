@@ -1,5 +1,6 @@
 ---
 icon: lucide/mail
+description: "Contact form for μForge.io covering sales, technical support, partnerships, media, and documentation feedback on the SF32 MCU family."
 ---
 
 # Contact μForge.io

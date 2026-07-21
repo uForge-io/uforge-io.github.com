@@ -1,5 +1,6 @@
 ---
 icon: lucide/image
+description: "Practical guide to building SF32 UIs: display selection, framebuffer strategy, LVGL integration, ePicasso acceleration, and memory placement for smooth graphics."
 tags:
   - Guides
 ---

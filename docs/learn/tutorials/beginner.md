@@ -1,5 +1,6 @@
 ---
 icon: lucide/footprints
+description: "Beginner SF32 tutorials after hello_world: blink an LED, read a button, use the FinSH shell, sample ADC, drive PWM, and use the RTC, ending in a mini project."
 tags:
     - Tutorials
 ---

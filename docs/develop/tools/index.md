@@ -1,5 +1,6 @@
 ---
 icon: lucide/wrench
+description: "Tool map for SF32 development: sftool, SDK UART download scripts, CodeKit actions, crash/trace tools, and asset/production tooling by use case."
 tags:
     - Develop
     - Tools

@@ -1,5 +1,6 @@
 ---
 icon: lucide/volume-2
+description: "Practical guide to SF32's local audio subsystem: codec and DMA path, interface selection, buffering strategy, Audio Server middleware, and power tradeoffs."
 tags:
   - Guides
 ---

@@ -1,5 +1,6 @@
 ---
 icon: lucide/bluetooth
+description: "Practical guide to Bluetooth on SF32: BLE vs. dual-mode, GATT service design, connection-parameter tuning, pairing/security, LE Audio, and coexistence."
 tags:
   - Guides
 ---

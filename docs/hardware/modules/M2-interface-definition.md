@@ -1,5 +1,6 @@
 ---
 icon: lucide/plug
+description: "Draft pin-level definition of the μForge M2 connector: base, M2xM multimedia, M2xN networking, and M2xA motion-control contact maps and sharing rules."
 tags:
   - Hardware
   - Module

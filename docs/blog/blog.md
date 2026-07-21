@@ -1,5 +1,6 @@
 ---
 icon: lucide/rss
+description: "μForge.io blog — coming soon, with SF32 announcements, release notes, and technical deep dives."
 ---
 
 # Blog
