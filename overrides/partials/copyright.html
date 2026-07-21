@@ -1,0 +1,21 @@
+{#-
+  Override of the stock partial: adds a per-page "generator" hide option
+  (the stock template only supports the site-wide extra.generator=false
+  toggle). This lets index.md drop "Made with Zensical" via its own
+  front-matter `hide:` list — the same mechanism the theme already uses
+  for `hide: - footer` — while every other page keeps the notice.
+-#}
+<div class="md-copyright">
+  {% if config.copyright %}
+    <div class="md-copyright__highlight">
+      {{ config.copyright }}
+    </div>
+  {% endif %}
+  {% set hide_generator = page.meta and page.meta.hide and "generator" in page.meta.hide %}
+  {% if not config.extra.generator == false and not hide_generator %}
+    Made with
+    <a href="https://zensical.org/" target="_blank" rel="noopener">
+      Zensical
+    </a>
+  {% endif %}
+</div>
