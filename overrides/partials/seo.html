@@ -1,0 +1,100 @@
+{# Site-wide SEO/GEO metadata and structured data. Keep this conservative:
+   use only fields already available from Zensical config/page metadata. #}
+{% set site_url = config.site_url | default("", true) %}
+{% set page_title = page.meta.title if page.meta and page.meta.title else (page.title | striptags if page.title else config.site_name) %}
+{% set page_description = page.meta.description if page.meta and page.meta.description else config.site_description %}
+{% set page_url = page.canonical_url if page.canonical_url else (site_url ~ (page.url | default("", true))) %}
+{% set page_image = page.meta.image if page.meta and page.meta.image else "assets/uforge-logo.svg" %}
+{% set absolute_image = page_image if "http" in page_image else (site_url ~ page_image) %}
+{% set is_home = page.url == "" %}
+{% set src_path = page.file.src_path if page.file and page.file.src_path else "" %}
+{% set is_hardware_guide = "hardware_design_guide" in src_path or "hardware_design_guide" in page_url %}
+{% set is_checklist = "hardware_design_checklist" in src_path or "hardware_design_checklist" in page_url %}
+{% set is_internal = "about/others/" in src_path or "/about/others/" in page_url %}
+
+<meta property="og:type" content="{{ 'website' if is_home else 'article' }}">
+<meta property="og:title" content="{{ page_title }} - {{ config.site_name }}">
+{% if page_description %}
+<meta property="og:description" content="{{ page_description }}">
+{% endif %}
+<meta property="og:url" content="{{ page_url }}">
+<meta property="og:site_name" content="{{ config.site_name }}">
+<meta property="og:image" content="{{ absolute_image }}">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="{{ page_title }} - {{ config.site_name }}">
+{% if page_description %}
+<meta name="twitter:description" content="{{ page_description }}">
+{% endif %}
+<meta name="twitter:image" content="{{ absolute_image }}">
+{% if is_internal or (page.meta and page.meta.robots) %}
+<meta name="robots" content="{{ page.meta.robots if page.meta and page.meta.robots else 'noindex,nofollow' }}">
+{% endif %}
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": "{{ site_url }}#organization",
+      "name": "μForge.io",
+      "url": "{{ site_url }}",
+      "logo": "{{ site_url }}assets/uforge-logo.svg",
+      "sameAs": [
+        "https://github.com/uforge-io/"
+      ]
+    },
+    {
+      "@type": "WebSite",
+      "@id": "{{ site_url }}#website",
+      "url": "{{ site_url }}",
+      "name": "{{ config.site_name }}",
+      "description": "{{ config.site_description }}",
+      "publisher": {
+        "@id": "{{ site_url }}#organization"
+      }
+    }{% if not is_home %},
+    {
+      "@type": "BreadcrumbList",
+      "@id": "{{ page_url }}#breadcrumbs",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "{{ site_url }}"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "{{ page_title }}",
+          "item": "{{ page_url }}"
+        }
+      ]
+    },
+    {
+      "@type": "{{ 'TechArticle' if is_hardware_guide or is_checklist else 'Article' }}",
+      "@id": "{{ page_url }}#article",
+      "headline": "{{ page_title }}",
+      "description": "{{ page_description }}",
+      "url": "{{ page_url }}",
+      "image": "{{ absolute_image }}",
+      "publisher": {
+        "@id": "{{ site_url }}#organization"
+      },
+      "isPartOf": {
+        "@id": "{{ site_url }}#website"
+      }{% if is_hardware_guide or is_checklist %},
+      "audience": {
+        "@type": "Audience",
+        "audienceType": "Hardware engineers, PCB designers, firmware engineers, and product engineers"
+      },
+      "about": [
+        "SF32 microcontrollers",
+        "SiFli hardware design",
+        "embedded systems"
+      ]{% endif %}
+    }{% endif %}
+  ]
+}
+</script>
