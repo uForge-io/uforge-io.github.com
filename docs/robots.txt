@@ -1,6 +1,5 @@
 User-agent: *
 Allow: /
-Disallow: /*.dev/
 Disallow: /about/others/
 
 Sitemap: https://uForge.io/sitemap.xml
