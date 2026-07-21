@@ -1,0 +1,39 @@
+{#-
+  Override of Zensical's built-in partials/alternate.html (the header
+  language-switcher). The stock version renders a dropdown (.md-select)
+  listing every language in config.extra.alternate, each linking to that
+  language's static alt.link ("/" or "/zh/") -- landing on the target
+  language's homepage, and requiring an open-menu step even though this
+  site only ever has two languages.
+
+  Since there are exactly two languages, this version skips the menu
+  entirely and renders a single click-through button straight to the
+  *other* language's equivalent page, computed from the current page's own
+  URL so switching language stays on the same page. config.theme.language
+  ("en" or "zh", set per zensical.*.toml) tells us which alternate entry to
+  skip (the current language) and which one to render as the button.
+
+  This assumes docs/ and docs_zh/ share the same relative paths (see
+  AGENTS.md's twin-file convention) and that the merged bilingual preview
+  (tools/serve-bilingual-dev.sh) nests the Chinese build under site/zh/. It
+  does NOT check whether the target page has actually been translated yet --
+  if docs_zh/ doesn't have that page, the link 404s. That's a known,
+  accepted tradeoff (chosen over a fallback-to-homepage version) until
+  docs_zh/ reaches closer parity with docs/.
+
+  If a third language is ever added, this button-per-click approach stops
+  making sense (you can't "toggle" between three options) -- revert to the
+  dropdown pattern (git history has the prior version) or render N buttons.
+-#}
+{% set current_language = config.theme.language | d("en", true) %}
+{% for alt in config.extra.alternate %}
+  {% if alt.lang != current_language %}
+    {% set target = ("/zh/" ~ page.url) if alt.lang == "zh" else ("/" ~ page.url) %}
+    <div class="md-header__option">
+      <a href="{{ target }}" hreflang="{{ alt.lang }}" class="md-header__button md-icon uf-lang-switch" title="{{ alt.name }}" aria-label="{{ alt.name }}">
+        {% set icon = config.theme.icon.alternate or "material/translate" %}
+        {% include ".icons/" ~ icon ~ ".svg" %}
+      </a>
+    </div>
+  {% endif %}
+{% endfor %}
