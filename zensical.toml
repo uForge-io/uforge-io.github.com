@@ -299,6 +299,10 @@ icon = "simple/taobao"
 link = "https://sifli.taobao.com/"
 name = "SiFli Taobao Store"
 
+[project.extra.analytics]
+provider = "google"
+property = "G-NN1VWVS9D7"
+
 # Markdown extensions. Read more: https://zensical.org/docs/setup/extensions/
 [project.markdown_extensions.abbr]
 [project.markdown_extensions.admonition]
