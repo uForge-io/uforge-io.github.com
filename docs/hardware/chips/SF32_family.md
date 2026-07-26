@@ -88,26 +88,27 @@ The **LB** (Low-Power Bluetooth) series is the first member of the SF32 product 
 
 <div align="center" markdown>
 
-| Feature | SF32LB52x | SF32LB55x | SF32LB56x | SF32LB58x |
-|----------|----------|----------|----------|----------|
-| Positioning | Entry-Level | Mainstream | Advanced | Flagship |
-| Application CPU | Cortex-M33 @240MHz | Cortex-M33 @240MHz | Cortex-M33 @240MHz | 2× Cortex-M33 @240MHz |
-| Low-Power CPU | Cortex-M33 @24MHz, BT Controller Only | Cortex-M33 @48MHz, User Programmable | Cortex-M33 @48MHz, User Programmable | Cortex-M33 @96MHz, User Programmable |
-| Internal SRAM | 576 KB | 1.4 MB | 960 KB | 3.7 MB |
-| Bluetooth | BT Classic + BLE | BLE | BT Classic + BLE | BT Classic + BLE |
-| Graphics Accelerator | 2.5D<br> ePicasso 2.0 Lite | 2.5D<br> ePicasso 1.0 | 2.5D<br> ePicasso 2.0 | 2.5D + Vector Graphics<br> ePicasso 2.0 + Vivante GCNanoUltraV |
-| Display Interfaces | SPI / QSPI / 8080 / EPD / JDI | SPI / QSPI / 8080 / JDI / RGB / MIPI | SPI / QSPI / 8080 / EPD / JDI / RGB | SPI / QSPI / 8080 / EPD / JDI / RGB / MIPI |
-| Audio ADC | 1x | n/a | 1x | 2x |
-| Audio DAC | 1x | n/a | 1x | 2x |
-| PDM Mic | 2x | 2x | 4x | 4x |
-| I²S | Yes | Yes | Yes | Yes |
-| USB | 2.0 FS | 2.0 FS | 2.0 FS | 2.0 HS |
-| CAN | n/a | n/a | 1x | 2x |
-| In-Package PSRAM | Up to 16 MB | Up to 16+2 MB | Up to 16 MB | Up to 32+32 MB |
-| In-Package NOR Flash | Up to 8 MB | Up to 8 MB | Up to 8 MB | Up to 8 MB |
-| # of GPIOs | 44 / 45 | 49 / 95 / 119 | 44 / 120 | 154 |
-| Package Options | QFN68 | QFN68 / BGA145 / BGA169 | QFN68 / BGA175 | BGA256 |
-| Power Supply | 3.2~4.7V<br> 2.97~3.63V | 1.71~3.63V | 1.71~3.63V | 1.71~3.63V |
+| Feature | SF32LB52x | SF32LB55x | SF32LB56x | SF32LB57x | SF32LB58x |
+|----------|----------|----------|----------|----------|----------|
+| Positioning | Entry-Level | Mainstream | Advanced | High-integration multimedia | Flagship |
+| Application CPU | Cortex-M33 @240MHz | Cortex-M33 @240MHz | Cortex-M33 @240MHz | 2× Cortex-M33 @240MHz | 2× Cortex-M33 @240MHz |
+| Low-Power CPU | Cortex-M33 @24MHz, BT Controller Only | Cortex-M33 @48MHz, User Programmable | Cortex-M33 @48MHz, User Programmable | Cortex-M33 @24MHz, BT Controller Only | Cortex-M33 @96MHz, User Programmable |
+| Internal SRAM | 576 KB | 1.4 MB | 960 KB | 592 KB | 3.7 MB |
+| Bluetooth | BT Classic + BLE | BLE | BT Classic + BLE | BT Classic + BLE (Bluetooth 6.3) | BT Classic + BLE |
+| Graphics Accelerator | 2.5D<br>ePicasso 2.0 Lite | 2.5D<br>ePicasso 1.0 | 2.5D<br>ePicasso 2.0 | 2.5D<br>ePicasso 3.0 + eZip 3.0 | 2.5D + Vector Graphics<br>ePicasso 2.0 + Vivante GCNanoUltraV |
+| Display Interfaces | SPI / QSPI / 8080 / EPD / JDI | SPI / QSPI / 8080 / JDI / RGB / MIPI | SPI / QSPI / 8080 / EPD / JDI / RGB | SPI / QSPI / 8080 / EPD / JDI / RGB | SPI / QSPI / 8080 / EPD / JDI / RGB / MIPI |
+| Audio ADC | 1x | n/a | 1x | 2x | 2x |
+| Audio DAC | 1x | n/a | 1x | 1x | 2x |
+| PDM Audio Interfaces | 2x | 2x | 2x | 2x | 4x |
+| I²S Audio Interfaces | 1x | 2x | 1x | 2x | 3x |
+| USB | 2.0 FS | 2.0 FS | 2.0 FS | 2.0 FS | 2.0 HS |
+| CAN | n/a | n/a | 1x | 2x | 2x |
+| In-Package PSRAM | Up to 16 MB | Up to 16+2 MB | Up to 16 MB | Up to 32MB | Up to 32+32 MB |
+| In-Package NOR Flash | Up to 8 MB | Up to 8 MB | Up to 8 MB | Up to 32MB | Up to 8 MB |
+| # of GPIOs | 44 / 45 | 49 / 95 / 119 | 44 / 120 | 46 / 47 / 58 / 64 | 154 |
+| Package Options | QFN68 | QFN68 / BGA145 / BGA169 | QFN68 / BGA175 | QFN68 / QFN80 / BGA112 | BGA256 |
+| Package Footprint (L × W) | 7 × 7 mm | 7 × 7 mm | QFN: 7 × 7 mm<br>BGA: 6.5 × 6.1 mm | QFN68: 7 × 7 mm<br> QFN80: 8 × 8 mm<br>BGA: 5.4 × 4.4 mm | 8.5 × 6.5 mm |
+| Power Supply | 3.2~4.7V<br> 2.97~3.63V | 1.71~3.63V | 1.71~3.63V | 3.2~4.7V<br> 2.97~3.63V | 1.71~3.63V |
 
 </div>
 
@@ -135,6 +136,7 @@ When selecting a device, consider the following key requirements:
 | SF32LB52x  | • Dual-mode Bluetooth (BT/BLE)<br> • Integrated audio ADC and DAC<br> • Integrated Li-ion battery charging<br> • Up to 45 GPIOs<br> • Display resolutions up to 512 × 512<br> • A compact and cost-effective solution<br> | • Entry-level smartwatches and fitness bands<br> • Bluetooth modules and wireless adapters<br> • Bluetooth audio accessories<br> • Smart sensors and wearable devices<br> • Electronic shelf labels and smart badges<br> • Portable label printers<br> • eBike and eScooter displays<br> • Basic LVGL-based HMI devices |
 | SF32LB55x  | • Bluetooth Low Energy (BLE)<br> • MIPI DSI command-mode displays<br>• Large SRAM capacity for sensor processing algorithms<br> • More than 45 GPIOs<br> • Extended low-power processing capabilities | • Fitness bands and activity trackers<br> • Sports and cycling computers<br> • Sensor-rich wearable devices<br> • Health monitoring devices<br> • Battery-powered BLE peripherals |
 | SF32LB56x  | • Dual-mode Bluetooth (BT/BLE)<br> • RGB/DPI display interfaces<br> • Integrated audio ADC and DAC<br> • Display resolutions up to 1024 × 600<br> • External Wi-Fi connectivity through SDIO<br> • Increased GPIO capacity | •     Smartwatches with advanced user interfaces<br> • Connected HMI systems<br> • Medical and healthcare devices<br> • Industrial handheld devices<br> • Portable instruments<br> • Advanced eBike and eScooter displays|
+| SF32LB57x | • Dual-mode Bluetooth (BT/BLE) with Bluetooth 6.3, BLE Audio, and LE Long Range<br> • ePicasso 3.0/eZip 3.0 graphics with RGB display interfaces<br> • DCMI camera input and integrated high-fidelity audio ADC/DAC<br> • Display resolutions up to 1024 × 600<br> • PTM offload for deterministic I/O or custom peripheral timing<br> • Up to 64 GPIOs and SD/SDIO/eMMC storage interfaces | • Compact advanced smartwatches<br> • Display-rich HMI and e-paper devices<br> • Camera-enabled Bluetooth products<br> • Portable audio and recording devices<br> • Smart-home control panels |
 | SF32LB58x  | • Dual-mode Bluetooth (BT/BLE)<br> • Advanced graphics rendering including vector graphics<br> • MIPI DSI command-mode or video-mode displays<br> • Display resolutions up to 1280 × 720<br> • Large memory configurations<br> • High GPIO density and count<br> • External Wi-Fi connectivity through SDIO<br> • Edge AI and machine-learning workloads | • Premium smartwatches<br> • Sports and outdoor wearable devices<br>• Advanced cycling computers<br> • Smart displays and connected dashboards<br> • AI-enabled wearable devices<br> • Edge AI and sensor-fusion systems|
 
 </div>

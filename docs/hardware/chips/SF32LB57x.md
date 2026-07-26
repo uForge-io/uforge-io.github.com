@@ -10,7 +10,7 @@ tags:
 
 ## Overview
 
-The SF32LB57x series is an ultra-low-power, highly integrated AIoT MCU family for wearable, portable smart-device, smart-home, and compact display products. It is intended for designs that need richer graphics, Bluetooth audio, camera input, external storage, and always-on behavior than a basic Bluetooth MCU can comfortably support, without moving to an application-processor-class power, cost, or integration model.
+The SF32LB57x series is an enhanced ultra-low-power, highly integrated AIoT MCU family for wearable, portable smart-device, smart-home, and compact display products. It is intended for designs that need richer graphics, Bluetooth audio, camera input, external storage, and always-on behavior than a basic Bluetooth MCU can comfortably support, without moving to an application-processor-class power, cost, or integration model.
 
 SF32LB57x uses a multicore Arm Cortex-M33 STAR-MC1[^1] dual-system architecture. The high-performance system includes two Arm Cortex-M33 STAR-MC1 performance cores running up to 240 MHz, while the low-power system includes an Arm Cortex-M33 STAR-MC1 efficiency core running up to 24 MHz. The two performance cores are rated at 1968 CoreMark / 740 DMIPS. This split gives UI rendering, application code, and multimedia workloads sufficient headroom while allowing standby, Bluetooth, and sensor-hub tasks to remain on a lower-power path.
 
