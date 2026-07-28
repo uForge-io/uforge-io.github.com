@@ -1,17 +1,20 @@
 ---
 icon: lucide/volume-2
-description: "Practical guide to SF32's local audio subsystem: codec and DMA path, interface selection, buffering strategy, Audio Server middleware, and power tradeoffs."
+title: "Audio Overview"
+description: "Overview of SF32's local audio subsystem: codec and DMA path, interface selection, buffering strategy, Audio Server middleware, and power tradeoffs."
 tags:
-  - Guides
+  - Audio
 ---
 
-# Audio Guide
+# Overview { #audio-overview }
 
 ## Overview
 
 This guide covers the **local audio subsystem** on SF32 devices — the codec, DMA, and middleware path used for microphone input, speaker/line output, and on-device playback or recording. It focuses on practical decisions: interface selection, buffering strategy, the Audio Server middleware, codec choice, and power.
 
-Bluetooth audio (A2DP, LE Audio) is a related but separate topic covered in the [Bluetooth Guide](bluetooth.md#bluetooth-audio-and-le-audio) — that guide covers the wireless streaming side, while this one covers what happens once samples are on-chip: capture, mixing, decoding, and driving the physical audio path.
+Bluetooth audio (A2DP, LE Audio) is a related but separate topic covered in the [Bluetooth Overview](../bluetooth/overview.md#bluetooth-audio-and-le-audio) — that page covers the wireless streaming side, while this one covers what happens once samples are on-chip: capture, mixing, decoding, and driving the physical audio path.
+
+Use this page when selecting the microphone, codec, buffering, and power strategy for a product—not merely when an audio demo needs to play once. It is written for engineers who must make the audio path reliable alongside Bluetooth, display, storage, and battery constraints.
 
 ## Define the Product's Audio Requirements
 
@@ -152,7 +155,7 @@ The SDK includes example projects for local music playback (including an SD-card
 Keep the two paths conceptually separate, even though they may run concurrently:
 
 - **Local audio** (this guide) — AUDCODEC/AUDPRC, microphones, speaker/line-out, on-device playback and recording.
-- **Bluetooth audio** ([Bluetooth Guide](bluetooth.md#bluetooth-audio-and-le-audio)) — A2DP/AVRCP/HFP for Classic, or LE Audio broadcast for BLE.
+- **Bluetooth audio** ([Bluetooth Overview](../bluetooth/overview.md#bluetooth-audio-and-le-audio)) — A2DP/AVRCP/HFP for Classic, or LE Audio broadcast for BLE.
 
 Many real products bridge the two — for example, capturing on a local microphone and streaming over Bluetooth, or receiving Bluetooth audio and mixing it with a local notification chime through the Audio Server. Plan buffer ownership and mixing behavior explicitly when both paths are active at once.
 
@@ -182,9 +185,9 @@ For products with both RF and analog audio, validate noise with Bluetooth active
 Audio is one of the more power-hungry always-on workloads on a battery-powered device:
 
 - Keep the codec and DMA path active only while audio is actually flowing; return to a low-power state between playback/record sessions.
-- For always-listening voice-trigger designs, prefer the lowest-power capture path the SDK and device support, and keep the trigger model as lightweight as possible — see the [AI Guide](ai.md#audio-and-voice) for the inference side of this.
+- For always-listening voice-trigger designs, prefer the lowest-power capture path the SDK and device support, and keep the trigger model as lightweight as possible — see the [AI Overview](../ai/overview.md#audio-and-voice) for the inference side of this.
 - Batch or buffer aggressively enough to avoid waking the application CPU for every sample block; let DMA and interrupts do the routine work.
-- Coordinate audio timing with Bluetooth and display activity — see [Power Guide](power.md) and [Bluetooth Guide: Coexistence](bluetooth.md#coexistence-with-other-workloads) for the system-level view.
+- Coordinate audio timing with Bluetooth and display activity — see [Low-Power Overview](../low-power/overview.md) and [Bluetooth Overview: Coexistence](../bluetooth/overview.md#coexistence-with-other-workloads) for the system-level view.
 
 ## Audio Validation Matrix
 
@@ -218,7 +221,7 @@ Keep a known-good reference WAV/PCM file and a known-good captured sample from t
 | Clicks, pops, or glitches | Buffer underrun, insufficient buffer count/size, DMA misconfiguration. |
 | Persistent noise or hum | Analog front-end/board layout, AMIC grounding, power-rail noise. |
 | Latency too high for the use case | Buffer sizes too large, unnecessary format conversion, scheduling delay before DMA starts. |
-| Audio stutters when Bluetooth/display active | Coexistence and memory-bandwidth contention — see [Coexistence](bluetooth.md#coexistence-with-other-workloads). |
+| Audio stutters when Bluetooth/display active | Coexistence and memory-bandwidth contention — see [Coexistence](../bluetooth/overview.md#coexistence-with-other-workloads). |
 | Decoded audio sounds wrong (pitch/speed) | Sample-rate mismatch between source, decoder, and AUDCODEC configuration. |
 | High power during idle playback state | Codec/DMA left active between sessions, unnecessary polling instead of event-driven session teardown. |
 

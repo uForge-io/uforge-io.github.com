@@ -1,17 +1,20 @@
 ---
 icon: lucide/battery
-description: "Practical low-power design guide for SF32: power modes, the PM middleware, what actually drains a battery, and how Bluetooth, graphics, audio, and AI affect power."
+title: "Low Power Overview"
+description: "Overview of low-power design for SF32: power modes, the PM middleware, what drains a battery, and how Bluetooth, graphics, audio, and AI affect power."
 tags:
-  - Guides
+  - Low Power
 ---
 
-# Power Guide
+# Overview { #low-power-overview }
 
 ## Overview
 
 This guide covers practical low-power design on SF32 devices: power modes, what actually drains a battery, and how to structure firmware so the system spends as much time as possible in a low-power state. Power is treated here as a system-level property that cuts across every other guide — Bluetooth, graphics, audio, and AI decisions all have direct power consequences, and this guide is where those threads come together.
 
-SF32's RT-Thread-based SDK includes a **PM (Power Management)** middleware component that coordinates sleep modes and wake sources across the system, alongside a dedicated low-power/Bluetooth processor (see [Bluetooth Processor Architecture](../architecture/bluetooth-processor.md)) that lets the main application CPU sleep while the wireless link stays alive. This guide assumes that architecture and focuses on how to use it well.
+SF32's RT-Thread-based SDK includes a **PM (Power Management)** middleware component that coordinates sleep modes and wake sources across the system, alongside a dedicated low-power/Bluetooth processor (see [Bluetooth Processor Architecture](../bluetooth/processor.md)) that lets the main application CPU sleep while the wireless link stays alive. This guide assumes that architecture and focuses on how to use it well.
+
+Use this page when a battery-life target must become firmware and hardware decisions with measured evidence. It is for engineers balancing connected standby, display behavior, audio, sensing, AI, and user responsiveness—not for treating sleep as a single API call.
 
 ## Define the Product's Power Budget First
 
@@ -55,10 +58,10 @@ Every subsystem has a different power signature:
 | Subsystem | Main Power Driver | Guide |
 |:----------|:--------------------|:------|
 | **CPU** | Active execution time, not just clock speed | This guide |
-| **Bluetooth radio** | Advertising interval, connection interval, slave latency, TX power | [Bluetooth Guide](bluetooth.md#advertising-and-connection-parameters) |
-| **Display** | Refresh frequency, full-screen vs. partial updates, backlight | [Graphics Guide](graphics.md#partial-refresh-and-dirty-regions) |
-| **Audio codec/DMA** | Active session time, sample rate, whether it's left powered between sessions | [Audio Guide](audio.md#power-considerations-for-audio) |
-| **AI inference** | Inference frequency and window size, not model size alone | [AI Guide](ai.md#power-aware-inference-scheduling) |
+| **Bluetooth radio** | Advertising interval, connection interval, slave latency, TX power | [Bluetooth Overview](../bluetooth/overview.md#advertising-and-connection-parameters) |
+| **Display** | Refresh frequency, full-screen vs. partial updates, backlight | [Display Controller: Partial Refresh](../graphics/display-controller.md#partial-refresh-and-dirty-regions) |
+| **Audio codec/DMA** | Active session time, sample rate, whether it's left powered between sessions | [Audio Overview](../audio/overview.md#power-considerations-for-audio) |
+| **AI inference** | Inference frequency and window size, not model size alone | [AI Overview](../ai/overview.md#power-aware-inference-scheduling) |
 | **Memory system** | Cache/PSRAM activity, how often code executes from slow external memory | [STAR-MC1](../architecture/star-mc1.md) |
 | **Sensors** | Polling frequency vs. interrupt-driven sampling | This guide |
 
@@ -78,7 +81,7 @@ The biggest power wins usually come from firmware structure, not clever low-leve
 
 ## Bluetooth Power Tuning
 
-Connection and advertising parameters are the primary levers for Bluetooth power (see the full table in the [Bluetooth Guide](bluetooth.md#advertising-and-connection-parameters)):
+Connection and advertising parameters are the primary levers for Bluetooth power (see the full table in the [Bluetooth Overview](../bluetooth/overview.md#advertising-and-connection-parameters)):
 
 - Increase connection interval and slave latency for links that are mostly idle.
 - Reduce TX power to the lowest level that still meets the range requirement.
@@ -89,7 +92,7 @@ Connection and advertising parameters are the primary levers for Bluetooth power
 
 Displays and backlights are often the single largest power draw on a wearable or handheld product:
 
-- Use partial refresh and dirty-region updates instead of full-screen redraws where the panel and UI allow it (see the [Graphics Guide](graphics.md#partial-refresh-and-dirty-regions)).
+- Use partial refresh and dirty-region updates instead of full-screen redraws where the panel and UI allow it (see [Display Controller: Partial Refresh](../graphics/display-controller.md#partial-refresh-and-dirty-regions)).
 - Dim or turn off the backlight aggressively on inactivity, and stop animations when the screen is dimmed or covered.
 - For always-on-display products, choose a panel type suited to it (EPD or JDI/memory-in-pixel) rather than forcing an AMOLED/TFT panel to stay lit continuously.
 - Treat "always-on display" as a distinct power budget line item, since it fundamentally changes what "idle" means for the product.
@@ -102,7 +105,7 @@ On-device inference and sensor sampling should be scheduled deliberately, not ru
 - Move lightweight always-on sensing to the low-power processor where the device and SDK support it, rather than waking the main application CPU for every sample.
 - Measure **energy per inference or per sample**, not just latency — a faster operation only helps power if it lets the system return to sleep sooner.
 
-See the [AI Guide](ai.md#power-aware-inference-scheduling) for the accuracy/latency/power tradeoff in more depth.
+See the [AI Overview](../ai/overview.md#power-aware-inference-scheduling) for the accuracy/latency/power tradeoff in more depth.
 
 ## Memory and Clock Considerations
 
@@ -119,7 +122,7 @@ Beyond the CPU itself:
 Firmware policy can only work within what the hardware allows:
 
 - PMIC/LDO efficiency at the actual load currents the product will draw matters more than headline efficiency numbers at unrelated load points.
-- RF layout and antenna tuning affect the TX power actually required for reliable range — poor RF design forces firmware to compensate with higher TX power, which costs battery life. See [Bluetooth Guide: RF and Clock Considerations](../architecture/bluetooth-processor.md#rf-and-clock-considerations).
+- RF layout and antenna tuning affect the TX power actually required for reliable range — poor RF design forces firmware to compensate with higher TX power, which costs battery life. See [Bluetooth Processor Architecture: RF and Clock Considerations](../bluetooth/processor.md#rf-and-clock-considerations).
 - Crystal accuracy affects both RF timing margins and how conservatively firmware must set supervision timeouts and wake margins.
 - Leave production test/calibration access in the design — power and RF tuning often continue past the first hardware revision.
 
@@ -212,7 +215,7 @@ Record firmware version, board revision, battery/supply voltage, temperature, an
 | Power spikes correlate with display activity | Full-screen redraws instead of partial refresh, backlight left at full brightness. |
 | Power drifts higher after a firmware update | New timer, polling loop, or always-on peripheral introduced without a power review. |
 | Good bench power, worse in-product power | RF/antenna detuning forcing higher TX power, or thermal/enclosure effects not present on the bench. |
-| Audio or AI features disproportionately drain battery | Codec/inference path left active between sessions — see [Audio](audio.md#power-considerations-for-audio) and [AI](ai.md#power-aware-inference-scheduling) guides. |
+| Audio or AI features disproportionately drain battery | Codec/inference path left active between sessions — see [Audio Overview](../audio/overview.md#power-considerations-for-audio) and [AI Overview](../ai/overview.md#power-aware-inference-scheduling). |
 
 </div>
 

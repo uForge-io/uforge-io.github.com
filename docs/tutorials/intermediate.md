@@ -1,15 +1,17 @@
 ---
 icon: lucide/trending-up
-description: "Intermediate SF32 tutorials: I2C sensors, a basic LVGL screen, BLE peripheral service, local audio playback, filesystem storage, and combined-subsystem testing."
+description: "Connected-subsystem SF32 tutorials: I2C sensors, a basic LVGL screen, BLE peripheral service, local audio playback, filesystem storage, and coexistence testing."
 tags:
     - Tutorials
 ---
 
-# Intermediate Tutorials
+# Connected Subsystems { #intermediate-tutorials }
 
-These tutorials assume you are comfortable with the [Beginner Tutorials](beginner.md): GPIO, the shell, ADC/PWM basics, and the `rt_device_find()` driver pattern. This tier moves from single peripherals to middleware and combined workflows: I2C sensors, graphical UI, BLE services, audio playback, persistent storage, and simple coexistence testing.
+These tutorials assume you are comfortable with [First Peripherals](beginner.md): GPIO, the shell, ADC/PWM basics, and the `rt_device_find()` driver pattern. This track moves from single peripherals to middleware and combined workflows: I2C sensors, graphical UI, BLE services, audio playback, persistent storage, and simple coexistence testing.
 
 The goal is not just to make each subsystem work once. The goal is to learn how SF32 firmware is usually assembled: start from a close SDK example, verify the hardware path, connect it to the RT-Thread device or middleware layer, then test it together with the rest of the product.
+
+Use this series when the individual peripherals already work and the integration risks begin: shared memory, timing, power, board-specific wiring, and interactions between middleware. Each exercise is meant to leave you with a testable subsystem boundary, not only a screen-shot demo.
 
 ## Before You Start
 
@@ -23,7 +25,7 @@ The goal is not just to make each subsystem work once. The goal is to learn how 
 | Known-good GPIO input/output | Many middleware demos still need buttons, LEDs, or interrupts. |
 | Board schematic | I2C pins, display pins, audio path, and storage layout are board-specific. |
 | One clean baseline | Keep a known-good build before combining features. |
-| Current measurement option | Intermediate features often change idle power even when they appear to work. |
+| Current measurement option | Connected-subsystem features often change idle power even when they appear to work. |
 
 </div>
 
@@ -45,7 +47,7 @@ rt_i2c_transfer(bus, msgs, 2);
 2. Confirm which `i2cX` bus and pins your board uses.
 3. Adapt the I2C EEPROM or master example to read a device ID register first.
 4. Decode one real measurement and print it through the shell.
-5. If the sensor has an interrupt or data-ready pin, wire it to the GPIO interrupt pattern from Beginner Tutorial 2.
+5. If the sensor has an interrupt or data-ready pin, wire it to the GPIO interrupt pattern from First Peripherals, exercise 2.
 6. Replace fixed polling with event-driven reads where possible.
 
 **Success criteria:** the firmware reads a stable device ID, decodes a plausible sensor value, and does not block the system if the device is absent.
@@ -72,7 +74,7 @@ lv_obj_align(label, LV_ALIGN_CENTER, 0, 0);
 2. Create a label and a button widget.
 3. Wire the button callback to change the label text.
 4. Add one small animation and watch CPU usage or frame timing through shell tools.
-5. Read the [Graphics Guide](../guides/graphics.md) sections on buffer strategy, partial refresh, and ePicasso before scaling up.
+5. Read the [Graphics Overview](../learn/graphics/overview.md) sections on buffer strategy, partial refresh, and ePicasso before scaling up.
 
 **Success criteria:** the screen initializes consistently after reset, touch or button input changes UI state, and simple animation does not starve shell or Bluetooth activity.
 
@@ -91,9 +93,9 @@ lv_obj_align(label, LV_ALIGN_CENTER, 0, 0);
 1. Start from the plain peripheral example and verify advertising in a BLE scanner app.
 2. Connect from the phone and confirm the device remains stable for several minutes.
 3. Switch to, or adapt, the HRPC example if your product is sensor-oriented.
-4. Feed a real value into the characteristic, such as the ADC reading from Beginner Tutorial 4 or the I2C sensor reading from Tutorial 1.
+4. Feed a real value into the characteristic, such as the ADC reading from First Peripherals, exercise 4, or the I2C sensor reading from this track, exercise 1.
 5. Enable notifications and confirm the phone receives value changes.
-6. Read the [Bluetooth Guide](../guides/bluetooth.md#gatt-services-and-the-sibles-framework) before designing a custom service.
+6. Read the [Bluetooth Overview](../learn/bluetooth/overview.md#gatt-services-and-the-sibles-framework) before designing a custom service.
 
 **Success criteria:** the device advertises, connects, exposes a GATT service, sends notifications, and returns to a clean state after disconnect/reconnect.
 
@@ -112,9 +114,9 @@ lv_obj_align(label, LV_ALIGN_CENTER, 0, 0);
 1. Load a small WAV or MP3 file onto the storage medium expected by the example.
 2. Build and flash the example.
 3. Confirm playback starts, audio is clean, and the board does not reset when playback begins.
-4. Wire playback start/stop to the button handler from Beginner Tutorial 2.
+4. Wire playback start/stop to the button handler from First Peripherals, exercise 2.
 5. Watch for underruns while shell logging or display updates are active.
-6. Read the [Audio Guide](../guides/audio.md#playback-and-recording-basics) before changing sample rate, format, or buffer size.
+6. Read the [Audio Overview](../learn/audio/overview.md#playback-and-recording-basics) before changing sample rate, format, or buffer size.
 
 **Success criteria:** playback can start, stop, and restart repeatedly without pops, underruns, or leaked active-power state.
 
@@ -162,7 +164,7 @@ close(fd);
 3. Combine them with minimal changes.
 4. Exercise both at the same time: BLE notification during I2C read, UI animation during audio playback, storage write during sensor update.
 5. Watch CPU usage, logs, memory, and user-visible behavior.
-6. Compare what you see with the [Bluetooth Guide](../guides/bluetooth.md#coexistence-with-other-workloads), [Graphics Guide](../guides/graphics.md#graphics-validation-matrix), and [Power Guide](../guides/power.md#what-drains-power-on-an-sf32-product).
+6. Compare what you see with the [Bluetooth Overview](../learn/bluetooth/overview.md#coexistence-with-other-workloads), [Graphics Overview](../learn/graphics/overview.md#graphics-validation-matrix), and [Low-Power Overview](../learn/low-power/overview.md#what-drains-power-on-an-sf32-product).
 
 **Success criteria:** both subsystems keep working under simultaneous activity, and idle current returns to the expected level after the test stops.
 
@@ -170,7 +172,7 @@ close(fd);
 
 **What you learned:** subsystems that work in isolation can still interact badly once they share CPU time, memory bandwidth, interrupts, and power policy.
 
-## Intermediate Integration Checklist
+## Connected-Subsystem Integration Checklist { #intermediate-integration-checklist }
 
 - [ ] Every tutorial starts from a known-good SDK example.
 - [ ] Hardware identity is proven first: device ID, panel fill, BLE advertising, audio output, or storage mount.
@@ -181,7 +183,7 @@ close(fd);
 
 ## Where to Go Next
 
-[Advanced Tutorials](advanced.md) covers low-power tuning, OTA updates, custom display and driver bring-up, multi-connection Bluetooth, and production debugging. That tier turns working demos into product-ready firmware.
+[Product Validation](advanced.md) covers low-power tuning, OTA updates, custom display and driver bring-up, multi-connection Bluetooth, and production debugging. That track turns working demos into product-ready firmware.
 
 !!! note "Auto-generated content"
     This page was compiled/drafted without an existing source document. Verify technical claims against SiFli's official documentation before relying on them.

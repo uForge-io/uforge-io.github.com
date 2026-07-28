@@ -81,7 +81,7 @@ Choose SF32LB58-MOD when the project wants one or more of these advantages:
 - Vivante GCNanoUltraV vector graphics engine
 - Hardware JPEG codec
 - Dual LCD controllers supporting 8080, SPI, Dual-SPI, Quad-SPI, DPI/RGB, MIPI DSI, and JDI
-- TurboPixel framebuffer compression and decompression
+- TurboPixel: extDMA fixed-ratio lossy final-framebuffer compression and display-controller decompression, reducing PSRAM bandwidth and capacity
 - Always-on-display support on both LCD controllers
 
 ### Audio

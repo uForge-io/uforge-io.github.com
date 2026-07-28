@@ -102,7 +102,7 @@ Choose SF32LB56x when the design needs one or more of these capabilities:
 - Graphics-engine workload up to 1024 × 1024
 - eZip 2.0 lossless graphics decompression with native eZip-A animation support
 - LCD controller supporting 8080, SPI, Dual-SPI, Quad-SPI, DPI/RGB, and JDI interfaces
-- TurboPixel framebuffer compression and decompression
+- TurboPixel: extDMA fixed-ratio lossy final-framebuffer compression and display-controller decompression, reducing PSRAM bandwidth and capacity
 - Neural-network matrix accelerator for TinyML workloads, up to 1.92GOPS and above 10TOPS/W
 
 ### Audio and Wireless Connectivity
@@ -164,6 +164,15 @@ SF32LB56x spans compact QFN68L parts and higher-I/O WBBGA175 parts with differen
 
 </div>
 
+## Integration Path
+
+Use this sequence to turn an SF32LB56x shortlist into a validated design:
+
+1. **Prove the firmware path.** Start with the [SiFli SDK getting-started guide](../../getting-started/sifli/getting-started-sifli-sdk.md), then use the [SiFli SDK workflow](../../develop/platforms/sifli-sdk/overview.md) and [examples](../../develop/examples/index.md) to exercise the target display, audio, Bluetooth, and storage path.
+2. **Choose the integration vehicle.** Evaluate [SF32LB56-MOD](../modules/SF32LB56-MOD.md) to reduce RF and high-speed-memory integration work, or use [SF32LB56-DevKit-LCD](../devkits/SF32LB56-DevKit-LCD.md) for board-level validation.
+3. **Design and review the hardware.** Use the local [hardware design guide](SF32LB56x_hardware_design_guide.md) and [hardware design checklist](SF32LB56x_hardware_design_checklist.md) before releasing the schematic or layout. Keep the U/V package and display-interface choice aligned with the selected part.
+4. **Verify the authoritative source.** Confirm the exact orderable part and package against the SiFli [datasheet], [user manual], applicable [U] or [V hardware design guide], and the corresponding [hardware application source].
+
 ## Related Products
 
 ### Module
@@ -172,7 +181,7 @@ SF32LB56x spans compact QFN68L parts and higher-I/O WBBGA175 parts with differen
 
 ### Development Kits
 
-The SF32LB56-DevKit-LCD reference board is a practical starting point for firmware bring-up, display validation, audio and storage testing, RF checks, and power profiling before committing to a chip-down or module-based design.
+[SF32LB56-DevKit-LCD](../devkits/SF32LB56-DevKit-LCD.md) is a practical starting point for firmware bring-up, display validation, audio and storage testing, RF checks, and power profiling before committing to a chip-down or module-based design.
 
 ### Reference Products
 

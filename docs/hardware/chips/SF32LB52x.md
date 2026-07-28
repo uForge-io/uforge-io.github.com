@@ -160,6 +160,15 @@ If you are migrating between memory tiers, the nearest content-correspondence ma
 
 </div>
 
+## Integration Path
+
+Use this sequence to turn an SF32LB52x shortlist into a validated design:
+
+1. **Prove the firmware path.** Start with the [SiFli SDK getting-started guide](../../getting-started/sifli/getting-started-sifli-sdk.md), then use the [SiFli SDK workflow](../../develop/platforms/sifli-sdk/overview.md) and [examples](../../develop/examples/index.md) to validate the required peripherals and Bluetooth behavior.
+2. **Choose the integration vehicle.** Evaluate [SF32LB52-MOD-1](../modules/SF32LB52-MOD-1.md) when a ready-integrated RF module suits the product; otherwise select the closest [SF32LB52 development board](../devkits/SF32LB52-DevKit-LCD.md) for early firmware and peripheral validation.
+3. **Design and review the hardware.** Use the local [hardware design guide](SF32LB52x_hardware_design_guide.md) and [hardware design checklist](SF32LB52x_hardware_design_checklist.md) before releasing the schematic or layout. Confirm the correct supply-family baseline: 520/3/5/7, 52B/E/G/J, or 52D.
+4. **Verify the authoritative source.** Check the applicable [datasheet](#development-resources) and SiFli [hardware design guide for 520/3/5/7] or [hardware design guide for 52B/D/E/G/J] against the exact orderable part and package.
+
 ## Related Products
 
 ### Module

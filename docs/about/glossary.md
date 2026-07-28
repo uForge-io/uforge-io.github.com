@@ -25,16 +25,16 @@ Quick reference for acronyms and terms used across the μForge.io site — both 
 * **Dual-mode Bluetooth** — Support for both BLE and Classic Bluetooth (BR/EDR) on the same radio, used when a product needs both, e.g. audio streaming (Classic or LE Audio) alongside a low-power control channel. Supported on SF32LB52x/56x/57x/58x; SF32LB55x is BLE-only.
 * **GAP** — **Generic Access Profile.** The Bluetooth layer governing device roles, advertising, and connection establishment — the foundation every BLE application sits on top of.
 * **GATT** — **Generic Attribute Profile.** The Bluetooth layer defining how services and characteristics (the actual data a BLE device exposes) are structured and exchanged.
-* **Sibles** — SiFli-SDK's GATT service framework, sitting on top of the standard GAP layer. Most SF32 Bluetooth products start from an existing Sibles-based example rather than building a GATT database from scratch. See the [Bluetooth guide](../learn/guides/bluetooth.md).
-* **LE Audio** — The newer Bluetooth Low Energy audio standard, including the LC3 codec and Auracast broadcast-audio modes, as opposed to Classic Bluetooth audio profiles. Supported on SF32LB52x/56x/57x/58x; not supported on SF32LB55x. See [Bluetooth Audio and LE Audio](../learn/architecture/bluetooth-processor.md).
+* **Sibles** — SiFli-SDK's GATT service framework, sitting on top of the standard GAP layer. Most SF32 Bluetooth products start from an existing Sibles-based example rather than building a GATT database from scratch. See the [Bluetooth overview](../learn/bluetooth/overview.md).
+* **LE Audio** — The newer Bluetooth Low Energy audio standard, including the LC3 codec and Auracast broadcast-audio modes, as opposed to Classic Bluetooth audio profiles. Supported on SF32LB52x/56x/57x/58x; not supported on SF32LB55x. See [Bluetooth Audio and LE Audio](../learn/bluetooth/processor.md).
 * **OTA** — **Over-The-Air** (firmware update). Updating device firmware via a wireless link (typically BLE) instead of a wired connection.
 * **DFU** — **Device Firmware Update.** The general mechanism/protocol category that OTA updates over Bluetooth typically implement.
 
 ## Graphics and Display
 
-* **ePicasso** — SiFli's in-house 2D/2.5D graphics acceleration engine for the SF32 family, offloading pixel operations like image copy, blending, scaling, rotation, and layer composition from the application CPU. See the [ePicasso architecture page](../learn/architecture/epicasso-gpu.md).
-* **eZip** — SiFli's lossless graphics compression format and hardware decoder, used to shrink image/animation asset size and decompression cost on-device. Because compressed assets move over the bus before being decoded, eZip also effectively reduces the bandwidth required from external memory such as PSRAM and NOR flash.
-* **TurboPixel** — Framebuffer compression/decompression used on some SF32 parts (e.g. SF32LB56x) to reduce the memory bandwidth needed to drive a display.
+* **ePicasso** — SiFli's in-house 2D/2.5D graphics acceleration engine for the SF32 family, offloading pixel operations like image copy, blending, scaling, rotation, and layer composition from the application CPU. See the [ePicasso architecture page](../learn/graphics/epicasso-gpu.md).
+* **eZip** — SiFli's lossless graphics and general-purpose compression format, with hardware decoding on supported SF32 devices. For graphics, SiFli describes its compression ratio as slightly higher than PNG; for general-purpose data, the ratio varies with the source. Because compressed assets move over the bus before decoding, eZip can reduce external-memory bandwidth from PSRAM and NOR Flash.
+* **TurboPixel** — A fixed-ratio lossy final-framebuffer format on supported SF32 parts. extDMA compresses the rendered bitmap into TurboPixel, and the display controller decompresses it to reduce PSRAM bandwidth and PSRAM capacity. See the [TurboPixel framebuffer compression page](../learn/graphics/turbopixel.md).
 * **LVGL** — **Light and Versatile Graphics Library.** The open-source embedded UI framework most SF32 products use for their application-level UI, running on top of ePicasso-accelerated rendering.
 * **HMI** — **Human-Machine Interface.** Shorthand for the on-device user interface (screen, touch, buttons) as a design category.
 

@@ -84,7 +84,7 @@ Choose SF32LB56-MOD when the project wants one or more of these advantages:
 - Graphics workloads up to 1024 × 1024
 - eZip 2.0 lossless graphics decompression and eZip-A animation support
 - LCD support for 8080, SPI, Dual-SPI, Quad-SPI, DPI/RGB, and JDI
-- TurboPixel framebuffer compression and decompression
+- TurboPixel: extDMA fixed-ratio lossy final-framebuffer compression and display-controller decompression, reducing PSRAM bandwidth and capacity
 
 ### Audio
 

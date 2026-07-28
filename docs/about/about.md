@@ -1,6 +1,6 @@
 ---
 icon: lucide/info
-description: "Contact information for μForge.io — sales, technical support, and general inquiries — plus a link to the message form."
+description: "Contact information for μForge.io — sales, technical support, and general inquiries."
 ---
 
 # About μForge.io
@@ -15,4 +15,4 @@ support@uforge.io
 
 ## Forum
 
-Prefer a form? Visit the [Contact](contact.md) page to send us a message directly.
+For general inquiries, email contact@uforge.io.

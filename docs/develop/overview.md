@@ -10,7 +10,9 @@ tags:
 
 This section is for firmware developers who have moved past the first `hello_world` run and need to build, flash, debug, update, and ship software on SF32 devices.
 
-Use [Getting Started](../getting-started/getting-started-overview.md) for the first successful board run. Use [Hardware](../hardware/hardware_overview.md) to choose chips, modules, and dev kits. Use [Learn](../learn/examples.md) for conceptual guides and tutorials. Use **Develop** when you need the working details: platform maturity, toolchains, board names, flash flows, examples, and firmware architecture.
+Use [Getting Started](../getting-started/getting-started-overview.md) for the first successful board run. Use [Tutorials](../tutorials/beginner.md) for guided hands-on learning, the [SF32 Family](../hardware/chips/SF32_family.md) to choose chips, modules, and dev kits, and [Learn](../learn/overview.md) for conceptual guides. Use **Develop** when you need the working details: platform maturity, toolchains, board names, flash flows, examples, and firmware architecture.
+
+For the current board-by-platform status, use the canonical [Software Support Matrix](software-support-matrix.md). It is the shared support reference for Getting Started and Develop; platform pages provide the detailed setup and limitations.
 
 ## Choose a Development Path
 
@@ -21,7 +23,7 @@ Use [Getting Started](../getting-started/getting-started-overview.md) for the fi
 | Path | Best for | Status |
 |:-----|:---------|:-------|
 | [SiFli-SDK](platforms/sifli-sdk/overview.md) | Reference SF32 firmware, RT-Thread, Bluetooth, graphics, audio, storage, power, and production board support. | Official SiFli path. |
-| [CodeKit](platforms/codekit/overview.md) | SiFli-SDK development inside VS Code. | Official SiFli extension. |
+| [CodeKit](tools/codekit.md) | SiFli-SDK development inside VS Code. | Official SiFli extension. |
 | [Zephyr](platforms/zephyr/overview.md) | Zephyr APIs, devicetree, downstream board work, and portable RTOS experiments. | OpenSiFli downstream work exists for SF32LB52 DevKit LCD. |
 | [Arduino](platforms/arduino/overview.md) | Sketches and quick tests through Arduino IDE or Arduino CLI. | OpenSiFli beta ArduinoCore-zephyr package exists for SF32LB52 DevKit LCD. |
 | [MicroPython](platforms/micropython/status.md) | REPL-driven scripting and quick experiments. | No official SF32 MicroPython flow found yet. |
@@ -58,7 +60,7 @@ Move to another platform when the tradeoff is worth it:
 
 | Area | Use it when |
 |:-----|:------------|
-| [Platforms](platforms/sifli-sdk/overview.md) | You need framework-specific setup, build, flash, and limitations. |
+| [Software Paths](platforms/sifli-sdk/overview.md) | You need framework-specific setup, build, flash, and limitations. |
 | [Tools](tools/index.md) | You need flashing, logs, crash analysis, image tooling, RF/audio tools, or factory utilities. |
 | [Firmware Topics](firmware-topics/index.md) | You need boot layout, partitions, OTA, USB, power, logging, or crash-analysis guidance. |
 | [Examples](examples/index.md) | You need a known SDK or Zephyr sample to start from. |
