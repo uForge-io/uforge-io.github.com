@@ -143,6 +143,15 @@ When selecting a variant, check these items first:
 - External storage and Wi-Fi interface requirements
 - PCB manufacturing capability for BGA256, 0.4mm-pitch HDI layout
 
+## Integration Path
+
+Use this sequence to turn an SF32LB58x shortlist into a validated design:
+
+1. **Prove the firmware path.** Start with the [SiFli SDK getting-started guide](../../getting-started/sifli/getting-started-sifli-sdk.md), then use the [SiFli SDK workflow](../../develop/platforms/sifli-sdk/overview.md) and [examples](../../develop/examples/index.md) to validate the display, graphics, audio, storage, and Bluetooth configuration.
+2. **Choose the integration vehicle.** Evaluate [SF32LB58-MOD](../modules/SF32LB58-MOD.md) when reducing RF, BGA, and memory-layout risk is valuable, or use [SF32LB58-DevKit-LCD](../devkits/SF32LB58-DevKit-LCD.md) for early board-level validation.
+3. **Design and review the hardware.** Use the local [hardware design guide](SF32LB58x_hardware_design_guide.md) and [hardware design checklist](SF32LB58x_hardware_design_checklist.md) before releasing the schematic or layout. Validate the BGA256 HDI and memory-routing assumptions early.
+4. **Verify the authoritative source.** Confirm the exact orderable part and package against the SiFli [datasheet], [user manual], [original design guide], and [hardware application note source].
+
 ## Related Products
 
 ### Module
@@ -151,7 +160,7 @@ When selecting a variant, check these items first:
 
 ### Development Kits
 
-Use the SF32LB58x EVB or reference board as the starting point for power-tree, display, storage, audio, RF, USB, and SDIO design decisions.
+[SF32LB58-DevKit-LCD](../devkits/SF32LB58-DevKit-LCD.md) is the starting point for power-tree, display, storage, audio, RF, USB, and SDIO design decisions.
 
 ### Reference Products
 

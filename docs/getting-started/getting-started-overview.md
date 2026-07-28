@@ -10,6 +10,8 @@ tags:
 
 SF32 devices support several software paths. SiFli-SDK and CodeKit are the official first-run paths today. OpenSiFli also has active downstream Zephyr, beta ArduinoCore-zephyr, and work-in-progress Rust support for SF32LB52. MicroPython still needs official firmware images and board-specific instructions before it can become a verified tutorial.
 
+For the current board-by-platform coverage, maturity, and recommended first example, consult the shared [Software Support Matrix](../develop/software-support-matrix.md). Use the table below only to choose where to begin; the matrix is the canonical support reference.
+
 ## Choose Your Path
 
 <div align="center"><em>Table: Choose Your Path</em></div>
@@ -56,6 +58,14 @@ By the end of a getting-started guide, you should have:
 - Recorded the board name, serial port, and flash command that worked.
 
 Keep those details with your project notes. They are the fastest way back to a working setup when you start modifying examples.
+
+## Continue with Tutorials
+
+Once you can repeat the first-run success criteria, continue to the [Tutorials Overview](../tutorials/overview.md). The tutorials are the next stage of this onboarding path: begin with one peripheral, then combine subsystems, and finally practice the validation work needed for a product.
+
+## When to Move to Develop
+
+Getting Started ends when you can reproduce a known-good first run. [Develop](../develop/overview.md) is the ongoing engineering reference for platform maturity, tools, flash/debug workflows, firmware architecture, and product integration. In particular, use the [CodeKit tool reference](../develop/tools/codekit.md) after the first run for CodeKit's role in the daily development workflow; keep this page for the first-run path.
 
 ## SiFli Documentation Work to Add
 

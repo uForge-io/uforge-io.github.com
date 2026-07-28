@@ -78,7 +78,6 @@ The KiCad README currently marks KiCad Package and Content Manager installation 
 
 ## Related Pages
 
-- [Hardware Overview](../hardware_overview.md)
 - [SF32 Family Overview](../chips/SF32_family.md)
 - [SF32 Naming Convention](../chips/SF32_namingrule.md)
 - [SF32 Approved Vendor List](sifli-approved-vendor-list.md)
