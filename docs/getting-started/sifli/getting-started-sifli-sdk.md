@@ -16,7 +16,7 @@ If you plan to use Arduino, Zephyr, or MicroPython, it is still worth running th
 
 **Hardware**
 
-- An SF32 development board, such as the [SF32LB52-DevKit-LCD](../../hardware/devkits/SF32LB52-DevKit-LCD.md), or another board from the [hardware overview](../../hardware/hardware_overview.md).
+- An SF32 development board, such as the [SF32LB52-DevKit-LCD](../../hardware/devkits/SF32LB52-DevKit-LCD.md), or another board identified from the [SF32 Family](../../hardware/chips/SF32_family.md).
 - A USB Type-C **data** cable connected to the board's USB-to-UART port, not a charge-only cable or a secondary USB-function port.
 - A computer running Windows, macOS, or Linux.
 

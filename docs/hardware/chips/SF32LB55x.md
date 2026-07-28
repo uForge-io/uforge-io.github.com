@@ -91,7 +91,7 @@ Choose SF32LB55x when the design needs one or more of these capabilities:
 - eZip lossless graphics decompression with ePicasso concatenation
 - Display resolution up to 640 × 640
 - LCD controller supporting 8080, SPI, Dual-SPI, Quad-SPI, and MIPI DSI interfaces
-- TurboPixel framebuffer compression and decompression
+- TurboPixel: extDMA fixed-ratio lossy final-framebuffer compression and display-controller decompression, reducing PSRAM bandwidth and capacity
 - Dual LCD controllers for always-on-display use cases
 - Neural-network matrix accelerator for TinyML workloads, up to 1.92GOPS and 5.73TOPS/W
 
@@ -150,6 +150,15 @@ Package choice is not just a layout decision here. SiFli's model guide explicitl
 | BGA169 | 119 | Highest-I/O SF32LB55x designs with richer display and memory options |
 
 </div>
+
+## Integration Path
+
+Use this sequence to turn an SF32LB55x shortlist into a validated design:
+
+1. **Prove the firmware path.** Start with the [SiFli SDK getting-started guide](../../getting-started/sifli/getting-started-sifli-sdk.md), then use the [SiFli SDK workflow](../../develop/platforms/sifli-sdk/overview.md) and [examples](../../develop/examples/index.md) to validate the required display, Bluetooth, and low-power behavior.
+2. **Plan the evaluation hardware.** μForge does not currently catalogue an SF32LB55-specific module or development board. Use [Choose Hardware](../choose-hardware.md) to select the closest available evaluation platform, then verify package and interface coverage before transferring results to a 55x design.
+3. **Design and review the hardware.** Use the local [hardware design guide](SF32LB55x_hardware_design_guide.md) and [hardware design checklist](SF32LB55x_hardware_design_checklist.md) before releasing the schematic or layout.
+4. **Verify the authoritative source.** Confirm the exact orderable part and package against the SiFli [datasheet], [user manual], [original design guide], and [hardware application note source].
 
 ## Related Products
 

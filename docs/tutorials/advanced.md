@@ -1,15 +1,17 @@
 ---
-icon: lucide/flame
-description: "Advanced SF32 tutorials: measured low-power tuning, safe BLE OTA, custom display bring-up, crash/coredump analysis, multi-connection Bluetooth, and custom drivers."
+icon: lucide/rocket
+description: "Product-validation SF32 tutorials: measured low-power tuning, safe BLE OTA, custom display bring-up, crash/coredump analysis, multi-connection Bluetooth, and custom drivers."
 tags:
     - Tutorials
 ---
 
-# Advanced Tutorials
+# Product Validation { #advanced-tutorials }
 
-These tutorials assume the [Intermediate Tutorials](intermediate.md) are comfortable territory. You can bring up a peripheral, connect it to middleware, and you have already seen at least one coexistence problem firsthand. This tier focuses on the work that separates a working demo from a product you can ship: measured power, safe OTA, custom hardware bring-up, crash analysis, multi-connection Bluetooth, and reusable drivers.
+These tutorials assume [Connected Subsystems](intermediate.md) is comfortable territory. You can bring up a peripheral, connect it to middleware, and you have already seen at least one coexistence problem firsthand. This track focuses on the work that separates a working demo from a product you can ship: measured power, safe OTA, custom hardware bring-up, crash analysis, multi-connection Bluetooth, and reusable drivers.
 
-Advanced work is less about copying a single example and more about building evidence. For each tutorial, keep notes: board revision, SDK version, example base, test setup, expected result, observed result, and what changed.
+Product-validation work is less about copying a single example and more about building evidence. For each tutorial, keep notes: board revision, SDK version, example base, test setup, expected result, observed result, and what changed.
+
+Use this series when your responsibility extends beyond a feature working once: you need measurable power behavior, recoverable updates, repeatable custom-hardware bring-up, and evidence for failures that happen outside the happy path.
 
 ## Tune Low-Power Modes and Wake Sources
 
@@ -19,7 +21,7 @@ Advanced work is less about copying a single example and more about building evi
 
 **Start from:** `example/pm/classical`, `example/pm/raise_wrist`
 
-1. Set up current measurement as described in the [Power Guide](../guides/power.md#measuring-power-in-practice).
+1. Set up current measurement as described in the [Low-Power Overview](../learn/low-power/overview.md#measuring-power-in-practice).
 2. Record a baseline for boot, active, connected idle, display-off idle, and deep sleep if available.
 3. Start from the classical PM example and identify where a driver votes for a power state and releases it.
 4. Move to the raise-to-wake example and study how an interrupt-driven accelerometer event gates display and application-processor wakeup.
@@ -68,7 +70,7 @@ Advanced work is less about copying a single example and more about building evi
 3. Copy the closest existing display driver and replace the panel-specific init sequence and register map.
 4. Bring up solid-color fills first. Do not debug LVGL widgets until the panel can display simple patterns.
 5. Verify color order, byte order, orientation, address window, and partial update behavior.
-6. Add LVGL back from Intermediate Tutorial 2.
+6. Add LVGL back from Connected Subsystems, exercise 2.
 7. Enable DMA, partial refresh, and ePicasso acceleration one at a time.
 8. Test display-off, sleep, wake, and reinitialization paths.
 
@@ -86,7 +88,7 @@ Advanced work is less about copying a single example and more about building evi
 
 **Start from:** `example/system/cpu_usage_profiler`, `example/system/coredump`
 
-1. Run the CPU usage profiler example against one of your Intermediate combined workloads.
+1. Run the CPU usage profiler example against one of your Connected Subsystems combined workloads.
 2. Identify which task is consuming CPU time and whether it matches your expectation.
 3. Add a controlled fault in a practice branch or disposable example and capture a core dump.
 4. Use the SDK's dump-analysis tooling to locate the faulting function and call stack.
@@ -107,7 +109,7 @@ Advanced work is less about copying a single example and more about building evi
 
 **Start from:** `example/ble/central_and_peripheral`, `example/ble/multi_connection`
 
-1. Start from the peripheral behavior you already have from Intermediate Tutorial 3.
+1. Start from the peripheral behavior you already have from Connected Subsystems, exercise 3.
 2. Add a central role alongside it, such as acting as a peripheral to a phone while acting as a central to a sensor accessory.
 3. Extend to multiple concurrent connections.
 4. Record connection intervals, slave latency, supervision timeout, and notification rate for each link.
@@ -142,7 +144,7 @@ Advanced work is less about copying a single example and more about building evi
 
 **What you learned:** how to extend the SDK ecosystem cleanly rather than creating a maintenance liability.
 
-## Advanced Release Checklist
+## Product-Validation Release Checklist { #advanced-release-checklist }
 
 - [ ] Power numbers are measured, repeatable, and tied to named test scenarios.
 - [ ] OTA survives interruption and can roll back to a known-good image.
@@ -154,7 +156,7 @@ Advanced work is less about copying a single example and more about building evi
 
 ## Where to Go Next
 
-At this point you have the full toolkit: peripherals, middleware, coexistence awareness, power discipline, OTA, custom hardware bring-up, postmortem debugging, and driver integration. From here, the [Examples](../examples.md) catalog and the [Guides](../guides/graphics.md) are ongoing references. Pull from them per feature rather than working through them linearly.
+At this point you have the full toolkit: peripherals, middleware, coexistence awareness, power discipline, OTA, custom hardware bring-up, postmortem debugging, and driver integration. From here, the [Examples](../develop/examples/index.md) catalog and [Graphics Overview](../learn/graphics/overview.md) are ongoing references. Pull from them per feature rather than working through them linearly.
 
 !!! note "Auto-generated content"
     This page was compiled/drafted without an existing source document. Verify technical claims against SiFli's official documentation before relying on them.

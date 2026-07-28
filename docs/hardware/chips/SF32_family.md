@@ -16,6 +16,30 @@ Designed to bridge the gap between traditional microcontrollers and application 
 
 The **LB** (Low-Power Bluetooth) series is the first member of the SF32 product family, with additional application-focused series planned in the future.
 
+## Hardware Workflows
+
+<div class="grid cards" markdown>
+
+- :lucide-route:{ .uf-hw-icon .uf-hw-blue } **Plan an SF32 Product**
+
+    Follow one path from product requirements and device selection through board validation and production readiness.
+
+    [Plan the product :material-arrow-right:](../product-planning.md){ .uf-hw-link-blue }
+
+- :lucide-list-checks:{ .uf-hw-icon .uf-hw-purple } **Choose Hardware**
+
+    Compare SF32 families, select a chip or module, and identify the right development board for early validation.
+
+    [Start selecting :material-arrow-right:](../choose-hardware.md){ .uf-hw-link-purple }
+
+- :lucide-clipboard-check:{ .uf-hw-icon .uf-hw-green } **Design for Production**
+
+    Move from a selected part to schematic, layout, BOM, CAD, checklist, and bring-up evidence.
+
+    [Plan production work :material-arrow-right:](../design-for-production.md){ .uf-hw-link-green }
+
+</div>
+
 ## Key Features
 
 1. **Heterogeneous Multi-Core Architecture**
@@ -90,11 +114,11 @@ The **LB** (Low-Power Bluetooth) series is the first member of the SF32 product 
 
 | Feature | SF32LB52x | SF32LB55x | SF32LB56x | SF32LB57x | SF32LB58x |
 |----------|----------|----------|----------|----------|----------|
-| Positioning | Entry-Level | Mainstream | Advanced | High-integration multimedia | Flagship |
+| Positioning | Entry-Level | Mainstream with BLE only | Advanced | Enhanced Computing | Flagship |
 | Application CPU | Cortex-M33 @240MHz | Cortex-M33 @240MHz | Cortex-M33 @240MHz | 2× Cortex-M33 @240MHz | 2× Cortex-M33 @240MHz |
 | Low-Power CPU | Cortex-M33 @24MHz, BT Controller Only | Cortex-M33 @48MHz, User Programmable | Cortex-M33 @48MHz, User Programmable | Cortex-M33 @24MHz, BT Controller Only | Cortex-M33 @96MHz, User Programmable |
 | Internal SRAM | 576 KB | 1.4 MB | 960 KB | 592 KB | 3.7 MB |
-| Bluetooth | BT Classic + BLE | BLE | BT Classic + BLE | BT Classic + BLE (Bluetooth 6.3) | BT Classic + BLE |
+| Bluetooth | BT Classic + BLE | BLE | BT Classic + BLE | BT Classic + BLE | BT Classic + BLE |
 | Graphics Accelerator | 2.5D<br>ePicasso 2.0 Lite | 2.5D<br>ePicasso 1.0 | 2.5D<br>ePicasso 2.0 | 2.5D<br>ePicasso 3.0 + eZip 3.0 | 2.5D + Vector Graphics<br>ePicasso 2.0 + Vivante GCNanoUltraV |
 | Display Interfaces | SPI / QSPI / 8080 / EPD / JDI | SPI / QSPI / 8080 / JDI / RGB / MIPI | SPI / QSPI / 8080 / EPD / JDI / RGB | SPI / QSPI / 8080 / EPD / JDI / RGB | SPI / QSPI / 8080 / EPD / JDI / RGB / MIPI |
 | Audio ADC | 1x | n/a | 1x | 2x | 2x |

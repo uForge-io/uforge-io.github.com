@@ -1,17 +1,20 @@
 ---
 icon: lucide/brain-circuit
-description: "Practical guide to building on-device AI on SF32: choosing a device, using the NNACC HAL, budgeting memory, and scheduling inference within the power budget."
+title: "AI Overview"
+description: "Overview of building on-device AI on SF32: choosing a device, using the NNACC HAL, budgeting memory, and scheduling inference within the power budget."
 tags:
-  - Guides
+  - AI
 ---
 
-# AI Guide
+# Overview { #ai-overview }
 
 ## Overview
 
-This guide covers the practical side of building on-device AI features on SF32 — getting a model from a workstation onto the chip, choosing the right device, budgeting memory, and scheduling inference so it doesn't wreck the product's power budget. It assumes the hardware background from [AI Accelerator Architecture](../architecture/ai-accelerator.md) — read that first if you want the "why" behind the accelerator before the "how" of using it.
+This overview covers the practical side of building on-device AI features on SF32 — getting a model from a workstation onto the chip, choosing the right device, budgeting memory, and scheduling inference so it doesn't wreck the product's power budget. It assumes the hardware background from [AI Accelerator Architecture](accelerator.md) — read that first if you want the "why" behind the accelerator before the "how" of using it.
 
 The accelerator hardware is exposed through the SDK's **NNACC** (neural network accelerator) HAL module, with example projects covering both the bare HAL interface and RT-Thread device-driver integration. As with graphics and Bluetooth, the fastest path to a working feature is almost always adapting one of these examples rather than writing an inference pipeline from scratch.
+
+Use this page when you own the product decision and deployment path for an AI feature: what the device must decide locally, how much memory and energy it may consume, and how the feature should behave when it meets real sensor data. It complements the accelerator article, which explains the hardware boundary.
 
 ## Define What the Product Needs to Decide Locally
 
@@ -42,7 +45,7 @@ Not every SF32 device targets AI workloads the same way:
 
 </div>
 
-**SF32LB58x** is the current family's primary recommendation for edge AI, offering the most memory and overall performance headroom. If the product's core value proposition depends on on-device AI, start the device evaluation there rather than trying to squeeze a demanding model into a cost-optimized part. See [Device-Family Positioning](../architecture/ai-accelerator.md#device-family-positioning) for the full breakdown.
+**SF32LB58x** is the current family's primary recommendation for edge AI, offering the most memory and overall performance headroom. If the product's core value proposition depends on on-device AI, start the device evaluation there rather than trying to squeeze a demanding model into a cost-optimized part. See [Device-Family Positioning](accelerator.md#device-family-positioning) for the full breakdown.
 
 ## The Model Development Workflow
 
@@ -156,11 +159,11 @@ The accelerator is one stage in a larger sensor-to-decision pipeline. Two feeder
 
 ### Audio and Voice
 
-Keyword spotting, wake-word-style triggers, and audio event classification all need microphone capture, framing, and feature extraction before inference even starts. See the [Audio Guide](audio.md) for the capture and buffering side of this pipeline — the accelerator only helps if the audio feeding it is captured and buffered efficiently in the first place.
+Keyword spotting, wake-word-style triggers, and audio event classification all need microphone capture, framing, and feature extraction before inference even starts. See the [Audio Overview](../audio/overview.md) for the capture and buffering side of this pipeline — the accelerator only helps if the audio feeding it is captured and buffered efficiently in the first place.
 
 ### Motion and Sensor Fusion
 
-Gesture recognition, activity classification, and biometric signal analysis typically consume accelerometer, gyroscope, or other sensor streams. The power-sensitive part here is sampling policy, not inference itself — batching samples and using interrupt-driven capture (rather than polling) usually matters more for battery life than model size does. See the [Power Guide](power.md#ai-and-sensor-power-tuning) for scheduling guidance.
+Gesture recognition, activity classification, and biometric signal analysis typically consume accelerometer, gyroscope, or other sensor streams. The power-sensitive part here is sampling policy, not inference itself — batching samples and using interrupt-driven capture (rather than polling) usually matters more for battery life than model size does. See the [Low-Power Overview](../low-power/overview.md#ai-and-sensor-power-tuning) for scheduling guidance.
 
 ### Camera and Image Input
 
@@ -175,7 +178,7 @@ Inference should be scheduled deliberately, not run on a fixed timer regardless 
 - Where the device and SDK support it, move lightweight always-on sensing to the low-power processor rather than waking the main application CPU for every sample.
 - Measure **energy per inference**, not just latency — a faster inference only helps the power budget if it lets the system return to sleep sooner afterward.
 
-Full system-level power guidance lives in the [Power Guide](power.md) — treat that as the companion document for any AI feature that needs to run continuously or near-continuously.
+Full system-level power guidance lives in the [Low-Power Overview](../low-power/overview.md) — treat that as the companion document for any AI feature that needs to run continuously or near-continuously.
 
 ## The Accuracy / Latency / Power Tradeoff
 

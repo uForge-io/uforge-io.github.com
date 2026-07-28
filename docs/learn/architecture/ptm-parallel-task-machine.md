@@ -17,6 +17,8 @@ In practical product terms, PTM lets firmware offload deterministic peripheral b
 
 The useful mental model is simple: the CPU configures and supervises the task; PTM executes the repetitive, timing-critical part near the IO, FIFO/DMA, event, and AHB bus fabric. That makes PTM more than a GPIO waveform helper. It is a small programmable task machine for peripheral automation.
 
+Read this page when a standard peripheral cannot express the required timing or protocol, but dedicating the main CPU to a polling loop would add latency, power, or firmware complexity. It is for engineers designing the hardware/firmware boundary, not for routine GPIO or timer use.
+
 ## Why PTM Exists
 
 Microcontrollers often face a mismatch between application processing and peripheral timing. The main CPU may have enough performance for the product, but certain low-level behaviors can still make firmware unnecessarily complex:

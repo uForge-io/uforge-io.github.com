@@ -207,6 +207,15 @@ For SF32LB57x, package selection is not just a PCB-cost question. It affects dis
 
 Use the orderable part number, not only the package name, as the BOM and schematic baseline. The memory suffix changes the SiP storage configuration and can affect boot-media assumptions, power sequencing, and external-storage requirements.
 
+## Integration Path
+
+Use this sequence to turn an SF32LB57x shortlist into a validated design:
+
+1. **Prove the firmware path.** Start with the [SiFli SDK getting-started guide](../../getting-started/sifli/getting-started-sifli-sdk.md), then use the [SiFli SDK workflow](../../develop/platforms/sifli-sdk/overview.md) and [examples](../../develop/examples/index.md) to validate the intended graphics, audio, camera, Bluetooth, and storage features.
+2. **Plan the evaluation hardware.** μForge does not currently catalogue an SF32LB57-specific module or development board. Use [Choose Hardware](../choose-hardware.md) to identify the closest evaluation platform, but verify package, power, memory, and interface coverage before applying results to a 57x design.
+3. **Design and review the hardware.** Use the local [hardware design guide](SF32LB57x_hardware_design_guide.md) and the [Design for Production](../design-for-production.md) review sequence before releasing the schematic or layout; a family-specific μForge checklist is not currently published.
+4. **Verify the authoritative source.** Confirm the exact orderable part and package against the SiFli [datasheet], [user manual], and [original design guide], and use the [SiFli Approved Vendor List] when controlling critical BOM choices.
+
 ## Related Products
 
 ### Hardware Design Baseline

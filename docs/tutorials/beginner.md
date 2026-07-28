@@ -1,15 +1,17 @@
 ---
 icon: lucide/footprints
-description: "Beginner SF32 tutorials after hello_world: blink an LED, read a button, use the FinSH shell, sample ADC, drive PWM, and use the RTC, ending in a mini project."
+description: "First SF32 peripheral tutorials after hello_world: GPIO, FinSH, ADC, PWM, RTC, and a small board-level project."
 tags:
     - Tutorials
 ---
 
-# Beginner Tutorials
+# First Peripherals { #beginner-tutorials }
 
-These tutorials pick up right after [Get Started](../../getting-started/getting-started-overview.md). You should already have the SiFli-SDK toolchain installed, have flashed `hello_world` at least once, and know how to open the serial console. Each tutorial is intentionally small: one concept, one peripheral, one clear success condition.
+These tutorials pick up right after [Get Started](../getting-started/getting-started-overview.md). You should already have the SiFli-SDK toolchain installed, have flashed `hello_world` at least once, and know how to open the serial console. Each tutorial is intentionally small: one concept, one peripheral, one clear success condition.
 
 The examples assume an SF32LB52-DevKit-LCD-class board such as `sf32lb52-lcd_n16r8`. If you are using another board, replace the board name in the build command and confirm the pin names, peripheral instances, and storage layout from that board's support files.
+
+Use this series to build reliable habits: verify one board-level behavior, state a clear success condition, and preserve the working baseline before moving to the next peripheral. It is deliberately practical for developers who are new to the SF32 SDK, even when they already know embedded C.
 
 ## Before You Start
 
@@ -115,7 +117,7 @@ rt_pin_irq_enable(BUTTON_PIN, PIN_IRQ_ENABLE);
 
 **If it does not work:** verify pull-up or pull-down configuration, button polarity, interrupt edge selection, and whether the pin is shared with boot mode, debug, or another peripheral.
 
-**What you learned:** digital input configuration, active-high vs. active-low logic, interrupt-driven input, and why polling is a power smell. See [Power Guide](../guides/power.md#sleep-aware-firmware-design) for the system-level reason.
+**What you learned:** digital input configuration, active-high vs. active-low logic, interrupt-driven input, and why polling is a power smell. See [Low-Power Overview](../learn/low-power/overview.md#sleep-aware-firmware-design) for the system-level reason.
 
 ## Use the Shell and Print Debug Output
 
@@ -236,7 +238,7 @@ After finishing the six short tutorials, combine them into one small project:
 
 **Pass criterion:** the project runs for several minutes without repeated button triggers, runaway logging, or unexpected resets.
 
-## Beginner Bring-Up Checklist
+## First-Peripheral Bring-Up Checklist { #beginner-bring-up-checklist }
 
 - [ ] Board name, serial port, and flash flow are known-good.
 - [ ] GPIO output works on a real LED or measured pin.
@@ -248,7 +250,7 @@ After finishing the six short tutorials, combine them into one small project:
 
 ## Where to Go Next
 
-Once these feel comfortable, move on to [Intermediate Tutorials](intermediate.md). The next tier combines peripherals with middleware: I2C sensors, LVGL, BLE, audio playback, storage, and deliberate coexistence testing.
+Once these feel comfortable, move on to [Connected Subsystems](intermediate.md). The next track combines peripherals with middleware: I2C sensors, LVGL, BLE, audio playback, storage, and deliberate coexistence testing.
 
 !!! note "Auto-generated content"
     This page was compiled/drafted without an existing source document. Verify technical claims against SiFli's official documentation before relying on them.

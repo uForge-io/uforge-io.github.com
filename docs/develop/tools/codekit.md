@@ -10,7 +10,7 @@ tags:
 
 SiFli CodeKit is the VS Code extension for SiFli-SDK development. It guides SDK setup, project creation, configuration, build, flash, and monitor workflows.
 
-Use [Getting Started with CodeKit](../../../getting-started/sifli/getting-started-sifli-codekit.md) for the first run. This page explains where CodeKit fits in the development workflow.
+Use [Getting Started with CodeKit](../../getting-started/sifli/getting-started-sifli-codekit.md) for the first run. This page explains where CodeKit fits in the development workflow.
 
 Primary reference:
 
@@ -45,7 +45,7 @@ If a CodeKit action fails, reproduce the underlying SDK command when possible. T
 
 CodeKit is most useful when its editor actions remain reproducible from the underlying SDK. Treat the extension as the control surface and SiFli-SDK as the source of truth for the toolchain, board definition, build output, and download artifacts.
 
-The [Getting Started with CodeKit](../../../getting-started/sifli/getting-started-sifli-codekit.md) page covers installing the extension and running `hello_world`. Once that baseline works, use CodeKit to shorten the edit–build–flash–monitor loop; use the SDK command line when an action must be automated, inspected, or reproduced outside VS Code.
+The [Getting Started with CodeKit](../../getting-started/sifli/getting-started-sifli-codekit.md) page covers installing the extension and running `hello_world`. Once that baseline works, use CodeKit to shorten the edit–build–flash–monitor loop; use the SDK command line when an action must be automated, inspected, or reproduced outside VS Code.
 
 ## What to Record
 

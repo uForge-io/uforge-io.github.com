@@ -26,7 +26,7 @@ hide:
 <div class="uf-hero-actions" markdown>
 
 [Get Started :material-arrow-right:](getting-started/getting-started-overview.md){ .md-button .md-button--primary }
-[Documentation :material-file-document-outline:](hardware/hardware_overview.md){ .md-button }
+[Explore SF32 :material-file-document-outline:](hardware/chips/SF32_family.md){ .md-button }
 [GitHub :fontawesome-brands-github:](https://github.com/uforge-io){ .md-button }
 
 </div>
@@ -57,7 +57,7 @@ hide:
 
     Microcontrollers, modules, development boards, and production-ready reference designs.
 
-    [See Hardware :material-arrow-right:](hardware/hardware_overview.md){ .uf-link-purple }
+    [See Hardware :material-arrow-right:](hardware/chips/SF32_family.md){ .uf-link-purple }
 
 - :fontawesome-solid-code:{ .uf-ql-icon .uf-green } **SDK & Tools**
 
@@ -65,11 +65,11 @@ hide:
 
     [View Develop :material-arrow-right:](develop/overview.md){ .uf-link-green }
 
-- :fontawesome-solid-book:{ .uf-ql-icon .uf-blue } **Documentation**
+- :fontawesome-solid-book:{ .uf-ql-icon .uf-blue } **Learn**
 
-    Comprehensive documentation, API references, hardware manuals, application notes, and design guides.
+    Architecture and subsystem guidance for graphics, Bluetooth, AI, audio, and low power.
 
-    [Explore Docs :material-arrow-right:](hardware/hardware_overview.md){ .uf-link-blue }
+    [Explore Learn :material-arrow-right:](learn/overview.md){ .uf-link-blue }
 
 - :fontawesome-solid-rocket:{ .uf-ql-icon .uf-pink } **Examples**
 
@@ -131,23 +131,7 @@ hide:
     - :fontawesome-solid-circle:{ .uf-dot-blue } 576 KB SRAM, up to 16 MB PSRAM
     - :fontawesome-solid-circle:{ .uf-dot-blue } QFN68 package, with up to 45 GPIOs and optional integrated linear charger
 
-    [View Series :material-arrow-right:](hardware/chips/SF32LB55x.md){ .uf-link-blue }
-
-- <span class="uf-mcu-chip">SF32LB55</span>
-
-    <span class="uf-mcu-headtext">**SF32LB55x**{ .uf-mcu-title } <span class="uf-mcu-sub">Mainstream AIoT MCU</span></span>
-
-    ---
-
-    - :fontawesome-solid-circle:{ .uf-dot-blue } Cortex-M33 STAR-MC1
-    - :fontawesome-solid-circle:{ .uf-dot-blue } Single-Mode Bluetooth 5.3
-    - :fontawesome-solid-circle:{ .uf-dot-blue } 2D / 2.5D GPU, ePicasso 1.0
-    - :fontawesome-solid-circle:{ .uf-dot-blue } eZip 1.0 Hardware Decompression
-    - :fontawesome-solid-circle:{ .uf-dot-blue } AI Accelerator
-    - :fontawesome-solid-circle:{ .uf-dot-blue } 1.4 MB SRAM, up to 18 MB PSRAM
-    - :fontawesome-solid-circle:{ .uf-dot-blue } Available in QFN68, BGA145, and BGA169 packages, with up to 49 / 95 / 119 GPIOs
-
-    [View Series :material-arrow-right:](hardware/chips/SF32LB56x.md){ .uf-link-blue }
+    [View Series :material-arrow-right:](hardware/chips/SF32LB52x.md){ .uf-link-blue }
 
 - <span class="uf-mcu-chip">SF32LB56</span>
 
@@ -163,7 +147,23 @@ hide:
     - :fontawesome-solid-circle:{ .uf-dot-blue } 960 KB SRAM, up to 16 MB PSRAM
     - :fontawesome-solid-circle:{ .uf-dot-blue } Available in QFN68 and BGA175 packages, with up to 44 / 120 GPIOs
 
-    [View Series :material-arrow-right:](hardware/chips/SF32LB52x.md){ .uf-link-blue }
+    [View Series :material-arrow-right:](hardware/chips/SF32LB56x.md){ .uf-link-blue }
+
+- <span class="uf-mcu-chip">SF32LB57</span>
+
+    <span class="uf-mcu-headtext">**SF32LB57x**{ .uf-mcu-title } <span class="uf-mcu-sub">Multimedia AIoT MCU</span></span>
+
+    ---
+
+    - :fontawesome-solid-circle:{ .uf-dot-blue } Dual-Core Cortex-M33 STAR-MC1
+    - :fontawesome-solid-circle:{ .uf-dot-blue } Dual-Mode Bluetooth 6.3
+    - :fontawesome-solid-circle:{ .uf-dot-blue } 2D / 2.5D GPU, ePicasso 3.0
+    - :fontawesome-solid-circle:{ .uf-dot-blue } eZip 3.0 Hardware Decompression, DCMI Camera Input
+    - :fontawesome-solid-circle:{ .uf-dot-blue } Audio Codec, 2 x AMIC, 2 x DMIC
+    - :fontawesome-solid-circle:{ .uf-dot-blue } 592 KB SRAM, up to 32 MB PSRAM
+    - :fontawesome-solid-circle:{ .uf-dot-blue } Available in QFN68, QFN80, and BGA112 packages, with up to 46 / 47 / 58 / 64 GPIOs
+
+    [View Series :material-arrow-right:](hardware/chips/SF32LB57x.md){ .uf-link-blue }
 
 - <span class="uf-mcu-chip">SF32LB58</span>
 

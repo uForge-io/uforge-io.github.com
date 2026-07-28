@@ -32,6 +32,30 @@ The best example is not always the smallest example. Choose the one that already
 
 </div>
 
+## Representative SDK Starting Points
+
+Use this table after choosing the relevant area. Paths are representative and can change between SDK releases; verify the selected SDK, target board, and configuration before building.
+
+<div align="center"><em>Representative SF32 SDK Example Starting Points</em></div>
+
+<div align="center" markdown>
+
+| Development Goal | Representative SDK Starting Point | What to Prove First | Continue With |
+|:---|:---|:---|:---|
+| GPIO output or input | `example/hal/gpio`, `example/rt_device/gpio` | Correct pin mux, polarity, and interrupt behavior on the actual board. | [Beginner Tutorials](../../tutorials/beginner.md) |
+| Console and system inspection | `example/system/finsh` | Serial console, logs, and basic runtime inspection. | [Beginner Tutorials](../../tutorials/beginner.md) |
+| ADC, PWM, or RTC | `example/hal/adc`, `example/rt_device/pwm`, `example/rt_device/rtc` | Board-specific pin, clock, and peripheral configuration. | [Beginner Tutorials](../../tutorials/beginner.md) |
+| I2C sensor | `example/hal/i2c/master`, `example/rt_device/i2c/eeprom` | Electrical connection, bus addressing, and reliable repeated transfers. | [Intermediate Tutorials](../../tutorials/intermediate.md) |
+| LVGL and local display | `example/multimedia/lvgl/lvgl_v8_examples` | Panel initialization, pixel format, and a stable flush path before complex screens. | [Graphics Overview](../../learn/graphics/overview.md), [Display Controller](../../learn/graphics/display-controller.md) |
+| BLE peripheral service | `example/ble/peripheral`, `example/ble/hrpc` | Advertising, connection, one GATT characteristic, and reconnect behavior. | [Bluetooth Overview](../../learn/bluetooth/overview.md) |
+| Local audio playback | `example/multimedia/audio/local_music`, `mp3_sd_player` | Codec/board path, buffer stability, and cleanup after playback. | [Audio Overview](../../learn/audio/overview.md) |
+| Flash-backed storage | `example/storage/littlefs/nor`, `example/storage/flashdb` | Mount, read/write behavior, and recovery from reset or full storage. | [Intermediate Tutorials](../../tutorials/intermediate.md) |
+| Low-power behavior | `example/pm/classical`, `example/pm/raise_wrist` | Measured current in named states and correct wake-source behavior. | [Low-Power Overview](../../learn/low-power/overview.md) |
+| BLE OTA | `example/ble/peripheral_with_ota` | Interrupted-update recovery and rollback on target hardware. | [Advanced Tutorials](../../tutorials/advanced.md) |
+| Runtime diagnosis | `example/system/cpu_usage_profiler`, `example/system/coredump` | Reproducible CPU trace or crash capture before optimizing. | [Advanced Tutorials](../../tutorials/advanced.md) |
+
+</div>
+
 ## How to Choose an Example
 
 Use this order:
@@ -77,6 +101,10 @@ Choose the example that matches the most constrained part of the product:
 - For OTA products, start from the update flow and partition layout.
 
 Then add the other subsystems one by one.
+
+## Suggested Learning Path
+
+If you are new to the SDK, begin with [Beginner Tutorials](../../tutorials/beginner.md), then move to [Intermediate Tutorials](../../tutorials/intermediate.md) when a single peripheral is stable. Use [Advanced Tutorials](../../tutorials/advanced.md) for measured power work, OTA, custom display bring-up, failure analysis, multi-connection Bluetooth, and custom drivers. The topic overviews explain the architecture and trade-offs behind those examples.
 
 ## SiFli Team Should Add
 

@@ -1,52 +1,77 @@
 ---
-icon: lucide/image
-description: "Practical guide to building SF32 UIs: display selection, framebuffer strategy, LVGL integration, ePicasso acceleration, and memory placement for smooth graphics."
+icon: lucide/palette
+title: "Graphics Overview"
+description: "Overview of building SF32 UIs: display selection, framebuffer strategy, LVGL integration, ePicasso acceleration, and memory placement for smooth graphics."
 tags:
-  - Guides
+  - Graphics
 ---
 
-# Graphics Guide
+# Overview { #graphics-overview }
 
 ## Overview
 
 This guide explains how to build responsive graphical user interfaces on SF32 devices. It focuses on the practical decisions that affect real products: display selection, framebuffer strategy, LVGL integration, ePicasso hardware acceleration, memory placement, and display refresh behavior.
 
-SF32 devices are designed for compact AIoT and wearable products where the UI must feel smooth while the system still meets strict power, memory, and PCB-area targets. The graphics subsystem combines three main pieces:
+SF32 devices are designed for compact AIoT and wearable products where the UI must feel smooth while the system still meets strict power, memory, and PCB-area targets. The graphics path separates resource handling, pixel composition, optional framebuffer compression, and panel output. Keeping those roles distinct is the key to choosing the right optimization.
 
-- An application processor that runs the UI framework and product logic.
-- The **ePicasso** 2D/2.5D graphics accelerator, which speeds up common pixel operations.
-- A display controller that sends rendered pixels to the panel through the selected display interface.
+Use this page when making the early UI architecture decisions that are expensive to reverse: panel and interface, framebuffer strategy, color depth, transparency, asset placement, and refresh policy. The linked Graphics articles then provide the implementation detail for a specific block in that flow.
 
-For a deeper architecture explanation, see [ePicasso GPU Architecture Overview](../architecture/epicasso-gpu.md).
+## SF32 Graphics Flow
 
-## Typical SF32 Graphics Pipeline
-
-A practical SF32 UI pipeline looks like this:
+The typical display-resource path is:
 
 ```text
-Application screens and widgets
+Source images, fonts, and animations
         │
         ▼
-LVGL or another UI framework
+GraphicsTool converts supported resources to eZip or eZip-A
         │
         ▼
-SF32 graphics/display driver
+Compressed assets in NOR Flash, PSRAM, NAND, or file storage
+        │
+        ▼
+eZip hardware decoder expands an asset when required
+        │
+        ▼
+LVGL or another UI framework + graphics/display driver
         │
         ├── CPU fallback rendering
         │
-        └── ePicasso acceleration
+        └── ePicasso pixel acceleration
         │
         ▼
-Draw buffer or framebuffer in memory
+Final rendered bitmap in a draw buffer or framebuffer
+        │
+        ├── Uncompressed display path
+        │
+        └── Optional: extDMA compresses it into TurboPixel
+                    │
+                    ▼
+             TurboPixel framebuffer in PSRAM
         │
         ▼
-Display controller
+Display controller transfers pixels to the panel
         │
         ▼
 SPI / QSPI / 8080 / RGB / MIPI DSI / EPD / JDI panel
 ```
 
-The best designs keep these layers cleanly separated. Application code should describe UI state and behavior. The UI framework should manage widgets, invalidation, and drawing. The display driver should decide which operations can be accelerated and how pixels are flushed to the panel.
+The path is configurable rather than mandatory: a product may not use eZip, ePicasso, TurboPixel, or a full framebuffer. Availability and connections depend on the selected device, SDK, display interface, panel, and driver configuration. In particular, TurboPixel is documented on SF32LB55x, SF32LB56x, and SF32LB58x; it is **not available** on SF32LB52x or SF32LB57x.
+
+<div align="center"><em>Roles in the SF32 Graphics Flow</em></div>
+
+<div align="center" markdown>
+
+| Block | Position in the Flow | Primary Responsibility | It Does Not Replace |
+|:---|:---|:---|:---|
+| **eZip / eZip-A** | Before rendering, while reading stored resources | Losslessly decompress supported static or animated assets; eZip can also be used for general-purpose data. | The renderer, final framebuffer, or display controller. |
+| **ePicasso** | During rendering and composition | Accelerate supported copy, fill, blend, transform, and composition work on pixels in memory. | Asset compression or panel transfer. |
+| **TurboPixel** | After rendering, before panel output on supported devices | Use extDMA to compress the final bitmap at a fixed ratio with lossy compression, reducing PSRAM capacity and bandwidth pressure. Available on SF32LB55x, SF32LB56x, and SF32LB58x; not on SF32LB52x or SF32LB57x. | Lossless asset compression or pixel rendering. |
+| **Display controller** | Final output stage | Decompress TurboPixel when that path is enabled and transfer prepared pixels through the panel interface. | eZip asset decompression or graphics composition. |
+
+</div>
+
+Application code describes UI state and behavior. The UI framework manages widgets, invalidation, and drawing. The graphics/display driver chooses CPU or ePicasso execution and coordinates buffers; the display controller owns panel transfer. For feature-specific implementation details, see [ePicasso](epicasso-gpu.md), [eZip](ezip.md), and [TurboPixel](turbopixel.md).
 
 ## Choose the Display First
 
@@ -64,27 +89,7 @@ The display choice affects nearly every graphics decision. Before optimizing cod
 
 A small SPI or QSPI AMOLED behaves very differently from an RGB panel, MIPI DSI panel, JDI memory display, or EPD panel. The same UI framework can target many display types, but the best buffer strategy and refresh policy will change.
 
-## Display Interface Options
-
-SF32 family members support different display interfaces. Always confirm the exact interface list for the selected device and package.
-
-<div align="center"><em>Table: Display Interface Options</em></div>
-
-<div align="center" markdown>
-
-| Interface | Typical Use | Design Notes |
-|:----------|:------------|:-------------|
-| **3-line / 4-line SPI** | Small TFT or AMOLED panels, simple HMIs | Low pin count, simple routing, but limited bandwidth for full-screen animation. |
-| **Dual-SPI / Quad-SPI** | Wearable AMOLED and compact displays | Better bandwidth than basic SPI while keeping pin count moderate. |
-| **8080 MCU interface** | Parallel display panels | Higher bandwidth than serial SPI, but uses more pins. |
-| **RGB / DPI** | Larger or higher-refresh displays | Continuous pixel stream, higher bandwidth, more pins, stricter timing. |
-| **MIPI DSI** | High-density AMOLED or advanced panels | High bandwidth and low pin count, but more complex initialization and signal integrity. |
-| **EPD** | E-paper and ultra-low-refresh displays | Excellent static power behavior, but slow updates and special waveform/power handling. |
-| **JDI / Memory-in-Pixel** | Low-power reflective displays | Good for always-on or sunlight-readable UI, with different update patterns from TFT/AMOLED. |
-
-</div>
-
-For example, SF32LB52x is well suited to compact displays up to 512 x 512 using SPI/QSPI, JDI, or EPD-style interfaces depending on variant. Higher-end family members add options for richer RGB, MIPI, or higher-resolution display designs.
+For detailed interface selection, flush-path design, and panel bring-up, see [Display Controller](display-controller.md).
 
 ## Pick the Right SF32 Device
 
@@ -175,6 +180,36 @@ Color depth affects visual quality, memory use, and bus bandwidth.
 
 For most wearable and compact HMI products, RGB565 is a strong default unless the panel, UI quality target, or product requirements demand more.
 
+## Transparency, Alpha, and Layer Composition
+
+Transparency is represented by an **alpha** factor: a value that specifies how strongly a foreground pixel contributes when it is drawn over a background pixel. Alpha is independent of RGB color channels. An opaque pixel has alpha 1 (or 255 in an 8-bit alpha channel); a fully transparent pixel has alpha 0.
+
+For the common source-over operation, each output color channel is calculated as:
+
+```text
+output = foreground × alpha + background × (1 − alpha)
+```
+
+For example, an icon pixel with 50% alpha contributes half of its color and leaves half of the background visible. Repeating this operation produces the visual stack of a UI: a background, images, text, translucent controls, shadows, and animation layers. The final composited bitmap then proceeds through the framebuffer and display-controller stages shown above.
+
+<div align="center"><em>Table: Alpha Modes and Their Use</em></div>
+
+<div align="center" markdown>
+
+| Alpha Mode | Meaning | Typical Use | Integration Consideration |
+|:-----------|:--------|:------------|:--------------------------|
+| **Per-pixel alpha** | Each pixel carries its own alpha value. | Anti-aliased icons and text, soft edges, shadows, PNG-style assets. | Preserves detailed transparency but increases source-data size and blend work. |
+| **Global alpha** | One alpha value applies to an entire object or layer. | Fading a screen, dialog, or image. | Efficient for uniform fades; cannot express soft edges within the object. |
+| **Binary alpha** | A pixel is fully visible or fully transparent. | Masks and simple glyphs. | Lower complexity, but edges can appear jagged without anti-aliasing. |
+
+</div>
+
+RGB565 contains no alpha channel, so it is normally used for opaque draw targets and final framebuffers. Source assets or intermediate layers that need alpha commonly use a format with an alpha channel, such as ARGB8888, or a color image plus a separate alpha mask. The driver must use the actual formats supported by the SDK, display path, and selected accelerator.
+
+Two alpha representations are common. With **straight alpha**, RGB describes the original color and alpha is applied during blending. With **premultiplied alpha**, RGB has already been multiplied by alpha; the source-over equation becomes `output = premultiplied_foreground + background × (1 − alpha)`. Do not mix the two representations: treating straight-alpha data as premultiplied, or the reverse, causes dark or light halos around edges.
+
+Alpha blending reads both foreground and destination pixels, then writes the result. It therefore increases memory traffic compared with a simple opaque copy or fill. Use ePicasso where the driver supports the selected blend operation and pixel formats; otherwise keep a CPU fallback. Limit full-screen translucent layers, update only invalidated regions, and avoid unnecessary intermediate surfaces when PSRAM bandwidth or power is tight.
+
 ## Integrating LVGL
 
 LVGL is a practical UI framework for SF32 devices because it provides widgets, styles, input handling, animation, invalidation, and display-driver hooks.
@@ -188,7 +223,7 @@ A typical LVGL integration needs:
 - Asset handling for images and fonts.
 - Optional hardware acceleration hooks for ePicasso.
 
-The display flush callback is where rendered pixels are transferred to the panel. Depending on the display type, the callback may send a partial region over SPI/QSPI, update a panel GRAM window, start a DMA transfer, or coordinate with a framebuffer scanned by the display controller.
+The display flush callback is the rendering/output boundary. Its controller and DMA behavior is covered in [Display Controller](display-controller.md#controller-buffers-and-flush-paths).
 
 ## LVGL Porting Decisions
 
@@ -258,91 +293,7 @@ Graphics performance is often limited by memory movement. Place buffers intentio
 
 If the CPU, ePicasso, DMA, display controller, or other peripherals share buffers, follow the SDK cache maintenance rules. Clean CPU-written buffers before hardware reads them. Invalidate buffers after hardware writes them and before the CPU reads them.
 
-## Partial Refresh and Dirty Regions
-
-Most embedded UIs do not need to redraw the full screen every frame. LVGL tracks invalidated regions, and the driver can flush only the changed areas.
-
-Partial refresh is especially valuable for:
-
-- SPI and QSPI panels.
-- Battery-powered wearables.
-- Static screens with small changing values.
-- EPD and JDI displays.
-- UIs with small indicators, time updates, or notifications.
-
-Full-screen refresh is useful for animation-heavy screens, transitions, or panels that naturally scan from a full framebuffer. The right choice depends on display interface bandwidth and memory budget.
-
-## Panel Bring-Up Sequence
-
-Most display failures come from initialization order, power sequencing, or timing assumptions. Bring up the panel in stages:
-
-1. Verify power rails, reset timing, backlight/enable pins, and basic current draw.
-2. Send the vendor initialization sequence exactly as provided, then simplify only after the panel is stable.
-3. Fill solid colors first; this catches byte order, pixel format, and interface wiring issues.
-4. Draw simple geometric patterns; this catches stride, window, and coordinate problems.
-5. Add image assets and text; this catches color conversion and font/asset placement issues.
-6. Enable partial refresh, DMA, and acceleration one at a time.
-7. Test sleep, display-off, wake, and reinitialization paths.
-
-Do not debug LVGL widgets until the panel can reliably display simple fills and patterns through the same flush path the final UI will use.
-
-## Display-Type Guidance
-
-### SPI and QSPI AMOLED/TFT
-
-SPI and QSPI displays are common in compact wearables because they use relatively few pins. Their main limitation is bandwidth.
-
-Recommendations:
-
-- Prefer partial refresh when possible.
-- Use RGB565 unless higher color depth is required.
-- Keep animations modest or use smaller animated regions.
-- Use ePicasso for blending and image operations before flushing.
-- Avoid full-screen redraws for small UI changes.
-
-### RGB / DPI Panels
-
-RGB panels consume pixels continuously from memory or a display pipeline. They can support richer interfaces, but they require more pins and more sustained bandwidth.
-
-Recommendations:
-
-- Use a framebuffer strategy that matches the required refresh rate.
-- Budget memory bandwidth for display scanout plus CPU, ePicasso, DMA, and other workloads.
-- Consider double buffering for tear-free animation when memory allows.
-- Keep timing and signal integrity in mind during PCB design.
-
-### MIPI DSI Panels
-
-MIPI DSI is useful for higher-density AMOLED and advanced displays. It can provide high bandwidth with relatively few pins, but panel initialization and signal integrity are more complex.
-
-Recommendations:
-
-- Confirm command-mode or video-mode behavior for the target panel.
-- Verify panel initialization sequence early.
-- Test low-power display states and wake timing.
-- Leave margin for UI bandwidth, not just theoretical interface bandwidth.
-
-### EPD Displays
-
-EPD panels are very different from TFT or AMOLED. They are excellent for static information and low refresh rates, but updates are slow and often require special waveform and power sequencing.
-
-Recommendations:
-
-- Design UI around infrequent updates.
-- Use partial update modes if supported and visually acceptable.
-- Avoid animations and rapid redraw assumptions.
-- Plan display PMIC, VCOM, and waveform requirements carefully.
-
-### JDI / Memory-in-Pixel Displays
-
-JDI-style memory displays can be attractive for always-on, sunlight-readable, low-power products.
-
-Recommendations:
-
-- Use UI patterns that benefit from persistent display memory.
-- Keep update regions small.
-- Handle COM inversion or display-specific maintenance requirements according to the panel datasheet.
-- Validate outdoor readability, refresh behavior, and power in real product conditions.
+For partial refresh, panel-specific behavior, and the staged bring-up sequence, see [Display Controller](display-controller.md).
 
 ## Asset Preparation
 
