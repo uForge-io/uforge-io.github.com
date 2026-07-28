@@ -195,6 +195,11 @@ nav = [
   { "Blog" = [
     "blog/blog.md",
   ]},
+  { "About" = [
+    "about/about.md",
+    "about/contact.md",
+    { "Glossary" = "about/glossary.md" },
+  ]}
 ]
 
 # Custom CSS/JS, paths relative to docs_dir.

@@ -39,7 +39,8 @@
   {% if page.next_page %}
     <link rel="next" href="{{ page.next_page.url | url }}">
   {% endif %}
-  {% if config.extra.alternate is iterable %}
+  {% set offline = config.extra.offline and config.extra.offline.enabled %}
+  {% if config.extra.alternate is iterable and not offline %}
     {% for alt in config.extra.alternate %}
       {% set target = ("/zh/" ~ page.url) if alt.lang == "zh" else ("/" ~ page.url) %}
       <link rel="alternate" href="{{ target }}" hreflang="{{ alt.lang | d(lang.t('language')) }}">
