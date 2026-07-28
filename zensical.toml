@@ -13,13 +13,12 @@ repo_url = "https://github.com/uForge-io/uforge-site"
 repo_name = "μForge-io/uforge-site"
 
 copyright = """
-Copyright &copy; 2026 μForge.io - <a href='mailto:contact@uforge.io'>Contact Us</a>
+Copyright &copy; 2026 μForge.io · <a href='/about/about/'>About</a> · <a href='/about/glossary/'>Glossary</a> · <a href='/about/contact/'>Contact</a>
 """
 
 # Nav structure (controls sidebar only -- Zensical builds every .md under
 # docs_dir regardless of nav). Read more: https://zensical.org/docs/setup/navigation/
 nav = [
-  { "Home" = "index.md" },
   { "Getting Started" = [
     "getting-started/getting-started-overview.md",
     { "SiFli-SDK" = [
@@ -37,75 +36,97 @@ nav = [
     ]},
     { "MicroPython" = [
       "getting-started/micropython/getting-started-micropython.md"
+    ]},
+    { "Tutorials" = [
+      "tutorials/overview.md",
+      { "First Peripherals" = "tutorials/beginner.md" },
+      { "Connected Subsystems" = "tutorials/intermediate.md" },
+      { "Product Validation" = "tutorials/advanced.md" }
     ]}
   ]},
   { "Hardware" = [
-    {"Overview" = "hardware/hardware_overview.md"},
-    { "Chips" = [
+    { "Understand SF32" = [
       "hardware/chips/SF32_family.md",
-      "hardware/chips/SF32_namingrule.md",
-      { "SF32LB52" = [
-        { "Introduction" = "hardware/chips/SF32LB52x.md" },
-        { "Hardware Design Guide" = "hardware/chips/SF32LB52x_hardware_design_guide.md"},
-        { "Hardware Design Checklist" = "hardware/chips/SF32LB52x_hardware_design_checklist.md"},
-      ]},
-      { "SF32LB55" = [
-        { "Introduction" = "hardware/chips/SF32LB55x.md" },
-        { "Hardware Design Guide" = "hardware/chips/SF32LB55x_hardware_design_guide.md" },
-        { "Hardware Design Checklist" = "hardware/chips/SF32LB55x_hardware_design_checklist.md" },
-      ]},
-      { "SF32LB56" = [
-        { "Introduction" = "hardware/chips/SF32LB56x.md" },
-        { "Hardware Design Guide" = "hardware/chips/SF32LB56x_hardware_design_guide.md" },
-        { "Hardware Design Checklist" = "hardware/chips/SF32LB56x_hardware_design_checklist.md" },
-      ]},
-      { "SF32LB57" = [
-        { "Introduction" = "hardware/chips/SF32LB57x.md" },
-        { "Hardware Design Guide" = "hardware/chips/SF32LB57x_hardware_design_guide.md" },
-      ]},
-      { "SF32LB58" = [
-        { "Introduction" = "hardware/chips/SF32LB58x.md" },
-        { "Hardware Design Guide" = "hardware/chips/SF32LB58x_hardware_design_guide.md" },
-        { "Hardware Design Checklist" = "hardware/chips/SF32LB58x_hardware_design_checklist.md" },
-      ]}
+      "hardware/chips/SF32_namingrule.md"
     ]},
-    { "Modules" = [
-      { "SF32LB52-MOD-1" = [
-        { "Introduction" = "hardware/modules/SF32LB52-MOD-1.md" },
-        { "Hardware Design Guide" = "hardware/modules/SF32LB52-MOD-1_hardware_design_guide.md" },
-      ]},
-      { "SF32LB56-MOD" = [
-        { "Introduction" = "hardware/modules/SF32LB56-MOD.md" },
-        { "Hardware Design Guide" = "hardware/modules/SF32LB56-MOD_hardware_design_guide.md" },
-      ]},
-      { "SF32LB58-MOD" = [
-        { "Introduction" = "hardware/modules/SF32LB58-MOD.md" },
-        { "Hardware Design Guide" = "hardware/modules/SF32LB58-MOD_hardware_design_guide.md" },
-      ]},
-      { "M2 Module" = [
-        { "M2 Interface Naming Rules" = "hardware/modules/M2 Interface Naming Rules.md" },
-        { "M2 Interface Definition" = "hardware/modules/M2-interface-definition.md" },
-      ]}
+    { "Plan a Product" = "hardware/product-planning.md" },
+    { "Reference Designs" = [
+      "hardware/reference-designs.md",
+      "hardware/reference-design-journey.md"
     ]},
-    { "Development Boards" = [
+    { "Choose Hardware" = [
+      "hardware/choose-hardware.md",
+      { "Chips" = [
+        "hardware/chips/SF32LB52x.md",
+        "hardware/chips/SF32LB55x.md",
+        "hardware/chips/SF32LB56x.md",
+        "hardware/chips/SF32LB57x.md",
+        "hardware/chips/SF32LB58x.md"
+      ]},
+      { "Modules" = [
+        "hardware/modules/SF32LB52-MOD-1.md",
+        "hardware/modules/SF32LB56-MOD.md",
+        "hardware/modules/SF32LB58-MOD.md"
+      ]},
+      { "Development Boards" = [
       { "SF32LB52" = [
         "hardware/devkits/SF32LB52-DevKit-LCD.md",
         "hardware/devkits/SF32LB52-DevKit-Core-3p3.md",
         "hardware/devkits/SF32LB52-DevKit-Nano.md",
         "hardware/devkits/SF32LB52-DevKit-ULP.md"
       ]},
+      { "SF32LB56" = [
+        "hardware/devkits/SF32LB56-DevKit-LCD.md"
+      ]},
       { "SF32LB58" = [
         "hardware/devkits/SF32LB58-DevKit-LCD.md"
       ]}
+      ]}
     ]},
-    { "Others" = [
-      { "SiFli Approved Vendor List" = "hardware/others/sifli-approved-vendor-list.md" },
-      { "EDA Tool Libraries" = "hardware/others/eda-tool-libraries.md" }
+    { "Design for Production" = [
+      "hardware/design-for-production.md",
+      { "Hardware Design Guides and Checklists" = [
+        { "SF32LB52" = [
+          "hardware/chips/SF32LB52x_hardware_design_guide.md",
+          "hardware/chips/SF32LB52x_hardware_design_checklist.md"
+        ]},
+        { "SF32LB55" = [
+          "hardware/chips/SF32LB55x_hardware_design_guide.md",
+          "hardware/chips/SF32LB55x_hardware_design_checklist.md"
+        ]},
+        { "SF32LB56" = [
+          "hardware/chips/SF32LB56x_hardware_design_guide.md",
+          "hardware/chips/SF32LB56x_hardware_design_checklist.md"
+        ]},
+        { "SF32LB57" = [
+          "hardware/chips/SF32LB57x_hardware_design_guide.md"
+        ]},
+        { "SF32LB58" = [
+          "hardware/chips/SF32LB58x_hardware_design_guide.md",
+          "hardware/chips/SF32LB58x_hardware_design_checklist.md"
+        ]}
+      ]},
+      { "Module Design Guides" = [
+        "hardware/modules/SF32LB52-MOD-1_hardware_design_guide.md",
+        "hardware/modules/SF32LB56-MOD_hardware_design_guide.md",
+        "hardware/modules/SF32LB58-MOD_hardware_design_guide.md"
+      ]},
+      { "Module Interface Standards" = [
+        "hardware/modules/interface-standards-overview.md",
+        "hardware/modules/M2 Interface Naming Rules.md",
+        "hardware/modules/M2-interface-definition.md"
+      ]},
+      { "Components and CAD Libraries" = [
+        "hardware/others/components-and-cad-libraries.md",
+        "hardware/others/sifli-approved-vendor-list.md",
+        "hardware/others/eda-tool-libraries.md"
+      ]}
     ]}
   ]},
   { "Develop" = [
     "develop/overview.md",
-    { "Platforms" = [
+    "develop/software-support-matrix.md",
+    { "Software Paths" = [
       { "SiFli-SDK" = [
         "develop/platforms/sifli-sdk/overview.md",
         "develop/platforms/sifli-sdk/build-flash-monitor.md",
@@ -113,24 +134,16 @@ nav = [
         "develop/platforms/sifli-sdk/components.md",
         "develop/platforms/sifli-sdk/debugging-diagnostics.md"
       ]},
-      { "CodeKit" = [
-        "develop/platforms/codekit/overview.md"
-      ]},
-      { "Zephyr" = [
-        "develop/platforms/zephyr/overview.md"
-      ]},
-      { "Arduino" = [
-        "develop/platforms/arduino/overview.md"
-      ]},
-      { "MicroPython" = [
-        "develop/platforms/micropython/status.md"
-      ]},
-      { "Rust" = [
+      { "Experimental / Community" = [
+        "develop/platforms/zephyr/overview.md",
+        "develop/platforms/arduino/overview.md",
+        "develop/platforms/micropython/status.md",
         "develop/platforms/rust/overview.md"
       ]}
     ]},
     { "Tools" = [
-      "develop/tools/index.md"
+      "develop/tools/index.md",
+      "develop/tools/codekit.md"
     ]},
     { "Firmware Topics" = [
       "develop/firmware-topics/index.md",
@@ -140,44 +153,47 @@ nav = [
       "develop/firmware-topics/power-management.md",
       "develop/firmware-topics/logging-crash-analysis.md"
     ]},
-    { "Examples" = [
-      "develop/examples/index.md"
-    ]}
+    { "Examples" = "develop/examples/index.md" }
   ]},
   { "Learn" = [
+    "learn/overview.md",
     { "Architecture" = [
+      { "Overview" = "learn/architecture/overview.md" },
       "learn/architecture/star-mc1.md",
-      "learn/architecture/epicasso-gpu.md",
-      "learn/architecture/ptm-parallel-task-machine.md",
-      "learn/architecture/ai-accelerator.md",
-      "learn/architecture/bluetooth-processor.md"
+      "learn/architecture/psram-and-memory-types.md",
+      "learn/architecture/ptm-parallel-task-machine.md"
     ]},
-    { "Guides" = [
-      "learn/guides/graphics.md",
-      "learn/guides/bluetooth.md",
-      "learn/guides/audio.md",
-      "learn/guides/ai.md",
-      "learn/guides/power.md"
+    { "Graphics" = [
+      { "Overview" = "learn/graphics/overview.md" },
+      "learn/graphics/epicasso-gpu.md",
+      "learn/graphics/ezip.md",
+      "learn/graphics/turbopixel.md",
+      "learn/graphics/display-controller.md"
     ]},
-    { "Tutorials" = [
-      "learn/tutorials/beginner.md",
-      "learn/tutorials/intermediate.md",
-      "learn/tutorials/advanced.md"
+    { "Bluetooth" = [
+      { "Overview" = "learn/bluetooth/overview.md" },
+      "learn/bluetooth/processor.md",
+      "learn/bluetooth/pan.md"
     ]},
-    { "Glossary" = [
-      "about/glossary.md"
+    { "AI" = [
+      { "Overview" = "learn/ai/overview.md" },
+      "learn/ai/accelerator.md"
     ]},
-    { "Examples" = [
-      "learn/examples.md"
-    ]}
+    { "Audio" = [
+      { "Overview" = "learn/audio/overview.md" },
+      "learn/audio/audio-server-buffering.md"
+    ]},
+    { "Low Power" = [
+      { "Overview" = "learn/low-power/overview.md" },
+      "learn/low-power/measurement-and-validation.md"
+    ]},
+  ]},
+  { "Projects" = [
+    "projects/overview.md",
+    "projects/sf32-xiaozhi.md"
   ]},
   { "Blog" = [
     "blog/blog.md",
-  ]},
-  { "About" = [
-    "about/about.md",
-    "about/contact.md",
-#    "about/release_notes_1p127.md"
   ]},
 ]
 

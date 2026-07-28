@@ -1,8 +1,8 @@
 ---
-icon: lucide/brain-circuit
+icon: lucide/microchip
 description: "How the SF32 AI accelerator hardware speeds up on-device machine learning and signal processing, and why edge AI matters for wearables and AIoT products."
 tags:
-  - Architecture
+  - AI
 ---
 # AI Accelerator
 
@@ -13,6 +13,8 @@ The **AI accelerator** in selected SF32 devices is a hardware subsystem for runn
 In the SF32 family, AI acceleration is most relevant to products such as premium wearables, health-monitoring devices, smart displays, voice-enabled accessories, sensor-fusion systems, and compact AIoT products. These devices often combine Bluetooth connectivity, graphics, audio, sensors, and user interaction in a small battery-powered form factor. The accelerator helps reserve CPU time and energy for the rest of the system while selected AI kernels run in dedicated hardware.
 
 The exact AI feature set depends on the specific SF32 device and SDK support. Always check the datasheet, reference manual, and SDK documentation for the target chip before committing a model architecture or memory plan.
+
+Read this page when you are deciding whether a local AI feature fits the selected SF32 device, or when you need to divide an inference pipeline between sensors, the CPU, memory, and the accelerator. For model integration and deployment workflow, start with the companion [AI Overview](overview.md).
 
 ## Why On-Device AI Matters
 

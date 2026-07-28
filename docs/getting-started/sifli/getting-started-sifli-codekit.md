@@ -13,6 +13,8 @@ SiFli CodeKit is the VS Code extension for SiFli-SDK development. It provides gu
 
 Use this path if you prefer an IDE workflow. If you want to understand the commands behind the buttons, use the [manual SiFli-SDK guide](getting-started-sifli-sdk.md).
 
+This is the first-run guide. After `hello_world` works, use the canonical [CodeKit tool reference](../../develop/tools/codekit.md) for CodeKit's day-to-day role, reproducibility expectations, and failure boundaries.
+
 ## What You'll Need
 
 **Hardware**
@@ -140,8 +142,8 @@ You are ready to move on when:
 ## Where to Go Next
 
 - Use [SiFli-SDK](getting-started-sifli-sdk.md) to understand the equivalent terminal commands.
-- Continue with [Beginner Tutorials](../../learn/tutorials/beginner.md) after `hello_world` works.
-- Review [Bluetooth](../../learn/guides/bluetooth.md), [Graphics](../../learn/guides/graphics.md), [Audio](../../learn/guides/audio.md), and [Power](../../learn/guides/power.md) when you start a real product feature.
+- Continue with [Beginner Tutorials](../../tutorials/beginner.md) after `hello_world` works.
+- Review [Bluetooth Overview](../../learn/bluetooth/overview.md), [Graphics Overview](../../learn/graphics/overview.md), [Audio Overview](../../learn/audio/overview.md), and [Low-Power Overview](../../learn/low-power/overview.md) when you start a real product feature.
 
 ## What SiFli Should Add
 

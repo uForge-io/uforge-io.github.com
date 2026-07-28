@@ -1,11 +1,12 @@
 ---
 icon: lucide/bluetooth
-description: "Practical guide to Bluetooth on SF32: BLE vs. dual-mode, GATT service design, connection-parameter tuning, pairing/security, LE Audio, and coexistence."
+title: "Bluetooth Overview"
+description: "Overview of Bluetooth on SF32: BLE vs. dual-mode, GATT service design, connection-parameter tuning, pairing/security, LE Audio, and coexistence."
 tags:
-  - Guides
+  - Bluetooth
 ---
 
-# Bluetooth Guide
+# Overview { #bluetooth-overview }
 
 ## Overview
 
@@ -13,7 +14,9 @@ This guide explains how to plan and build Bluetooth connectivity for SF32 produc
 
 SF32 devices handle Bluetooth with a heterogeneous split: the application processor runs product logic, GATT services, and UI, while a dedicated Bluetooth or low-power processor handles link-layer timing and radio scheduling. This guide assumes that split and focuses on how to use it well from firmware.
 
-For a deeper explanation of the underlying subsystem, see [Bluetooth Processor Architecture](../architecture/bluetooth-processor.md).
+For a deeper explanation of the underlying subsystem, see [Bluetooth Processor Architecture](processor.md).
+
+Use this page when defining the product's wireless behavior: which roles and profiles it needs, what response and battery life users expect, and how the phone, radio, and application firmware should share responsibility. It is a design guide, not a substitute for validating interoperability on the intended phones and accessories.
 
 ## Define the Product's Connectivity Requirements
 
@@ -39,7 +42,7 @@ BLE is the right default for most connected wearables and sensors: intermittent,
 
 Add Classic Bluetooth when the product needs audio streaming (A2DP/AVRCP), hands-free calling (HFP), serial-style data links (SPP), or compatibility with existing Classic profiles. Dual-mode designs are more demanding on radio scheduling and coexistence than BLE-only designs, which is exactly the workload the dedicated Bluetooth processor is built to isolate from the rest of the system.
 
-Not every SF32 family member exposes dual-mode Bluetooth — check the [Bluetooth Processor Architecture](../architecture/bluetooth-processor.md#device-family-differences) device table before committing to a part number.
+Not every SF32 family member exposes dual-mode Bluetooth — check the [Bluetooth Processor Architecture](processor.md#device-family-differences) device table before committing to a part number.
 
 ## Pick the Right SF32 Device
 
@@ -60,7 +63,7 @@ Choose the device based on the connectivity feature set the product needs, not j
 
 </div>
 
-Cross-check against display, memory, and AI requirements from the [Graphics Guide](graphics.md) and [AI Accelerator](../architecture/ai-accelerator.md) page if the product needs more than connectivity alone.
+Cross-check against display, memory, and AI requirements from the [Graphics Overview](../graphics/overview.md) and [AI Accelerator](../ai/accelerator.md) page if the product needs more than connectivity alone.
 
 ## GATT Services and the Sibles Framework
 
@@ -106,7 +109,7 @@ Two distinct paths exist depending on the audio approach:
 - **Classic Bluetooth audio** — A2DP for streaming, AVRCP for transport control, HFP for calls. Mature, broadly compatible with existing phones and headsets.
 - **LE Audio** — built on the Bluetooth LE Audio broadcast model (BAP). The SDK includes broadcast source and sink examples, including a mixed broadcast-source-with-Classic-BT example for products that need to bridge both worlds during a transition period.
 
-Either path shares the same underlying constraint: audio needs stable timing, buffering, and DMA-backed sample movement, which is why audio-capable SF32 products generally lean on the higher-tier family members (SF32LB52x/56x/58x) rather than the BLE-only SF32LB55x. For the DMA/buffering side of this, see the [Audio Guide](audio.md) and the [Bluetooth Processor Architecture](../architecture/bluetooth-processor.md#bluetooth-audio-and-le-audio) page.
+Either path shares the same underlying constraint: audio needs stable timing, buffering, and DMA-backed sample movement, which is why audio-capable SF32 products generally lean on the higher-tier family members (SF32LB52x/56x/58x) rather than the BLE-only SF32LB55x. For the DMA/buffering side of this, see the [Audio Overview](../audio/overview.md) and the [Bluetooth Processor Architecture](processor.md#bluetooth-audio-and-le-audio) page.
 
 ## Implementation Pattern for Sibles Services
 
@@ -203,7 +206,7 @@ Bluetooth on SF32 rarely runs alone — it shares the system with graphics, audi
 - Display and PSRAM traffic compete for memory bandwidth with Bluetooth audio buffers.
 - Sensor interrupts that wake the application processor too often defeat the power benefit of the Bluetooth processor sleeping the rest of the system.
 
-See [Coexistence with Other Workloads](../architecture/bluetooth-processor.md#coexistence-with-other-workloads) for the system-level view, and test under realistic worst-case combinations (e.g., active display + audio + a busy BLE link), not each subsystem in isolation.
+See [Coexistence with Other Workloads](processor.md#coexistence-with-other-workloads) for the system-level view, and test under realistic worst-case combinations (e.g., active display + audio + a busy BLE link), not each subsystem in isolation.
 
 ## RF, Interoperability, and Certification Readiness
 

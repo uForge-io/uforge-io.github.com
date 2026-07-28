@@ -1,5 +1,6 @@
 ---
 icon: lucide/cpu
+description: "An introduction to Arm China's STAR-MC1 Cortex-M33-compatible CPU core, its positioning against Arm Cortex-M processors, and what it means for SF32 software."
 tags:
     - Architecture
 ---
@@ -10,6 +11,8 @@ tags:
 **STAR-MC1** is an enhanced implementation of the **Arm Cortex-M33** architecture developed by Arm China. It keeps the Cortex-M33 instruction set, programming model, exception model, and software ecosystem, so Cortex-M33 firmware, RTOS ports, middleware, libraries, and development tools can be reused with little or no application-level migration work.
 
 For SF32 devices, STAR-MC1 is important because it gives the platform a stronger application processor while preserving the low-power and software-friendly character of Cortex-M-class microcontrollers. In SiFli and SF32 documentation, the application CPU may therefore be described as **Arm Cortex-M33**, **Cortex-M33 STAR-MC1**, or simply **STAR-MC1**, depending on the level of detail being discussed.
+
+Read this page when you know the Arm Cortex-M family and need to position STAR-MC1 correctly for software, performance, or part selection. It explains what remains familiar, what can differ by SoC implementation, and why STAR-MC1 should not be treated as a fixed Cortex-M7 replacement.
 
 ## Positioning for Developers
 
@@ -159,7 +162,7 @@ Typical examples include:
 ## Key Takeaways
 
 - STAR-MC1 is Cortex-M33-compatible, so it preserves the familiar Armv8-M embedded software model.
-- Integrated instruction and data caches improve real-world performance, especially when code and data live outside fast internal SRAM.
+- When the SoC enables instruction and data caches, they can improve real-world performance, especially when code and data live outside fast internal SRAM.
 - CDE provides a path for custom instruction acceleration when supported by the SoC and software stack.
 - STAR-MC1 bridges the space between Cortex-M33 efficiency and Cortex-M7-class application performance.
 - For SF32 devices, it helps enable richer graphics, audio, AIoT, and wearable applications without moving away from the MCU development model.

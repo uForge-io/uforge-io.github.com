@@ -320,7 +320,7 @@ XSSD01GGAI is the only part qualified only to 0°C–70°C rather than the exten
 ## LCD Driver
 
 !!! warning "Early-stage list — one part qualified so far"
-    Only a single display driver has completed AVL qualification as of V0.3. This is not a reflection of what SF32 can drive (see the [Graphics Guide](../../learn/guides/graphics.md) and [ePicasso GPU Architecture](../../learn/architecture/epicasso-gpu.md) for the much longer list of interfaces and panel types SF32 supports) — it's simply how far formal AVL sign-off has reached. Check the [downloadable AVL spreadsheet](https://downloads.sifli.com/hardware/files/documentation/SIFLI-MCU-AVL-%E8%AE%A4%E8%AF%81%E8%A1%A8-V0.3-20260121.xlsx) directly for anything added after this page was written, and treat panels not yet listed here as "verify with SiFli before committing to volume," not "unsupported."
+    Only a single display driver has completed AVL qualification as of V0.3. This is not a reflection of what SF32 can drive (see the [Graphics Overview](../../learn/graphics/overview.md) and [ePicasso GPU Architecture](../../learn/graphics/epicasso-gpu.md) for the much longer list of interfaces and panel types SF32 supports) — it's simply how far formal AVL sign-off has reached. Check the [downloadable AVL spreadsheet](https://downloads.sifli.com/hardware/files/documentation/SIFLI-MCU-AVL-%E8%AE%A4%E8%AF%81%E8%A1%A8-V0.3-20260121.xlsx) directly for anything added after this page was written, and treat panels not yet listed here as "verify with SiFli before committing to volume," not "unsupported."
 
 <div align="center"><em>LCD Driver Qualified Parts</em></div>
 

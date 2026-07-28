@@ -1,8 +1,8 @@
 ---
-icon: lucide/bluetooth
+icon: lucide/radio-tower
 description: "How SF32's dedicated Bluetooth processor offloads radio timing and link control from the application CPU, enabling low-power always-connected products."
 tags:
-  - Architecture
+  - Bluetooth
 ---
 # Bluetooth Processor
 
@@ -13,6 +13,8 @@ The **Bluetooth processor** is the dedicated wireless-control subsystem inside S
 This architecture is one of the reasons the SF32LB family is well suited for battery-powered connected products. Instead of forcing the main application CPU to stay awake for every wireless event, SF32 devices use a heterogeneous multi-core design: the application processor handles product logic and user experience, while a low-power Bluetooth or always-on processor keeps the wireless link alive.
 
 Depending on the SF32 device, this low-power processor may be used only as a Bluetooth controller or may also be available for user-programmable low-power tasks such as sensor processing and always-on system management.
+
+Read this page when you need to understand where Bluetooth timing and controller firmware run, whether the low-power core is programmable on the chosen family, or how a connected product can let its application CPU sleep. For service design and product-level Bluetooth integration, see [Bluetooth Overview](overview.md).
 
 ## Why a Dedicated Bluetooth Processor Matters
 
@@ -73,6 +75,15 @@ The SF32LB family uses different low-power processor configurations across devic
 </div>
 
 The important distinction is that **SF32LB52x is optimized around a dedicated Bluetooth controller-only low-power core**, while the larger SF32LB55x/LB56x/LB58x devices expose a more general low-power processor role. This affects how much always-on application logic can be moved away from the main CPU.
+
+### Controller Firmware Programmability
+
+On **SF32LB55x, SF32LB56x, and SF32LB58x**, the Bluetooth-controller processor is user-programmable. This gives product teams two additional options that are not available with a fixed controller image:
+
+- **Frequent controller-firmware upgrades.** Controller-side firmware can be updated as the product evolves, allowing fixes, feature changes, and maintenance releases to follow the product lifecycle.
+- **Proprietary protocol-stack customization.** A product can implement or adapt controller-side proprietary protocol stacks where its SDK, firmware architecture, and validation plan support that work.
+
+This flexibility does not eliminate the need for Bluetooth qualification, interoperability testing, OTA rollback protection, or careful host/controller interface design. Treat controller customization as a system-firmware change and validate it against the target chip, SDK, radio configuration, and intended Bluetooth use cases.
 
 ## BLE and Dual-Mode Bluetooth
 
@@ -228,6 +239,7 @@ A robust design usually combines the Bluetooth processor with careful connection
 
 - SF32LB devices use a dedicated Bluetooth or low-power processor subsystem to keep wireless behavior timing-safe and power efficient.
 - SF32LB52x uses a Bluetooth-controller-only low-power core, while larger SF32LB devices provide more general low-power processor capability.
+- On SF32LB55x, SF32LB56x, and SF32LB58x, the user-programmable controller processor enables controller-firmware upgrades and proprietary protocol-stack customization, subject to product-level validation.
 - BLE is optimized for low-power connected products; dual-mode Bluetooth adds Classic Bluetooth use cases such as audio and legacy profile support.
 - The Bluetooth processor helps the main application CPU sleep while connections, advertising, and scheduled radio events continue.
 - Good Bluetooth performance depends on both firmware architecture and hardware design, including RF layout, clocks, power, antenna tuning, and calibration.
