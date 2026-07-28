@@ -26,11 +26,16 @@
   dropdown pattern (git history has the prior version) or render N buttons.
 -#}
 {% set current_language = config.theme.language | d("en", true) %}
+{% set offline = config.extra.offline and config.extra.offline.enabled %}
 {% for alt in config.extra.alternate %}
   {% if alt.lang != current_language %}
-    {% set target = ("/zh/" ~ page.url) if alt.lang == "zh" else ("/" ~ page.url) %}
+    {% if offline %}
+      {% set target = "#" %}
+    {% else %}
+      {% set target = ("/zh/" ~ page.url) if alt.lang == "zh" else ("/" ~ page.url) %}
+    {% endif %}
     <div class="md-header__option">
-      <a href="{{ target }}" hreflang="{{ alt.lang }}" class="md-header__button md-icon uf-lang-switch" title="{{ alt.name }}" aria-label="{{ alt.name }}">
+      <a href="{{ target }}" hreflang="{{ alt.lang }}" class="md-header__button md-icon uf-lang-switch" title="{{ alt.name }}" aria-label="{{ alt.name }}"{% if offline %} data-uf-offline-language="{{ alt.lang }}" data-uf-page-url="{{ page.url }}"{% endif %}>
         {% set icon = config.theme.icon.alternate or "material/translate" %}
         {% include ".icons/" ~ icon ~ ".svg" %}
       </a>
