@@ -48,7 +48,8 @@ Choose SF32LB55x when the design needs one or more of these capabilities:
 [User Manual]: https://downloads.sifli.com/docs/user%20manual/SF32LB55x/UM5501%E2%80%90SF32LB55x%E2%80%90EN.pdf
 [Original Design Guide (wiki.sifli.com)]: https://wiki.sifli.com/en/hardware/SF32LB55x-HW-Application.html
 [Hardware Application Note (GitHub source)]: https://github.com/OpenSiFli/SiFli-Wiki/blob/main/source/en/hardware/SF32LB55x-HW-Application.md
-[Hardware Design Guide (μForge, dev)]: SF32LB55x_hardware_design_guide.md
+[SiFli Chip Model Guide]: https://wiki.sifli.com/silicon/%E8%8A%AF%E7%89%87%E5%9E%8B%E5%8F%B7%E6%8C%87%E5%8D%97.html
+[Hardware Design Guide (μForge)]: SF32LB55x_hardware_design_guide.md
 [Hardware Design Checklist Source]: https://wiki.sifli.com/hardware/index.html
 [SDK Documentation]: https://docs.sifli.com/projects/sdk/latest/sf32lb55x/index.html
 [API Reference]: https://docs.sifli.com/projects/sdk/latest/sf32lb55x/api/index.html
@@ -62,7 +63,8 @@ Choose SF32LB55x when the design needs one or more of these capabilities:
 - :fontawesome-solid-file-pdf: __[User Manual]__
 - :fontawesome-solid-file-lines: __[Original Design Guide (wiki.sifli.com)]__
 - :fontawesome-brands-github: __[Hardware Application Note (GitHub source)]__
-- :fontawesome-solid-file-lines: __[Hardware Design Guide (μForge, dev)]__
+- :fontawesome-solid-list: __[SiFli Chip Model Guide]__
+- :fontawesome-solid-file-lines: __[Hardware Design Guide (μForge)]__
 - :fontawesome-solid-book: __[SDK Documentation]__
 - :fontawesome-solid-book-open: __[API Reference]__
 - :fontawesome-solid-list-check: __[Hardware Design Checklist Source]__
@@ -122,7 +124,7 @@ Choose SF32LB55x when the design needs one or more of these capabilities:
 - Temperature sensor
 - 2x low-power voltage comparators
 - Peripheral Task Controller (PTC)
-- Up to 119 GPIOs, depending on package
+- Up to 113 GPIOs, depending on package
 
 ### Power Supply and Package
 
@@ -135,21 +137,37 @@ Choose SF32LB55x when the design needs one or more of these capabilities:
 
 ## Family Variants
 
-SF32LB55x devices are offered in QFN and BGA packages. Select the package early because GPIO count, memory routing, display-interface choice, and PCB process all vary materially by package.
+SF32LB55x devices are offered in QFN and BGA packages. Select the package early because GPIO count, integrated memory, display-interface choice, and PCB process all vary materially by package.
 
-Package choice is not just a layout decision here. SiFli's model guide explicitly notes that the 55x family supports all or only part of the display-interface set depending on package, so package selection should be locked before display, memory, and pin-budget planning are finalized.
+Package choice is not just a layout decision here. SiFli's [chip model guide][SiFli Chip Model Guide] explicitly notes that the 55x family supports all or only part of the display-interface set depending on package, so package selection should be locked before display, memory, and pin-budget planning are finalized. Parts in the same package are pin-to-pin compatible; confirm the exact memory configuration and display requirements before choosing a compatible replacement.
 
-<div align="center"><em>SF32LB55x Package Options</em></div>
+<div align="center"><em>SF32LB55x Package-Level I/O Options</em></div>
 
 <div align="center" markdown>
 
-| Package | GPIO Count | Typical Design Fit |
-| :--- | :--- | :--- |
-| QFN68L | 49 | Compact wearable or BLE sensor product with lower PCB process cost |
-| BGA145 | 95 | Display, memory, and sensor-rich design with more routing headroom |
-| BGA169 | 119 | Highest-I/O SF32LB55x designs with richer display and memory options |
+| Package | HCPU / LCPU GPIOs | Total GPIOs | Typical Design Fit |
+| :--- | :--- | :--- | :--- |
+| QFN68L | 28 / 21 | 49 | Compact wearable or BLE sensor product with lower PCB process cost |
+| BGA145 | 55 / 40 | 95 | Display, memory, and sensor-rich design with more routing headroom |
+| BGA169 | 71 / 42 | 113 | Highest-I/O SF32LB55x designs with the broadest integrated-memory and display options |
 
 </div>
+
+The following current BGA variants make the package and memory trade-off explicit. The part-number suffixes in this older family do not consistently follow SiFli's newer naming convention, so use the full orderable part number rather than decoding the suffix by rule.
+
+<div align="center"><em>Key SF32LB55x BGA Variants</em></div>
+
+<div align="center" markdown>
+
+| Part Number | Package | Integrated Memory | Display Interfaces | Selection Notes |
+| :--- | :--- | :--- | :--- | :--- |
+| SF32LB555V4O6 | BGA145 | 4MB QSPI NOR boot Flash + 4MB OPI-PSRAM | MIPI DSI command mode, QSPI, 8080 | 95 GPIOs; -40 to 85°C; a balanced BGA145 choice for display products that need 4MB PSRAM |
+| SF32LB555V436 | BGA145 | 4MB QSPI NOR boot Flash + 8MB OPI-PSRAM | MIPI DSI command mode, QSPI, 8080 | 95 GPIOs; -40 to 85°C; the BGA145 option when the design needs twice the integrated PSRAM of SF32LB555V4O6 |
+| SF32LB557VD3A6 | BGA169 | 1MB QSPI NOR boot Flash + 16MB OPI-PSRAM + 2MB QPI-PSRAM | MIPI DSI command mode, QSPI, 8080, JDI/Sharp MIP | 113 GPIOs; -40 to 85°C; supports MIPI DSI plus SPI/DSPI dual displays with independent content |
+
+</div>
+
+All three variants use a 1.71V to 3.63V supply range. The BGA145 and BGA169 packages are 7 × 7 × 0.94 mm with 0.5 mm pitch. Verify the final orderable part number, package ball map, and integrated-memory configuration against the [datasheet] and [SiFli Chip Model Guide] before release.
 
 ## Integration Path
 

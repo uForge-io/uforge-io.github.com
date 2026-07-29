@@ -6,11 +6,11 @@ tags:
     - Learn
 ---
 
-# Overview { #learn-overview }
+# Learn Overview { #learn-overview }
 
 Use **Learn** to make subsystem and architecture decisions before they become hard to reverse in firmware or hardware. These pages explain how SF32 building blocks fit together and what to validate when graphics, wireless, audio, AI, memory, and power must coexist in one product.
 
-Use [Getting Started](../getting-started/getting-started-overview.md) for the first successful board run, [Tutorials](../tutorials/overview.md) for guided exercises, [Develop](../develop/overview.md) for software workflows and examples, and the [SF32 Family](../hardware/chips/SF32_family.md) for part selection and production design.
+Use [Getting Started](../getting-started/overview.md) for the first successful board run, [Tutorials](../tutorials/overview.md) for guided exercises, [Develop](../develop/overview.md) for software workflows and examples, and the [SF32 Family](../hardware/chips/SF32_family.md) for part selection and production design.
 
 ## Start with Your Design Question
 

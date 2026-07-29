@@ -25,7 +25,7 @@ hide:
 
 <div class="uf-hero-actions" markdown>
 
-[Get Started :material-arrow-right:](getting-started/getting-started-overview.md){ .md-button .md-button--primary }
+[Get Started :material-arrow-right:](getting-started/overview.md){ .md-button .md-button--primary }
 [Explore SF32 :material-file-document-outline:](hardware/chips/SF32_family.md){ .md-button }
 [GitHub :fontawesome-brands-github:](https://github.com/uforge-io){ .md-button }
 

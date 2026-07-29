@@ -92,7 +92,7 @@ Choose SF32LB58x when the design needs one or more of these capabilities:
 - External Wi-Fi connectivity through SDIO
 - 2x integrated audio ADCs
 - 2x integrated audio DACs
-- 4x PDM microphone inputs
+- 2x PDM microphone inputs
 - I2S support for digital audio input/output
 - USB2.0 High-Speed Host/Device
 
