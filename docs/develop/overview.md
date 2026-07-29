@@ -1,16 +1,17 @@
 ---
 icon: lucide/code-2
+title: "Develop Overview"
 description: "Develop section overview: choosing between SiFli-SDK, CodeKit, Zephyr, Arduino, MicroPython, and Rust for SF32 firmware, tools, and firmware-topic guidance."
 tags:
     - Develop
     - Software
 ---
 
-# Develop
+# Develop Overview { #develop }
 
 This section is for firmware developers who have moved past the first `hello_world` run and need to build, flash, debug, update, and ship software on SF32 devices.
 
-Use [Getting Started](../getting-started/getting-started-overview.md) for the first successful board run. Use [Tutorials](../tutorials/beginner.md) for guided hands-on learning, the [SF32 Family](../hardware/chips/SF32_family.md) to choose chips, modules, and dev kits, and [Learn](../learn/overview.md) for conceptual guides. Use **Develop** when you need the working details: platform maturity, toolchains, board names, flash flows, examples, and firmware architecture.
+Use [Getting Started](../getting-started/overview.md) for the first successful board run. Use [Tutorials](../tutorials/beginner.md) for guided hands-on learning, the [SF32 Family](../hardware/chips/SF32_family.md) to choose chips, modules, and dev kits, and [Learn](../learn/overview.md) for conceptual guides. Use **Develop** when you need the working details: platform maturity, toolchains, board names, flash flows, examples, and firmware architecture.
 
 For the current board-by-platform status, use the canonical [Software Support Matrix](software-support-matrix.md). It is the shared support reference for Getting Started and Develop; platform pages provide the detailed setup and limitations.
 

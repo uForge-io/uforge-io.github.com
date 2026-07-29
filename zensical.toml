@@ -20,7 +20,7 @@ Copyright &copy; 2026 μForge.io · <a href='/about/about/'>About</a> · <a href
 # docs_dir regardless of nav). Read more: https://zensical.org/docs/setup/navigation/
 nav = [
   { "Getting Started" = [
-    "getting-started/getting-started-overview.md",
+    { "Overview" = "getting-started/overview.md" },
     { "SiFli-SDK" = [
       "getting-started/sifli/getting-started-sifli-sdk.md",
       "getting-started/sifli/getting-started-sifli-codekit.md"
@@ -45,17 +45,17 @@ nav = [
     ]}
   ]},
   { "Hardware" = [
+    { "Overview" = "hardware/overview.md" },
     { "Understand SF32" = [
       "hardware/chips/SF32_family.md",
       "hardware/chips/SF32_namingrule.md"
     ]},
-    { "Plan a Product" = "hardware/product-planning.md" },
-    { "Reference Designs" = [
-      "hardware/reference-designs.md",
-      "hardware/reference-design-journey.md"
+    { "Plan a Product" = [
+      "hardware/product-planning.md"
     ]},
     { "Choose Hardware" = [
       "hardware/choose-hardware.md",
+      "hardware/product-selector.md",
       { "Chips" = [
         "hardware/chips/SF32LB52x.md",
         "hardware/chips/SF32LB55x.md",
@@ -82,6 +82,10 @@ nav = [
         "hardware/devkits/SF32LB58-DevKit-LCD.md"
       ]}
       ]}
+    ]},
+    { "Reference Designs" = [
+      "hardware/reference-designs.md",
+      "hardware/reference-design-journey.md"
     ]},
     { "Design for Production" = [
       "hardware/design-for-production.md",
@@ -124,7 +128,7 @@ nav = [
     ]}
   ]},
   { "Develop" = [
-    "develop/overview.md",
+    { "Overview" = "develop/overview.md" },
     "develop/software-support-matrix.md",
     { "Software Paths" = [
       { "SiFli-SDK" = [
@@ -153,10 +157,10 @@ nav = [
       "develop/firmware-topics/power-management.md",
       "develop/firmware-topics/logging-crash-analysis.md"
     ]},
-    { "Examples" = "develop/examples/index.md" }
+    { "Examples" = [ "develop/examples/index.md" ] }
   ]},
   { "Learn" = [
-    "learn/overview.md",
+    { "Overview" = "learn/overview.md" },
     { "Architecture" = [
       { "Overview" = "learn/architecture/overview.md" },
       "learn/architecture/star-mc1.md",
@@ -189,7 +193,7 @@ nav = [
     ]},
   ]},
   { "Projects" = [
-    "projects/overview.md",
+    { "Overview" = "projects/overview.md" },
     "projects/sf32-xiaozhi.md"
   ]},
   { "Blog" = [
@@ -208,8 +212,9 @@ extra_css = [
     "stylesheets/uforge-home.css",
     "stylesheets/hardware-overview.css",
     "stylesheets/extra.css",
+    "stylesheets/product-selector.css",
 ]
-#extra_javascript = ["javascripts/extra.js"]
+extra_javascript = ["javascripts/product-selector.js"]
 
 #last_updated = "true"
 #[project.last_updated]
@@ -320,9 +325,12 @@ icon = "simple/taobao"
 link = "https://sifli.taobao.com/"
 name = "SiFli Taobao Store"
 
-[project.extra.analytics]
-provider = "google"
-property = "G-NN1VWVS9D7"
+# Google Analytics is intentionally NOT configured here. This config is used
+# for local dev builds/previews (`zensical serve`/`zensical build`), which
+# should never send hits to GA. The public release copy gets its own
+# [project.extra.analytics] block injected at sync time -- see
+# tools/sync-public-release.sh -- so analytics only exists in what actually
+# ships to uforge-site.
 
 # Markdown extensions. Read more: https://zensical.org/docs/setup/extensions/
 [project.markdown_extensions.abbr]
@@ -361,3 +369,7 @@ combine_header_slug = true
 [project.markdown_extensions.pymdownx.tasklist]
 custom_checkbox = true
 [project.markdown_extensions.pymdownx.tilde]
+
+[project.extra.analytics]
+provider = "google"
+property = "G-NN1VWVS9D7"

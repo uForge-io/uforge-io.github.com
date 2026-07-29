@@ -56,7 +56,7 @@ Record the following evidence for the exact combination you intend to ship or ev
 4. The first example that passes, plus the features that have actually been tested.
 5. Recovery procedure and the known limits for display, Bluetooth, storage, audio, USB, and low-power behavior.
 
-Start with [Getting Started](../getting-started/getting-started-overview.md) for the first successful run, then use [Develop](overview.md) and the platform detail page to progress toward product work.
+Start with [Getting Started](../getting-started/overview.md) for the first successful run, then use [Develop](overview.md) and the platform detail page to progress toward product work.
 
 !!! note "Auto-generated content"
     This page was compiled/drafted without an existing source document. Verify technical claims against SiFli's official documentation before relying on them.

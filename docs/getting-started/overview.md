@@ -1,12 +1,13 @@
 ---
 icon: lucide/rocket
+title: "Getting Started Overview"
 description: "Choosing your first SF32 software path — SiFli-SDK, CodeKit, Zephyr, Arduino, Rust, or MicroPython — with current status and what hardware you'll need."
 tags:
     - Getting started
     - SF32
 ---
 
-# Getting Started
+# Getting Started Overview { #getting-started }
 
 SF32 devices support several software paths. SiFli-SDK and CodeKit are the official first-run paths today. OpenSiFli also has active downstream Zephyr, beta ArduinoCore-zephyr, and work-in-progress Rust support for SF32LB52. MicroPython still needs official firmware images and board-specific instructions before it can become a verified tutorial.
 

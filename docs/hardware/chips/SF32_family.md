@@ -123,7 +123,7 @@ The **LB** (Low-Power Bluetooth) series is the first member of the SF32 product 
 | Display Interfaces | SPI / QSPI / 8080 / EPD / JDI | SPI / QSPI / 8080 / JDI / RGB / MIPI | SPI / QSPI / 8080 / EPD / JDI / RGB | SPI / QSPI / 8080 / EPD / JDI / RGB | SPI / QSPI / 8080 / EPD / JDI / RGB / MIPI |
 | Audio ADC | 1x | n/a | 1x | 2x | 2x |
 | Audio DAC | 1x | n/a | 1x | 1x | 2x |
-| PDM Audio Interfaces | 2x | 2x | 2x | 2x | 4x |
+| PDM Audio Interfaces | 1x | 2x | 2x | 2x | 2x |
 | I²S Audio Interfaces | 1x | 2x | 1x | 2x | 3x |
 | USB | 2.0 FS | 2.0 FS | 2.0 FS | 2.0 FS | 2.0 HS |
 | CAN | n/a | n/a | 1x | 2x | 2x |

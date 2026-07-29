@@ -8,7 +8,7 @@ Only the pages listed below are published on this site. Internal working notes (
 
 ## Getting Started
 
-- [Getting Started Overview](https://uForge.io/getting-started/getting-started-overview/): Comparison of SF32 software paths — SiFli-SDK, CodeKit, Zephyr, Arduino, and MicroPython — and which are production-ready today.
+- [Getting Started Overview](https://uForge.io/getting-started/overview/): Comparison of SF32 software paths — SiFli-SDK, CodeKit, Zephyr, Arduino, and MicroPython — and which are production-ready today.
 - [Getting Started with SiFli-SDK](https://uForge.io/getting-started/sifli/getting-started-sifli-sdk/): From an unboxed SF32 dev board to a running hello_world example over UART using the official RT-Thread-based SDK.
 - [Getting Started with SiFli CodeKit](https://uForge.io/getting-started/sifli/getting-started-sifli-codekit/): Using the SiFli CodeKit VS Code extension to install SDK tools, select a board, build, flash, and monitor.
 - [Getting Started with Zephyr](https://uForge.io/getting-started/zephyr/getting-started-zephyr-upstream/): Using OpenSiFli's downstream Zephyr tree and SiFli HAL module for SF32LB52.

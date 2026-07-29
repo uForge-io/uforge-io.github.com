@@ -12,6 +12,6 @@ Thanks for reaching out to μForge.io. We'll get back to you soon.
 
 In the meantime, feel free to keep exploring:
 
-- [Getting Started](../getting-started/getting-started-overview.md)
+- [Getting Started](../getting-started/overview.md)
 - [SF32 Family Overview](../hardware/chips/SF32_family.md)
 - [Back to Contact](contact.md)

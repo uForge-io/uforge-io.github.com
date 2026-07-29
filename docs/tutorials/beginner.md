@@ -7,7 +7,7 @@ tags:
 
 # First Peripherals { #beginner-tutorials }
 
-These tutorials pick up right after [Get Started](../getting-started/getting-started-overview.md). You should already have the SiFli-SDK toolchain installed, have flashed `hello_world` at least once, and know how to open the serial console. Each tutorial is intentionally small: one concept, one peripheral, one clear success condition.
+These tutorials pick up right after [Get Started](../getting-started/overview.md). You should already have the SiFli-SDK toolchain installed, have flashed `hello_world` at least once, and know how to open the serial console. Each tutorial is intentionally small: one concept, one peripheral, one clear success condition.
 
 The examples assume an SF32LB52-DevKit-LCD-class board such as `sf32lb52-lcd_n16r8`. If you are using another board, replace the board name in the build command and confirm the pin names, peripheral instances, and storage layout from that board's support files.
 
