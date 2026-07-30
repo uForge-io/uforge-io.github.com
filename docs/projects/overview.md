@@ -1,15 +1,16 @@
 ---
 icon: lucide/folder-kanban
+title: "Projects Overview"
 description: "End-to-end μForge projects that combine selected hardware, a software baseline, validation evidence, and a production handoff."
 tags:
     - Projects
 ---
 
-# Projects
+# Projects Overview
 
 Projects are complete, reproducible build references for developers moving from an idea to a working product direction. Unlike a tutorial, which teaches one engineering outcome, a project connects the selected hardware, software baseline, product decisions, dependencies, integration milestones, validation evidence, and production handoff.
 
-Use a project after completing the relevant [Getting Started](../getting-started/getting-started-overview.md) baseline. Use [Reference Designs](../hardware/reference-designs.md) for the reusable hardware/software baseline that a project adopts and adapts; a project must link to that baseline where one exists, rather than recreate its design-file, bring-up, or production material.
+Use a project after completing the relevant [Getting Started](../getting-started/overview.md) baseline. Use [Reference Designs](../hardware/reference-designs.md) for the reusable hardware/software baseline that a project adopts and adapts; a project must link to that baseline where one exists, rather than recreate its design-file, bring-up, or production material.
 
 ## Available Projects
 
