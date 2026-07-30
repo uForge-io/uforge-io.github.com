@@ -20,11 +20,10 @@
       clearFilters: "Clear filters",
       filters: {
         tier: "Integration level",
-        tierAny: "Any (chip, module, or board)",
+        tierAny: "Any (chip or module)",
         tierChip: "Chip",
         tierModule: "Module",
-        tierDevkit: "Development board",
-        wifi: "External Wi-Fi through SDIO",
+        wifi: "SDIO for external WiFi",
         camera: "Camera interface (DCMI)",
         ai: "AI / ML accelerator",
         freeIo: "FreeIO flexible GPIO assignment",
@@ -52,33 +51,42 @@
         displayJdi: "JDI",
         resolution: "Target resolution",
         resolutionAny: "Any",
-        audio: "Min. audio I/O",
-        audioAny: "Any",
-        audioA: "1 DAC / 1 ADC / 2 PDM / 1 I2S",
-        audioB: "0 DAC / 0 ADC / 2 PDM / 2 I2S",
-        audioC: "1 DAC / 2 ADC / 2 PDM / 2 I2S",
-        audioD: "2 DAC / 2 ADC / 2 PDM / 3 I2S",
-        audioE: "1 DAC / 1 ADC / 1 PDM / 1 I2S",
-        audioF: "0 DAC / 0 ADC / 1 PDM / 1 I2S",
+        sdio: "Min. # of SDIO",
+        sdioAny: "Any",
+        audioDac: "Min. audio DAC",
+        audioDacAny: "Any",
+        audioAdc: "Min. audio ADC",
+        audioAdcAny: "Any",
+        audioPdm: "Min. audio PDM",
+        audioPdmAny: "Any",
+        audioI2s: "Min. audio I2S",
+        audioI2sAny: "Any",
       },
       table: {
-        name: "Part",
-        wifi: "External Wi-Fi (SDIO)",
+        name: "Part number",
+        wifi: "SDIO for ext WiFi",
         camera: "Camera",
-        ai: "AI accelerator",
+        ai: "AI accel",
         freeIo: "FreeIO",
         ptm: "PTM",
         psram: "PSRAM",
+        flash: "NOR Flash",
         gpio: "Max GPIO",
         package: "Package",
         power: "Power supply",
+        ioVoltage: "I/O voltage",
         display: "Display interfaces",
         resolution: "Max resolution",
-        audio: "Audio I/O",
-        links: "Resources",
-      },
-      linkLabels: {
-        product: "Product introduction",
+        audioDac: "Audio DAC",
+        audioAdc: "Audio ADC",
+        audioPdm: "PDM",
+        audioI2s: "I2S",
+        uart: "UART",
+        i2c: "I2C",
+        spi: "SPI",
+        can: "CAN",
+        gpadcCh: "GPADC Ch",
+        usb: "USB2.0",
       },
       yes: "Yes",
       no: "—",
@@ -100,7 +108,11 @@
         power1v8: "doesn't go down to 1.8V",
         display: "missing display interface",
         resolution: "resolution below target",
-        audio: "below the minimum audio interface count",
+        sdio: "not enough SD/SDIO controllers",
+        audioDac: "not enough audio DAC",
+        audioAdc: "not enough audio ADC",
+        audioPdm: "not enough audio PDM",
+        audioI2s: "not enough audio I2S",
       },
       noResults: "No parts match every filter. Try loosening one of them.",
     },
@@ -110,11 +122,10 @@
       clearFilters: "清除筛选条件",
       filters: {
         tier: "集成层级",
-        tierAny: "任意（芯片、模组或开发板）",
+        tierAny: "任意（芯片或模组）",
         tierChip: "芯片",
         tierModule: "模组",
-        tierDevkit: "开发板",
-        wifi: "通过 SDIO 外接 Wi-Fi",
+        wifi: "外接 WiFi 用 SDIO",
         camera: "摄像头接口（DCMI）",
         ai: "AI / 机器学习加速器",
         freeIo: "FreeIO 灵活 GPIO 分配",
@@ -142,33 +153,42 @@
         displayJdi: "JDI",
         resolution: "目标分辨率",
         resolutionAny: "任意",
-        audio: "最少音频接口",
-        audioAny: "任意",
-        audioA: "1 DAC / 1 ADC / 2 PDM / 1 I2S",
-        audioB: "0 DAC / 0 ADC / 2 PDM / 2 I2S",
-        audioC: "1 DAC / 2 ADC / 2 PDM / 2 I2S",
-        audioD: "2 DAC / 2 ADC / 2 PDM / 3 I2S",
-        audioE: "1 DAC / 1 ADC / 1 PDM / 1 I2S",
-        audioF: "0 DAC / 0 ADC / 1 PDM / 1 I2S",
+        sdio: "最少 SDIO 数量",
+        sdioAny: "任意",
+        audioDac: "最少音频 DAC",
+        audioDacAny: "任意",
+        audioAdc: "最少音频 ADC",
+        audioAdcAny: "任意",
+        audioPdm: "最少音频 PDM",
+        audioPdmAny: "任意",
+        audioI2s: "最少音频 I2S",
+        audioI2sAny: "任意",
       },
       table: {
-        name: "器件",
-        wifi: "外接 Wi-Fi（SDIO）",
+        name: "器件型号",
+        wifi: "外接 WiFi 用 SDIO",
         camera: "摄像头",
-        ai: "AI 加速器",
+        ai: "AI 加速",
         freeIo: "FreeIO",
         ptm: "PTM",
         psram: "PSRAM",
+        flash: "NOR Flash",
         gpio: "最大 GPIO",
         package: "封装",
         power: "供电电压",
+        ioVoltage: "I/O 电压",
         display: "显示接口",
         resolution: "最大分辨率",
-        audio: "音频 I/O",
-        links: "相关资源",
-      },
-      linkLabels: {
-        product: "产品介绍",
+        audioDac: "音频 DAC",
+        audioAdc: "音频 ADC",
+        audioPdm: "PDM",
+        audioI2s: "I2S",
+        uart: "UART",
+        i2c: "I2C",
+        spi: "SPI",
+        can: "CAN",
+        gpadcCh: "GPADC 通道",
+        usb: "USB2.0",
       },
       yes: "是",
       no: "—",
@@ -190,7 +210,11 @@
         power1v8: "无法降至 1.8V 供电",
         display: "缺少所需显示接口",
         resolution: "分辨率低于目标值",
-        audio: "未达到最低音频接口数量要求",
+        sdio: "SD/SDIO 控制器数量不足",
+        audioDac: "音频 DAC 数量不足",
+        audioAdc: "音频 ADC 数量不足",
+        audioPdm: "音频 PDM 数量不足",
+        audioI2s: "音频 I2S 数量不足",
       },
       noResults: "没有器件满足全部筛选条件，请适当放宽某一项。",
     },
@@ -267,58 +291,135 @@
       }
     }
 
-    // Audio is a per-dimension minimum threshold, same as PSRAM/GPIO -- the
-    // selected preset's dac-adc-pdm-i2s counts are each a floor, and a part
-    // qualifies if it meets or exceeds all four independently. A part with
-    // more of everything than the selected preset still matches, even if
-    // its exact combination isn't itself one of the catalogued presets.
-    if (state.audio !== "any") {
-      var wantAudio = state.audio.split("-").map(function (n) {
-        return parseInt(n, 10);
-      });
-      if (
-        record.audio_dac < wantAudio[0] ||
-        record.audio_adc < wantAudio[1] ||
-        record.audio_pdm < wantAudio[2] ||
-        record.audio_i2s < wantAudio[3]
-      ) {
-        reasons.push(t.reasons.audio);
-      }
+    // SDIO and each audio dimension (DAC/ADC/PDM/I2S) are independent
+    // minimum-threshold filters, same pattern as PSRAM/GPIO -- each one is
+    // its own dropdown rather than one combined "audio profile" preset, so
+    // they're evaluated separately instead of as a single bundled check.
+    if (state.sdio !== "any" && (record.sdio === null || record.sdio === undefined || record.sdio < parseInt(state.sdio, 10))) {
+      reasons.push(t.reasons.sdio);
     }
+    if (state.audio_dac !== "any" && record.audio_dac < parseInt(state.audio_dac, 10)) reasons.push(t.reasons.audioDac);
+    if (state.audio_adc !== "any" && record.audio_adc < parseInt(state.audio_adc, 10)) reasons.push(t.reasons.audioAdc);
+    if (state.audio_pdm !== "any" && record.audio_pdm < parseInt(state.audio_pdm, 10)) reasons.push(t.reasons.audioPdm);
+    if (state.audio_i2s !== "any" && record.audio_i2s < parseInt(state.audio_i2s, 10)) reasons.push(t.reasons.audioI2s);
 
     return { matches: reasons.length === 0, reasons: reasons };
-  }
-
-  function renderLinks(record) {
-    // The Resources column only surfaces the product introduction link --
-    // family comparison, closest module/board, software support, and
-    // design guide/checklist links are all still one click away from that
-    // introduction page, so repeating them per row here was redundant.
-    var wrap = el("div", { class: "uf-ps-links" });
-    var path = record.links && record.links.product;
-    if (path) {
-      wrap.appendChild(
-        el("a", { href: mdPathToUrl(path), class: "uf-ps-link" }, [
-          document.createTextNode(t.linkLabels.product),
-        ])
-      );
-    }
-    return wrap;
   }
 
   function boolCell(value) {
     return el("td", { class: value ? "uf-ps-yes" : "uf-ps-no", text: value ? t.yes : t.no });
   }
 
-  function renderTable(data, state, tbody) {
-    tbody.innerHTML = "";
+  // Digital-peripheral counts (uart/i2c/spi/can/gpadc_channels) are integers
+  // when documented, or null when no page states an exact count for that
+  // family (e.g. SF32LB58x's UART/I2C/SPI, or SF32LB52x/SF32LB58x's GPADC
+  // channel count) -- null renders as "n/a" rather than a fabricated 0,
+  // same convention as the existing psram/package "n/a" fallbacks.
+  function numCell(value) {
+    var isNa = value === null || value === undefined;
+    return el("td", { class: isNa ? "uf-ps-num uf-ps-no" : "uf-ps-num", text: isNa ? "n/a" : String(value) });
+  }
+
+  // Slugifies a family name (e.g. "SF32LB52x") into a CSS-safe class
+  // suffix ("sf32lb52x") for per-family part-name text coloring.
+  function familySlug(family) {
+    return String(family || "").toLowerCase().replace(/[^a-z0-9]/g, "");
+  }
+
+  // The frozen table and the body table are two independent <table>
+  // elements, each computing its own row heights from its own content --
+  // even with identical font-size/padding/line-height CSS, browsers don't
+  // guarantee the two tables' Nth rows render at the exact same pixel
+  // height (sub-pixel rounding can differ table to table), and any
+  // per-row drift accumulates visually the further down the table you go,
+  // which is exactly the "rows are so much misaligned" symptom. Rather
+  // than trust the two tables to naturally stay in lockstep, this walks
+  // matching row pairs after every render and pins both to the taller of
+  // the two measured heights, so misalignment is corrected by
+  // construction instead of hoped for from matching CSS. rowsA/rowsB must
+  // already be in the live document (getBoundingClientRect on a detached
+  // element returns all zeros) and contain the same number of rows in the
+  // same order.
+  function syncRowHeights(rowsA, rowsB) {
+    var count = Math.min(rowsA.length, rowsB.length);
+    var i;
+    // Reset first so a previous sync's inline height doesn't influence
+    // this measurement pass (e.g. shrinking column widths on re-render
+    // could otherwise make old heights "stick" too tall).
+    for (i = 0; i < count; i++) {
+      rowsA[i].style.height = "";
+      rowsB[i].style.height = "";
+    }
+    var targets = new Array(count);
+    for (i = 0; i < count; i++) {
+      targets[i] = Math.max(rowsA[i].getBoundingClientRect().height, rowsB[i].getBoundingClientRect().height);
+    }
+    for (i = 0; i < count; i++) {
+      var px = targets[i] + "px";
+      rowsA[i].style.height = px;
+      rowsB[i].style.height = px;
+    }
+  }
+
+  // The table is rendered as two side-by-side <table> elements sharing one
+  // row order -- a small, non-scrolling "frozen" table holding just the
+  // Part column, and a second table holding every other column inside its
+  // own overflow-x: auto wrapper (see the uf-ps-table-dual/-frozen/-scroll
+  // CSS). This replaces an earlier single-table position: sticky first
+  // column, which went through several rounds of bleed-through/misalignment
+  // bugs (opacity cascading into the sticky cell's background, sticky cells
+  // sizing themselves independently per row instead of sharing one column
+  // width) that never fully resolved across browsers. Two tables can't
+  // exhibit either bug class: the frozen table simply never scrolls, so
+  // there's nothing to bleed through, and each table computes its own
+  // column widths independently of the other. The one thing this approach
+  // requires is that both tables render rows of identical height -- every
+  // row is single-line content in both tables, but that alone isn't quite
+  // enough to guarantee pixel-identical heights (see syncRowHeights
+  // above), so this also explicitly syncs every row pair after rendering.
+  function renderTable(data, state, frozenTbody, bodyTbody) {
+    frozenTbody.innerHTML = "";
+    bodyTbody.innerHTML = "";
     var anyVisible = false;
+    // Parts that fail the active filters are omitted from the table
+    // entirely (previously they were kept as dimmed rows with a
+    // "Doesn't match: ..." explanation). visibleIndex counts only the
+    // rendered rows so the every-other-row stripe alternates over what's
+    // actually on screen -- reusing the data-array index would leave
+    // same-shade rows touching wherever a filtered-out part sat between
+    // them.
+    var visibleIndex = 0;
     data.parts.forEach(function (record) {
       var result = evaluate(record, state);
-      anyVisible = anyVisible || result.matches;
-      var row = el("tr", { class: result.matches ? "uf-ps-row-match" : "uf-ps-row-excluded" });
+      if (!result.matches) return;
+      anyVisible = true;
+      // Family is distinguished by the part-name text color (see
+      // uf-ps-family-* classes below), not by which rows share a
+      // background shade. The stripe class is applied to both tables'
+      // rows identically so the shading lines up across the
+      // frozen/scroll split.
+      var rowClass = "uf-ps-row-match" + (visibleIndex % 2 === 1 ? " uf-ps-row-stripe" : "");
+      visibleIndex++;
+      var frozenRow = el("tr", { class: rowClass });
+      var row = el("tr", { class: rowClass });
 
-      row.appendChild(el("td", { text: record.name }));
+      // Part-name text color is keyed to family (uf-ps-family-<slug>, see
+      // CSS) so the different SF32LB5xx families are visually
+      // distinguishable at a glance even though row background striping
+      // no longer groups by family.
+      var nameCell = el("td", { class: "uf-ps-family-" + familySlug(record.family) });
+      var productPath = record.links && record.links.product;
+      if (productPath) {
+        nameCell.appendChild(
+          el("a", { href: mdPathToUrl(productPath), class: "uf-ps-name-link" }, [
+            document.createTextNode(record.name),
+          ])
+        );
+      } else {
+        nameCell.appendChild(document.createTextNode(record.name));
+      }
+      frozenRow.appendChild(nameCell);
+      frozenTbody.appendChild(frozenRow);
 
       // Table cells favor short, single-line labels over the fuller
       // free-text fields (record.package / record.power_supply) -- long
@@ -326,9 +427,12 @@
       // table feel cluttered. The full detail is still one hover away
       // via `title`.
       //
-      // Column order: PSRAM, Max GPIO, Package, Power supply, Display
-      // interfaces, Max resolution, Audio, external Wi-Fi, AI accelerator,
-      // Camera, FreeIO, PTM, Resources.
+      // Column order: PSRAM, NOR Flash, Max GPIO, Package, Power supply,
+      // I/O voltage, Display interfaces, Max resolution, Audio, UART, I2C,
+      // SPI, CAN, GPADC Ch, USB, external Wi-Fi, AI accelerator, Camera,
+      // FreeIO, PTM. The part name itself links to the product introduction
+      // page (there is no separate Resources column), and any no-match
+      // reason is available as a hover tooltip on the name cell.
 
       // Dual-channel PSRAM parts (e.g. 2x 16MB) show their per-channel
       // split via psram_label instead of just the summed total, since
@@ -341,6 +445,17 @@
           ? "n/a"
           : record.psram_max_mb + " MB");
       row.appendChild(el("td", { text: psramText }));
+
+      // Flash follows the same dual-channel-label and "n/a" fallback
+      // conventions as PSRAM above: flash_label overrides the summed total
+      // for parts with two separate Flash dies (e.g. 2x 16MB), and null
+      // flash_max_mb renders as "n/a" rather than "null MB".
+      var flashText =
+        record.flash_label || (record.flash_max_mb === null || record.flash_max_mb === undefined
+          ? "n/a"
+          : record.flash_max_mb + " MB");
+      row.appendChild(el("td", { text: flashText }));
+
       row.appendChild(el("td", { text: String(record.gpio_max) }));
 
       // The table cell shows the exact orderable package designator (e.g.
@@ -358,29 +473,38 @@
       if (record.power_1v8) powerShort.push("1.8V");
       row.appendChild(el("td", { text: powerShort.join(" / "), title: record.power_supply }));
 
+      // I/O voltage (the GPIO/VDDIO supply rail) is a separate field from
+      // power_supply above -- power_supply is the main VBAT/PVDD system
+      // input, while io_voltage is what actually drives the GPIO pins.
+      // null means no VDDIO-style rail is documented for that specific
+      // variant (typically a battery-powered part with no separate IO
+      // rail spec), rendered as "n/a" rather than a fabricated value.
+      row.appendChild(el("td", { text: record.io_voltage || "n/a" }));
+
       row.appendChild(el("td", { text: (record.display_interfaces || []).join(" / ") }));
       row.appendChild(el("td", { text: record.max_resolution_label || t.no }));
 
-      var audioShort = record.audio_dac + "/" + record.audio_adc + "/" + record.audio_pdm + "/" + record.audio_i2s;
-      var audioFull =
-        LANG === "zh"
-          ? "DAC " +
-            record.audio_dac +
-            " / ADC " +
-            record.audio_adc +
-            " / PDM 接口 " +
-            record.audio_pdm +
-            " / I2S " +
-            record.audio_i2s
-          : "DAC " +
-            record.audio_dac +
-            " / ADC " +
-            record.audio_adc +
-            " / PDM interfaces " +
-            record.audio_pdm +
-            " / I2S " +
-            record.audio_i2s;
-      row.appendChild(el("td", { text: audioShort, title: audioFull }));
+      // Audio I/O used to be one combined "DAC/ADC/PDM/I2S" column, matching
+      // the old single filter preset. Now that the filter is 4 independent
+      // per-dimension dropdowns (see buildControls), the table column is
+      // split the same way -- one numCell per dimension -- so each value is
+      // directly comparable to its own filter instead of needing to be
+      // parsed out of a combined string.
+      row.appendChild(numCell(record.audio_dac));
+      row.appendChild(numCell(record.audio_adc));
+      row.appendChild(numCell(record.audio_pdm));
+      row.appendChild(numCell(record.audio_i2s));
+
+      row.appendChild(numCell(record.uart));
+      row.appendChild(numCell(record.i2c));
+      row.appendChild(numCell(record.spi));
+      row.appendChild(numCell(record.can));
+      row.appendChild(numCell(record.gpadc_channels));
+      // usb is a speed-qualified label ("FS", "HS", or "FS+HS" for a part
+      // with both a Full-Speed and a High-Speed port), not a plain count,
+      // so it renders as text rather than through numCell's number-or-n/a
+      // logic.
+      row.appendChild(el("td", { class: "uf-ps-num", text: record.usb || "n/a" }));
 
       row.appendChild(boolCell(record.wifi));
       row.appendChild(boolCell(record.ai_accelerator));
@@ -388,20 +512,10 @@
       row.appendChild(boolCell(record.free_io));
       row.appendChild(boolCell(record.ptm));
 
-      var linksCell = el("td", {});
-      linksCell.appendChild(renderLinks(record));
-      if (!result.matches) {
-        linksCell.appendChild(
-          el("div", {
-            class: "uf-ps-reason",
-            text: t.noMatchReasonPrefix + " " + result.reasons.join(", "),
-          })
-        );
-      }
-      row.appendChild(linksCell);
-
-      tbody.appendChild(row);
+      bodyTbody.appendChild(row);
     });
+
+    syncRowHeights(frozenTbody.children, bodyTbody.children);
 
     var noResultsRow = document.getElementById("uf-ps-no-results");
     if (noResultsRow) {
@@ -409,7 +523,7 @@
     }
   }
 
-  function buildControls(container, data, tbody) {
+  function buildControls(container, data, frozenTbody, bodyTbody) {
     var state = {
       tier: "any",
       wifi: false,
@@ -423,14 +537,18 @@
       power: "any",
       display: "any",
       resolution: "any",
-      audio: "any",
+      sdio: "any",
+      audio_dac: "any",
+      audio_adc: "any",
+      audio_pdm: "any",
+      audio_i2s: "any",
     };
     var selectInputs = [];
     var checkboxInputs = [];
     var controlId = 0;
 
     function update() {
-      renderTable(data, state, tbody);
+      renderTable(data, state, frozenTbody, bodyTbody);
     }
 
     function selectRow(labelText, options, onChange) {
@@ -468,7 +586,7 @@
     }
 
     // All the boolean "requires X" checkboxes go in one row, and all the
-    // select-style filters (8 of them) go together in a 2-row x 4-column
+    // select-style filters (12 of them) go together in a 3-row x 4-column
     // matrix -- keeps the two control types visually distinct instead of
     // interleaved, and gives the selects a tidy grid instead of whatever
     // happened to fit per line.
@@ -482,7 +600,6 @@
           { value: "any", label: t.filters.tierAny },
           { value: "chip", label: t.filters.tierChip },
           { value: "module", label: t.filters.tierModule },
-          { value: "devkit", label: t.filters.tierDevkit },
         ],
         function (v) {
           state.tier = v;
@@ -612,20 +729,78 @@
       )
     );
 
+    // # of SDIO takes the grid slot the combined "Min. audio I/O" preset
+    // used to occupy; the audio profile is no longer one bundled
+    // dropdown -- it's split into four independent per-dimension
+    // dropdowns (DAC/ADC/PDM/I2S) appended right after, which the grid's
+    // auto-flow lands on the next row since this is a 4-column layout.
     selectGroup.appendChild(
       selectRow(
-        t.filters.audio,
+        t.filters.sdio,
         [
-          { value: "any", label: t.filters.audioAny },
-          { value: "0-0-1-1", label: t.filters.audioF },
-          { value: "1-1-1-1", label: t.filters.audioE },
-          { value: "0-0-2-2", label: t.filters.audioB },
-          { value: "1-1-2-1", label: t.filters.audioA },
-          { value: "1-2-2-2", label: t.filters.audioC },
-          { value: "2-2-2-3", label: t.filters.audioD },
+          { value: "any", label: t.filters.sdioAny },
+          { value: "1", label: "≥ 1" },
+          { value: "2", label: "≥ 2" },
         ],
         function (v) {
-          state.audio = v;
+          state.sdio = v;
+        }
+      )
+    );
+
+    selectGroup.appendChild(
+      selectRow(
+        t.filters.audioDac,
+        [
+          { value: "any", label: t.filters.audioDacAny },
+          { value: "1", label: "≥ 1" },
+          { value: "2", label: "≥ 2" },
+        ],
+        function (v) {
+          state.audio_dac = v;
+        }
+      )
+    );
+
+    selectGroup.appendChild(
+      selectRow(
+        t.filters.audioAdc,
+        [
+          { value: "any", label: t.filters.audioAdcAny },
+          { value: "1", label: "≥ 1" },
+          { value: "2", label: "≥ 2" },
+        ],
+        function (v) {
+          state.audio_adc = v;
+        }
+      )
+    );
+
+    selectGroup.appendChild(
+      selectRow(
+        t.filters.audioPdm,
+        [
+          { value: "any", label: t.filters.audioPdmAny },
+          { value: "1", label: "≥ 1" },
+          { value: "2", label: "≥ 2" },
+        ],
+        function (v) {
+          state.audio_pdm = v;
+        }
+      )
+    );
+
+    selectGroup.appendChild(
+      selectRow(
+        t.filters.audioI2s,
+        [
+          { value: "any", label: t.filters.audioI2sAny },
+          { value: "1", label: "≥ 1" },
+          { value: "2", label: "≥ 2" },
+          { value: "3", label: "≥ 3" },
+        ],
+        function (v) {
+          state.audio_i2s = v;
         }
       )
     );
@@ -648,7 +823,11 @@
       state.power = "any";
       state.display = "any";
       state.resolution = "any";
-      state.audio = "any";
+      state.sdio = "any";
+      state.audio_dac = "any";
+      state.audio_adc = "any";
+      state.audio_pdm = "any";
+      state.audio_i2s = "any";
       selectInputs.forEach(function (select) {
         select.selectedIndex = 0;
       });
@@ -688,25 +867,50 @@
         var controls = el("div", { class: "uf-ps-controls" });
         root.appendChild(controls);
 
-        var tableWrap = el("div", { class: "uf-ps-table-wrap" });
-        var table = el("table", { class: "uf-ps-table" });
+        // Two tables side by side instead of one table with a sticky first
+        // column -- see the comment above renderTable() for why. The
+        // frozen table (Part column only) never scrolls; the body table
+        // (every other column) scrolls horizontally inside its own wrapper.
+        var dualWrap = el("div", { class: "uf-ps-table-dual" });
+
+        var frozenTable = el("table", { class: "uf-ps-table uf-ps-table-frozen" });
+        var frozenThead = el("thead", {});
+        var frozenHeadRow = el("tr", {});
+        frozenHeadRow.appendChild(el("th", { text: t.table.name }));
+        frozenThead.appendChild(frozenHeadRow);
+        frozenTable.appendChild(frozenThead);
+        var frozenTbody = el("tbody", {});
+        frozenTable.appendChild(frozenTbody);
+        dualWrap.appendChild(frozenTable);
+
+        var scrollWrap = el("div", { class: "uf-ps-table-scroll" });
+        var table = el("table", { class: "uf-ps-table uf-ps-table-body" });
         var thead = el("thead", {});
         var headRow = el("tr", {});
         [
-          t.table.name,
           t.table.psram,
+          t.table.flash,
           t.table.gpio,
           t.table.package,
           t.table.power,
+          t.table.ioVoltage,
           t.table.display,
           t.table.resolution,
-          t.table.audio,
+          t.table.audioDac,
+          t.table.audioAdc,
+          t.table.audioPdm,
+          t.table.audioI2s,
+          t.table.uart,
+          t.table.i2c,
+          t.table.spi,
+          t.table.can,
+          t.table.gpadcCh,
+          t.table.usb,
           t.table.wifi,
           t.table.ai,
           t.table.camera,
           t.table.freeIo,
           t.table.ptm,
-          t.table.links,
         ].forEach(function (label) {
           headRow.appendChild(el("th", { text: label }));
         });
@@ -715,14 +919,21 @@
 
         var tbody = el("tbody", {});
         table.appendChild(tbody);
-        tableWrap.appendChild(table);
-        root.appendChild(tableWrap);
+        scrollWrap.appendChild(table);
+        dualWrap.appendChild(scrollWrap);
+        root.appendChild(dualWrap);
+
+        // Sync the two header rows too, same reasoning as syncRowHeights
+        // on the body rows -- "Part number" alone and the full run of data
+        // column headers are unlikely to differ, but there's no reason to
+        // leave it to chance now that both tables are in the live DOM.
+        syncRowHeights([frozenHeadRow], [headRow]);
 
         var noResults = el("p", { id: "uf-ps-no-results", class: "uf-ps-no-results", text: t.noResults });
         noResults.style.display = "none";
         root.appendChild(noResults);
 
-        buildControls(controls, data, tbody);
+        buildControls(controls, data, frozenTbody, tbody);
       })
       .catch(function () {
         root.textContent = "";

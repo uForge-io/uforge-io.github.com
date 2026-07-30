@@ -18,10 +18,12 @@ Quick reference for acronyms and terms used across the μForge.io site — both 
 * **DSP** — **Digital Signal Processor / digital signal processing.** Extensions built into the Cortex-M33 core, used for math-heavy workloads like audio and sensor fusion.
 * **MPU** — **Memory Protection Unit.** Hardware that restricts which memory regions code can access, used for fault isolation and security.
 * **HAL** — **Hardware Abstraction Layer.** The SDK layer that exposes peripherals through a consistent API independent of the exact chip variant.
+* **AI / ML accelerator** — Hardware that accelerates artificial-intelligence or machine-learning workloads, such as inference over a compact neural-network model. Availability is device-specific; use the product selector and target datasheet to confirm the selected part.
 
 ## Wireless Connectivity
 
 * **BLE** — **Bluetooth Low Energy.** The low-power Bluetooth radio mode most SF32 wearable and IoT products build on.
+* **Wi-Fi** — A wireless local-area-network technology. Where an SF32 product documents external Wi-Fi support, the connection is made through its SDIO interface; confirm the exact part, board-level routing, power, and software support before design freeze.
 * **Dual-mode Bluetooth** — Support for both BLE and Classic Bluetooth (BR/EDR) on the same radio, used when a product needs both, e.g. audio streaming (Classic or LE Audio) alongside a low-power control channel. Supported on SF32LB52x/56x/57x/58x; SF32LB55x is BLE-only.
 * **GAP** — **Generic Access Profile.** The Bluetooth layer governing device roles, advertising, and connection establishment — the foundation every BLE application sits on top of.
 * **GATT** — **Generic Attribute Profile.** The Bluetooth layer defining how services and characteristics (the actual data a BLE device exposes) are structured and exchanged.
@@ -37,11 +39,15 @@ Quick reference for acronyms and terms used across the μForge.io site — both 
 * **TurboPixel** — A fixed-ratio lossy final-framebuffer format on supported SF32 parts. extDMA compresses the rendered bitmap into TurboPixel, and the display controller decompresses it to reduce PSRAM bandwidth and PSRAM capacity. See the [TurboPixel framebuffer compression page](../learn/graphics/turbopixel.md).
 * **LVGL** — **Light and Versatile Graphics Library.** The open-source embedded UI framework most SF32 products use for their application-level UI, running on top of ePicasso-accelerated rendering.
 * **HMI** — **Human-Machine Interface.** Shorthand for the on-device user interface (screen, touch, buttons) as a design category.
+* **RGB / DPI display interface** — A parallel display interface that carries pixel color components directly to a compatible panel or display controller. Its formal name is **DPI (Display Pixel Interface)**; “RGB interface” is the common board-design shorthand. It typically uses a pixel clock, horizontal and vertical synchronization signals, and multiple parallel color-data lines. Compared with a serial display interface, DPI uses more GPIOs and requires more careful parallel-trace routing, so confirm the target package’s pin budget and the panel timing requirements.
+* **MIPI display interface** — A display interface specified by MIPI Alliance standards, used by compatible higher-bandwidth panels.
+* **EPD** — **Electronic Paper Display.** A display technology commonly used for low-power, reflective screens.
+* **JDI display interface** — Support for compatible JDI / Sharp Memory-in-Pixel displays, where documented for the selected SF32 device.
 
 ## Audio
 
 * **ADC / DAC** — **Analog-to-Digital / Digital-to-Analog Converter.** The audio front-end and output paths on SF32 parts with integrated audio capability. Dedicated audio ADC/DAC is available on SF32LB52x/56x/57x/58x; SF32LB55x lacks a dedicated audio ADC/DAC.
-* **PDM** — **Pulse-Density Modulation.** A common digital microphone interface format supported alongside I2S on SF32 audio-capable parts.
+* **PDM** — **Pulse-Density Modulation.** A common digital microphone interface format supported alongside I2S on SF32 audio-capable parts. A PDM interface is not the same thing as one microphone: one interface can normally connect up to two digital microphones, which share the clock and use opposite clock edges to identify their left and right channels. Specify and compare PDM interface counts rather than microphone counts.
 * **I2S** — **Inter-IC Sound.** A standard digital audio interface for connecting codecs, DACs, or other audio peripherals.
 
 ## Power and Reliability
@@ -64,14 +70,20 @@ Quick reference for acronyms and terms used across the μForge.io site — both 
 ## Peripherals and Interfaces
 
 * **GPIO** — **General-Purpose Input/Output.** Configurable digital pins used for simple signaling, buttons, LEDs, and bit-banged interfaces.
+* **I/O** — **Input/Output.** A general term for the pins and peripheral signals through which a device exchanges data or control signals with the rest of a system.
 * **UART** — **Universal Asynchronous Receiver/Transmitter.** The standard serial interface used for console/debug output and simple point-to-point communication.
 * **SPI** — **Serial Peripheral Interface.** A synchronous serial bus used for displays, flash, sensors, and other high-speed peripherals.
 * **I2C** — **Inter-Integrated Circuit.** A synchronous, multi-drop serial bus commonly used for sensors and low-speed peripheral configuration.
+* **SDIO** — **Secure Digital Input Output.** A host interface used by documented SF32 designs to connect an external Wi-Fi device.
+* **DCMI** — **Digital Camera Module Interface.** A parallel camera interface for connecting a compatible image sensor.
+* **FreeIO** — SiFli's flexible GPIO-assignment capability, which allows supported signals to be mapped to suitable GPIOs within the device's documented constraints.
+* **PTM** — **Peripheral Task Machine.** A SiFli hardware feature for deterministic peripheral-task handling on supported devices.
 * **RTC** — **Real-Time Clock.** A timekeeping peripheral that can keep running (or wake the system) independent of the main application clock domains.
 
 ## Hardware and Manufacturing
 
 * **QFN** — **Quad Flat No-lead package.** The chip package type SF32 parts ship in, described by pin count and body size (e.g. QFN68).
+* **BGA** — **Ball Grid Array package.** A package with solder balls arranged beneath the device, enabling a compact footprint and higher pin count but requiring BGA-capable PCB escape routing and assembly.
 * **BOM** — **Bill of Materials.** A formal, itemized list of components, passives, and mechanical hardware required to manufacture a printed circuit board assembly (PCBA); a major reason to prefer SiFli-recommended parts and modules is BOM complexity reduction.
 * **EDA** — **Electronic Design Automation.** Schematic-capture, SPICE-simulation, and PCB-layout software category. [See the EDA tool libraries page](../hardware/others/eda-tool-libraries.md) for SF32-specific footprints/symbols.
 * **AVL** — **Approved Vendor List.** SiFli's qualified second-source component list (crystals, regulators, flash, etc.) verified against SF32 hardware designs' electrical tolerances. [See the approved vendor list page](../hardware/others/sifli-approved-vendor-list.md).

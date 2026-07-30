@@ -23,7 +23,7 @@ This guide presents **DS5602-SF32LB56-MOD Technical Specification V0.3** as an i
 
 SF32LB56-MOD uses an SF32LB56xV-series dual-core MCU platform with an HCPU for application and graphics workloads and an LCPU for low-power always-on tasks. The HCPU is an Arm Cortex-M33 STAR-MC1 core running up to 240MHz; the LCPU is an Arm Cortex-M33 STAR-MC1 core running up to 96MHz. Both cores support FPU and MPU functions.
 
-The module also provides Bluetooth 5.3 wireless connectivity, display acceleration, audio input/output, external-memory interfaces, USB2.0 FS, SD/SDIO/eMMC, I2S, UART, I2C, SPI, PWM, GPADC, and debug/download access.
+The module also provides Bluetooth 6.3 wireless connectivity, display acceleration, audio input/output, external-memory interfaces, USB2.0 FS, SD/SDIO/eMMC, I2S, UART, I2C, SPI, PWM, GPADC, and debug/download access.
 
 ### 2.2 Variants
 
@@ -48,7 +48,7 @@ The module also provides Bluetooth 5.3 wireless connectivity, display accelerati
 | Area | Capability |
 | :--- | :--- |
 | CPU | HCPU up to 240MHz, LCPU up to 96MHz, both Arm Cortex-M33 STAR-MC1 |
-| Wireless | Dual-mode Bluetooth 5.3 with BLE Audio support |
+| Wireless | Dual-mode Bluetooth 6.3 with BLE Audio support |
 | Graphics | ePicasso 2.0, eZip 2.0, TurboPixel, LCD 8080/SPI/Dual-SPI/Quad-SPI/DPI/RGB/JDI |
 | Audio | 24-bit DAC, 24-bit Sigma-Delta ADC, 2x PDM digital mic inputs, 1x I2S |
 | AI/DSP | Matrix accelerator up to 1.92GOPS, FFT, FIR, CORDIC |

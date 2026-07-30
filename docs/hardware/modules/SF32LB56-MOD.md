@@ -1,6 +1,6 @@
 ---
 icon: lucide/card-sim
-description: "SF32LB56-MOD: general-purpose Bluetooth 5.3 MCU module family based on SF32LB56xV for products that need richer graphics, audio, and storage with lower RF-integration risk."
+description: "SF32LB56-MOD: general-purpose Bluetooth 6.3 MCU module family based on SF32LB56xV for products that need richer graphics, audio, and storage with lower RF-integration risk."
 tags:
   - Hardware
   - Module
@@ -10,7 +10,7 @@ tags:
 
 ## Overview
 
-SF32LB56-MOD is SiFli's general-purpose low-power Bluetooth MCU module family based on the SF32LB56xV platform. It combines dual-core MCU processing, Bluetooth 5.3 with BLE Audio support, graphics acceleration, audio interfaces, external-memory options, and module-level RF integration in one production-ready form factor.
+SF32LB56-MOD is SiFli's general-purpose low-power Bluetooth MCU module family based on the SF32LB56xV platform. It combines dual-core MCU processing, Bluetooth 6.3 with BLE Audio support, graphics acceleration, audio interfaces, external-memory options, and module-level RF integration in one production-ready form factor.
 
 Compared with a chip-down SF32LB56xV design, the module reduces RF layout, antenna matching, crystal placement, and high-speed memory integration risk. It is a strong fit for products that need more display, audio, sensing, and local-processing headroom than a simple Bluetooth module can provide, while still keeping the hardware path compact and production-friendly.
 
@@ -72,7 +72,7 @@ Choose SF32LB56-MOD when the project wants one or more of these advantages:
 
 ### Wireless Connectivity
 
-- Dual-mode Bluetooth 5.3 with BLE Audio support
+- Dual-mode Bluetooth 6.3 with BLE Audio support
 - Sensitivity: -100dBm BLE 1Mbps, -96.3dBm BR, -95.5dBm EDR2, -88.5dBm EDR3
 - Maximum transmit power: 19dBm for BR/BLE, 13dBm for EDR2/EDR3
 - BR peak receive current: 2.2mA at 3.3V

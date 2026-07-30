@@ -20,6 +20,10 @@ For hardware planning, the most important early decision is the power/package ba
 
 [^1]: The STAR-MC1 processor is an enhanced implementation of the Arm Cortex-M33 architecture developed by Arm China. It is fully compatible with the Cortex-M33 instruction set and software ecosystem, allowing existing Cortex-M33 applications, middleware, RTOSes, and development tools to be used without modification.
 
+[^2]: BGA112's GPIO count depends on what occupies the second in-package memory slot. When that slot is PSRAM (dual-PSRAM memory configuration), the package has 58 GPIOs. When it is not PSRAM -- a second Flash die, or no second die at all -- the package has 64 total GPIO-capable pins, but 6 of those are dedicated to MPI3 (used for routing the second Flash die) and are not freely reassignable general-purpose GPIO, so they should not be counted as 6 additional usable GPIOs. `SF32LB57GVD776` carries a single PSRAM die plus a dual-die Flash configuration (not PSRAM in the second slot), so its 64 physical pins include those 6 MPI3-only pins -- reported here as 58 GPIOs to reflect genuinely general-purpose I/O rather than the raw pin count.
+
+[^3]: SF32LB57x_hardware_design_guide.md's Table 3.3-2 lists two chip-thickness options per package (QFN68 and QFN80: 0.9mm or 1.1mm; BGA112: 0.98mm or 1.03mm), driven by how many stacked memory dies the package has to accommodate. Parts with two Flash dies use the thicker option: `SF32LB573UB766` and `SF32LB573UB776` (QFN68, 1.1mm) and `SF32LB57GVD776` (BGA112, 1.03mm). Parts with at most one Flash die use the thinner option: `SF32LB573UB7N6`, `SF32LB575UC7N6`, `SF32LB575UCNN6`, `SF32LB577UDNN6`, `SF32LB57ZUN3N6` (QFN68, 0.9mm) and `SF32LB57EYBBN6`, `SF32LB57GYD7N6` (QFN80, 0.9mm).
+
 ## Applications
 
 **SF32LB57x is a strong fit for** compact connected products that need graphics, Bluetooth audio, camera input, external storage, or always-on sensing in a low-power MCU platform, including:
@@ -146,7 +150,7 @@ It is especially suitable when the design needs one or more of these capabilitie
 
 ### Peripherals and I/Os
 
-- Up to 64 GPIOs, depending on package
+- Up to 58 GPIOs, depending on package and orderable part
 - FreeIO flexible GPIO assignment
 - 3× UART
 - 4× I2C
@@ -179,33 +183,47 @@ It is especially suitable when the design needs one or more of these capabilitie
 
 SF32LB57x spans battery-powered and externally regulated 3.3 V package baselines. Select the exact part number before schematic capture, because package drawings, power pins, available GPIO count, bundled memory, and board constraints differ across the family.
 
-<div align="center"><em>SF32LB57x Package and Power Overview</em></div>
+The practical part-selection split is:
+
+- **`SF32LB57xU`**: QFN68, lithium-ion battery-powered group (digit tier, e.g. `3`/`5`/`7`)
+- **`SF32LB57XU`**: QFN68, standard external 3.3 V-supply group (letter tier, e.g. `Z`/`C`/`E`/`F`/`G`/`H`/`J`)
+- **`SF32LB57XY`** / **`SF32LB57XV`**: QFN80 / BGA112, external 3.3 V-supply group; a battery-powered digit-tier `57xY` also exists (e.g. `SF32LB575YBBN6`) but is not shown in these two tables
+
+<div align="center"><em>SF32LB57x QFN68 Variants (57xU / 57XU)</em></div>
 
 <div align="center" markdown>
 
-| Package / Part Pattern | Size | Power Baseline | GPIO Count | Design Meaning |
-| :--- | :--- | :--- | ---: | :--- |
-| QFN68 / `SF32LB57xU` | 7 × 7 mm | Li-ion battery powered | 46 | For compact battery products that use the integrated charger and battery power path |
-| QFN68 / `SF32LB57XU` | 7 × 7 mm | External 3.3 V | 47 | Compact externally regulated design with moderate GPIO needs |
-| QFN80 / `SF32LB57xY` | 8 × 8 mm | Battery or external 3.3 V baseline | 58 | More GPIO and routing space while staying in QFN assembly flow |
-| BGA112 / `SF32LB57xV` | 5.4 × 4.4 mm | Battery or external 3.3 V baseline | 64 | Highest GPIO count and compact footprint, with BGA fanout and PCB-process implications |
+| SF32LB | 573UB7N6 | 573UB766 | 573UB776 | 575UC7N6 | 575UCNN6 | 577UDNN6 | 57ZUN3N6 |
+|:-|-:|-:|-:|-:|-:|-:|-:|
+| Package | QFN68 | QFN68 | QFN68 | QFN68 | QFN68 | QFN68 | QFN68 |
+| Size | 7 × 7 × 0.9mm | 7 × 7 × 1.1mm[^3] | 7 × 7 × 1.1mm[^3] | 7 × 7 × 0.9mm | 7 × 7 × 0.9mm | 7 × 7 × 0.9mm | 7 × 7 × 0.9mm |
+| Pitch | 0.35mm | 0.35mm | 0.35mm | 0.35mm | 0.35mm | 0.35mm | 0.35mm |
+| GPIOs | 46 | 46 | 46 | 46 | 46 | 46 | 47 |
+| Co-packaged memory | 4MB OPI-PSRAM + 16MB QSPI-NOR | 4MB OPI-PSRAM + 16MB+8MB QSPI-NOR (dual-die) | 4MB OPI-PSRAM + 16MB×2 QSPI-NOR (dual-die) | 8MB OPI-PSRAM + 16MB QSPI-NOR | 8MB OPI-PSRAM, no QSPI-NOR | 16MB OPI-PSRAM, no QSPI-NOR | No PSRAM, 1MB QSPI-NOR only |
+| Power supply | 3.2–4.7V | 3.2–4.7V | 3.2–4.7V | 3.2–4.7V | 3.2–4.7V | 3.2–4.7V | **3.3V** |
+| I/O voltage | 3.3V | 3.3V | 3.3V | 3.3V | 3.3V | 3.3V | 3.3V |
+| Temperature | -40 to 85°C | -40 to 85°C | -40 to 85°C | -40 to 85°C | -40 to 85°C | -40 to 85°C | -40 to 85°C |
 
 </div>
 
-For SF32LB57x, package selection is not just a PCB-cost question. It affects display-interface availability, external-storage routing, GPIO budget, debug/download pin retention, and fanout difficulty, so package choice should be locked together with the power architecture.
-
-<div align="center"><em>SF32LB57x Orderable Examples</em></div>
+<div align="center"><em>SF32LB57x QFN80 / BGA112 Variants (57XY / 57XV)</em></div>
 
 <div align="center" markdown>
 
-| Orderable Part | Package | Bundled Memory | Reel Quantity |
-| :--- | :--- | :--- | ---: |
-| SF32LB573UB7N6 | QFN68, 7 × 7 mm, T0.9, P0.35 | 32 Mb OPI-PSRAM + 128 Mb NOR Flash | 3000 |
-| SF32LB575YBBN6 | QFN80, 8 × 8 mm, T0.9, P0.35 | 32 Mb × 2 OPI-PSRAM | 3000 |
+| SF32LB | 57EYBBN6 | 57GYD7N6 | 57GVD776 |
+|:-|-:|-:|-:|
+| Package | QFN80 | QFN80 | BGA112 |
+| Size | 8 × 8 × 0.9mm | 8 × 8 × 0.9mm | 5.4 × 4.4 × 1.03mm[^3] |
+| Pitch | 0.35mm | 0.35mm | 0.4mm |
+| GPIOs | 58 | 58 | 58[^2] |
+| Co-packaged memory | 8MB (2×4MB dual-die) OPI-PSRAM, no QSPI-NOR | 16MB OPI-PSRAM + 16MB QSPI-NOR | 16MB OPI-PSRAM + 32MB (2×16MB dual-die) QSPI-NOR |
+| Power supply | **3.3V** | **3.3V** | **3.3V** |
+| I/O voltage | 3.3V / 1.8V | 3.3V / 1.8V | 3.3V / 1.8V |
+| Temperature | -40 to 85°C | -40 to 85°C | -40 to 85°C |
 
 </div>
 
-Use the orderable part number, not only the package name, as the BOM and schematic baseline. The memory suffix changes the SiP storage configuration and can affect boot-media assumptions, power sequencing, and external-storage requirements.
+For SF32LB57x, package selection is not just a PCB-cost question. It affects display-interface availability, external-storage routing, GPIO budget, debug/download pin retention, and fanout difficulty, so package choice should be locked together with the power architecture. Use the orderable part number, not only the package name, as the BOM and schematic baseline -- the memory suffix changes the SiP storage configuration and can affect boot-media assumptions, power sequencing, and external-storage requirements.
 
 ## Integration Path
 

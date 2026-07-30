@@ -90,7 +90,7 @@ These groups are not interchangeable at the board level. The battery-powered and
 
 ### Wireless Connectivity
 
-- Dual-mode BT/BLE, BT5.3 certified
+- Dual-mode BT/BLE, BT6.3 certified
 - Maximum transmit power:
     - 17 dBm for BLE and BT/BR
     - 13 dBm for BT/EDR2 and BT/EDR3
@@ -154,7 +154,7 @@ If you are migrating between memory tiers, the nearest content-correspondence ma
 | Pitch | 0.35mm | 0.35mm | 0.35mm | 0.35mm | 0.35mm | 0.35mm | 0.35mm | 0.35mm | 0.35mm | 0.35mm |
 | GPIOs | 44 | 44 | 44 | 44 | 45 | 45 | 45 | 45 | 45 | 45 |
 | Co-packaged memory | 1MB QSPI-NOR | 4MB OPI-PSRAM | 8MB OPI-PSRAM | 16MB OPI-PSRAM | 1MB QSPI-NOR | 4MB QSPI-NOR | 4MB OPI-PSRAM | 4MB OPI-PSRAM | 8MB OPI-PSRAM | 16MB OPI-PSRAM |
-| Chip supply | 3.2–4.7V | 3.2–4.7V | 3.2–4.7V | 3.2–4.7V | **3.3V** | **3.3V** | **1.8V** | **3.3V** | **3.3V** | **3.3V** |
+| Power supply | 3.2–4.7V | 3.2–4.7V | 3.2–4.7V | 3.2–4.7V | **3.3V** | **3.3V** | **1.8V** | **3.3V** | **3.3V** | **3.3V** |
 | I/O voltage | 3.3V | 3.3V | 3.3V | 3.3V | 3.3V / 1.8V | 3.3V / 1.8V | 3.3V / 1.8V | 3.3V / 1.8V | 3.3V / 1.8V | 3.3V / 1.8V |
 | Temperature | -40 to 85°C | -40 to 85°C | -40 to 85°C | -40 to 85°C | -40 to 85°C | -40 to 85°C | -40 to 85°C | -40 to 85°C | -40 to 85°C | -40 to 85°C |
 
