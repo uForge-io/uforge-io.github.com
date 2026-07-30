@@ -51,7 +51,7 @@ This document assumes a basic understanding of embedded hardware design, schemat
 | Feature | Description |
 |:---|:---|
 | Core architecture | Heterogeneous triple-core architecture: 2x application Arm Cortex-M33 STAR-MC1 cores up to 240 MHz and 1x low-power Arm Cortex-M33 STAR-MC1 core up to 96 MHz |
-| Bluetooth | Integrated low-power Bluetooth 5.3 transceiver |
+| Bluetooth | Integrated low-power Bluetooth 6.3 transceiver |
 | Graphics | ePicasso 2.0 2D/2.5D graphics acceleration and Vivante GCNanoUltraV vector graphics |
 | Display interfaces | MIPI-DSI, SPI/QSPI, MCU8080, DPI, parallel/serial JDI |
 | Storage | Model-dependent co-packaged NOR Flash/PSRAM, plus external MPI4, SD1, and SD2 interfaces |

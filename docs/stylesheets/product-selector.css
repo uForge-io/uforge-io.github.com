@@ -31,7 +31,7 @@
   gap: 0.35rem 1.25rem;
 }
 
-/* The 8 select-style filters, as a 2-row x 4-column matrix. Falls back to
+/* The 12 select-style filters, as a 3-row x 4-column matrix. Falls back to
    2 columns then 1 on narrower viewports rather than a fixed 4 columns
    that would force horizontal scrolling on the docs content column. */
 .uf-ps-controls-selects {
@@ -99,38 +99,162 @@
   background: var(--md-accent-fg-color--transparent, rgba(0, 0, 0, 0.05));
 }
 
-.uf-ps-table-wrap {
-  overflow-x: auto;
+/* Two-table "frozen column" layout. This replaced an earlier single-table
+   design that used position: sticky on the first column -- that approach
+   went through several rounds of bleed-through and per-row misalignment
+   bugs (opacity cascading into the sticky cell's background, sticky cells
+   computing their own width per row instead of sharing one column width
+   across the table) that persisted across browsers and multiple attempted
+   fixes. Splitting the Part column into its own small, non-scrolling
+   <table> sitting next to a second <table> (wrapped in its own
+   overflow-x: auto container) for every other column sidesteps both bug
+   classes entirely: the frozen table never scrolls, so nothing can bleed
+   through underneath it, and each table lays out its own columns
+   independently. flex + flex-shrink: 0 on the frozen table keeps it a
+   fixed width while the second table's wrapper absorbs all the horizontal
+   scrolling. */
+.uf-ps-table-dual {
+  display: flex;
+  align-items: flex-start;
   border: 1px solid var(--md-default-fg-color--lightest, #e0e0e0);
   border-radius: 8px;
+  overflow: hidden;
+}
+
+.uf-ps-table-frozen {
+  flex: 0 0 auto;
+  border-right: 1px solid var(--md-default-fg-color--lightest, #e0e0e0);
+}
+
+.uf-ps-table-scroll {
+  flex: 1 1 auto;
+  min-width: 0;
+  overflow-x: auto;
 }
 
 .md-typeset .uf-ps-table {
   width: 100%;
   font-size: 0.68rem;
-  border-collapse: collapse;
+  border-collapse: separate;
+  border-spacing: 0;
+}
+
+.md-typeset .uf-ps-table-frozen {
+  /* Fixed width, sized to the longest part number in the dataset -- the
+     module SKUs (e.g. SF32LB56-MOD-N16R12N1, 21 chars) are longer than any
+     chip part number (14 chars, e.g. SF32LB573UB7N6), so the column has to
+     fit those, with ellipsis as a safety net if a future part number is
+     longer still. Since this table only ever has one column, table-layout:
+     fixed makes that width authoritative immediately rather than waiting
+     on an intrinsic-width calculation. */
+  table-layout: fixed;
+  width: 10.5rem;
+}
+
+.md-typeset .uf-ps-table-frozen td,
+.md-typeset .uf-ps-table-frozen th {
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .md-typeset .uf-ps-table th {
   white-space: nowrap;
   text-align: left;
+  vertical-align: middle;
   padding: 0.4rem 0.6rem;
   font-weight: 700;
   line-height: 1.35;
 }
 
+/* Every cell is single-line content (nowrap, no wrapped reason text since
+   that moved to a title tooltip) and rows are forced to a shared height
+   across the frozen/body table split (see syncRowHeights in the JS) -- so
+   there's no longer a reason to top-align: with vertical-align: top, any
+   row whose height ends up taller than one cell's own natural content need
+   (which happens as soon as the two tables' natural heights differ even
+   slightly, or once syncRowHeights pins every row to the tallest one)
+   leaves that cell's text pinned to the top with empty space below it,
+   which reads as "not centered"/inconsistent from row to row. Centering
+   instead means a taller row just adds equal breathing room above and
+   below the text, so every row's text sits in a consistent, predictable
+   spot regardless of how that row's height was arrived at. */
 .md-typeset .uf-ps-table td {
   white-space: nowrap;
-  vertical-align: top;
+  vertical-align: middle;
   padding: 0.3rem 0.6rem;
 }
 
-.uf-ps-table tbody tr:nth-child(even) {
+/* ROOT CAUSE of the long-standing "first column text sits higher than the
+   rest of its row" misalignment: uforge-home.css (loaded site-wide, not
+   just on the homepage) carries a global layout reset
+
+     .md-content__inner *:first-child { padding-top: 0 !important; }
+
+   which matches EVERY first-child element inside the content area --
+   including each row's first <td>/<th> in these tables. So the Part-number
+   cell (first child of its row in the frozen table) and the PSRAM cell
+   (first child of its row in the body table) silently lost their top
+   padding while every other cell kept it, and with vertical-align: middle
+   their text centered ~3px higher than the rest of the row. Verified by
+   comparing getComputedStyle padding across cells in a headless browser:
+   first-child cells computed "0px 12px 6px", the rest "6px 12px". The
+   re-assertions below need !important themselves to beat the reset (both
+   important -> higher specificity wins), and must repeat the base rules'
+   padding values exactly. */
+.md-typeset .uf-ps-table th:first-child {
+  padding-top: 0.4rem !important;
+}
+
+.md-typeset .uf-ps-table td:first-child {
+  padding-top: 0.3rem !important;
+}
+
+/* Plain every-other-row alternation, toggled in JS via row index
+   (.uf-ps-row-stripe) rather than a :nth-child selector, since
+   :nth-child(even) would count hidden/filtered rows too if the table ever
+   removes non-matching rows from the DOM instead of just dimming them.
+   Family is distinguished separately via part-name text color, not by
+   grouping the background shade -- see .uf-ps-family-* below. This one
+   rule now covers both the frozen and scrolling tables (both carry the
+   base .uf-ps-table class), since they're two independent, fully opaque
+   tables rather than one table with a see-through sticky column. */
+.uf-ps-table tbody tr.uf-ps-row-stripe {
   background: var(--md-default-fg-color--lightest, rgba(0, 0, 0, 0.03));
 }
 
-.uf-ps-table tr.uf-ps-row-excluded {
-  opacity: 0.45;
+/* Rows that fail the active filters are no longer rendered at all (they
+   used to be kept, dimmed via opacity, with a "Doesn't match:" tooltip),
+   so there is no excluded-row styling anymore -- the table only ever
+   contains qualifying parts. */
+
+/* Part-name text color, keyed to family (see familySlug() in
+   product-selector.js) -- row background striping is back to plain
+   alternation (no family grouping), so families are told apart visually by
+   this instead. Colors chosen to be distinct from each other and from the
+   theme's default link/accent color. */
+.uf-ps-table td.uf-ps-family-sf32lb52x,
+.uf-ps-table td.uf-ps-family-sf32lb52x a.uf-ps-name-link {
+  color: #2563eb;
+}
+
+.uf-ps-table td.uf-ps-family-sf32lb55x,
+.uf-ps-table td.uf-ps-family-sf32lb55x a.uf-ps-name-link {
+  color: #7c3aed;
+}
+
+.uf-ps-table td.uf-ps-family-sf32lb56x,
+.uf-ps-table td.uf-ps-family-sf32lb56x a.uf-ps-name-link {
+  color: #0d9488;
+}
+
+.uf-ps-table td.uf-ps-family-sf32lb57x,
+.uf-ps-table td.uf-ps-family-sf32lb57x a.uf-ps-name-link {
+  color: #d97706;
+}
+
+.uf-ps-table td.uf-ps-family-sf32lb58x,
+.uf-ps-table td.uf-ps-family-sf32lb58x a.uf-ps-name-link {
+  color: #dc2626;
 }
 
 .uf-ps-yes {
@@ -142,28 +266,16 @@
   opacity: 0.5;
 }
 
-.uf-ps-links {
-  display: flex;
-  flex-direction: column;
-  gap: 0.15rem;
+/* Digital-peripheral count cells (UART/I2C/SPI/CAN/GPADC Ch/USB) -- centered
+   like the yes/no boolean cells, with "n/a" (undocumented count) dimmed the
+   same way a "no" boolean cell is. */
+.uf-ps-num {
+  text-align: center;
 }
 
-.uf-ps-link {
-  font-size: 0.65rem;
+.md-typeset .uf-ps-table td a.uf-ps-name-link {
+  font-weight: 600;
   white-space: nowrap;
-}
-
-.uf-ps-reason {
-  /* Overrides the nowrap inherited from .uf-ps-table td -- this is a full
-     sentence of failed-filter reasons, not a short badge, and should wrap
-     normally instead of stretching the Resources column and the whole
-     table out to fit one unbroken line. */
-  white-space: normal;
-  max-width: 16rem;
-  margin-top: 0.3rem;
-  font-size: 0.6rem;
-  font-style: italic;
-  opacity: 0.85;
 }
 
 .uf-ps-no-results {

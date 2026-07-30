@@ -1,6 +1,6 @@
 ---
 icon: lucide/card-sim
-description: "SF32LB52-MOD-1: Bluetooth 5.3 MCU module based on SF32LB525UC6 for wearable and compact HMI products that want lower RF and antenna-integration risk."
+description: "SF32LB52-MOD-1: Bluetooth 6.3 MCU module based on SF32LB525UC6 for wearable and compact HMI products that want lower RF and antenna-integration risk."
 tags:
   - Hardware
   - Module
@@ -72,7 +72,7 @@ Choose SF32LB52-MOD-1 when the project wants one or more of these advantages:
 
 ### Wireless Connectivity
 
-- Dual-mode Bluetooth 5.3 with BLE Audio support
+- Dual-mode Bluetooth 6.3 with BLE Audio support
 - Sensitivity: -100dBm (BLE/1Mbps), -96.3dBm (BR), -95.5dBm (EDR2)
 - Maximum transmit power: 19dBm (BR/BLE), 13dBm (EDR2/EDR3)
 - BR peak receive current: 2.4mA @ 3.8V

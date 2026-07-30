@@ -14,7 +14,7 @@ The SF32LB56x series is an advanced ultra-low-power AIoT microcontroller family 
 
 It uses a big.LITTLE dual-core architecture with a high-performance Arm Cortex-M33 STAR-MC1[^1] application processor running at up to 240MHz and an ultra-low-power Arm Cortex-M33 STAR-MC1 processor running at up to 96MHz. That split lets the main core absorb UI, display, storage, and product logic workloads while the low-power core handles always-on sensing, standby behavior, and Bluetooth control with a lower energy budget.
 
-SiFli's official product brief and datasheet position SF32LB56x as a higher-integration choice for display- and audio-rich connected devices. The family adds dual-mode Bluetooth 5.3 with BLE Audio support, ePicasso 2.0 graphics, integrated audio ADC/DAC paths, a TinyML-oriented accelerator, package-integrated Flash options, and broader external-memory and display-interface support. In practice, it is a strong fit when a design has outgrown SF32LB55x in wireless, display, or audio complexity but still wants MCU-class power and integration.
+SiFli's official product brief and datasheet position SF32LB56x as a higher-integration choice for display- and audio-rich connected devices. The family adds dual-mode Bluetooth 6.3 with BLE Audio support, ePicasso 2.0 graphics, integrated audio ADC/DAC paths, a TinyML-oriented accelerator, package-integrated Flash options, and broader external-memory and display-interface support. In practice, it is a strong fit when a design has outgrown SF32LB55x in wireless, display, or audio complexity but still wants MCU-class power and integration.
 
 SiFli's chip model guide also matters here: the SF32LB56x family supports different display-interface combinations across its packages, so exact part number and package selection should be treated as a first-order architecture choice, not a late PCB detail.
 
@@ -35,7 +35,7 @@ SiFli's chip model guide also matters here: the SF32LB56x family supports differ
 
 Choose SF32LB56x when the design needs one or more of these capabilities:
 
-- Dual-mode Bluetooth 5.3 with BLE Audio support
+- Dual-mode Bluetooth 6.3 with BLE Audio support
 - Integrated HiFi audio ADC and DAC
 - Larger display and graphics workloads
 - DPI/RGB display-interface support
@@ -107,7 +107,7 @@ Choose SF32LB56x when the design needs one or more of these capabilities:
 
 ### Audio and Wireless Connectivity
 
-- Dual-mode Bluetooth 5.3 with BLE Audio support
+- Dual-mode Bluetooth 6.3 with BLE Audio support
 - Sensitivity: -100dBm BLE 1Mbps, -96.3dBm BR, -95.5dBm EDR2, -88.5dBm EDR3
 - Maximum transmit power: 19dBm for BR/BLE, 13dBm for EDR2/EDR3
 - BR receive peak current: 2.2mA at 3.3V
