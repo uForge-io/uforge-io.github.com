@@ -46,7 +46,7 @@ hide:
 </div>
 <div class="uf-hero-visual" markdown>
 
-![SF32 MCU — Bluetooth 5.3, 2D/2.5D GPU, multiple display interfaces, AI accelerator, ultra-low power, audio codec](assets/home/sf32-chip-hero.png){ .uf-chip-scene title="SF32 MCU platform visual" style="position: relative; top: -6px; width: 136%; max-width: none; margin-left: -36%; height: auto; border-radius: 16px;" }
+![SF32 MCU — Bluetooth 6.3, 2D/2.5D GPU, multiple display interfaces, AI accelerator, ultra-low power, audio codec](assets/home/sf32-chip-hero.png){ .uf-chip-scene title="SF32 MCU platform visual" style="position: relative; top: -6px; width: 136%; max-width: none; margin-left: -36%; height: auto; border-radius: 16px;" }
 
 </div>
 </div>

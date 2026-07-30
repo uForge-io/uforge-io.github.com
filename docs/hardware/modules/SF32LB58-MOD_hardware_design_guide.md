@@ -46,7 +46,7 @@ For the underlying chip architecture (cores, graphics, memory subsystem, and per
 | Application cores (HCPU/ACPU) | 2x Arm Cortex-M33 STAR-MC1, up to 240MHz |
 | Low-power core (LCPU) | Arm Cortex-M33 STAR-MC1, up to 96MHz |
 | SRAM | 2176KB (HCPU) + 512KB (ACPU) + 1056KB retention SRAM (LCPU) |
-| Wireless | Dual-mode Bluetooth 5.3 with BLE Audio |
+| Wireless | Dual-mode Bluetooth 6.3 with BLE Audio |
 | Graphics | ePicasso 2.0 + Vivante GCNanoUltraV, up to 1024×1024, eZip 2.0, hardware JPEG codec |
 | Audio | 2x 24-bit audio DAC, 2x 24-bit audio Sigma-Delta ADC |
 | Storage | 5x MPI (in-package + external), 2x SD/SDIO/eMMC |
@@ -374,7 +374,7 @@ Full tables (including input leakage, reset thresholds, and pin capacitance at b
 
 ### 6.5 Dual-Mode Bluetooth RF Performance
 
-Supports Bluetooth 5.3, backward compatible with 4.2/4.1/4.0. Operating channel center frequency: 2402–2480MHz.
+Supports Bluetooth 6.3, backward compatible with 5.x/4.2/4.1/4.0. Operating channel center frequency: 2402–2480MHz.
 
 **BLE transmitter (1Mbps)**: max power 19dBm, power control range -20 to 19dBm.
 

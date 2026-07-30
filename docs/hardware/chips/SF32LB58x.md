@@ -87,7 +87,7 @@ Choose SF32LB58x when the design needs one or more of these capabilities:
 
 ### Audio and Wireless Connectivity
 
-- Dual-mode Bluetooth 5.3
+- Dual-mode Bluetooth 6.3
 - Support for Bluetooth Classic and Bluetooth LE
 - External Wi-Fi connectivity through SDIO
 - 2x integrated audio ADCs

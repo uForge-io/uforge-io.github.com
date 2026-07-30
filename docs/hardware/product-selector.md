@@ -10,7 +10,10 @@ hide:
 
 # SF32 Product Selector
 
-Make a practical first shortlist of SF32 chips, modules, and development boards. Set the requirements your design cannot compromise on, then compare the remaining integration paths and the trade-offs behind each dimmed row.
+Make a practical first shortlist of SF32 chips, modules, and development boards. Set the requirements your design cannot compromise on, then compare the parts that meet all of them.
+
+!!! note "Terminology"
+    For definitions of the abbreviations and interface names used in this tool, see the [Glossary](../about/glossary.md).
 
 !!! info "Reading audio and PDM counts"
     1. PDM counts interfaces, not microphones: each PDM interface can connect up to two digital microphones.
@@ -32,7 +35,7 @@ The filters describe minimum requirements. For example, an 8 MB PSRAM selection 
 
 ## Read the results correctly
 
-Rows remain visible when they do not meet every selected requirement. They are dimmed and list the specific mismatch so that a near fit is not mistaken for a full match. The audio column always lists counts in **DAC / ADC / PDM / I2S** order.
+The table only lists parts that meet every selected requirement — anything that misses even one filter is removed from the results rather than shown as a near fit. Loosen a filter to bring excluded parts back. The audio columns always list counts in **DAC / ADC / PDM / I2S** order.
 
 Feature flags and capacity values summarize the documented configuration for the listed tier. Confirm the target part number, package, electrical limits, and intended interface routing against its own SiFli documentation before freezing a design.
 

@@ -55,7 +55,7 @@ The SF32LB52x family combines dual-core STAR-MC1 processors, Bluetooth connectiv
 The family integrates:
 
 - Dual-core Arm China STAR-MC1 processors with FPU and MPU, Arm Cortex-M33 compatible
-- Dual-mode Bluetooth 5.4 radio
+- Dual-mode Bluetooth 6.3 radio
 - ePicasso 2.0 2D/2.5D graphics accelerator
 - Display controller supporting SPI, QSPI, 8080, JDI, and 8-bit EPD interfaces
 - USB 2.0 Full-Speed device
