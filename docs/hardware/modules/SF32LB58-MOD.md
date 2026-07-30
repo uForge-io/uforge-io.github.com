@@ -70,7 +70,7 @@ Choose SF32LB58-MOD when the project wants one or more of these advantages:
 
 ### Wireless Connectivity
 
-- Dual-mode Bluetooth 5.3 with BLE Audio support
+- Dual-mode Bluetooth 6.3 with BLE Audio support
 - Sensitivity down to -107.5dBm for BLE Long Range at 125kbps
 - Maximum transmit power: 19dBm (BR/BLE), 13dBm (EDR2/EDR3)
 - BR/EDR2/EDR3 peak receive current: 2.2mA @ 3.3V
