@@ -1,0 +1,173 @@
+/* ============================================================
+   Product Selector tool (docs/hardware/product-selector.md)
+   Scoped to uf-ps-* classes, same isolation convention as
+   hardware-overview.css's uf-hw-* classes.
+   ============================================================ */
+
+.uf-ps-status {
+  font-style: italic;
+  opacity: 0.8;
+}
+
+.uf-ps-error {
+  color: var(--md-typeset-color, inherit);
+  font-weight: 600;
+}
+
+.uf-ps-controls {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+  margin-bottom: 0.75rem;
+  padding: 0.5rem 0.75rem;
+  border: 1px solid var(--md-default-fg-color--lightest, #e0e0e0);
+  border-radius: 8px;
+}
+
+/* The 3 boolean "requires X" checkboxes, in one row. */
+.uf-ps-controls-checkboxes {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem 1.25rem;
+}
+
+/* The 8 select-style filters, as a 2-row x 4-column matrix. Falls back to
+   2 columns then 1 on narrower viewports rather than a fixed 4 columns
+   that would force horizontal scrolling on the docs content column. */
+.uf-ps-controls-selects {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 0.5rem 1rem;
+  align-items: start;
+}
+
+@media (max-width: 960px) {
+  .uf-ps-controls-selects {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 500px) {
+  .uf-ps-controls-selects {
+    grid-template-columns: 1fr;
+  }
+}
+
+.uf-ps-filter {
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+  font-size: 0.72rem;
+}
+
+.uf-ps-filter label {
+  font-weight: 600;
+}
+
+.uf-ps-filter select {
+  min-width: 0;
+  width: 100%;
+  font-size: 0.72rem;
+}
+
+.uf-ps-filter-checkbox label {
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
+  font-weight: 400;
+}
+
+.uf-ps-actions {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.md-typeset .uf-ps-reset {
+  margin: 0;
+  padding: 0.3rem 0.55rem;
+  border: 1px solid var(--md-default-fg-color--lightest, #d0d0d0);
+  border-radius: 4px;
+  background: transparent;
+  color: var(--md-typeset-a-color, inherit);
+  font-size: 0.72rem;
+  cursor: pointer;
+}
+
+.md-typeset .uf-ps-reset:hover,
+.md-typeset .uf-ps-reset:focus-visible {
+  border-color: var(--md-accent-fg-color, currentColor);
+  background: var(--md-accent-fg-color--transparent, rgba(0, 0, 0, 0.05));
+}
+
+.uf-ps-table-wrap {
+  overflow-x: auto;
+  border: 1px solid var(--md-default-fg-color--lightest, #e0e0e0);
+  border-radius: 8px;
+}
+
+.md-typeset .uf-ps-table {
+  width: 100%;
+  font-size: 0.68rem;
+  border-collapse: collapse;
+}
+
+.md-typeset .uf-ps-table th {
+  white-space: nowrap;
+  text-align: left;
+  padding: 0.4rem 0.6rem;
+  font-weight: 700;
+  line-height: 1.35;
+}
+
+.md-typeset .uf-ps-table td {
+  white-space: nowrap;
+  vertical-align: top;
+  padding: 0.3rem 0.6rem;
+}
+
+.uf-ps-table tbody tr:nth-child(even) {
+  background: var(--md-default-fg-color--lightest, rgba(0, 0, 0, 0.03));
+}
+
+.uf-ps-table tr.uf-ps-row-excluded {
+  opacity: 0.45;
+}
+
+.uf-ps-yes {
+  text-align: center;
+}
+
+.uf-ps-no {
+  text-align: center;
+  opacity: 0.5;
+}
+
+.uf-ps-links {
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+}
+
+.uf-ps-link {
+  font-size: 0.65rem;
+  white-space: nowrap;
+}
+
+.uf-ps-reason {
+  /* Overrides the nowrap inherited from .uf-ps-table td -- this is a full
+     sentence of failed-filter reasons, not a short badge, and should wrap
+     normally instead of stretching the Resources column and the whole
+     table out to fit one unbroken line. */
+  white-space: normal;
+  max-width: 16rem;
+  margin-top: 0.3rem;
+  font-size: 0.6rem;
+  font-style: italic;
+  opacity: 0.85;
+}
+
+.uf-ps-no-results {
+  font-style: italic;
+  opacity: 0.8;
+  margin-top: 1rem;
+}

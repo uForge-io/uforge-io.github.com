@@ -20,7 +20,7 @@ This path connects the decisions that turn an SF32 concept into a buildable prod
 |:------|:-------------|:-----------|:---------------|
 | 1. Define requirements | Wireless role, display, audio, AI, storage, power, package area, and target lifecycle. | [SF32 Family](chips/SF32_family.md) | A ranked shortlist with explicit must-have interfaces and constraints. |
 | 2. Select integration | Custom chip PCB, module plus carrier, or a development board for early validation. | [Choose Hardware](choose-hardware.md) | A selected device direction and the closest available board or module. |
-| 3. Prove the software baseline | Toolchain, flash flow, serial output, and one known-good example on the selected or closest board. | [Getting Started](../getting-started/getting-started-overview.md) | A repeatable build, flash, and console log. |
+| 3. Prove the software baseline | Toolchain, flash flow, serial output, and one known-good example on the selected or closest board. | [Getting Started](../getting-started/overview.md) | A repeatable build, flash, and console log. |
 | 4. Validate product risks | Display, Bluetooth, audio, AI, storage, and power behavior that is specific to the product. | [Tutorials](../tutorials/overview.md), [Learn](../learn/overview.md), and [Develop](../develop/overview.md) | Measured evidence for the subsystems that drive cost, power, or schedule risk. |
 | 5. Freeze the implementation plan | Schematic, layout, memory/partition plan, BOM, test approach, update/recovery behavior, and manufacturing assumptions. | [Design for Production](design-for-production.md) | Reviewed design package and an explicit list of remaining validation items. |
 
