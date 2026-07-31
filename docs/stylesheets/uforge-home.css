@@ -69,13 +69,46 @@
   background: #1e293b;
 }
 
-/* ── Hide the header repo (GitHub) link on the front page only ──
-   Unlike the footer prev/next nav, the theme has no front-matter toggle
-   for the header source link — it's unconditional in partials/header.html.
-   .uf-hero only exists on index.md, so :has() scopes this to that page
-   alone without needing a per-page body class from the theme. */
+/* ── Hide the header source block on the front page only ──
+   The theme gives .md-header__source a fixed width:11.5rem regardless of
+   its contents. On the homepage we hide GitHub and don't want the empty
+   11.5rem gap that would otherwise push the palette/search cluster toward
+   the center, so we hide the entire block (not just the link inside it).
+   .uf-hero only exists on index.md, so :has() scopes this to that page. */
 body:has(.uf-hero) .md-header__source {
   display: none !important;
+}
+
+/* ── Header "Buy" pill (see overrides/partials/header.html) ──
+   Sits as a normal flex item just left of the palette (light/dark) toggle.
+   No absolute positioning or search margin hacks needed. */
+.md-header .uf-buy {
+  display: inline-flex;
+  align-items: center;
+  gap: .3rem;
+  background: var(--uf-blue);
+  border-radius: 100px;
+  /* the icon's <path fill="currentColor"> beats inherited fill; pin
+     currentColor to white so the cart is white in both schemes */
+  color: #fff !important;
+  text-decoration: none;
+  height: 1.5rem;
+  padding: 0 .6rem 0 .5rem;
+  margin: 0 .2rem;
+  overflow: hidden;
+  flex-shrink: 0;
+}
+.md-header .uf-buy svg {
+  fill: currentColor;
+  width: .75rem;
+  height: .75rem;
+  flex-shrink: 0;
+}
+.md-header .uf-buy .uf-buy-label {
+  font-size: .7rem;
+  font-weight: 700;
+  line-height: 1;
+  white-space: nowrap;
 }
 
 /* ── Suppress default MkDocs page padding on homepage ──

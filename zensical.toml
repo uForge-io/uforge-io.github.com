@@ -13,39 +13,33 @@ repo_url = "https://github.com/uForge-io/uforge-site"
 repo_name = "μForge-io/uforge-site"
 
 copyright = """
-Copyright &copy; 2026 μForge.io · <a href='/about/about/'>About</a> · <a href='/about/glossary/'>Glossary</a> · <a href='/about/contact/'>Contact</a>
+Copyright &copy; 2026 μForge.io · <a href='/about/'>About</a> · <a href='/about/glossary/'>Glossary</a> · <a href='/about/contact/'>Contact</a>
 """
 
 # Nav structure (controls sidebar only -- Zensical builds every .md under
 # docs_dir regardless of nav). Read more: https://zensical.org/docs/setup/navigation/
 nav = [
   { "Getting Started" = [
-    { "Overview" = "getting-started/overview.md" },
+    { "Overview" = "getting-started/index.md" },
     { "SiFli-SDK" = [
       "getting-started/sifli/getting-started-sifli-sdk.md",
       "getting-started/sifli/getting-started-sifli-codekit.md"
     ]},
-    { "Zephyr" = [
-      "getting-started/zephyr/getting-started-zephyr-upstream.md"
-    ]},
-    { "Arduino" = [
-      "getting-started/arduino/getting-started-arduino.md"
-    ]},
-    { "Rust" = [
-      "getting-started/rust/getting-started-rust.md"
-    ]},
-    { "MicroPython" = [
+    { "Community Platforms" = [
+      "getting-started/zephyr/getting-started-zephyr-upstream.md",
+      "getting-started/arduino/getting-started-arduino.md",
+      "getting-started/rust/getting-started-rust.md",
       "getting-started/micropython/getting-started-micropython.md"
     ]},
     { "Tutorials" = [
-      "tutorials/overview.md",
-      { "First Peripherals" = "tutorials/beginner.md" },
-      { "Connected Subsystems" = "tutorials/intermediate.md" },
-      { "Product Validation" = "tutorials/advanced.md" }
+      "getting-started/tutorials/overview.md",
+      { "First Peripherals" = "getting-started/tutorials/beginner.md" },
+      { "Connected Subsystems" = "getting-started/tutorials/intermediate.md" },
+      { "Product Validation" = "getting-started/tutorials/advanced.md" }
     ]}
   ]},
   { "Hardware" = [
-    { "Overview" = "hardware/overview.md" },
+    { "Overview" = "hardware/index.md" },
     { "Understand SF32" = [
       "hardware/chips/SF32_family.md",
       "hardware/chips/SF32_namingrule.md"
@@ -60,7 +54,6 @@ nav = [
         "hardware/chips/SF32LB52x.md",
         "hardware/chips/SF32LB55x.md",
         "hardware/chips/SF32LB56x.md",
-        "hardware/chips/SF32LB57x.md",
         "hardware/chips/SF32LB58x.md"
       ]},
       { "Modules" = [
@@ -102,9 +95,6 @@ nav = [
           "hardware/chips/SF32LB56x_hardware_design_guide.md",
           "hardware/chips/SF32LB56x_hardware_design_checklist.md"
         ]},
-        { "SF32LB57" = [
-          "hardware/chips/SF32LB57x_hardware_design_guide.md"
-        ]},
         { "SF32LB58" = [
           "hardware/chips/SF32LB58x_hardware_design_guide.md",
           "hardware/chips/SF32LB58x_hardware_design_checklist.md"
@@ -128,7 +118,7 @@ nav = [
     ]}
   ]},
   { "Develop" = [
-    { "Overview" = "develop/overview.md" },
+    { "Overview" = "develop/index.md" },
     "develop/software-support-matrix.md",
     { "Software Paths" = [
       { "SiFli-SDK" = [
@@ -160,47 +150,50 @@ nav = [
     { "Examples" = [ "develop/examples/index.md" ] }
   ]},
   { "Learn" = [
-    { "Overview" = "learn/overview.md" },
+    { "Overview" = "learn/index.md" },
     { "Architecture" = [
-      { "Overview" = "learn/architecture/overview.md" },
+      { "Architecture Overview" = "learn/architecture/overview.md" },
       "learn/architecture/star-mc1.md",
       "learn/architecture/psram-and-memory-types.md",
       "learn/architecture/ptm-parallel-task-machine.md"
     ]},
     { "Graphics" = [
-      { "Overview" = "learn/graphics/overview.md" },
+      { "Graphics Overview" = "learn/graphics/overview.md" },
       "learn/graphics/epicasso-gpu.md",
       "learn/graphics/ezip.md",
       "learn/graphics/turbopixel.md",
       "learn/graphics/display-controller.md"
     ]},
     { "Bluetooth" = [
-      { "Overview" = "learn/bluetooth/overview.md" },
+      { "Bluetooth Overview" = "learn/bluetooth/overview.md" },
       "learn/bluetooth/processor.md",
       "learn/bluetooth/pan.md"
     ]},
     { "AI" = [
-      { "Overview" = "learn/ai/overview.md" },
+      { "AI Overview" = "learn/ai/overview.md" },
       "learn/ai/accelerator.md"
     ]},
     { "Audio" = [
-      { "Overview" = "learn/audio/overview.md" },
+      { "Audio Overview" = "learn/audio/overview.md" },
       "learn/audio/audio-server-buffering.md"
     ]},
     { "Low Power" = [
-      { "Overview" = "learn/low-power/overview.md" },
+      { "Low Power Overview" = "learn/low-power/overview.md" },
       "learn/low-power/measurement-and-validation.md"
     ]},
   ]},
   { "Projects" = [
-    { "Overview" = "projects/overview.md" },
+    { "Overview" = "projects/index.md" },
     "projects/sf32-xiaozhi.md"
   ]},
   { "Blog" = [
-    "blog/blog.md",
+    "blog/index.md",
+    { "Posts" = [
+      "blog/posts/2026-07-31-the-first-blog.md"
+    ]}
   ]},
   { "About" = [
-    "about/about.md",
+    "about/index.md",
     "about/contact.md",
     { "Glossary" = "about/glossary.md" },
   ]}
@@ -214,7 +207,7 @@ extra_css = [
     "stylesheets/extra.css",
     "stylesheets/product-selector.css",
 ]
-extra_javascript = ["javascripts/product-selector.js"]
+extra_javascript = ["javascripts/product-selector.js", "javascripts/palette-sync.js"]
 
 #last_updated = "true"
 #[project.last_updated]

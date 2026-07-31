@@ -173,7 +173,7 @@ The SF32LB58x series has a built-in PMU power unit supporting 2 BUCK outputs, wh
 
 The SF30147C is a highly integrated, high-efficiency power management chip for ultra-low-power wearable products. It integrates 4 LDOs, each with a wide input/output voltage range and up to 100 mA load current. For different peripherals, the SF30147C integrates 7 low-leakage, low-Ron load switches: 2 high-voltage switches for peripherals driven directly from battery voltage (such as an audio PA), and 5 low-voltage switches for 1.8 V-powered peripherals. The SF32LB58x uses two GPIOs to emulate a TWI signal to control the SF30147C.
 
-<div align="center"><em>Table 5.1.1.1-1: SF30147C Power Distribution</em></div>
+<div align="center"><em>Table 5.1-1: SF30147C Power Distribution</em></div>
 
 <div align="center" markdown>
 
@@ -200,7 +200,7 @@ Refer to the SF30147C chip datasheet for full details.
 
 The SF32LB58x series integrates the following PMU power specifications.
 
-<div align="center"><em>Table 5.1.1.2-1: PMU Power Specification</em></div>
+<div align="center"><em>Table 5.1-2: PMU Power Specification</em></div>
 
 <div align="center" markdown>
 
@@ -219,7 +219,7 @@ The SF32LB58x series integrates the following PMU power specifications.
 
 Other power pins requiring external supply are specified below.
 
-<div align="center"><em>Table 5.1.1.2-2: Other Power Specifications</em></div>
+<div align="center"><em>Table 5.1-3: Other Power Specifications</em></div>
 
 <div align="center" markdown>
 
@@ -243,7 +243,7 @@ Other power pins requiring external supply are specified below.
 
 ##### 5.1.1.3. Recommended Capacitor Values
 
-<div align="center"><em>Table 5.1.1.3-1: Recommended Decoupling Capacitors</em></div>
+<div align="center"><em>Table 5.1-4: Recommended Decoupling Capacitors</em></div>
 
 <div align="center" markdown>
 
@@ -278,29 +278,29 @@ The SF32LB58x series has built-in POR (Power-On Reset) and BOR (Brownout Reset),
 
 The RSTN reset signal should be pulled up to the PVDD1 input voltage domain, with a 0.1 uF capacitor to ground forming an RC delayed reset.
 
-![Figure 5.1.1.5-1: Power-Up/Power-Down Sequence](assets/58x/sf32lb58x-POR-BOR.png){ width="100%" loading="lazy" }
+![Figure 5.1-1: Power-Up/Power-Down Sequence](assets/58x/sf32lb58x-POR-BOR.png){ width="100%" loading="lazy" }
 
-<div align="center"><em>Figure 5.1.1.5-1: Power-Up/Power-Down Sequence</em></div>
+<div align="center"><em>Figure 5.1-1: Power-Up/Power-Down Sequence</em></div>
 
-![Figure 5.1.1.5-2: Reset Circuit](assets/58x/sf32lb58x-RST-SCH.png){ width="100%" loading="lazy" }
+![Figure 5.1-2: Reset Circuit](assets/58x/sf32lb58x-RST-SCH.png){ width="100%" loading="lazy" }
 
-<div align="center"><em>Figure 5.1.1.5-2: Reset Circuit</em></div>
+<div align="center"><em>Figure 5.1-2: Reset Circuit</em></div>
 
 ##### 5.1.1.6. Typical Power Circuit
 
 The SF32LB58x series can use SiFli's PMIC SF30147C to supply its power rails; see Table 5-1 for the assignment. The chip package also has 2 built-in BUCK outputs and 3 built-in LDO outputs.
 
-![Figure 5.1.1.6-1: SF30147C Power Supply Diagram](assets/58x/sf32lb58x-30147-SCH.png){ width="100%" loading="lazy" }
+![Figure 5.1-3: SF30147C Power Supply Diagram](assets/58x/sf32lb58x-30147-SCH.png){ width="100%" loading="lazy" }
 
-<div align="center"><em>Figure 5.1.1.6-1: SF30147C Power Supply Diagram</em></div>
+<div align="center"><em>Figure 5.1-3: SF30147C Power Supply Diagram</em></div>
 
-![Figure 5.1.1.6-2: Built-In DC-DC (BUCK) Circuit](assets/58x/sf32lb58x-BUCK-SCH.png){ width="100%" loading="lazy" }
+![Figure 5.1-4: Built-In DC-DC (BUCK) Circuit](assets/58x/sf32lb58x-BUCK-SCH.png){ width="100%" loading="lazy" }
 
-<div align="center"><em>Figure 5.1.1.6-2: Built-In DC-DC (BUCK) Circuit</em></div>
+<div align="center"><em>Figure 5.1-4: Built-In DC-DC (BUCK) Circuit</em></div>
 
-![Figure 5.1.1.6-3: Built-In LDO Circuit](assets/58x/sf32lb58x-LDO-SCH.png){ width="100%" loading="lazy" }
+![Figure 5.1-5: Built-In LDO Circuit](assets/58x/sf32lb58x-LDO-SCH.png){ width="100%" loading="lazy" }
 
-<div align="center"><em>Figure 5.1.1.6-3: Built-In LDO Circuit</em></div>
+<div align="center"><em>Figure 5.1-5: Built-In LDO Circuit</em></div>
 
 ##### 5.1.1.7. Power Design Checklist
 
@@ -324,7 +324,7 @@ The SF32LB58x series provides 6 PBR interfaces, with these key characteristics:
 
 All GPIOs on the SF32LB58x series support wake-up in light/deep sleep mode. In Standby and Hibernate modes, 16 wake-capable interrupt sources are supported — 6 on PA and 10 on PB.
 
-<div align="center"><em>Table 5.1.2-1: Interrupt Source Connections</em></div>
+<div align="center"><em>Table 5.1-5: Interrupt Source Connections</em></div>
 
 <div align="center" markdown>
 
@@ -399,7 +399,7 @@ The SF32LB58x's RF front end uses on-chip integrated wideband matching-filter te
 
 The SF32LB58x series supports a 2-lane MIPI DSI display interface.
 
-<div align="center"><em>Table 5.4.1.1-1: MIPI-DSI Signal Connections</em></div>
+<div align="center"><em>Table 5.4-1: MIPI-DSI Signal Connections</em></div>
 
 <div align="center" markdown>
 
@@ -423,7 +423,7 @@ The SF32LB58x series supports a 2-lane MIPI DSI display interface.
 
 The SF32LB58x series supports 3/4-wire SPI and Quad-SPI interfaces for connecting an LCD panel — the big core uses LCDC1 on PA, the little core uses LCDC2 on PB.
 
-<div align="center"><em>Table 5.4.1.2-1: SPI/QSPI Signal Connections</em></div>
+<div align="center"><em>Table 5.4-2: SPI/QSPI Signal Connections</em></div>
 
 <div align="center" markdown>
 
@@ -445,7 +445,7 @@ The SF32LB58x series supports 3/4-wire SPI and Quad-SPI interfaces for connectin
 
 The SF32LB58x series supports an MCU8080 interface for connecting an LCD panel.
 
-<div align="center"><em>Table 5.4.1.3-1: MCU8080 Signal Connections</em></div>
+<div align="center"><em>Table 5.4-3: MCU8080 Signal Connections</em></div>
 
 <div align="center" markdown>
 
@@ -472,7 +472,7 @@ The SF32LB58x series supports an MCU8080 interface for connecting an LCD panel.
 
 The SF32LB58x series supports a DPI interface for connecting an LCD panel.
 
-<div align="center"><em>Table 5.4.1.4-1: DPI Signal Connections</em></div>
+<div align="center"><em>Table 5.4-4: DPI Signal Connections</em></div>
 
 <div align="center" markdown>
 
@@ -494,7 +494,7 @@ The SF32LB58x series supports a DPI interface for connecting an LCD panel.
 
 The SF32LB58x series supports both parallel and serial JDI interfaces for connecting an LCD panel, multiplexed onto either LCDC1 (PA) or LCDC2 (PB) signals — LCDC2 (PB) is recommended.
 
-<div align="center"><em>Table 5.4.1.5-1: Parallel JDI Signal Connections</em></div>
+<div align="center"><em>Table 5.4-5: Parallel JDI Signal Connections</em></div>
 
 <div align="center" markdown>
 
@@ -517,7 +517,7 @@ The SF32LB58x series supports both parallel and serial JDI interfaces for connec
 
 </div>
 
-<div align="center"><em>Table 5.4.1.5-2: Serial JDI Signal Connections</em></div>
+<div align="center"><em>Table 5.4-6: Serial JDI Signal Connections</em></div>
 
 <div align="center" markdown>
 
@@ -535,7 +535,7 @@ The SF32LB58x series supports both parallel and serial JDI interfaces for connec
 
 The SF32LB58x series supports an I2C-format touch controller interface with a touch-status interrupt input, plus 1 PWM signal to control backlight-driver enable and brightness.
 
-<div align="center"><em>Table 5.4.2-1: Touch and Backlight Connections</em></div>
+<div align="center"><em>Table 5.4-7: Touch and Backlight Connections</em></div>
 
 <div align="center" markdown>
 
@@ -563,35 +563,35 @@ The SF32LB58x series provides a variety of audio-related interfaces, with the fo
 7. Supports an external analog audio PA — both DAC output traces should be routed as differential pairs with 3D shielding, and additionally satisfy: trace parasitic capacitance < 10 pF, trace length < 2 cm;
 8. Supports stereo analog headphone connection.
 
-![Figure 5.4.3-1: Differential Analog Audio Input Circuit](assets/58x/sf32lb58x-DIFAU-SCH.png){ width="100%" loading="lazy" }
+![Figure 5.4-1: Differential Analog Audio Input Circuit](assets/58x/sf32lb58x-DIFAU-SCH.png){ width="100%" loading="lazy" }
 
-<div align="center"><em>Figure 5.4.3-1: Differential Analog Audio Input Circuit</em></div>
+<div align="center"><em>Figure 5.4-1: Differential Analog Audio Input Circuit</em></div>
 
-![Figure 5.4.3-2: Single-Ended Analog Audio Input Circuit](assets/58x/sf32lb58x-SIGLEAU-SCH.png){ width="100%" loading="lazy" }
+![Figure 5.4-2: Single-Ended Analog Audio Input Circuit](assets/58x/sf32lb58x-SIGLEAU-SCH.png){ width="100%" loading="lazy" }
 
-<div align="center"><em>Figure 5.4.3-2: Single-Ended Analog Audio Input Circuit</em></div>
+<div align="center"><em>Figure 5.4-2: Single-Ended Analog Audio Input Circuit</em></div>
 
-![Figure 5.4.3-3: Analog Audio Output Circuit](assets/58x/sf32lb58x-DAC-SCH.png){ width="100%" loading="lazy" }
+![Figure 5.4-3: Analog Audio Output Circuit](assets/58x/sf32lb58x-DAC-SCH.png){ width="100%" loading="lazy" }
 
-<div align="center"><em>Figure 5.4.3-3: Analog Audio Output Circuit</em></div>
+<div align="center"><em>Figure 5.4-3: Analog Audio Output Circuit</em></div>
 
-![Figure 5.4.3-4: Analog MIC Circuit](assets/58x/sf32lb58x-MIC-SCH.png){ width="100%" loading="lazy" }
+![Figure 5.4-4: Analog MIC Circuit](assets/58x/sf32lb58x-MIC-SCH.png){ width="100%" loading="lazy" }
 
-<div align="center"><em>Figure 5.4.3-4: Analog MIC Circuit</em></div>
+<div align="center"><em>Figure 5.4-4: Analog MIC Circuit</em></div>
 
-![Figure 5.4.3-5: Stereo Headphone Circuit](assets/58x/sf32lb58x-PHONE-SCH.png){ width="100%" loading="lazy" }
+![Figure 5.4-5: Stereo Headphone Circuit](assets/58x/sf32lb58x-PHONE-SCH.png){ width="100%" loading="lazy" }
 
-<div align="center"><em>Figure 5.4.3-5: Stereo Headphone Circuit</em></div>
+<div align="center"><em>Figure 5.4-5: Stereo Headphone Circuit</em></div>
 
-![Figure 5.4.3-6: Analog Audio PA Circuit](assets/58x/sf32lb58x-AUPA-SCH.png){ width="100%" loading="lazy" }
+![Figure 5.4-6: Analog Audio PA Circuit](assets/58x/sf32lb58x-AUPA-SCH.png){ width="100%" loading="lazy" }
 
-<div align="center"><em>Figure 5.4.3-6: Analog Audio PA Circuit</em></div>
+<div align="center"><em>Figure 5.4-6: Analog Audio PA Circuit</em></div>
 
-![Figure 5.4.3-7: I2S Audio PA Circuit](assets/58x/sf32lb58x-I2SPA-SCH.png){ width="100%" loading="lazy" }
+![Figure 5.4-7: I2S Audio PA Circuit](assets/58x/sf32lb58x-I2SPA-SCH.png){ width="100%" loading="lazy" }
 
-<div align="center"><em>Figure 5.4.3-7: I2S Audio PA Circuit</em></div>
+<div align="center"><em>Figure 5.4-7: I2S Audio PA Circuit</em></div>
 
-<div align="center"><em>Table 5.4.3-1: Audio Signal Connections</em></div>
+<div align="center"><em>Table 5.4-8: Audio Signal Connections</em></div>
 
 <div align="center" markdown>
 
@@ -631,19 +631,19 @@ The SF32LB58x's analog MIC input supports both single-ended and differential mod
 
 PB54 is the recommended power-key signal for the SF32LB58x series, combining a short-press power on/off function and a long-press reset function on a single button. The design is active-high; holding the button for more than 10 seconds triggers an automatic chip reset.
 
-![Figure 5.4.4.1-1: Power/Reset Button Circuit](assets/58x/sf32lb58x-PWRKEY-SCH.png){ width="100%" loading="lazy" }
+![Figure 5.4-8: Power/Reset Button Circuit](assets/58x/sf32lb58x-PWRKEY-SCH.png){ width="100%" loading="lazy" }
 
-<div align="center"><em>Figure 5.4.4.1-1: Power/Reset Button Circuit</em></div>
+<div align="center"><em>Figure 5.4-8: Power/Reset Button Circuit</em></div>
 
 ##### 5.4.4.2. Function Button or Rotary Encoder
 
 The SF32LB58x series supports function-button input and rotary-encoder signal input, both of which need to be pulled up. It also supports a light-tracking sensor, recommended over the I2C4 interface.
 
-![Figure 5.4.4.2-1: Function Button / Rotary Encoder Circuit](assets/58x/sf32lb58x-KEY-SCH.png){ width="100%" loading="lazy" }
+![Figure 5.4-9: Function Button / Rotary Encoder Circuit](assets/58x/sf32lb58x-KEY-SCH.png){ width="100%" loading="lazy" }
 
-<div align="center"><em>Figure 5.4.4.2-1: Function Button / Rotary Encoder Circuit</em></div>
+<div align="center"><em>Figure 5.4-9: Function Button / Rotary Encoder Circuit</em></div>
 
-<div align="center"><em>Table 5.4.4.2-1: Light-Tracking Sensor Signals</em></div>
+<div align="center"><em>Table 5.4-9: Light-Tracking Sensor Signals</em></div>
 
 <div align="center" markdown>
 
@@ -662,16 +662,16 @@ The SF32LB58x series supports multiple PWM outputs, which can drive a vibration 
 !!! important
     If the software enables the HCPU frequency-scaling macro `#define BSP_PM_FREQ_SCALING 1`, the HCPU clock drops when it enters the idle thread, and the PWM frequency on the corresponding PA pins changes accordingly. It is therefore recommended to output the PWM signal on a PB pin instead.
 
-![Figure 5.4.5-1: Vibration Motor Circuit](assets/58x/sf32lb58x-VIB-SCH.png){ width="100%" loading="lazy" }
+![Figure 5.4-10: Vibration Motor Circuit](assets/58x/sf32lb58x-VIB-SCH.png){ width="100%" loading="lazy" }
 
-<div align="center"><em>Figure 5.4.5-1: Vibration Motor Circuit</em></div>
+<div align="center"><em>Figure 5.4-10: Vibration Motor Circuit</em></div>
 
 ### 5.5. Storage and Connectivity
 
 #### 5.5.1. Boot Configuration
 The SF32LB58x series provides a Mode pin to configure the boot mode.
 
-<div align="center"><em>Table 5.5.1-1: Mode Configuration</em></div>
+<div align="center"><em>Table 5.5-1: Mode Configuration</em></div>
 
 <div align="center" markdown>
 
@@ -696,11 +696,11 @@ The SF32LB58x series supports MPI3 or MPI4 interfaces for external NOR Flash and
 
 The SF32LB58x EVB reference board uses MPI4 by default to connect an external SPI NAND Flash device.
 
-![Figure 5.5.2.1-1: SPI NAND Flash Reference Circuit](assets/58x/sf32lb58x-SPINAND-SCH.png){ width="100%" loading="lazy" }
+![Figure 5.5-1: SPI NAND Flash Reference Circuit](assets/58x/sf32lb58x-SPINAND-SCH.png){ width="100%" loading="lazy" }
 
-<div align="center"><em>Figure 5.5.2.1-1: SPI NAND Flash Reference Circuit</em></div>
+<div align="center"><em>Figure 5.5-1: SPI NAND Flash Reference Circuit</em></div>
 
-<div align="center"><em>Table 5.5.2.1-1: MPI4 Signal Connections</em></div>
+<div align="center"><em>Table 5.5-2: MPI4 Signal Connections</em></div>
 
 <div align="center" markdown>
 
@@ -725,19 +725,19 @@ The SF32LB58x series supports 2 SDIO interfaces. On the EVB, SD1 connects to eMM
 
 SD1 uses 12 GPIOs (PA00-PA11) powered from the VDDIOA2 domain, supporting 1.8 V or 3.3 V, selectable according to the peripheral's interface level. SPI NAND Flash and eMMC are recommended at 1.8 V; SD NAND Flash dies only support 3.3 V interface levels, so VDDIOA2 must be set to 3.3 V in that case.
 
-![Figure 5.5.2.2-1: eMMC Reference Circuit](assets/58x/sf32lb58x-EMMC-SCH.png){ width="100%" loading="lazy" }
+![Figure 5.5-2: eMMC Reference Circuit](assets/58x/sf32lb58x-EMMC-SCH.png){ width="100%" loading="lazy" }
 
-<div align="center"><em>Figure 5.5.2.2-1: eMMC Reference Circuit</em></div>
+<div align="center"><em>Figure 5.5-2: eMMC Reference Circuit</em></div>
 
-![Figure 5.5.2.2-2: SD NAND Reference Circuit](assets/58x/sf32lb58x-SDNAND-SCH.png){ width="100%" loading="lazy" }
+![Figure 5.5-3: SD NAND Reference Circuit](assets/58x/sf32lb58x-SDNAND-SCH.png){ width="100%" loading="lazy" }
 
-<div align="center"><em>Figure 5.5.2.2-2: SD NAND Reference Circuit</em></div>
+<div align="center"><em>Figure 5.5-3: SD NAND Reference Circuit</em></div>
 
-![Figure 5.5.2.2-3: SD Card Reference Circuit](assets/58x/sf32lb58x-TF-SCH.png){ width="100%" loading="lazy" }
+![Figure 5.5-4: SD Card Reference Circuit](assets/58x/sf32lb58x-TF-SCH.png){ width="100%" loading="lazy" }
 
-<div align="center"><em>Figure 5.5.2.2-3: SD Card Reference Circuit</em></div>
+<div align="center"><em>Figure 5.5-4: SD Card Reference Circuit</em></div>
 
-<div align="center"><em>Table 5.5.2.2-1: SD1 Signal Connections</em></div>
+<div align="center"><em>Table 5.5-3: SD1 Signal Connections</em></div>
 
 <div align="center" markdown>
 
@@ -759,7 +759,7 @@ SD1 uses 12 GPIOs (PA00-PA11) powered from the VDDIOA2 domain, supporting 1.8 V 
 !!! note "SD1 label check"
     Some SF32LB58x application-note tables label both SD1_D2 and SD1_D6 as "Data 6," while SD1_D7 is labeled "Data 7." Treat the SD1 pin definitions in the chip datasheet as authoritative before release.
 
-<div align="center"><em>Table 5.5.2.2-2: SD2 Signal Connections</em></div>
+<div align="center"><em>Table 5.5-4: SD2 Signal Connections</em></div>
 
 <div align="center" markdown>
 
@@ -778,22 +778,22 @@ SD1 uses 12 GPIOs (PA00-PA11) powered from the VDDIOA2 domain, supporting 1.8 V 
 
 The SF32LB58x series USB supports USB2.0 HS in both Host and Device modes. A TVS diode must be connected across USB DP and DM to ground, with junction capacitance below 5 pF; DP/DM PCB traces should be controlled to 90 Ω differential impedance.
 
-![Figure 5.5.3-1: USB Interface Circuit](assets/58x/sf32lb58x-USB-SCH.png){ width="100%" loading="lazy" }
+![Figure 5.5-5: USB Interface Circuit](assets/58x/sf32lb58x-USB-SCH.png){ width="100%" loading="lazy" }
 
-<div align="center"><em>Figure 5.5.3-1: USB Interface Circuit</em></div>
+<div align="center"><em>Figure 5.5-5: USB Interface Circuit</em></div>
 
 ### 5.6. Manufacturing
 
 #### 5.6.1. Debug and Download Interface
 The SF32LB58x series supports the Arm®-standard SWD debug interface for connection to EDA tools for single-step debugging. When connecting a SEGGER® J-Link® probe, its power source must be reconfigured for external supply, powered from the SF32LB58x board itself.
 
-![Figure 5.6.1-1: SWD Debug Interface Circuit](assets/58x/sf32lb58x-SWD-SCH.png){ width="100%" loading="lazy" }
+![Figure 5.6-1: SWD Debug Interface Circuit](assets/58x/sf32lb58x-SWD-SCH.png){ width="100%" loading="lazy" }
 
-<div align="center"><em>Figure 5.6.1-1: SWD Debug Interface Circuit</em></div>
+<div align="center"><em>Figure 5.6-1: SWD Debug Interface Circuit</em></div>
 
 The SF32LB58x offers 1 SWD interface plus 6 selectable UART interfaces for debug output.
 
-<div align="center"><em>Table 5.6.1-1: Debug Port Connections</em></div>
+<div align="center"><em>Table 5.6-1: Debug Port Connections</em></div>
 
 <div align="center" markdown>
 
@@ -880,21 +880,21 @@ Refer to the general PCB design-rule figure in the official Datasheet (dimension
 
 Refer to the blind-via design figures (layers 1-2 and 1-3) in the official Datasheet (dimensions in mm).
 
-![Figure 6.3.1-1: 1-2 Layer Blind Via Design](assets/58x/sf32lb58x-VIA1-2-PCB.png){ width="100%" loading="lazy" }
+![Figure 6.3-1: 1-2 Layer Blind Via Design](assets/58x/sf32lb58x-VIA1-2-PCB.png){ width="100%" loading="lazy" }
 
-<div align="center"><em>Figure 6.3.1-1: 1-2 Layer Blind Via Design</em></div>
+<div align="center"><em>Figure 6.3-1: 1-2 Layer Blind Via Design</em></div>
 
-![Figure 6.3.1-2: 1-3 Layer Blind Via Design](assets/58x/sf32lb58x-VIA1-3-PCB.png){ width="100%" loading="lazy" }
+![Figure 6.3-2: 1-3 Layer Blind Via Design](assets/58x/sf32lb58x-VIA1-3-PCB.png){ width="100%" loading="lazy" }
 
-<div align="center"><em>Figure 6.3.1-2: 1-3 Layer Blind Via Design</em></div>
+<div align="center"><em>Figure 6.3-2: 1-3 Layer Blind Via Design</em></div>
 
 #### 6.3.2. Buried Via Design
 
 Refer to the buried-via design figure (layers 2-5) in the official Datasheet (dimensions in mm).
 
-![Figure 6.3.2-1: 2-5 Layer Buried Via Design](assets/58x/sf32lb58x-VIA2-5-PCB.png){ width="100%" loading="lazy" }
+![Figure 6.3-3: 2-5 Layer Buried Via Design](assets/58x/sf32lb58x-VIA2-5-PCB.png){ width="100%" loading="lazy" }
 
-<div align="center"><em>Figure 6.3.2-1: 2-5 Layer Buried Via Design</em></div>
+<div align="center"><em>Figure 6.3-3: 2-5 Layer Buried Via Design</em></div>
 
 ### 6.4. Trace Fanout
 

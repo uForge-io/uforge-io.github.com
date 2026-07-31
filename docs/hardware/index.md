@@ -43,7 +43,7 @@ Already know the kind of hardware you need? Go straight to the relevant catalogu
 - [Modules](modules/SF32LB52-MOD-1.md) for carrier-board planning around ready-made RF and core hardware.
 - [Development Boards](devkits/SF32LB52-DevKit-LCD.md) for supported hardware used to validate software and peripherals.
 
-Hardware documentation defines the physical product path. For SDK setup, examples, toolchains, and software-platform support, continue to [Develop](../develop/overview.md).
+Hardware documentation defines the physical product path. For SDK setup, examples, toolchains, and software-platform support, continue to [Develop](../develop/index.md).
 
 !!! note "Auto-generated content"
     This page was compiled/drafted without an existing source document. Verify technical claims against SiFli's official documentation before relying on them.

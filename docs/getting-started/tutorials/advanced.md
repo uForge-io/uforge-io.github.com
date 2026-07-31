@@ -21,7 +21,7 @@ Use this series when your responsibility extends beyond a feature working once: 
 
 **Start from:** `example/pm/classical`, `example/pm/raise_wrist`
 
-1. Set up current measurement as described in the [Low-Power Overview](../learn/low-power/overview.md#measuring-power-in-practice).
+1. Set up current measurement as described in the [Low-Power Overview](../../learn/low-power/overview.md#measuring-power-in-practice).
 2. Record a baseline for boot, active, connected idle, display-off idle, and deep sleep if available.
 3. Start from the classical PM example and identify where a driver votes for a power state and releases it.
 4. Move to the raise-to-wake example and study how an interrupt-driven accelerometer event gates display and application-processor wakeup.
@@ -156,7 +156,7 @@ Use this series when your responsibility extends beyond a feature working once: 
 
 ## Where to Go Next
 
-At this point you have the full toolkit: peripherals, middleware, coexistence awareness, power discipline, OTA, custom hardware bring-up, postmortem debugging, and driver integration. From here, the [Examples](../develop/examples/index.md) catalog and [Graphics Overview](../learn/graphics/overview.md) are ongoing references. Pull from them per feature rather than working through them linearly.
+At this point you have the full toolkit: peripherals, middleware, coexistence awareness, power discipline, OTA, custom hardware bring-up, postmortem debugging, and driver integration. From here, the [Examples](../../develop/examples/index.md) catalog and [Graphics Overview](../../learn/graphics/overview.md) are ongoing references. Pull from them per feature rather than working through them linearly.
 
 !!! note "Auto-generated content"
     This page was compiled/drafted without an existing source document. Verify technical claims against SiFli's official documentation before relying on them.

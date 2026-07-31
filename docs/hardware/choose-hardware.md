@@ -69,7 +69,7 @@ Before committing, follow the result link to the product introduction and then v
 1. **Apply the hard gates.** Use the family comparison and product selector to establish an initial shortlist from the constraints that would be difficult to change later.
 2. **Choose the integration level.** Select a chip for a fully custom design, a module for faster carrier-board development, or a development board for early software and peripheral validation.
 3. **Inspect the exact tier.** Check the part number, package, power topology, memory organization, interface assignment, and reference hardware on the selected product page and primary documentation.
-4. **Prove the software path.** Use [Getting Started](../getting-started/overview.md), [Tutorials](../tutorials/overview.md), and [Develop](../develop/overview.md) on the closest available board before finalizing hardware.
+4. **Prove the software path.** Use [Getting Started](../getting-started/index.md), [Tutorials](../getting-started/tutorials/overview.md), and [Develop](../develop/index.md) on the closest available board before finalizing hardware.
 5. **Check production constraints.** Move to [Design for Production](design-for-production.md) before freezing the schematic, layout, BOM, or display and storage choices.
 
 ## Browse by Product Type

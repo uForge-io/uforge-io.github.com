@@ -46,7 +46,7 @@ Choose SF32LB58x when the design needs one or more of these capabilities:
 [User Manual]: https://downloads.sifli.com/docs/user%20manual/SF32LB58x/UM5801%E2%80%90SF32LB58x%E2%80%90EN.pdf
 [Original Design Guide (wiki.sifli.com)]: https://wiki.sifli.com/en/hardware/SF32LB58x-HW-Application.html
 [Hardware Application Note (GitHub source)]: https://github.com/OpenSiFli/SiFli-Wiki/blob/main/source/en/hardware/SF32LB58x-HW-Application.md
-[Hardware Design Guide (μForge, dev)]: SF32LB58x_hardware_design_guide.md
+[Hardware Design Guide (μForge)]: SF32LB58x_hardware_design_guide.md
 [Buy Samples]: https://sifli.taobao.com/
 [Buy Dev Kits]: https://sifli.taobao.com/
 
@@ -57,7 +57,7 @@ Choose SF32LB58x when the design needs one or more of these capabilities:
 - :fontawesome-solid-file-pdf: __[User Manual]__
 - :fontawesome-solid-file-lines: __[Original Design Guide (wiki.sifli.com)]__
 - :fontawesome-brands-github: __[Hardware Application Note (GitHub source)]__
-- :fontawesome-solid-file-lines: __[Hardware Design Guide (μForge, dev)]__
+- :fontawesome-solid-file-lines: __[Hardware Design Guide (μForge)]__
 - :fontawesome-solid-cart-shopping: __[Buy Samples]__
 - :fontawesome-solid-cart-shopping: __[Buy Dev Kits]__
 

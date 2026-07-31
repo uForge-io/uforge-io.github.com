@@ -14,7 +14,7 @@ Use [Plan an SF32 Product](product-planning.md) to form the initial shortlist, t
 
 ## Reference Designs and Projects
 
-Use a reference design to answer, **“What reusable technical baseline can I start from?”** Use a [Project](../projects/overview.md) to answer, **“How do I carry a specific product from that baseline through integration and release decisions?”**
+Use a reference design to answer, **“What reusable technical baseline can I start from?”** Use a [Project](../projects/index.md) to answer, **“How do I carry a specific product from that baseline through integration and release decisions?”**
 
 <div align="center"><em>Table: Reference Design and Project Boundary</em></div>
 
@@ -53,7 +53,7 @@ Use a reference design to answer, **“What reusable technical baseline can I st
 
 Add a journey only when it can provide a complete, reproducible path rather than a collection of aspirational links. Every journey should state its intended product, reader, supported hardware and software versions, prerequisites, source repository, milestones, validation criteria, measurements, and product-adaptation handoff.
 
-For project-focused, end-to-end builds that go beyond a reusable reference path, use [Projects](../projects/overview.md). A project should cross-link back to the relevant reference design rather than duplicate its hardware baseline, design files, or production material.
+For project-focused, end-to-end builds that go beyond a reusable reference path, use [Projects](../projects/index.md). A project should cross-link back to the relevant reference design rather than duplicate its hardware baseline, design files, or production material.
 
 !!! note "Auto-generated content"
     This page was compiled/drafted without an existing source document. Verify technical claims against SiFli's official documentation before relying on them.
