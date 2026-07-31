@@ -1,6 +1,6 @@
 ---
 icon: lucide/card-sim
-description: "SF32LB58-MOD: flagship Bluetooth MCU module based on SF32LB586VDD36 for products that need stronger graphics, larger memory options, and lower BGA/RF integration risk."
+description: "SF32LB58-MOD: flagship Bluetooth MCU module based on the SF32LB58x family for products that need stronger graphics, larger memory options, and lower BGA/RF integration risk."
 tags:
   - Hardware
   - Module
@@ -10,7 +10,7 @@ tags:
 
 ## Overview
 
-SF32LB58-MOD is a flagship Bluetooth MCU module built around SiFli's SF32LB586VDD36. It packages the SF32LB58x-class triple-core platform, RF path, crystal, and high-memory module options into a ready-to-integrate 24 × 24 × 3.1mm module for products that need stronger graphics, larger storage, and richer display/audio capability than lower-tier designs.
+SF32LB58-MOD is a flagship Bluetooth MCU module built around SiFli's SF32LB58x family. It packages the SF32LB58x-class triple-core platform, RF path, crystal, and high-memory module options into a ready-to-integrate 24 × 24 × 3.1mm module for products that need stronger graphics, larger storage, and richer display/audio capability than lower-tier designs.
 
 Compared with a chip-down SF32LB58x board, the module lowers BGA256 layout risk, RF certification risk, crystal-integration risk, and high-speed memory-routing complexity. It is a strong fit when a project wants SF32LB58x-class UI, storage, and connectivity without absorbing the full bring-up burden of a chip-level flagship design on the first board revision.
 
@@ -98,9 +98,10 @@ Choose SF32LB58-MOD when the project wants one or more of these advantages:
 
 | Module Code | Flash | PSRAM | Backup Flash | Temperature | Dimensions |
 | :--- | :--- | :--- | :--- | :--- | :--- |
+| SF32LB58-MOD-N16R16N1 | 16MB QSPI-NOR | 8+8MB HPI-PSRAM | 1MB QSPI-NOR | -40 to 85°C | 24 × 24 × 3.1mm |
 | SF32LB58-MOD-N16R32N1 | 16MB QSPI-NOR | 16+16MB HPI-PSRAM | 1MB QSPI-NOR | -40 to 85°C | 24 × 24 × 3.1mm |
+| SF32LB58-MOD-N16R64N4 | 16MB QSPI-NOR | 32+32MB HPI-PSRAM | 4MB QSPI-NOR | -40 to 85°C | 24 × 24 × 3.1mm |
 | SF32LB58-MOD-A128R32N1 | 128MB QSPI-NAND | 16+16MB HPI-PSRAM | 1MB QSPI-NOR | -40 to 85°C | 24 × 24 × 3.1mm |
-| SF32LB58-MOD-E4R32N1 | 4GB eMMC | 16+16MB HPI-PSRAM | 1MB QSPI-NOR | -40 to 85°C | 24 × 24 × 3.1mm |
 
 </div>
 
@@ -123,7 +124,7 @@ Variant-selection guidance:
 
 ### Chip
 
-Built on [SF32LB58x](../chips/SF32LB58x.md), specifically the SF32LB586VDD36 platform. Use the chip page for the broader graphics, memory, and display architecture behind the module.
+Built on [SF32LB58x](../chips/SF32LB58x.md). Use the chip page for the broader graphics, memory, and display architecture behind the module.
 
 ### Development Kits
 

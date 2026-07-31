@@ -8,7 +8,7 @@ Only the pages listed below are published on this site. Internal working notes (
 
 ## Getting Started
 
-- [Getting Started Overview](https://uForge.io/getting-started/overview/): Comparison of SF32 software paths — SiFli-SDK, CodeKit, Zephyr, Arduino, and MicroPython — and which are production-ready today.
+- [Getting Started Overview](https://uForge.io/getting-started/): Comparison of SF32 software paths — SiFli-SDK, CodeKit, Zephyr, Arduino, and MicroPython — and which are production-ready today.
 - [Getting Started with SiFli-SDK](https://uForge.io/getting-started/sifli/getting-started-sifli-sdk/): From an unboxed SF32 dev board to a running hello_world example over UART using the official RT-Thread-based SDK.
 - [Getting Started with SiFli CodeKit](https://uForge.io/getting-started/sifli/getting-started-sifli-codekit/): Using the SiFli CodeKit VS Code extension to install SDK tools, select a board, build, flash, and monitor.
 - [Getting Started with Zephyr](https://uForge.io/getting-started/zephyr/getting-started-zephyr-upstream/): Using OpenSiFli's downstream Zephyr tree and SiFli HAL module for SF32LB52.
@@ -72,7 +72,7 @@ Only the pages listed below are published on this site. Internal working notes (
 
 ## Develop
 
-- [Develop Overview](https://uForge.io/develop/overview/): Entry point for firmware developers building, flashing, debugging, updating, and shipping software on SF32 devices.
+- [Develop Overview](https://uForge.io/develop/): Entry point for firmware developers building, flashing, debugging, updating, and shipping software on SF32 devices.
 - [Software Support Matrix](https://uForge.io/develop/software-support-matrix/): Canonical SF32 software-support matrix — compare board and SoC coverage for SiFli-SDK, CodeKit, Zephyr, Arduino, Rust, and MicroPython before choosing a development path.
 - [SiFli-SDK Platform Overview](https://uForge.io/develop/platforms/sifli-sdk/overview/): How to use SiFli-SDK day to day once the toolchain works — the reference RT-Thread-based path for SF32 firmware.
 - [Build, Flash, Monitor](https://uForge.io/develop/platforms/sifli-sdk/build-flash-monitor/): The daily SiFli-SDK loop — activate the environment, build with scons, flash the board, and watch logs.
@@ -95,10 +95,10 @@ Only the pages listed below are published on this site. Internal working notes (
 
 ## Learn
 
-- [Learn Overview](https://uForge.io/learn/overview/): Find SF32 guidance by design question: graphics, Bluetooth, AI, audio, low power, and architecture.
+- [Learn Overview](https://uForge.io/learn/): Find SF32 guidance by design question: graphics, Bluetooth, AI, audio, low power, and architecture.
 - [Architecture Overview](https://uForge.io/learn/architecture/overview/): Choose the right SF32 processor or hardware-offload detail for an application workload.
 - [STAR-MC1](https://uForge.io/learn/architecture/star-mc1/): Arm China's enhanced Cortex-M33 implementation used as the application processor across the SF32 family.
-- [PSRAM and Embedded Memory Types](https://uForge.io/learn/architecture/psram-and-memory-types/): PSRAM versus SRAM, DRAM, RRAM, and MRAM, with embedded buffer-placement and SF32 memory-hierarchy guidance.
+- [PSRAM vs. Other Embedded Memory Types](https://uForge.io/learn/architecture/psram-and-memory-types/): PSRAM versus SRAM, DRAM, RRAM, and MRAM, with embedded buffer-placement and SF32 memory-hierarchy guidance.
 - [PTM Parallel Task Machine](https://uForge.io/learn/architecture/ptm-parallel-task-machine/): SF32LB57x's programmable peripheral task engine for timing-sensitive, custom, or small offload work.
 - [Graphics Overview](https://uForge.io/learn/graphics/overview/): Display-resource, composition, framebuffer-compression, and panel-output decisions for SF32 UIs.
 - [ePicasso 2D / 2.5D Graphics Engine](https://uForge.io/learn/graphics/epicasso-gpu/): How SiFli's ePicasso 2D/2.5D graphics engine accelerates embedded UI rendering on SF32, and how it works with LVGL, memory, and the display controller.
@@ -117,15 +117,15 @@ Only the pages listed below are published on this site. Internal working notes (
 
 ## Projects
 
-- [Projects](https://uForge.io/projects/overview/): End-to-end μForge projects that combine selected hardware, a software baseline, validation evidence, and a production handoff.
+- [Projects](https://uForge.io/projects/): End-to-end μForge projects that combine selected hardware, a software baseline, validation evidence, and a production handoff.
 - [SF32 Xiaozhi Voice Assistant](https://uForge.io/projects/sf32-xiaozhi/): A complete product-development path for the open-source Xiaozhi voice assistant on SF32LB52 — board bring-up, Bluetooth PAN provisioning, cloud voice interaction, customization, OTA, validation, and production handoff.
 
 ## Getting Started — Tutorials
 
-- [Tutorials Overview](https://uForge.io/tutorials/overview/): Recommended SF32 learning sequence, prerequisites, hardware setup, and the next destination after each stage.
-- [Beginner Tutorials](https://uForge.io/tutorials/beginner/): Small, single-peripheral SF32-SDK tutorials for right after your first hello_world flash — GPIO, shell, ADC/PWM basics.
-- [Intermediate Tutorials](https://uForge.io/tutorials/intermediate/): Middleware and combined workflows on SF32 — I2C sensors, graphical UI, BLE services, audio playback, and persistent storage.
-- [Advanced Tutorials](https://uForge.io/tutorials/advanced/): Shippable-product-level SF32 work — measured power, safe OTA, custom hardware bring-up, crash analysis, and multi-connection Bluetooth.
+- [Tutorials Overview](https://uForge.io/getting-started/tutorials/overview/): Recommended SF32 learning sequence, prerequisites, hardware setup, and the next destination after each stage.
+- [Beginner Tutorials](https://uForge.io/getting-started/tutorials/beginner/): Small, single-peripheral SF32-SDK tutorials for right after your first hello_world flash — GPIO, shell, ADC/PWM basics.
+- [Intermediate Tutorials](https://uForge.io/getting-started/tutorials/intermediate/): Middleware and combined workflows on SF32 — I2C sensors, graphical UI, BLE services, audio playback, and persistent storage.
+- [Advanced Tutorials](https://uForge.io/getting-started/tutorials/advanced/): Shippable-product-level SF32 work — measured power, safe OTA, custom hardware bring-up, crash analysis, and multi-connection Bluetooth.
 
 ## Reference
 
@@ -133,11 +133,11 @@ Only the pages listed below are published on this site. Internal working notes (
 
 ## Blog
 
-- [Blog](https://uForge.io/blog/blog/): Placeholder page for future announcements, release notes, and deep dives.
+- [Blog](https://uForge.io/blog/): Announcements, project history, and deep dives on μForge.io's progress.
 
 ## About
 
-- [About μForge.io](https://uForge.io/about/about/): What μForge.io is, and sales/support contact emails.
+- [About μForge.io](https://uForge.io/about/): μForge.io's mission — documenting SiFli's SF32 microcontroller family end to end for hardware and firmware engineers.
 - [Contact μForge.io](https://uForge.io/about/contact/): Contact form covering sales, technical support, partnerships, media, and documentation feedback for the SF32 MCU family.
 
 ## Notes for AI agents and coding assistants

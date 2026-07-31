@@ -7,7 +7,7 @@ tags:
 
 # First Peripherals { #beginner-tutorials }
 
-These tutorials pick up right after [Get Started](../getting-started/overview.md). You should already have the SiFli-SDK toolchain installed, have flashed `hello_world` at least once, and know how to open the serial console. Each tutorial is intentionally small: one concept, one peripheral, one clear success condition.
+These tutorials pick up right after [Get Started](../index.md). You should already have the SiFli-SDK toolchain installed, have flashed `hello_world` at least once, and know how to open the serial console. Each tutorial is intentionally small: one concept, one peripheral, one clear success condition.
 
 The examples assume an SF32LB52-DevKit-LCD-class board such as `sf32lb52-lcd_n16r8`. If you are using another board, replace the board name in the build command and confirm the pin names, peripheral instances, and storage layout from that board's support files.
 
@@ -117,7 +117,7 @@ rt_pin_irq_enable(BUTTON_PIN, PIN_IRQ_ENABLE);
 
 **If it does not work:** verify pull-up or pull-down configuration, button polarity, interrupt edge selection, and whether the pin is shared with boot mode, debug, or another peripheral.
 
-**What you learned:** digital input configuration, active-high vs. active-low logic, interrupt-driven input, and why polling is a power smell. See [Low-Power Overview](../learn/low-power/overview.md#sleep-aware-firmware-design) for the system-level reason.
+**What you learned:** digital input configuration, active-high vs. active-low logic, interrupt-driven input, and why polling is a power smell. See [Low-Power Overview](../../learn/low-power/overview.md#sleep-aware-firmware-design) for the system-level reason.
 
 ## Use the Shell and Print Debug Output
 

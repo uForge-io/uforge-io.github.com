@@ -336,7 +336,7 @@ XSSD01GGAI is the only part qualified only to 0°C–70°C rather than the exten
 
 ## Touch Panel Controller
 
-No touch-panel controllers have completed AVL qualification yet. If your design needs a specific touch IC qualified, that's a concrete, well-scoped ask for SiFli FAE support rather than something to wait on this page for — reach out through the [contact form](../../about/about.md) or your SiFli sales contact with the part number in mind.
+No touch-panel controllers have completed AVL qualification yet. If your design needs a specific touch IC qualified, that's a concrete, well-scoped ask for SiFli FAE support rather than something to wait on this page for — reach out through the [contact form](../../about/index.md) or your SiFli sales contact with the part number in mind.
 
 ---
 
@@ -371,5 +371,5 @@ This checklist is intentionally stricter than "the part appears in the AVL." The
 ## Related Pages
 
 - [SF32LB52x Hardware Design Guide](../chips/SF32LB52x_hardware_design_guide.md) — schematic and layout guidance that references several parts on this list directly.
-- [SF32LB57x Hardware Design Guide (English)](../chips/SF32LB57x_hardware_design_guide.md)
+- SF32LB57x Hardware Design Guide (English)
 - [SF32 Family Overview](../chips/SF32_family.md)

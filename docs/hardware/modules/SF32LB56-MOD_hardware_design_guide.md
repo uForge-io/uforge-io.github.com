@@ -157,7 +157,7 @@ Use a staged review sequence: schematic review, pin-mux review, power-up review,
 
 #### 5.1.1 Power Supply
 
-<div align="center"><em>Table 5.1.1-1: Power Rails</em></div>
+<div align="center"><em>Table 5.1-1: Power Rails</em></div>
 
 <div align="center" markdown>
 
@@ -183,7 +183,7 @@ The module platform uses a 48MHz crystal oscillator and supports low-power RC os
 
 #### 5.2.2 RF
 
-<div align="center"><em>Table 5.2.2-1: Bluetooth RF Summary</em></div>
+<div align="center"><em>Table 5.2-1: Bluetooth RF Summary</em></div>
 
 <div align="center" markdown>
 
@@ -212,7 +212,7 @@ The LCD controller supports DBI serial SPI mode, Dual-SPI, Quad-SPI, 8080 parall
 
 Add 33–100 ohm series resistors on LCD RGB signal lines. Keep RGB, SPI display, and touch-panel routing short and consistent, and reserve ESD protection on exposed touch or connector interfaces.
 
-!!! info "Figure 5.3.1-1: Recommended Development-Board Pin Assignment"
+!!! info "Figure 5.3-1: Recommended Development-Board Pin Assignment"
     See Figure 7-6 in DS5602 V0.3.
 
 #### 5.3.2 Audio

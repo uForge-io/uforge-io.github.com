@@ -42,7 +42,7 @@ The official board guide describes the module configuration as an SF32LB566VCB36
 ## First Validation Path
 
 1. Connect a compatible display module and use the USB-to-UART port with a data-capable USB cable.
-2. Follow [Getting Started](../../getting-started/overview.md) to establish a known-good build, flash, and serial-log baseline.
+2. Follow [Getting Started](../../getting-started/index.md) to establish a known-good build, flash, and serial-log baseline.
 3. Bring up solid display patterns before debugging a UI framework; see [Graphics Overview](../../learn/graphics/overview.md).
 4. Add touch, storage, audio, or wireless one subsystem at a time, then test coexistence and power behavior.
 5. Before a custom design, review [SF32LB56-MOD](../modules/SF32LB56-MOD.md) and [Design for Production](../design-for-production.md).

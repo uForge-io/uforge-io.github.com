@@ -142,7 +142,7 @@ You are ready to move on when:
 ## Where to Go Next
 
 - Use [SiFli-SDK](getting-started-sifli-sdk.md) to understand the equivalent terminal commands.
-- Continue with [Beginner Tutorials](../../tutorials/beginner.md) after `hello_world` works.
+- Continue with [Beginner Tutorials](../tutorials/beginner.md) after `hello_world` works.
 - Review [Bluetooth Overview](../../learn/bluetooth/overview.md), [Graphics Overview](../../learn/graphics/overview.md), [Audio Overview](../../learn/audio/overview.md), and [Low-Power Overview](../../learn/low-power/overview.md) when you start a real product feature.
 
 ## What SiFli Should Add

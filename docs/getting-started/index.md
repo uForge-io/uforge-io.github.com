@@ -62,11 +62,11 @@ Keep those details with your project notes. They are the fastest way back to a w
 
 ## Continue with Tutorials
 
-Once you can repeat the first-run success criteria, continue to the [Tutorials Overview](../tutorials/overview.md). The tutorials are the next stage of this onboarding path: begin with one peripheral, then combine subsystems, and finally practice the validation work needed for a product.
+Once you can repeat the first-run success criteria, continue to the [Tutorials Overview](tutorials/overview.md). The tutorials are the next stage of this onboarding path: begin with one peripheral, then combine subsystems, and finally practice the validation work needed for a product.
 
 ## When to Move to Develop
 
-Getting Started ends when you can reproduce a known-good first run. [Develop](../develop/overview.md) is the ongoing engineering reference for platform maturity, tools, flash/debug workflows, firmware architecture, and product integration. In particular, use the [CodeKit tool reference](../develop/tools/codekit.md) after the first run for CodeKit's role in the daily development workflow; keep this page for the first-run path.
+Getting Started ends when you can reproduce a known-good first run. [Develop](../develop/index.md) is the ongoing engineering reference for platform maturity, tools, flash/debug workflows, firmware architecture, and product integration. In particular, use the [CodeKit tool reference](../develop/tools/codekit.md) after the first run for CodeKit's role in the daily development workflow; keep this page for the first-run path.
 
 ## SiFli Documentation Work to Add
 

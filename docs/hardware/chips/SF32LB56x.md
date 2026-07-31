@@ -52,7 +52,7 @@ Choose SF32LB56x when the design needs one or more of these capabilities:
 [Hardware Design Guide (V, wiki.sifli.com)]: https://wiki.sifli.com/en/hardware/SF32LB56xV-HW-Application.html
 [Hardware Application Source (U)]: https://github.com/OpenSiFli/SiFli-Wiki/blob/main/source/en/hardware/SF32LB56xU-HW-Application.md
 [Hardware Application Source (V)]: https://github.com/OpenSiFli/SiFli-Wiki/blob/main/source/en/hardware/SF32LB56xV-HW-Application.md
-[Hardware Design Guide (μForge, dev)]: SF32LB56x_hardware_design_guide.md
+[Hardware Design Guide (μForge)]: SF32LB56x_hardware_design_guide.md
 [Hardware Design Checklist Source]: https://wiki.sifli.com/hardware/index.html
 [SDK Documentation]: https://docs.sifli.com/projects/sdk/latest/sf32lb56x/index.html
 [API Reference]: https://docs.sifli.com/projects/sdk/latest/sf32lb56x/api/index.html
@@ -69,7 +69,7 @@ Choose SF32LB56x when the design needs one or more of these capabilities:
 - :fontawesome-solid-file-lines: __[Hardware Design Guide (V, wiki.sifli.com)]__
 - :fontawesome-brands-github: __[Hardware Application Source (U)]__
 - :fontawesome-brands-github: __[Hardware Application Source (V)]__
-- :fontawesome-solid-file-lines: __[Hardware Design Guide (μForge, dev)]__
+- :fontawesome-solid-file-lines: __[Hardware Design Guide (μForge)]__
 - :fontawesome-solid-book: __[SDK Documentation]__
 - :fontawesome-solid-book-open: __[API Reference]__
 - :fontawesome-solid-list-check: __[Hardware Design Checklist Source]__
