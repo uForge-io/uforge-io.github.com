@@ -128,9 +128,6 @@ The more accurate way to describe STAR-MC1 is as a Cortex-M33-compatible core wi
 
 </div>
 
-!!! note
-    Avoid quoting STAR-MC1 CoreMark/MHz or DMIPS/MHz uplift unless the number comes from a measured device under documented test conditions. For SF32 documentation, it is safer to emphasize memory-hierarchy behavior and real-world workload responsiveness rather than generic synthetic benchmark gains.
-
 ## What This Means for SF32 Developers
 
 For most SF32 firmware development, STAR-MC1 should be treated as a Cortex-M33-compatible application processor with stronger memory-system behavior for larger real-world workloads.

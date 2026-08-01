@@ -1,6 +1,6 @@
 ---
 icon: lucide/workflow
-description: "PTM (Parallel Task Machine) on SF32LB57x: a programmable peripheral task engine for cycle-sensitive IO sequencing and custom protocols that offload the Cortex-M33 core."
+description: "PTM (Parallel Task Machine), introduced with SF32LB57x: a programmable peripheral task engine for cycle-sensitive IO sequencing and custom protocols that offload the Cortex-M33 core."
 tags:
     - Architecture
     - PTM
@@ -11,7 +11,7 @@ tags:
 
 ## Introduction
 
-**PTM**, short for **Parallel Task Machine**, is a distinctive architectural block in the SF32LB57x family. It is a programmable peripheral task engine for work that is too timing-sensitive for ordinary firmware loops, too custom for fixed-function peripherals, and too small to justify keeping a main Cortex-M33 core busy.
+**PTM**, short for **Parallel Task Machine**, is a distinctive architectural block introduced with the SF32LB57x family. It is a programmable peripheral task engine for work that is too timing-sensitive for ordinary firmware loops, too custom for fixed-function peripherals, and too small to justify keeping a main Cortex-M33 core busy.
 
 In practical product terms, PTM lets firmware offload deterministic peripheral behavior: cycle-sensitive IO sequencing, custom protocol handling, sensor collection, PWM-like waveforms, fast trigger responses, and compact register or memory workflows tied to external events.
 
@@ -34,7 +34,7 @@ Handling these jobs in interrupts can create latency risk and interrupt load. Ha
 
 ## PTM in the SF32LB57x Architecture
 
-PTM can be viewed as a small programmable engine attached to the SoC's IO, event, FIFO/DMA, and AHB bus infrastructure.
+PTM can be viewed as a small programmable engine attached to the SF32LB57x SoC's IO, event, FIFO/DMA, and AHB bus infrastructure. Treat it as an SF32LB57x architectural capability: confirm the selected device's documentation before carrying a PTM-based design assumption to another SF32 family.
 
 ```text
 Application / firmware
@@ -115,7 +115,7 @@ This is the core system-level benefit: PTM can absorb the low-level timing work 
 
 ## Typical PTM Use Cases
 
-PTM is most useful when the design needs peripheral behavior that is too custom for fixed-function blocks and too timing-sensitive for ordinary firmware loops.
+For an SF32LB57x design, PTM is most useful when the peripheral behavior is too custom for fixed-function blocks and too timing-sensitive for ordinary firmware loops.
 
 Typical use cases include:
 
@@ -223,7 +223,7 @@ References: [SF32LB57x Datasheet](https://downloads.sifli.com/user%20manual/DS57
 
 ## Design Guidance
 
-Consider PTM when a workflow has several of these characteristics:
+First confirm that the target is an SF32LB57x device with PTM documented for the intended design. Then consider PTM when a workflow has several of these characteristics:
 
 - it repeats often enough that CPU service would waste power or timing margin;
 - it needs deterministic timing around IO edges or trigger response;
@@ -243,7 +243,7 @@ Good PTM design starts by drawing the boundary between deterministic work and po
 
 ## Key Takeaways
 
-- PTM is a programmable peripheral task engine in SF32LB57x.
+- PTM is a programmable peripheral task engine introduced with the SF32LB57x family.
 - It has four independent processing cores.
 - It can execute compact custom instructions from PTM TCM or the system bus.
 - It supports IO control, bus/register access, data operations, waits, delays, FIFO/DMA, interrupts, and inter-core events.

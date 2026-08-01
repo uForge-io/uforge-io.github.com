@@ -16,7 +16,7 @@ The guide covers the complete hardware development process, including package se
 
 This document assumes a basic understanding of embedded hardware design and schematic capture. It complements the SF32LB55x datasheet, user manual, official hardware application note, reference designs, and SiFli Approved Vendor List, which remain the authority for electrical specifications, pin multiplexing, package dimensions, component qualification, and production limits.
 
-Like the SF32LB55x product-introduction page, this guide should be read with one extra caveat from SiFli's chip model guide: the 55x suffix naming predates the later 52/56/58 convention and does not fully follow it. For interface availability, package-dependent capability, and exact memory topology, trust the exact orderable part number and package reference rather than suffix inference alone.
+SiFli's chip model guide notes one important caveat: the 55x suffix naming predates the later 52/56/58 convention and does not fully follow it. For interface availability, package-dependent capability, and exact memory topology, use the exact orderable part number and package reference rather than suffix inference alone.
 
 ## 2. Development Resources
 

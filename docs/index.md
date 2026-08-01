@@ -21,11 +21,11 @@ hide:
 ***μForge.io*** is an open-source development platform for innovative semiconductor platforms, starting with the SF32 family of ultra-low-power microcontrollers from SiFli. High performance, rich peripherals, and modern development tools—everything you need to build smarter products-faster.
 --->
 
-***μForge.io*** is an open-source development platform for innovative semiconductor solutions, beginning with the SF32 family of ultra-low-power microcontrollers from SiFli. From silicon and development boards to SDKs, documentation, and production-ready reference designs, μForge brings together everything developers need to design, build, and ship connected, intelligent, and energy-efficient embedded products, faster.
+***μForge.io*** is an open-source development platform for innovative semiconductor solutions, beginning with the SF32 family of ultra-low-power microcontrollers from SiFli. From silicon, modules, and development boards to SDKs, documentation, and production-ready reference designs, ***μForge.io*** brings together everything developers need to design, build, and ship connected, intelligent, and energy-efficient embedded products, faster.
 
 <div class="uf-hero-actions" markdown>
 
-[Get Started :material-arrow-right:](getting-started/overview.md){ .md-button .md-button--primary }
+[Get Started :material-arrow-right:](getting-started/index.md){ .md-button .md-button--primary }
 [Explore SF32 :material-file-document-outline:](hardware/chips/SF32_family.md){ .md-button }
 [GitHub :fontawesome-brands-github:](https://github.com/uforge-io){ .md-button }
 
@@ -63,13 +63,13 @@ hide:
 
     SDKs, toolchains, middleware, drivers, and developer tools.
 
-    [View Develop :material-arrow-right:](develop/overview.md){ .uf-link-green }
+    [View Develop :material-arrow-right:](develop/index.md){ .uf-link-green }
 
 - :fontawesome-solid-book:{ .uf-ql-icon .uf-blue } **Learn**
 
     Architecture and subsystem guidance for graphics, Bluetooth, AI, audio, and low power.
 
-    [Explore Learn :material-arrow-right:](learn/overview.md){ .uf-link-blue }
+    [Explore Learn :material-arrow-right:](learn/index.md){ .uf-link-blue }
 
 - :fontawesome-solid-rocket:{ .uf-ql-icon .uf-pink } **Examples**
 
@@ -148,22 +148,6 @@ hide:
     - :fontawesome-solid-circle:{ .uf-dot-blue } Available in QFN68 and BGA175 packages, with up to 44 / 120 GPIOs
 
     [View Series :material-arrow-right:](hardware/chips/SF32LB56x.md){ .uf-link-blue }
-
-- <span class="uf-mcu-chip">SF32LB57</span>
-
-    <span class="uf-mcu-headtext">**SF32LB57x**{ .uf-mcu-title } <span class="uf-mcu-sub">Multimedia AIoT MCU</span></span>
-
-    ---
-
-    - :fontawesome-solid-circle:{ .uf-dot-blue } Dual-Core Cortex-M33 STAR-MC1
-    - :fontawesome-solid-circle:{ .uf-dot-blue } Dual-Mode Bluetooth 6.3
-    - :fontawesome-solid-circle:{ .uf-dot-blue } 2D / 2.5D GPU, ePicasso 3.0
-    - :fontawesome-solid-circle:{ .uf-dot-blue } eZip 3.0 Hardware Decompression, DCMI Camera Input
-    - :fontawesome-solid-circle:{ .uf-dot-blue } Audio Codec, 2 x AMIC, 2 x DMIC
-    - :fontawesome-solid-circle:{ .uf-dot-blue } 592 KB SRAM, up to 32 MB PSRAM
-    - :fontawesome-solid-circle:{ .uf-dot-blue } Available in QFN68, QFN80, and BGA112 packages, with up to 46 / 47 / 58 / 64 GPIOs
-
-    [View Series :material-arrow-right:](hardware/chips/SF32LB57x.md){ .uf-link-blue }
 
 - <span class="uf-mcu-chip">SF32LB58</span>
 

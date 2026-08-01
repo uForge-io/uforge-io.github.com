@@ -284,7 +284,7 @@ Create a stable, low-leakage power tree that supports the selected variant, avoi
 
 === "SF32LB520/3/5/7 (Battery-Powered)"
 
-    <div align="center"><em>Table 5.2.1-1: Power Supply Requirements (Battery-Powered Variant)</em></div>
+    <div align="center"><em>Table 5.2-1: Power Supply Requirements (Battery-Powered Variant)</em></div>
 
     <div align="center" markdown>
 
@@ -316,7 +316,7 @@ Create a stable, low-leakage power tree that supports the selected variant, avoi
 
 === "52B/D/E/G/J (Regular-Powered)"
 
-    <div align="center"><em>Table 5.2.1-2: Power Supply Requirements (Regular-Powered Variant)</em></div>
+    <div align="center"><em>Table 5.2-2: Power Supply Requirements (Regular-Powered Variant)</em></div>
 
     <div align="center" markdown>
 
@@ -360,21 +360,21 @@ Both design groups use the same inductor specification.
 
     External charging chips come in two common types: without PPM (power path management) and with PPM. Without PPM, the battery directly supplies the VBAT and VCC pins. With PPM, the charger's VSYS supplies VCC, and the charger's VBAT connects to both the battery and the chip's VBAT pin. Both approaches measure battery voltage through the VBAT pin, which has an integrated GPADC channel with sampling accuracy within ±30 mV.
 
-    ![Figure 5.2.1-1: External Charging Circuit without PPM](assets/52xA/sf32lb52x-CHG-NPPM.png){ width="100%" loading="lazy" }
+    ![Figure 5.2-1: External Charging Circuit without PPM](assets/52xA/sf32lb52x-CHG-NPPM.png){ width="100%" loading="lazy" }
 
-    <div align="center"><em>Figure 5.2.1-1: External Charging Circuit without PPM</em></div>
+    <div align="center"><em>Figure 5.2-1: External Charging Circuit without PPM</em></div>
 
-    ![Figure 5.2.1-2: External Charging Circuit with PPM](assets/52xA/sf32lb52x-CHG-PPM.png){ width="100%" loading="lazy" }
+    ![Figure 5.2-2: External Charging Circuit with PPM](assets/52xA/sf32lb52x-CHG-PPM.png){ width="100%" loading="lazy" }
 
-    <div align="center"><em>Figure 5.2.1-2: External Charging Circuit with PPM</em></div>
+    <div align="center"><em>Figure 5.2-2: External Charging Circuit with PPM</em></div>
 
     **On-Chip Integrated Charging Management Module**
 
     When using the integrated charging module, if the battery is low and the device is off, plugging in a charger requires the battery to charge up to the power-on threshold before the system can boot and display the charging screen.
 
-    ![Figure 5.2.1-3: Integrated Charging Management Circuit](assets/52xA/sf32lb52x-CHG-INNER.png){ width="100%" loading="lazy" }
+    ![Figure 5.2-3: Integrated Charging Management Circuit](assets/52xA/sf32lb52x-CHG-INNER.png){ width="100%" loading="lazy" }
 
-    <div align="center"><em>Figure 5.2.1-3: Integrated Charging Management Circuit</em></div>
+    <div align="center"><em>Figure 5.2-3: Integrated Charging Management Circuit</em></div>
 
     **OVP Chip Selection (When Using the Integrated Charging Module)**
 
@@ -383,17 +383,17 @@ Both design groups use the same inductor specification.
     - Adjustable-OVLO OVP chip, e.g. AW32905FCR — set OVLO between 5.2 V and 5.5 V (VOVLO_TH tolerance ≤3%, resistor tolerance ≤1%)
     - Regulated-output OVP chip, e.g. SGM4064YDE8G or LP5305AQVF — regulator output must be between 4.5 V and 5.5 V
 
-    ![Figure 5.2.1-4: OVLO Set-Point Formula](assets/52xA/sf32lb52x-OVP-SET.png){ width="100%" loading="lazy" }
+    ![Figure 5.2-4: OVLO Set-Point Formula](assets/52xA/sf32lb52x-OVP-SET.png){ width="100%" loading="lazy" }
 
-    <div align="center"><em>Figure 5.2.1-4: OVLO Set-Point Formula</em></div>
+    <div align="center"><em>Figure 5.2-4: OVLO Set-Point Formula</em></div>
 
-    ![Figure 5.2.1-5: Adjustable-OVLO OVP Application Circuit](assets/52xA/sf32lb52x-OVP-OVLO.png){ width="100%" loading="lazy" }
+    ![Figure 5.2-5: Adjustable-OVLO OVP Application Circuit](assets/52xA/sf32lb52x-OVP-OVLO.png){ width="100%" loading="lazy" }
 
-    <div align="center"><em>Figure 5.2.1-5: Adjustable-OVLO OVP Application Circuit</em></div>
+    <div align="center"><em>Figure 5.2-5: Adjustable-OVLO OVP Application Circuit</em></div>
 
-    ![Figure 5.2.1-6: Regulated-Output OVP Application Circuit](assets/52xA/sf32lb52x-OVP-REGU.png){ width="100%" loading="lazy" }
+    ![Figure 5.2-6: Regulated-Output OVP Application Circuit](assets/52xA/sf32lb52x-OVP-REGU.png){ width="100%" loading="lazy" }
 
-    <div align="center"><em>Figure 5.2.1-6: Regulated-Output OVP Application Circuit</em></div>
+    <div align="center"><em>Figure 5.2-6: Regulated-Output OVP Application Circuit</em></div>
 
     !!! important "Integrated Charging Module Notes"
         - VBUS input range: 4.6 V–5.5 V
@@ -421,9 +421,9 @@ Both design groups use the same inductor specification.
 
     Recommended power structure: **VDD33_VOUT2** supplies the vibration motor, **VDD33_VOUT1** supplies external Flash and sensors, and the LCD uses an external LDO.
 
-    ![Figure 5.2.1-7: SF32LB52x System Power Structure Diagram](assets/52xA/sf32lb52x-PWR-diagram.png){ width="100%" loading="lazy" }
+    ![Figure 5.2-7: SF32LB52x System Power Structure Diagram](assets/52xA/sf32lb52x-PWR-diagram.png){ width="100%" loading="lazy" }
 
-    <div align="center"><em>Figure 5.2.1-7: SF32LB52x System Power Structure Diagram</em></div>
+    <div align="center"><em>Figure 5.2-7: SF32LB52x System Power Structure Diagram</em></div>
 
     Control the default hardware state of power-switch GPIO pins carefully, and add megohm-range pull-up/pull-down resistors so load switches default to off. For LDO and load-switch selection, choose devices with low quiescent current (Iq) and low shutdown current (Istb), and pay particular attention to Iq on always-on power devices.
 
@@ -470,7 +470,7 @@ Select wake sources and external power-switch defaults so the product can enter 
 !!! note "Shared Design"
     Operating modes and wake-source behavior apply across the SF32LB52x family unless a product-specific power tree intentionally disables an external wake source.
 
-<div align="center"><em>Table 5.2.2-1: CPU Mode Table</em></div>
+<div align="center"><em>Table 5.2-3: CPU Mode Table</em></div>
 
 <div align="center" markdown>
 
@@ -486,7 +486,7 @@ Select wake sources and external power-switch defaults so the product can enter 
 
 The whole family supports 15 wake-capable interrupt sources in Standby and Hibernate modes:
 
-<div align="center"><em>Table 5.2.2-2: Interrupt Wake-Up Source Table</em></div>
+<div align="center"><em>Table 5.2-4: Interrupt Wake-Up Source Table</em></div>
 
 <div align="center" markdown>
 
@@ -528,7 +528,7 @@ Provide stable, low-jitter clock sources while minimizing oscillator current, fr
 The chip requires two external clock sources: a 48 MHz main crystal and a 32.768 kHz RTC crystal. Requirements are identical for both variants.
 
 !!! important "Crystal Specification Requirements"
-    <div align="center"><em>Table 5.3.1-1: Crystal Specification Requirements</em></div>
+    <div align="center"><em>Table 5.3-1: Crystal Specification Requirements</em></div>
 
     <div align="center" markdown>
 
@@ -541,7 +541,7 @@ The chip requires two external clock sources: a 48 MHz main crystal and a 32.768
 
 Recommended crystals:
 
-<div align="center"><em>Table 5.3.1-2: Recommended Crystal List</em></div>
+<div align="center"><em>Table 5.3-2: Recommended Crystal List</em></div>
 
 <div align="center" markdown>
 
@@ -589,9 +589,9 @@ Maximize Bluetooth sensitivity and radiated performance by preserving impedance 
 
 RF trace characteristic impedance is 50 Ω. If the antenna is already matched, no additional RF components are required, but a reserved π-type matching network is still recommended for spurious filtering or antenna tuning.
 
-![Figure 5.4.1-1: RF Circuit Diagram](assets/52xB/sf32lb52X-B-rf-diagram.png){ width="100%" loading="lazy" }
+![Figure 5.4-1: RF Circuit Diagram](assets/52xB/sf32lb52X-B-rf-diagram.png){ width="100%" loading="lazy" }
 
-<div align="center"><em>Figure 5.4.1-1: RF Circuit Diagram</em></div>
+<div align="center"><em>Figure 5.4-1: RF Circuit Diagram</em></div>
 
 #### 5.4.2. RF Review and Tuning
 
@@ -627,7 +627,7 @@ The chip supports 3-Line SPI, 4-Line SPI, Dual-data SPI, Quad-data SPI, and seri
 
 Supported LCD driver models:
 
-<div align="center"><em>Table 5.5.1-1: Supported LCD Driver List</em></div>
+<div align="center"><em>Table 5.5-1: Supported LCD Driver List</em></div>
 
 <div align="center" markdown>
 
@@ -648,7 +648,7 @@ Supported LCD driver models:
 
 ##### 5.5.1.1. SPI/QSPI Display Interface
 
-<div align="center"><em>Table 5.5.1-2: SPI/QSPI Signal Connections</em></div>
+<div align="center"><em>Table 5.5-2: SPI/QSPI Signal Connections</em></div>
 
 <div align="center" markdown>
 
@@ -668,7 +668,7 @@ Supported LCD driver models:
 
 ##### 5.5.1.2. JDI Display Interface
 
-<div align="center"><em>Table 5.5.1-3: Parallel JDI Signal Connections</em></div>
+<div align="center"><em>Table 5.5-3: Parallel JDI Signal Connections</em></div>
 
 <div align="center" markdown>
 
@@ -695,7 +695,7 @@ Supported LCD driver models:
 
     The chip supports an 8-bit parallel EPD display interface:
 
-    <div align="center"><em>Table 5.5.1-4: EPD Signal Connections</em></div>
+    <div align="center"><em>Table 5.5-4: EPD Signal Connections</em></div>
 
     <div align="center" markdown>
 
@@ -731,7 +731,7 @@ Supported LCD driver models:
 
 The SF32LB52x supports an I2C touch-controller interface with a touch-status interrupt input, plus one PWM signal for backlight enable and brightness control.
 
-<div align="center"><em>Table 5.5.1-5: Touch and Backlight Connections</em></div>
+<div align="center"><em>Table 5.5-5: Touch and Backlight Connections</em></div>
 
 <div align="center" markdown>
 
@@ -776,7 +776,7 @@ The shared audio interface provides:
 1. One single-ended ADC input for an analog microphone, with a DC-blocking capacitor of at least 2.2 uF in series; the microphone is powered from the chip's MIC_BIAS output
 2. One differential DAC output for an external audio PA — route as a differential pair with proper ground shielding; keep trace capacitance < 10 pF and length < 2 cm
 
-<div align="center"><em>Table 5.5.2-1: Audio Signal Connections</em></div>
+<div align="center"><em>Table 5.5-6: Audio Signal Connections</em></div>
 
 <div align="center" markdown>
 
@@ -789,17 +789,17 @@ The shared audio interface provides:
 
 </div>
 
-![Figure 5.5.2-1: Analog MEMS MIC Single-Ended Input Circuit](assets/52xB/sf32lb52X-B-MEMS-MIC.png){ width="100%" loading="lazy" }
+![Figure 5.5-1: Analog MEMS MIC Single-Ended Input Circuit](assets/52xB/sf32lb52X-B-MEMS-MIC.png){ width="100%" loading="lazy" }
 
-<div align="center"><em>Figure 5.5.2-1: Analog MEMS MIC Single-Ended Input Circuit</em></div>
+<div align="center"><em>Figure 5.5-1: Analog MEMS MIC Single-Ended Input Circuit</em></div>
 
-![Figure 5.5.2-2: Analog ECM MIC Single-Ended Input Circuit](assets/52xB/sf32lb52X-B-ECM-MIC.png){ width="100%" loading="lazy" }
+![Figure 5.5-2: Analog ECM MIC Single-Ended Input Circuit](assets/52xB/sf32lb52X-B-ECM-MIC.png){ width="100%" loading="lazy" }
 
-<div align="center"><em>Figure 5.5.2-2: Analog ECM MIC Single-Ended Input Circuit</em></div>
+<div align="center"><em>Figure 5.5-2: Analog ECM MIC Single-Ended Input Circuit</em></div>
 
-![Figure 5.5.2-3: Analog Audio PA Circuit](assets/52xB/sf32lb52X-B-DAC-PA.png){ width="100%" loading="lazy" }
+![Figure 5.5-3: Analog Audio PA Circuit](assets/52xB/sf32lb52X-B-DAC-PA.png){ width="100%" loading="lazy" }
 
-<div align="center"><em>Figure 5.5.2-3: Analog Audio PA Circuit</em></div>
+<div align="center"><em>Figure 5.5-3: Analog Audio PA Circuit</em></div>
 
 **Common Mistakes - Audio**
 
@@ -830,17 +830,17 @@ Provide reliable user-input and reset behavior without false wake events, stuck 
 
 PA34 supports long-press reset and can be designed as a combined power on/off and long-press-reset button. The long-press reset function is active-high, so the default state should be pulled low and driven high when the button is pressed.
 
-![Figure 5.5.3-1: Power / Long-Press-Reset Button Circuit](assets/52xB/sf32lb52X-B-PWKEY.png){ width="100%" loading="lazy" }
+![Figure 5.5-4: Power / Long-Press-Reset Button Circuit](assets/52xB/sf32lb52X-B-PWKEY.png){ width="100%" loading="lazy" }
 
-<div align="center"><em>Figure 5.5.3-1: Power / Long-Press-Reset Button Circuit</em></div>
+<div align="center"><em>Figure 5.5-4: Power / Long-Press-Reset Button Circuit</em></div>
 
 ##### 5.5.3.2. Mechanical Rotary Encoder Button
 
 Use the reference design as the baseline for the rotary encoder button circuit.
 
-![Figure 5.5.3-2: Mechanical Rotary Encoder Button Circuit](assets/52xB/sf32lb52X-B-XNKEY.png){ width="100%" loading="lazy" }
+![Figure 5.5-5: Mechanical Rotary Encoder Button Circuit](assets/52xB/sf32lb52X-B-XNKEY.png){ width="100%" loading="lazy" }
 
-<div align="center"><em>Figure 5.5.3-2: Mechanical Rotary Encoder Button Circuit</em></div>
+<div align="center"><em>Figure 5.5-5: Mechanical Rotary Encoder Button Circuit</em></div>
 
 **Common Mistakes - Buttons**
 
@@ -868,13 +868,13 @@ Deliver repeatable haptic feedback while keeping motor surge current, switching 
 
 The SF32LB52x supports a PWM output for driving a vibration motor through an external driver stage.
 
-![Figure 5.5.4-1: Vibration Motor Driver Circuit (SF32LB520/3/5/7 reference; functionally equivalent on the regular-powered variant)](assets/52xA/sf32lb52x-A-VIB.png){ width="100%" loading="lazy" }
+![Figure 5.5-6: Vibration Motor Driver Circuit (SF32LB520/3/5/7 reference; functionally equivalent on the regular-powered variant)](assets/52xA/sf32lb52x-A-VIB.png){ width="100%" loading="lazy" }
 
-<div align="center"><em>Figure 5.5.4-1: Vibration Motor Driver Circuit (SF32LB520/3/5/7 reference; functionally equivalent on the regular-powered variant)</em></div>
+<div align="center"><em>Figure 5.5-6: Vibration Motor Driver Circuit (SF32LB520/3/5/7 reference; functionally equivalent on the regular-powered variant)</em></div>
 
-![Figure 5.5.4-2: Vibration Motor Driver Circuit (52B/D/E/G/J Reference)](assets/52xB/sf32lb52X-B-VIB.png){ width="100%" loading="lazy" }
+![Figure 5.5-7: Vibration Motor Driver Circuit (52B/D/E/G/J Reference)](assets/52xB/sf32lb52X-B-VIB.png){ width="100%" loading="lazy" }
 
-<div align="center"><em>Figure 5.5.4-2: Vibration Motor Driver Circuit (52B/D/E/G/J Reference)</em></div>
+<div align="center"><em>Figure 5.5-7: Vibration Motor Driver Circuit (52B/D/E/G/J Reference)</em></div>
 
 **Motor Checklist**
 
@@ -901,7 +901,7 @@ Choose a boot medium and storage power architecture that support firmware size, 
 
 The chip supports external SPI NOR Flash, SPI NAND Flash, and SD NAND Flash. **eMMC is supported only on the 52B/D/E/G/J regular-powered variant.**
 
-<div align="center"><em>Table 5.6.1-1: SPI NOR/NAND Flash Signal Connections</em></div>
+<div align="center"><em>Table 5.6-1: SPI NOR/NAND Flash Signal Connections</em></div>
 
 <div align="center" markdown>
 
@@ -916,7 +916,7 @@ The chip supports external SPI NOR Flash, SPI NAND Flash, and SD NAND Flash. **e
 
 </div>
 
-<div align="center"><em>Table 5.6.1-2: SD NAND Flash and eMMC Signal Connections</em></div>
+<div align="center"><em>Table 5.6-2: SD NAND Flash and eMMC Signal Connections</em></div>
 
 <div align="center" markdown>
 
@@ -943,11 +943,11 @@ The chip supports external SPI NOR Flash, SPI NAND Flash, and SD NAND Flash. **e
     - SF32LB520Ux6 has co-packaged Flash and boots from it by default
     - SF32LB523/5/7Ux6 have co-packaged PSRAM and must boot from external storage
 
-    ![Figure 5.6.1-1: Bootstrap Pin Recommended Circuit (Battery-Powered Variant)](assets/52xA/SF32LB52x-A-Bootstrap.png){ width="100%" loading="lazy" }
+    ![Figure 5.6-1: Bootstrap Pin Recommended Circuit (Battery-Powered Variant)](assets/52xA/SF32LB52x-A-Bootstrap.png){ width="100%" loading="lazy" }
 
-    <div align="center"><em>Figure 5.6.1-1: Bootstrap Pin Recommended Circuit (Battery-Powered Variant)</em></div>
+    <div align="center"><em>Figure 5.6-1: Bootstrap Pin Recommended Circuit (Battery-Powered Variant)</em></div>
 
-    <div align="center"><em>Table 5.6.1-3: Boot Option Settings (Battery-Powered Variant)</em></div>
+    <div align="center"><em>Table 5.6-3: Boot Option Settings (Battery-Powered Variant)</em></div>
 
     <div align="center" markdown>
 
@@ -966,11 +966,11 @@ The chip supports external SPI NOR Flash, SPI NAND Flash, and SD NAND Flash. **e
     - The model with co-packaged Flash (SF32LB52BU36) boots from it by default
     - Models with co-packaged PSRAM (SF32LB52DUB6/EUB6/GUC6/JUD6) must boot from external storage
 
-    ![Figure 5.6.1-2: Bootstrap Pin Recommended Circuit (Regular-Powered Variant)](assets/52xB/sf32lb52X-B-Bootstrap.png){ width="100%" loading="lazy" }
+    ![Figure 5.6-2: Bootstrap Pin Recommended Circuit (Regular-Powered Variant)](assets/52xB/sf32lb52X-B-Bootstrap.png){ width="100%" loading="lazy" }
 
-    <div align="center"><em>Figure 5.6.1-2: Bootstrap Pin Recommended Circuit (Regular-Powered Variant)</em></div>
+    <div align="center"><em>Figure 5.6-2: Bootstrap Pin Recommended Circuit (Regular-Powered Variant)</em></div>
 
-    <div align="center"><em>Table 5.6.1-4: Boot Option Settings (Regular-Powered Variant)</em></div>
+    <div align="center"><em>Table 5.6-4: Boot Option Settings (Regular-Powered Variant)</em></div>
 
     <div align="center" markdown>
 
@@ -1096,7 +1096,7 @@ Guarantee firmware download, debug logs, single-step debug, and failure recovery
 
 The SF32LB52x supports a DBG_UART interface for download and debug, connected to a PC through a 3.3 V UART-to-USB dongle board. SWD and DBG_UART are multiplexed on PA18 and PA19; the default power-on configuration is DBG_UART, which supports single-step debugging as well as log output.
 
-<div align="center"><em>Table 5.7.1-1: Debug Port Connections</em></div>
+<div align="center"><em>Table 5.7-1: Debug Port Connections</em></div>
 
 <div align="center" markdown>
 

@@ -7,7 +7,7 @@ tags:
     - Learn
 ---
 
-# PSRAM and Embedded Memory Types
+# PSRAM vs. Other Embedded Memory Types
 
 PSRAM—**pseudo-static RAM**—is the practical capacity tier between scarce on-chip SRAM and non-volatile storage in many embedded products. Use it for a framebuffer, large graphics assets, audio buffers, model data, or an application working set that will not fit in internal SRAM. Compared with a conventional discrete DRAM subsystem, it is generally a better power fit for low-power products such as wearables when its capacity and bandwidth are sufficient. It is still volatile working memory: it does not replace Flash, and it is not automatically the right place for latency-critical data.
 

@@ -74,7 +74,7 @@ lv_obj_align(label, LV_ALIGN_CENTER, 0, 0);
 2. Create a label and a button widget.
 3. Wire the button callback to change the label text.
 4. Add one small animation and watch CPU usage or frame timing through shell tools.
-5. Read the [Graphics Overview](../learn/graphics/overview.md) sections on buffer strategy, partial refresh, and ePicasso before scaling up.
+5. Read the [Graphics Overview](../../learn/graphics/overview.md) sections on buffer strategy, partial refresh, and ePicasso before scaling up.
 
 **Success criteria:** the screen initializes consistently after reset, touch or button input changes UI state, and simple animation does not starve shell or Bluetooth activity.
 
@@ -95,7 +95,7 @@ lv_obj_align(label, LV_ALIGN_CENTER, 0, 0);
 3. Switch to, or adapt, the HRPC example if your product is sensor-oriented.
 4. Feed a real value into the characteristic, such as the ADC reading from First Peripherals, exercise 4, or the I2C sensor reading from this track, exercise 1.
 5. Enable notifications and confirm the phone receives value changes.
-6. Read the [Bluetooth Overview](../learn/bluetooth/overview.md#gatt-services-and-the-sibles-framework) before designing a custom service.
+6. Read the [Bluetooth Overview](../../learn/bluetooth/overview.md#gatt-services-and-the-sibles-framework) before designing a custom service.
 
 **Success criteria:** the device advertises, connects, exposes a GATT service, sends notifications, and returns to a clean state after disconnect/reconnect.
 
@@ -116,7 +116,7 @@ lv_obj_align(label, LV_ALIGN_CENTER, 0, 0);
 3. Confirm playback starts, audio is clean, and the board does not reset when playback begins.
 4. Wire playback start/stop to the button handler from First Peripherals, exercise 2.
 5. Watch for underruns while shell logging or display updates are active.
-6. Read the [Audio Overview](../learn/audio/overview.md#playback-and-recording-basics) before changing sample rate, format, or buffer size.
+6. Read the [Audio Overview](../../learn/audio/overview.md#playback-and-recording-basics) before changing sample rate, format, or buffer size.
 
 **Success criteria:** playback can start, stop, and restart repeatedly without pops, underruns, or leaked active-power state.
 
@@ -164,7 +164,7 @@ close(fd);
 3. Combine them with minimal changes.
 4. Exercise both at the same time: BLE notification during I2C read, UI animation during audio playback, storage write during sensor update.
 5. Watch CPU usage, logs, memory, and user-visible behavior.
-6. Compare what you see with the [Bluetooth Overview](../learn/bluetooth/overview.md#coexistence-with-other-workloads), [Graphics Overview](../learn/graphics/overview.md#graphics-validation-matrix), and [Low-Power Overview](../learn/low-power/overview.md#what-drains-power-on-an-sf32-product).
+6. Compare what you see with the [Bluetooth Overview](../../learn/bluetooth/overview.md#coexistence-with-other-workloads), [Graphics Overview](../../learn/graphics/overview.md#graphics-validation-matrix), and [Low-Power Overview](../../learn/low-power/overview.md#what-drains-power-on-an-sf32-product).
 
 **Success criteria:** both subsystems keep working under simultaneous activity, and idle current returns to the expected level after the test stops.
 
