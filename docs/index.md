@@ -133,6 +133,22 @@ hide:
 
     [View Series :material-arrow-right:](hardware/chips/SF32LB52x.md){ .uf-link-blue }
 
+- <span class="uf-mcu-chip">SF32LB55</span>
+
+    <span class="uf-mcu-headtext">**SF32LB55x**{ .uf-mcu-title } <span class="uf-mcu-sub">Mainstream BLE Wearable MCU</span></span>
+
+    ---
+
+    - :fontawesome-solid-circle:{ .uf-dot-blue } Dual-Core Cortex-M33 STAR-MC1
+    - :fontawesome-solid-circle:{ .uf-dot-blue } Bluetooth Low Energy 5.2
+    - :fontawesome-solid-circle:{ .uf-dot-blue } 2.5D GPU, ePicasso Graphics Engine
+    - :fontawesome-solid-circle:{ .uf-dot-blue } eZip Lossless Hardware Decompression
+    - :fontawesome-solid-circle:{ .uf-dot-blue } 2 x PDM Digital Mic, 2 x I2S Audio Interfaces
+    - :fontawesome-solid-circle:{ .uf-dot-blue } 1.4 MB SRAM, up to 18 MB PSRAM
+    - :fontawesome-solid-circle:{ .uf-dot-blue } Available in QFN68L, BGA145, and BGA169 packages, with up to 113 GPIOs
+
+    [View Series :material-arrow-right:](hardware/chips/SF32LB55x.md){ .uf-link-blue }
+
 - <span class="uf-mcu-chip">SF32LB56</span>
 
     <span class="uf-mcu-headtext">**SF32LB56x**{ .uf-mcu-title } <span class="uf-mcu-sub">Graphics-Optimized MCU</span></span>
