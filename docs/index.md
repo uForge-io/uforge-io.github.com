@@ -13,7 +13,7 @@ hide:
 <div class="uf-hero" markdown>
 <div class="uf-hero-content" markdown>
 
-<span class="uf-badge">OPEN. POWERFUL. FOR DEVELOPERS.</span>
+<span class="uf-badge">OPEN SOURCE · SILICON TO PRODUCTION · FOR EMBEDDED DEVELOPERS</span>
 
 # Build the Next Generation<br> of Embedded Devices
 
@@ -21,12 +21,12 @@ hide:
 ***μForge.io*** is an open-source development platform for innovative semiconductor platforms, starting with the SF32 family of ultra-low-power microcontrollers from SiFli. High performance, rich peripherals, and modern development tools—everything you need to build smarter products-faster.
 --->
 
-***μForge.io*** is an open-source development platform for innovative semiconductor solutions, beginning with the SF32 family of ultra-low-power microcontrollers from SiFli. From silicon, modules, and development boards to SDKs, documentation, and production-ready reference designs, ***μForge.io*** brings together everything developers need to design, build, and ship connected, intelligent, and energy-efficient embedded products, faster.
+***μForge.io*** is an open-source development platform for innovative semiconductor solutions, beginning with SiFli's SF32 family of ultra-low-power microcontrollers. From silicon and modules to development boards, SDKs, documentation, and production-ready reference designs, ***μForge.io*** brings the full stack together in one place, helping developers take connected, intelligent, and energy-efficient embedded products from idea to production faster and with less friction.
 
 <div class="uf-hero-actions" markdown>
 
 [Get Started :material-arrow-right:](getting-started/index.md){ .md-button .md-button--primary }
-[Explore SF32 :material-file-document-outline:](hardware/chips/SF32_family.md){ .md-button }
+[Explore SF32 :material-file-document-outline:](explore-sf32/family/SF32_family.md){ .md-button }
 [GitHub :fontawesome-brands-github:](https://github.com/uforge-io){ .md-button }
 
 </div>
@@ -57,7 +57,7 @@ hide:
 
     Microcontrollers, modules, development boards, and production-ready reference designs.
 
-    [See Hardware :material-arrow-right:](hardware/chips/SF32_family.md){ .uf-link-purple }
+    [See Hardware :material-arrow-right:](explore-sf32/family/SF32_family.md){ .uf-link-purple }
 
 - :fontawesome-solid-code:{ .uf-ql-icon .uf-green } **SDK & Tools**
 
@@ -131,7 +131,7 @@ hide:
     - :fontawesome-solid-circle:{ .uf-dot-blue } 576 KB SRAM, up to 16 MB PSRAM
     - :fontawesome-solid-circle:{ .uf-dot-blue } QFN68 package, with up to 45 GPIOs and optional integrated linear charger
 
-    [View Series :material-arrow-right:](hardware/chips/SF32LB52x.md){ .uf-link-blue }
+    [View Series :material-arrow-right:](explore-sf32/chips/SF32LB52x.md){ .uf-link-blue }
 
 - <span class="uf-mcu-chip">SF32LB55</span>
 
@@ -147,7 +147,7 @@ hide:
     - :fontawesome-solid-circle:{ .uf-dot-blue } 1.4 MB SRAM, up to 18 MB PSRAM
     - :fontawesome-solid-circle:{ .uf-dot-blue } Available in QFN68, BGA145, and BGA169 packages, with up to 49 / 95 / 119 GPIOs
 
-    [View Series :material-arrow-right:](hardware/chips/SF32LB55x.md){ .uf-link-blue }
+    [View Series :material-arrow-right:](explore-sf32/chips/SF32LB55x.md){ .uf-link-blue }
 
 - <span class="uf-mcu-chip">SF32LB56</span>
 
@@ -163,7 +163,7 @@ hide:
     - :fontawesome-solid-circle:{ .uf-dot-blue } 960 KB SRAM, up to 16 MB PSRAM
     - :fontawesome-solid-circle:{ .uf-dot-blue } Available in QFN68 and BGA175 packages, with up to 44 / 120 GPIOs
 
-    [View Series :material-arrow-right:](hardware/chips/SF32LB56x.md){ .uf-link-blue }
+    [View Series :material-arrow-right:](explore-sf32/chips/SF32LB56x.md){ .uf-link-blue }
 
 - <span class="uf-mcu-chip">SF32LB58</span>
 
@@ -179,11 +179,11 @@ hide:
     - :fontawesome-solid-circle:{ .uf-dot-blue } 3.7 MB SRAM, up to 64 MB PSRAM
     - :fontawesome-solid-circle:{ .uf-dot-blue } Available in BGA256 package, up to 154 GPIOs
 
-    [View Series :material-arrow-right:](hardware/chips/SF32LB58x.md){ .uf-link-blue }
+    [View Series :material-arrow-right:](explore-sf32/chips/SF32LB58x.md){ .uf-link-blue }
 
 </div>
 
-[^1]: See the [SF32 Family Overview](hardware/chips/SF32_family.md) for a detailed comparison of all devices.
+[^1]: See the [SF32 Family Overview](explore-sf32/family/SF32_family.md) for a detailed comparison of all devices.
 
 <!--
 ---

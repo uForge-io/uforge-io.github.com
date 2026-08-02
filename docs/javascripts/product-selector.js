@@ -1,4 +1,4 @@
-/* Interactive SF32 product-selection table (docs/hardware/product-selector.md
+/* Interactive SF32 product-selection table (docs/explore-sf32/product-selector.md
    and its Chinese twin). Loads docs/assets/data/product-selector.json (shared
    between both languages via tools/link-shared-assets.sh) and renders a
    filterable table client-side -- there's no backend, so filtering,
@@ -941,7 +941,21 @@
       });
   }
 
-  if (document.readyState === "loading") {
+  // Zensical/Material's "navigation.instant" feature (see zensical.toml)
+  // swaps page content via XHR instead of a real browser navigation, so
+  // DOMContentLoaded only fires once, on whichever page happened to be the
+  // first real load of the session. Landing on this page via an internal
+  // link -- the common case -- never fires it again, leaving the mount
+  // point empty until the visitor forces a hard refresh (the exact
+  // "sometimes needs an extra refresh" symptom this fixes). document$ is
+  // the instant-navigation-aware observable Material/Zensical exposes
+  // globally; it emits on the initial load AND every subsequent virtual
+  // page load, so subscribing to it alone covers both cases. Fall back to
+  // the old DOMContentLoaded-based init only if document$ isn't present,
+  // e.g. instant navigation is ever disabled.
+  if (typeof document$ !== "undefined" && document$ && typeof document$.subscribe === "function") {
+    document$.subscribe(init);
+  } else if (document.readyState === "loading") {
     document.addEventListener("DOMContentLoaded", init);
   } else {
     init();

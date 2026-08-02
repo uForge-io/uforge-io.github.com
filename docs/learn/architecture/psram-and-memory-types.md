@@ -11,7 +11,7 @@ tags:
 
 PSRAM—**pseudo-static RAM**—is the practical capacity tier between scarce on-chip SRAM and non-volatile storage in many embedded products. Use it for a framebuffer, large graphics assets, audio buffers, model data, or an application working set that will not fit in internal SRAM. Compared with a conventional discrete DRAM subsystem, it is generally a better power fit for low-power products such as wearables when its capacity and bandwidth are sufficient. It is still volatile working memory: it does not replace Flash, and it is not automatically the right place for latency-critical data.
 
-Use this page to decide what belongs in SRAM, PSRAM, or persistent storage; then use the [SF32 Family](../../hardware/chips/SF32_family.md) and the exact chip, module, or board documentation to confirm the memory actually present in a selected SKU.
+Use this page to decide what belongs in SRAM, PSRAM, or persistent storage; then use the [SF32 Family](../../explore-sf32/family/SF32_family.md) and the exact chip, module, or board documentation to confirm the memory actually present in a selected SKU.
 
 !!! tip "The one-sentence model"
     PSRAM uses dynamic, DRAM-like storage internally, but manages refresh inside the memory device so the host can use it more like static RAM.

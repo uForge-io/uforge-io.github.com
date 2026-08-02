@@ -89,7 +89,7 @@ Audio capability varies across the family — check the datasheet for the exact 
 
 </div>
 
-See the [SF32 Family Overview](../../hardware/chips/SF32_family.md) for the full chip comparison, and confirm exact AMIC/DMIC counts against the datasheet before finalizing a design — this table reflects current front-page positioning, not a substitute for the datasheet.
+See the [SF32 Family Overview](../../explore-sf32/family/SF32_family.md) for the full chip comparison, and confirm exact AMIC/DMIC counts against the datasheet before finalizing a design — this table reflects current front-page positioning, not a substitute for the datasheet.
 
 ## Audio Session Templates
 

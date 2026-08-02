@@ -223,7 +223,7 @@ body:has(.uf-hero) .md-content__inner {
   font-size: 11px;
   font-weight: 700;
   line-height: 1; /* pill height = font size + padding, no line-box slack */
-  letter-spacing: .08em;
+  letter-spacing: 0;
   padding: 10px 18px;
 }
 /* The badge is the first child of its wrapper <p>, so the global

@@ -23,7 +23,7 @@ SF32 devices combine application processing, memory resources, and dedicated sub
 | Where code, assets, and large or latency-sensitive buffers should reside | [PSRAM vs. Other Embedded Memory Types](psram-and-memory-types.md) | The trade-offs between PSRAM, SRAM, DRAM, RRAM, and MRAM, including capacity, latency, persistence, bandwidth, and power. |
 | Which Bluetooth work stays in the controller and which belongs to product firmware | [Bluetooth Processor](../bluetooth/processor.md) | The boundary between controller timing, host/application responsibilities, RF considerations, and low-power operation. |
 | Whether a custom peripheral workflow needs a programmable task engine | [PTM Parallel Task Machine](ptm-parallel-task-machine.md) | PTM, introduced with the SF32LB57x family, offloads compact timing-sensitive peripheral work that does not fit a fixed-function peripheral. |
-| Whether the selected device actually provides the required architecture and interfaces | [SF32 Family](../../hardware/chips/SF32_family.md) | Part selection depends on the complete device, including memory, interfaces, wireless, and accelerator availability. |
+| Whether the selected device actually provides the required architecture and interfaces | [SF32 Family](../../explore-sf32/family/SF32_family.md) | Part selection depends on the complete device, including memory, interfaces, wireless, and accelerator availability. |
 
 </div>
 
