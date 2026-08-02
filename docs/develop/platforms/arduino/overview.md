@@ -124,7 +124,7 @@ For a useful issue report, include the package version, IDE or CLI version, oper
 - [Getting Started with Arduino](../../../getting-started/arduino/getting-started-arduino.md)
 - [Zephyr](../zephyr/overview.md)
 - [SiFli-SDK](../sifli-sdk/overview.md)
-- [SF32LB52 DevKit LCD](../../../hardware/devkits/SF32LB52-DevKit-LCD.md)
+- [SF32LB52 DevKit LCD](../../../explore-sf32/devkits/SF32LB52-DevKit-LCD.md)
 
 !!! note "Auto-generated content"
     This page was compiled/drafted without an existing source document. Verify technical claims against SiFli's official documentation before relying on them.

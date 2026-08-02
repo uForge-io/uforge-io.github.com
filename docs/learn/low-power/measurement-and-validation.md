@@ -31,7 +31,7 @@ For every capture, record board revision, selected device, firmware commit or SD
 
 ## Review Before Release
 
-Compare measured scenes with the product budget, then repeat the combined workload: user input, display updates, wireless traffic, audio or sensors, storage, and a complete sleep/wake cycle. Investigate every unexpected wake source and every subsystem that prevents the intended sleep state. The [Plan an SF32 Product](../../hardware/product-planning.md) page shows where this evidence belongs in the product handoff.
+Compare measured scenes with the product budget, then repeat the combined workload: user input, display updates, wireless traffic, audio or sensors, storage, and a complete sleep/wake cycle. Investigate every unexpected wake source and every subsystem that prevents the intended sleep state. The [Plan a Product](../../explore-sf32/family/product-planning.md) page shows where this evidence belongs in the product handoff.
 
 !!! note "Auto-generated content"
     This page was compiled/drafted without an existing source document. Verify technical claims against SiFli's official documentation before relying on them.
