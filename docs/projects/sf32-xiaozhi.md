@@ -188,7 +188,7 @@ Do not move to custom hardware until the team can answer all of these:
 
 ## Handoff to Product Design
 
-Carry the chosen SF32 part, power architecture, display/audio design, RF strategy, storage/partition plan, production test, and recovery assumptions into [Design for Production](../hardware/design-for-production.md). Use the [SF32LB52 integration path](../hardware/chips/SF32LB52x.md#integration-path) to choose the relevant chip, module, board, guide, and checklist.
+Carry the chosen SF32 part, power architecture, display/audio design, RF strategy, storage/partition plan, production test, and recovery assumptions into [Design for Production](../hardware/design-for-production.md). Use the [SF32LB52 integration path](../explore-sf32/chips/SF32LB52x.md#integration-path) to choose the relevant chip, module, board, guide, and checklist.
 
 **Project completion definition:** this reference has served its purpose when a new team member can reproduce the selected baseline, trace each observed failure to its owner or recovery path, rebuild the customized image, and review the evidence required for the custom-hardware decision. It is then a product-development reference—not an unexamined demo to carry into production.
 

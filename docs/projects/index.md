@@ -10,7 +10,7 @@ tags:
 
 Projects are complete, reproducible build references for developers moving from an idea to a working product direction. Unlike a tutorial, which teaches one engineering outcome, a project connects the selected hardware, software baseline, product decisions, dependencies, integration milestones, validation evidence, and production handoff.
 
-Use a project after completing the relevant [Getting Started](../getting-started/index.md) baseline. Use [Reference Designs](../hardware/reference-designs.md) for the reusable hardware/software baseline that a project adopts and adapts; a project must link to that baseline where one exists, rather than recreate its design-file, bring-up, or production material.
+Use a project after completing the relevant [Getting Started](../getting-started/index.md) baseline. Use [Reference Designs](../hardware/reference-designs/reference-designs.md) for the reusable hardware/software baseline that a project adopts and adapts; a project must link to that baseline where one exists, rather than recreate its design-file, bring-up, or production material.
 
 ## Available Projects
 
@@ -21,6 +21,7 @@ Use a project after completing the relevant [Getting Started](../getting-started
 | Project | Outcome | Hardware and software baseline | Best for |
 |:--------|:--------|:-------------------------------|:---------|
 | [SF32 Xiaozhi Voice Assistant](sf32-xiaozhi.md) | A connected voice-and-display assistant based on the open-source Xiaozhi SF32 implementation. | Supported SF32LB52 boards, Xiaozhi SF32 source, Bluetooth PAN, and Xiaozhi cloud services. | Evaluating an AI voice-interaction product flow and adapting its hardware or application behavior. |
+| [Arduboy2 on SiFli](arduboy2-sifli.md) | A reproducible path for evaluating an Arduboy2-style game or interactive demo on SF32. | OpenSiFli Arduboy2-SiFli source, the documented Arduino baseline, and the selected SF32 display/input/audio path. | Testing local game interaction, graphics, input, audio, and the limits of a portable Arduino-oriented application layer. |
 
 </div>
 

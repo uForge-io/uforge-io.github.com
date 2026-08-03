@@ -31,10 +31,9 @@ Use this path after selecting a chip or module and before releasing a schematic,
 
 The sidebar groups the documents by implementation task:
 
-- **Hardware Design Guides and Checklists** provide device-specific schematic, layout, power, interface, and bring-up guidance. Use the matching checklist where available.
-- **Module Design Guides** cover module integration on a carrier board. Consult the module introduction first to confirm that the module fits the product architecture.
-- **Module Interface Standards** contain the μForge M2 naming rules and the draft pin-level interface definition. The interface definition is a proposal; validate it before a production commitment.
-- **Components and CAD Libraries** contains SiFli's AVL and official EDA libraries. Neither replaces final verification against the exact part, package drawing, and selected design guide.
+- **Hardware Design Guides** provide device-specific schematic, layout, power, interface, and bring-up guidance for chips, plus carrier-board integration guidance for modules. Use the matching checklist where available, and consult the module introduction first to confirm a module fits the product architecture.
+- **M2 Modules** contain the μForge M2 naming rules and the draft pin-level interface definition. The interface definition is a proposal; validate it before a production commitment.
+- **CAD & Components** contains SiFli's AVL and official EDA libraries. Neither replaces final verification against the exact part, package drawing, and selected design guide.
 
 ## A Production Reference Is Not a Substitute for Validation
 

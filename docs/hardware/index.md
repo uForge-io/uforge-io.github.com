@@ -1,49 +1,70 @@
 ---
 icon: lucide/cpu
-title: "Hardware Overview"
-description: "Start here to explore SF32 hardware, plan a product, choose a chip, module, or development board, reuse a reference design, and prepare a production design."
-tags:
-    - Hardware
-    - Overview
+title: Hardware
+description: Reuse an SF32 reference baseline or implement a selected device, then prepare the design for production.
 ---
 
-# Hardware Overview
+# Hardware
 
-The Hardware section helps you move from a product idea to an implementable SF32 design. Use it to understand the SF32 family, make and verify a hardware choice, find a reusable baseline, and reach the design material needed for production.
+Use this section after selecting an SF32 device direction and establishing a known-good development-board baseline. The Hardware path moves from an optional reusable reference baseline through implementation guidance and release assets to the final production-readiness review.
 
-## Choose Your Starting Point
+## Choose a Starting Point
 
-<div align="center"><em>Hardware Reader Paths</em></div>
+<div align="center"><em>Hardware Paths</em></div>
 
 <div align="center" markdown>
 
-| Your task | Start here | What you can expect |
-|:----------|:-----------|:--------------------|
-| Explore the SF32 family | [Understand SF32](chips/SF32_family.md) | A family-level comparison and the part-number rules needed to interpret an orderable device. |
-| Turn a concept into a plan | [Plan a Product](product-planning.md) | A staged path from requirements and device direction through board validation and production preparation. |
-| Select a chip, module, or board | [Choose Hardware](choose-hardware.md) | Selection factors, an interactive shortlist tool, and product introductions for the available hardware. |
-| Reuse a technical baseline | [Reference Designs](reference-designs.md) | Reproducible hardware and software starting points, their validation focus, and their reuse boundaries. |
-| Release a board design | [Design for Production](design-for-production.md) | Design guides, checklists, interface definitions, approved components, and official EDA libraries. |
+| Your task | Start here | Outcome |
+|:----------|:-----------|:--------|
+| Reuse a validated hardware and software baseline | [Reference Designs](reference-designs/reference-designs.md) | A reproducible starting point, its validation focus, and its reuse boundaries. |
+| Design a chip-down board or module carrier | [Find the matching guide](#find-a-guide) | The matching chip or module implementation guidance and available checklist. |
+| Define an M2-compatible module interface | [M2 Modules](m2-modules/interface-standards-overview.md) | The M2 convention, naming rules, and interface-definition status. |
+| Prepare CAD and BOM assets | [CAD & Components](cad-components/components-and-cad-libraries.md) | Official EDA libraries, AVL resources, and the checks needed for the selected part. |
+| Release a design package | [Design for Production](design-for-production.md) | The production-readiness review, retained evidence, and manufacturing handoff. |
 
 </div>
 
-## What This Section Covers
+## Find a Guide { #find-a-guide }
 
-Start with the [SF32 Family Overview](chips/SF32_family.md) when you need to understand the available families and the broad capability differences between them. The [naming rules](chips/SF32_namingrule.md) help decode a complete part number once you have narrowed the family and package.
+Choose the chip or module at the center of your design, then open the matching implementation material. Use the product introduction first if you still need to confirm the package, power baseline, memory tier, or integration approach.
 
-Use [Choose Hardware](choose-hardware.md) and the [SF32 Product Selector](product-selector.md) when requirements such as power architecture, package, display, audio, memory, GPIO, connectivity, or specialist hardware determine the choice. The selector establishes a shortlist; the exact part number, package, electrical limits, and board-level routing must still be confirmed against the relevant SiFli documentation.
+### Chip Guides and Checklists
 
-Once a direction is selected, continue through the [reference designs](reference-designs.md) and [production path](design-for-production.md). This is where the site connects a device choice to reference hardware, design guidance, CAD libraries, BOM decisions, review checklists, and bring-up evidence.
+<div align="center" markdown>
 
-## Browse Hardware Directly
+| Selected chip family | Hardware design guide | Checklist | Start here when |
+|:---------------------|:----------------------|:----------|:----------------|
+| SF32LB52x | [Guide](chip-guides/SF32LB52x_hardware_design_guide.md) | [Checklist](chip-guides/SF32LB52x_hardware_design_guide.md#using-the-checklists) | Designing an SF32LB52x chip-down board. |
+| SF32LB55x | [Guide](chip-guides/SF32LB55x_hardware_design_guide.md) | [Checklist](chip-guides/SF32LB55x_hardware_design_guide.md#using-the-checklists) | Designing an SF32LB55x chip-down board. |
+| SF32LB56x | [Guide](chip-guides/SF32LB56x_hardware_design_guide.md) | [Checklist](chip-guides/SF32LB56x_hardware_design_guide.md#using-the-checklists) | Designing an SF32LB56x chip-down board. |
+| SF32LB57x | Guide | — | Designing an SF32LB57x chip-down board. |
+| SF32LB58x | [Guide](chip-guides/SF32LB58x_hardware_design_guide.md) | [Checklist](chip-guides/SF32LB58x_hardware_design_guide.md#using-the-checklists) | Designing an SF32LB58x chip-down board. |
 
-Already know the kind of hardware you need? Go straight to the relevant catalogue:
+</div>
 
-- [Chips](chips/SF32_family.md) for device-family and part-selection information.
-- [Modules](modules/SF32LB52-MOD-1.md) for carrier-board planning around ready-made RF and core hardware.
-- [Development Boards](devkits/SF32LB52-DevKit-LCD.md) for supported hardware used to validate software and peripherals.
+### Module Guides
 
-Hardware documentation defines the physical product path. For SDK setup, examples, toolchains, and software-platform support, continue to [Develop](../develop/index.md).
+<div align="center" markdown>
+
+| Selected module | Module guide | Use it for |
+|:----------------|:-------------|:-----------|
+| SF32LB52-MOD-1 | [Module guide](chip-guides/SF32LB52-MOD-1_hardware_design_guide.md) | Carrier-board power, pin planning, antenna clearance, and production handling. |
+| SF32LB56-MOD | [Module guide](chip-guides/SF32LB56-MOD_hardware_design_guide.md) | Carrier-board integration, power, RF placement, interfaces, and validation. |
+| SF32LB58-MOD | [Module guide](chip-guides/SF32LB58-MOD_hardware_design_guide.md) | Carrier-board power, pin planning, antenna clearance, and production handling. |
+
+</div>
+
+## Follow the Hardware Path
+
+1. **Reuse a reference baseline when it fits.** Reproduce its stated board and software baseline before adapting it; otherwise, begin directly with the selected device guide.
+2. **Implement and review.** Use the matching guide before schematic capture, then apply its checklist during schematic and layout review. Validate the intended software and peripheral path on the closest [development board](../explore-sf32/index.md) before freezing hardware.
+3. **Use M2 Modules when the carrier interface is in scope.** Apply the [M2 naming rules](m2-modules/M2%20Interface%20Naming%20Rules.md) and confirm the [interface definition](m2-modules/M2-interface-definition.md) before committing to the module interface.
+4. **Verify CAD and component choices.** Use [CAD & Components](cad-components/components-and-cad-libraries.md) to cross-check the symbol, footprint, package drawing, AVL, and critical component assumptions for the exact part.
+5. **Close the release gate.** Move to [Design for Production](design-for-production.md) with the design evidence, approved deviations, remaining risks, and manufacturing-test assumptions.
+
+## Stay Connected to the Platform Path
+
+If the part, module, or board direction is still uncertain, return to [Explore SF32](../explore-sf32/index.md). For a repeatable toolchain, flash, and serial-log baseline, use [Getting Started](../getting-started/index.md). Continue to [Develop](../develop/index.md) for software implementation guidance that must be validated alongside the hardware.
 
 !!! note "Auto-generated content"
     This page was compiled/drafted without an existing source document. Verify technical claims against SiFli's official documentation before relying on them.

@@ -16,7 +16,7 @@ If you plan to use Arduino, Zephyr, or MicroPython, it is still worth running th
 
 **Hardware**
 
-- An SF32 development board, such as the [SF32LB52-DevKit-LCD](../../hardware/devkits/SF32LB52-DevKit-LCD.md), or another board identified from the [SF32 Family](../../hardware/chips/SF32_family.md).
+- An SF32 development board, such as the [SF32LB52-DevKit-LCD](../../explore-sf32/devkits/SF32LB52-DevKit-LCD.md), or another board identified from the [SF32 Family](../../explore-sf32/family/SF32_family.md).
 - A USB Type-C **data** cable connected to the board's USB-to-UART port, not a charge-only cable or a secondary USB-function port.
 - A computer running Windows, macOS, or Linux.
 
@@ -144,7 +144,7 @@ You are ready to move on when:
 
 ## Where to Go Next
 
-- **Pick your chip:** compare the LB52, LB55, LB56, and LB58 series on the [SF32 Family Overview](../../hardware/chips/SF32_family.md).
+- **Pick your chip:** compare the LB52, LB55, LB56, and LB58 series on the [SF32 Family Overview](../../explore-sf32/family/SF32_family.md).
 - **Explore more examples:** beyond `hello_world`, the SDK ships examples for BLE, classic Bluetooth, LVGL graphics, audio, and low-power modes.
 - **Prefer a different framework:** continue with [Arduino](../arduino/getting-started-arduino.md), [Zephyr](../zephyr/getting-started-zephyr-upstream.md), or [MicroPython](../micropython/getting-started-micropython.md).
 - **Stuck:** check the [SiFli FAQ](https://wiki.sifli.com/en/faq/index.html) for common toolchain, J-Link, and debugging issues.

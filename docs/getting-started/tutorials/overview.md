@@ -9,7 +9,7 @@ tags:
 
 This series turns a successful first flash into practical SF32 development skills. It is organized by engineering scope: first prove one peripheral, then combine subsystems, then build the evidence needed for a product. The tutorials use SiFli-SDK examples as starting points, but the habits—verify hardware, keep a known-good baseline, and measure the result—apply to every SF32 software path.
 
-Tutorials are the second stage of [Getting Started](../index.md). Complete its first-run success criteria first. If you are choosing a chip, module, or development board, start with the [SF32 Family](../../hardware/chips/SF32_family.md) before beginning the series.
+Tutorials are the second stage of [Getting Started](../index.md). Complete its first-run success criteria first. If you are choosing a chip, module, or development board, start with the [SF32 Family](../../explore-sf32/family/SF32_family.md) before beginning the series.
 
 ## What You Need
 
@@ -53,7 +53,7 @@ The tutorials intentionally do not replace the reference material:
 
 - Use [Develop](../../develop/index.md) for platform workflows, tools, firmware topics, and the consolidated SDK example index.
 - Use [Learn](../../learn/graphics/overview.md) for architecture and subsystem decisions, such as graphics flow, Bluetooth behavior, and power strategy.
-- Use the [SF32 Family](../../hardware/chips/SF32_family.md) for device selection, board information, hardware design guidance, and production checks.
+- Use the [SF32 Family](../../explore-sf32/family/SF32_family.md) for device selection, board information, hardware design guidance, and production checks.
 
 !!! note "Auto-generated content"
     This page was compiled/drafted without an existing source document. Verify technical claims against SiFli's official documentation before relying on them.

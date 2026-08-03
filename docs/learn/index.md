@@ -10,7 +10,7 @@ tags:
 
 Use **Learn** to make subsystem and architecture decisions before they become hard to reverse in firmware or hardware. These pages explain how SF32 building blocks fit together, including when a general-purpose CPU should hand work to a graphics engine, wireless controller, AI accelerator, or other dedicated hardware. They also identify what to validate when graphics, wireless, audio, AI, memory, and power must coexist in one product.
 
-Use [Getting Started](../getting-started/index.md) for the first successful board run, [Tutorials](../getting-started/tutorials/overview.md) for guided exercises, [Develop](../develop/index.md) for software workflows and examples, and the [SF32 Family](../hardware/chips/SF32_family.md) for part selection and production design.
+Use [Getting Started](../getting-started/index.md) for the first successful board run, [Tutorials](../getting-started/tutorials/overview.md) for guided exercises, [Develop](../develop/index.md) for software workflows and examples, and the [SF32 Family](../explore-sf32/family/SF32_family.md) for part selection and production design.
 
 ## Start with Your Design Question
 
