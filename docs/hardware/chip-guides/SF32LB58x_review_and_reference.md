@@ -79,8 +79,8 @@ A typical SF32LB58x wearable or smart-terminal design includes the MCU, PMIC, hi
 
 | Version | Date | Note |
 |:---|:---|:---|
-| 0.0.1 | 1/2025 | Official Draft release of `SF32LB58x-HW-Application` |
 | 1.0 | 2026-07 | Updated SF32LB58x hardware design guide with schematic, PCB, validation, and production-review guidance |
+| 0.0.1 | 1/2025 | Official Draft release of `SF32LB58x-HW-Application` |
 
 </div>
 
