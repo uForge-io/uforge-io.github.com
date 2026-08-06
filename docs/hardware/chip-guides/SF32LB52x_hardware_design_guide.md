@@ -24,7 +24,7 @@ It consolidates two original SiFli hardware application notes — one for the ba
 [SF32LB52x Reference Manual]: https://downloads.sifli.com/user%20manual/UM5201-SF32LB52x-User%20Manual%20V0p8p4.pdf
 [SF32LB52x Hardware Design Guide (520/3/5/7)]: https://wiki.sifli.com/en/hardware/SF32LB520-3-5-7-HW-Application.html
 [SF32LB52x Hardware Design Guide (52B/D/E/G/J)]: https://wiki.sifli.com/en/hardware/SF32LB52B-E-G-J-HW-Application.html
-[SF32LB52-MOD-1]: ../../explore-sf32/modules/SF32LB52-MOD-1.md
+[SF32LB52-MOD-1]: ../../sf32-products/modules/SF32LB52-MOD-1.md
 [KiCad Files]: https://github.com/OpenSiFli/kicad-libraries
 [Buy Samples]: https://sifli.taobao.com/
 [Buy Dev Kits]: https://sifli.taobao.com/
@@ -136,11 +136,11 @@ The two design groups differ slightly in peripheral resources. The battery-power
 
 The pin layout diagrams are shown below, and their differences will be revisited in the schematic design section.
 
-![Figure 3.3-1: QFN68L Pin Layout for SF32LB520/3/5/7](../../explore-sf32/chips/assets/52xA/sf32lb52x-A-package-layout.png){ width="100%" loading="lazy" }
+![Figure 3.3-1: QFN68L Pin Layout for SF32LB520/3/5/7](../../sf32-products/chips/assets/52xA/sf32lb52x-A-package-layout.png){ width="100%" loading="lazy" }
 
 <div align="center"><em>Figure 3.3-1: QFN68L Pin Layout for SF32LB520/3/5/7</em></div>
 
-![Figure 3.3-2: QFN68L Pin Layout for SF32LB52B/E/G/J](../../explore-sf32/chips/assets/52xB/sf32lb52X-B-package-layout.png){ width="100%" loading="lazy" }
+![Figure 3.3-2: QFN68L Pin Layout for SF32LB52B/E/G/J](../../sf32-products/chips/assets/52xB/sf32lb52X-B-package-layout.png){ width="100%" loading="lazy" }
 
 <div align="center"><em>Figure 3.3-2: QFN68L Pin Layout for SF32LB52B/E/G/J</em></div>
 

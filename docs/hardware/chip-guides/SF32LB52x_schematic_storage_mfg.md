@@ -71,7 +71,7 @@ The chip supports external SPI NOR Flash, SPI NAND Flash, and SD NAND Flash. **e
     - SF32LB520Ux6 has co-packaged Flash and boots from it by default
     - SF32LB523/5/7Ux6 have co-packaged PSRAM and must boot from external storage
 
-    ![Figure 5.6-1: Bootstrap Pin Recommended Circuit (Battery-Powered Variant)](../../explore-sf32/chips/assets/52xA/SF32LB52x-A-Bootstrap.png){ width="100%" loading="lazy" }
+    ![Figure 5.6-1: Bootstrap Pin Recommended Circuit (Battery-Powered Variant)](../../sf32-products/chips/assets/52xA/SF32LB52x-A-Bootstrap.png){ width="100%" loading="lazy" }
 
     <div align="center"><em>Figure 5.6-1: Bootstrap Pin Recommended Circuit (Battery-Powered Variant)</em></div>
 
@@ -94,7 +94,7 @@ The chip supports external SPI NOR Flash, SPI NAND Flash, and SD NAND Flash. **e
     - The model with co-packaged Flash (SF32LB52BU36) boots from it by default
     - Models with co-packaged PSRAM (SF32LB52DUB6/EUB6/GUC6/JUD6) must boot from external storage
 
-    ![Figure 5.6-2: Bootstrap Pin Recommended Circuit (Regular-Powered Variant)](../../explore-sf32/chips/assets/52xB/sf32lb52X-B-Bootstrap.png){ width="100%" loading="lazy" }
+    ![Figure 5.6-2: Bootstrap Pin Recommended Circuit (Regular-Powered Variant)](../../sf32-products/chips/assets/52xB/sf32lb52X-B-Bootstrap.png){ width="100%" loading="lazy" }
 
     <div align="center"><em>Figure 5.6-2: Bootstrap Pin Recommended Circuit (Regular-Powered Variant)</em></div>
 

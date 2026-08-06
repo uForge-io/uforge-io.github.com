@@ -59,13 +59,5 @@ MicroPython can move from "status" to "getting started" when all of these exist:
 
 A vague instruction to "download a MicroPython image" is not actionable. Users need an exact image, board match, flash tool, REPL setting, and recovery path. Without those, a MicroPython page creates support burden instead of helping.
 
-## SiFli Team Should Add
-
-- A public yes/no status statement for MicroPython on SF32.
-- A roadmap if support is planned.
-- A repository or release location if support exists privately.
-- A warning if no support is currently planned.
-- A decision on whether MicroPython belongs in Getting Started or only in Develop until stable.
-
 !!! note "Auto-generated content"
     This page was compiled/drafted without an existing source document. Verify technical claims against SiFli's official documentation before relying on them.

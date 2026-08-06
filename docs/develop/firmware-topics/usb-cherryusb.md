@@ -47,14 +47,5 @@ USB work crosses firmware, descriptors, host operating systems, power behavior, 
 - Class/subclass/protocol values match the intended host driver.
 - Composite interfaces are stable across firmware updates.
 
-## SiFli Team Should Add
-
-- A CherryUSB overview page.
-- Device/host support matrix by chip and board.
-- Example paths for CDC, HID, MSC, audio, MTP, UVC, and UAC.
-- Descriptor customization guidance.
-- Windows driver notes and USB PID allocation guidance.
-- A composite-device example with expected host behavior.
-
 !!! note "Auto-generated content"
     This page was compiled/drafted without an existing source document. Verify technical claims against SiFli's official documentation before relying on them.

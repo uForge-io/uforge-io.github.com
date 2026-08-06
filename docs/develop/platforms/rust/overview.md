@@ -68,14 +68,5 @@ The repository's use of `sifli-hal`, `sifli-pac`, flash-table tooling, and Embas
 
 </div>
 
-## SiFli Team Should Add
-
-- Supported chip/peripheral matrix.
-- Known-good board and flashing workflow.
-- Example status table.
-- Debug probe and `sftool` guidance.
-- Clear production-readiness statement.
-- Migration notes between Rust examples and SiFli-SDK recovery images.
-
 !!! note "Auto-generated content"
     This page was compiled/drafted without an existing source document. Verify technical claims against SiFli's official documentation before relying on them.

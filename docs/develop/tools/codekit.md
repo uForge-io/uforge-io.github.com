@@ -41,6 +41,8 @@ CodeKit wraps the SDK workflow. It does not replace the SDK. The same underlying
 
 If a CodeKit action fails, reproduce the underlying SDK command when possible. That makes bug reports clearer and helps separate extension issues from SDK issues.
 
+Use [SiFli-SDK](../platforms/sifli-sdk/overview.md) to choose the supported baseline and [Build, Flash, Monitor](../platforms/sifli-sdk/build-flash-monitor.md) to retain the equivalent command-line evidence. Start from a matching [SDK example](../examples/index.md) before adapting a CodeKit project.
+
 ## Operational Model
 
 CodeKit is most useful when its editor actions remain reproducible from the underlying SDK. Treat the extension as the control surface and SiFli-SDK as the source of truth for the toolchain, board definition, build output, and download artifacts.
@@ -76,15 +78,6 @@ This makes it possible to reproduce a GUI action from the command line when need
 | UI command missing | Use the command palette and search for `SiFli`. |
 
 </div>
-
-## SiFli Team Should Add
-
-- A stable command list with screenshots.
-- A board-label to SDK-board-name mapping.
-- Clear guidance for where CodeKit stores settings.
-- Offline install instructions.
-- Error-message references for setup, build, flash, and monitor failures.
-- A "reproduce this CodeKit action in terminal" appendix.
 
 !!! note "Auto-generated content"
     This page was compiled/drafted without an existing source document. Verify technical claims against SiFli's official documentation before relying on them.

@@ -89,19 +89,19 @@ tags:
 
 Place the required capacitors close to the corresponding pins, keep BUCK current loops compact, and verify the BUCK/LDO operating mode before layout. The reset circuit and POR/BOR timing should be checked on actual hardware.
 
-![Figure 5.1-1: Power-On and Power-Off Timing](../../explore-sf32/chips/assets/55x/SF32LB55x-POR-BOR.png){ width="100%" loading="lazy" }
+![Figure 5.1-1: Power-On and Power-Off Timing](../../sf32-products/chips/assets/55x/SF32LB55x-POR-BOR.png){ width="100%" loading="lazy" }
 
 <div align="center"><em>Figure 5.1-1: Power-On and Power-Off Timing</em></div>
 
-![Figure 5.1-2: Reset Circuit](../../explore-sf32/chips/assets/55x/SF32LB55x-RST-SCH.png){ width="100%" loading="lazy" }
+![Figure 5.1-2: Reset Circuit](../../sf32-products/chips/assets/55x/SF32LB55x-RST-SCH.png){ width="100%" loading="lazy" }
 
 <div align="center"><em>Figure 5.1-2: Reset Circuit</em></div>
 
-![Figure 5.1-3: BGA DC-DC Reference Circuit](../../explore-sf32/chips/assets/55x/SF32LB55x-BUCK-BGA-SCH.png){ width="100%" loading="lazy" }
+![Figure 5.1-3: BGA DC-DC Reference Circuit](../../sf32-products/chips/assets/55x/SF32LB55x-BUCK-BGA-SCH.png){ width="100%" loading="lazy" }
 
 <div align="center"><em>Figure 5.1-3: BGA DC-DC Reference Circuit</em></div>
 
-![Figure 5.1-4: QFN DC-DC Reference Circuit](../../explore-sf32/chips/assets/55x/SF32LB55x-BUCK-QFN-SCH.png){ width="100%" loading="lazy" }
+![Figure 5.1-4: QFN DC-DC Reference Circuit](../../sf32-products/chips/assets/55x/SF32LB55x-BUCK-QFN-SCH.png){ width="100%" loading="lazy" }
 
 <div align="center"><em>Figure 5.1-4: QFN DC-DC Reference Circuit</em></div>
 

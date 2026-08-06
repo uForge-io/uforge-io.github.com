@@ -78,13 +78,5 @@ Start from the closest dev kit or module configuration, then change:
 
 Validate each change with the smallest example that exercises it.
 
-## SiFli Team Should Add
-
-- A canonical board identity table across SDK, CodeKit, Zephyr, Arduino, hardware pages, and purchase names.
-- Board revision notes.
-- Exact flash and PSRAM variants.
-- Default serial console routing and baud rate.
-- A quick way to find the board support files in the SDK tree.
-
 !!! note "Auto-generated content"
     This page was compiled/drafted without an existing source document. Verify technical claims against SiFli's official documentation before relying on them.

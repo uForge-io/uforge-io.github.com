@@ -860,3 +860,664 @@ span[class*="uf-comm-icon-"] {
   .uf-steps.grid.cards      { grid-template-columns: repeat(2, 1fr) !important; }
   .uf-steps.grid.cards > ul > li { border-radius: var(--uf-radius) !important; border-right-width: 1px !important; }
 }
+
+/* ============================================================
+   INTERACTIVE HOMEPAGE HERO
+   The visual field is deliberately scoped to the homepage so regular
+   documentation pages continue to use the standard Material layout.
+   ============================================================ */
+.uf-spotlight-hero {
+  --spotlight-x: 50%;
+  --spotlight-y: 50%;
+  position: relative;
+  display: block;
+  min-height: min(560px, calc(100vh - 3rem));
+  margin: -24px -1rem 0;
+  padding: clamp(4rem, 9vw, 7rem) max(2rem, calc((100% - 1120px) / 2)) 40px !important;
+  overflow: hidden;
+  isolation: isolate;
+  color: #ecffff;
+  background:
+    radial-gradient(circle 42rem at var(--spotlight-x) var(--spotlight-y), rgba(61, 236, 201, .18), transparent 36%),
+    radial-gradient(ellipse 72% 100% at 73% 4%, #173c4c 0%, #0d2634 43%, #07151e 100%);
+}
+.uf-spotlight-hero::before,
+.uf-spotlight-hero::after {
+  content: "";
+  position: absolute;
+  pointer-events: none;
+  inset: 0;
+}
+.uf-spotlight-hero::before {
+  z-index: -1;
+  opacity: .38;
+  background-image:
+    linear-gradient(rgba(143, 241, 224, .12) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(143, 241, 224, .12) 1px, transparent 1px);
+  background-size: 54px 54px;
+  mask-image: radial-gradient(circle 35rem at var(--spotlight-x) var(--spotlight-y), #000, transparent 74%);
+}
+.uf-spotlight-hero::after {
+  z-index: 0;
+  background: radial-gradient(circle 150px at var(--spotlight-x) var(--spotlight-y), rgba(210, 255, 248, .17), rgba(72, 238, 207, .04) 43%, transparent 72%);
+  mix-blend-mode: screen;
+}
+.uf-spotlight-hero .uf-hero-content {
+  position: relative;
+  z-index: 3;
+  display: block;
+  max-width: 640px;
+  padding: 0;
+}
+.uf-spotlight-hero .uf-badge {
+  width: fit-content;
+  padding: 9px 14px !important;
+  color: #c3fff3;
+  background: rgba(89, 234, 202, .12);
+  border: 1px solid rgba(145, 255, 232, .26);
+}
+.uf-spotlight-hero .uf-hero-content h1 {
+  margin: .8rem 0 .9rem !important;
+  color: #f3ffff !important;
+  font-size: 46px !important;
+  font-weight: 800 !important;
+  line-height: 1.2 !important;
+  letter-spacing: normal;
+}
+.uf-spotlight-hero .uf-hero-content > p {
+  max-width: 470px;
+  margin: 0 0 1.5rem;
+  color: #c4dbe1;
+  font-size: 16px;
+  line-height: 1.6;
+}
+.uf-spotlight-hero .uf-hero-actions { margin: 0 0 1.35rem; }
+.uf-spotlight-hero .uf-hero-actions .md-button {
+  color: #ddfff8;
+  border-color: rgba(191, 255, 244, .38);
+}
+.uf-spotlight-hero .uf-hero-actions .md-button--primary {
+  color: #06211f;
+  border-color: #71f5d9;
+  background: #71f5d9;
+}
+/* "Fun" toggle: a small floating round button rather than a row button —
+   it's a playful extra, not a primary CTA, so it sits off to the side of
+   the card field instead of competing with Get Started/SF32 Products/GitHub.
+   Reuses the old .uf-spotlight-hint's corner position (removed earlier),
+   which was already established as an uncluttered spot clear of the cards. */
+.uf-spotlight-toggle {
+  position: absolute;
+  right: clamp(2rem, 5vw, 5rem);
+  bottom: calc(2.3rem - 1em);
+  z-index: 3;
+  width: 48px;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  color: #ddfff8;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  pointer-events: auto;
+  transition: color .15s, transform .3s;
+}
+.uf-spotlight-toggle svg { display: block; transition: transform .4s ease, filter .2s; }
+.uf-spotlight-toggle:hover { transform: scale(1.1); }
+.uf-spotlight-toggle:hover svg { transform: rotate(25deg) scale(1.1); }
+.uf-spotlight-toggle[aria-pressed="true"] { color: #71f5d9; }
+.uf-spotlight-toggle[aria-pressed="true"] svg {
+  transform: rotate(90deg);
+  filter: drop-shadow(0 0 6px rgba(113, 245, 217, .65));
+}
+/* Wand keeps waving and its tip keeps twinkling at all times (not just on
+   hover/press), so it reads as a "magic" control at rest. Lives on the inner
+   <g>/<path>/<circle> elements rather than the <svg> itself so it never
+   fights with the hover/press rules above, which animate the <svg>'s own
+   transform. transform-box: view-box lets the rotation pivot use the same
+   24x24 coordinate space the icon was drawn in, instead of each element's
+   own bounding box. */
+.uf-spotlight-toggle .uf-wand-shake {
+  transform-box: view-box;
+  transform-origin: 6px 18.5px;
+  animation: uf-wand-shake 2.6s ease-in-out infinite;
+}
+.uf-spotlight-toggle .uf-wand-star {
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: uf-wand-twinkle 1.6s ease-in-out infinite;
+}
+.uf-spotlight-toggle .uf-wand-dot--a {
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: uf-wand-twinkle 1.3s ease-in-out infinite .3s;
+}
+.uf-spotlight-toggle .uf-wand-dot--b {
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: uf-wand-twinkle 1.9s ease-in-out infinite .6s;
+}
+@keyframes uf-wand-shake {
+  0%, 100% { transform: rotate(-8deg); }
+  50% { transform: rotate(8deg); }
+}
+@keyframes uf-wand-twinkle {
+  0%, 100% { opacity: .4; transform: scale(.75); }
+  50% { opacity: 1; transform: scale(1.15); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .uf-spotlight-toggle .uf-wand-shake,
+  .uf-spotlight-toggle .uf-wand-star,
+  .uf-spotlight-toggle .uf-wand-dot--a,
+  .uf-spotlight-toggle .uf-wand-dot--b {
+    animation: none;
+  }
+}
+/* Forced-reveal state: bypasses the pointer-proximity --reveal value
+   entirely so every card is shown at full opacity/scale regardless of
+   where the cursor is. */
+.uf-spotlight-hero.uf-spotlight-force-reveal .uf-spotlight-item {
+  opacity: 1 !important;
+  transform: translate(-50%, -50%) rotate(var(--tilt)) scale(1) !important;
+}
+.uf-spotlight-hero.uf-spotlight-force-reveal .uf-spotlight-item::before {
+  opacity: 1 !important;
+}
+.uf-spotlight-hero .uf-trust-bar {
+  color: #b1cdd4;
+  border-color: rgba(168, 244, 230, .18);
+}
+.uf-spotlight-field {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  pointer-events: none;
+}
+.uf-spotlight-item {
+  --reveal: 0;
+  --tilt: 0deg;
+  position: absolute;
+  display: block;
+  width: clamp(160px, 18vw, 225px);
+  min-height: 190px;
+  padding: 15px 15px 13px;
+  overflow: hidden;
+  color: #ecfffb !important;
+  text-decoration: none !important;
+  pointer-events: auto;
+  opacity: var(--reveal);
+  transform: translate(-50%, -50%) rotate(var(--tilt)) scale(calc(.83 + var(--reveal) * .18));
+  transition: opacity 100ms linear, transform 140ms cubic-bezier(.2, .7, .2, 1), border-color 140ms ease;
+  border: 1px solid rgba(176, 255, 239, .34);
+  border-radius: 18px;
+  background: linear-gradient(145deg, rgba(31, 91, 101, .86), rgba(9, 34, 47, .8));
+  box-shadow: 0 23px 55px rgba(0, 0, 0, .32), inset 0 1px rgba(255, 255, 255, .13);
+  backdrop-filter: blur(7px);
+}
+.uf-spotlight-item:hover,
+.uf-spotlight-item:focus-visible {
+  border-color: rgba(213, 255, 247, .76);
+  outline: none;
+}
+.uf-spotlight-item::before {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  inset: -55%;
+  opacity: var(--reveal);
+  background: radial-gradient(circle, rgba(97, 255, 219, .28), transparent 61%);
+  filter: blur(12px);
+}
+.uf-spotlight-item__eyebrow,
+.uf-spotlight-item__title,
+.uf-spotlight-item__copy { display: block; position: relative; z-index: 2; }
+.uf-spotlight-item__eyebrow { color: #9dffea; font-size: .61rem; font-weight: 800; letter-spacing: .11em; text-transform: uppercase; }
+.uf-spotlight-item__title { margin-top: 4px; font-size: .95rem; font-weight: 800; line-height: 1.2; }
+.uf-spotlight-item__copy { position: absolute; right: 15px; bottom: 13px; left: 15px; color: #c2d9dd; font-size: .68rem; line-height: 1.42; }
+/* Fixed, hand-picked (not actually random — real randomness would differ
+   on every reload/build) tilt angles per card so the floating field reads
+   as a scatter of loose post-it notes rather than a grid. */
+.uf-spotlight-item--silicon { left: calc(64% - 5em); top: 22%; --tilt: -18deg; }
+.uf-spotlight-item--board { left: calc(90% - 5em); top: 26%; --tilt: 13deg; }
+.uf-spotlight-item--sdk { left: calc(76% - 5em); top: calc(44% + 2em); --tilt: -9deg; }
+.uf-spotlight-item--examples { left: calc(93% - 5em); top: calc(64% + 3em); width: clamp(140px, 15vw, 190px); min-height: 164px; --tilt: 20deg; }
+.uf-spotlight-item--learn { left: calc(63% - 10em); top: calc(74% - 0.5em); --tilt: -15deg; }
+.uf-spotlight-item__art { position: absolute; z-index: 1; pointer-events: none; }
+.uf-spotlight-item__art--silicon {
+  width: 68px; aspect-ratio: 1; right: 21px; top: 38px; border-radius: 14px;
+  background: linear-gradient(135deg, #91ffe7, #2496ad 58%, #3d4eaa);
+  box-shadow: 0 0 0 9px #164353, 0 0 0 11px rgba(141, 255, 232, .35), 0 0 32px rgba(104, 255, 224, .58);
+  transform: rotate(18deg);
+}
+.uf-spotlight-item__art--silicon::after { content: "SF32"; display: grid; height: 100%; place-items: center; color: #fff; font-size: 1.5em; font-weight: 900; letter-spacing: -.02em; transform: rotate(-18deg); }
+.uf-spotlight-item__art--board { top: 43px; right: 17px; width: 92px; height: 62px; border: 2px solid #7bf0da; border-radius: 9px; background: linear-gradient(135deg, #1f6d72, #123749); box-shadow: 0 0 27px rgba(113, 255, 218, .4); transform: rotate(-11deg); }
+.uf-spotlight-item__art--board::after { content: ""; position: absolute; width: 31px; aspect-ratio: 1; top: 13px; left: 29px; border-radius: 8px; background: #a3ffe9; box-shadow: 0 0 0 5px #174c52; }
+/* Software = "SDK & tools": a `</>` code-bracket glyph instead of the old
+   abstract diagonal-stripe pattern. */
+.uf-spotlight-item__art--sdk {
+  top: 52px; right: 46px; width: 4px; height: 32px; border-radius: 2px;
+  background: #a4ffe8;
+  box-shadow: 0 0 14px rgba(164, 255, 232, .55);
+  transform: rotate(18deg);
+}
+.uf-spotlight-item__art--sdk::before {
+  content: ""; position: absolute; left: -30px; top: 6px; width: 18px; height: 18px;
+  border-left: 4px solid #a4ffe8; border-bottom: 4px solid #a4ffe8; border-radius: 2px;
+  transform: rotate(45deg);
+  filter: drop-shadow(0 0 6px rgba(164, 255, 232, .45));
+}
+.uf-spotlight-item__art--sdk::after {
+  content: ""; position: absolute; left: 18px; top: 6px; width: 18px; height: 18px;
+  border-right: 4px solid #a4ffe8; border-top: 4px solid #a4ffe8; border-radius: 2px;
+  transform: rotate(45deg);
+  filter: drop-shadow(0 0 6px rgba(164, 255, 232, .45));
+}
+/* Learn = "CPU, GPU": a processor die — grid of cores/cache lines with a
+   glowing compute core at center, instead of the old signal/antenna ring. */
+.uf-spotlight-item__art--learn {
+  top: 38px; right: 24px; width: 70px; height: 70px; border-radius: 12px;
+  border: 2px solid #9cffe8;
+  background:
+    repeating-linear-gradient(0deg, rgba(156, 255, 232, .3) 0 2px, transparent 2px 12px),
+    repeating-linear-gradient(90deg, rgba(156, 255, 232, .3) 0 2px, transparent 2px 12px);
+  box-shadow: 0 0 0 13px rgba(123, 255, 223, .06), 0 0 26px rgba(123, 255, 223, .38);
+  transform: rotate(-9deg);
+}
+.uf-spotlight-item__art--learn::after {
+  content: ""; position: absolute; inset: 24px; border-radius: 4px;
+  background: #a7ffe9; box-shadow: 0 0 16px #7cf6dc;
+}
+/* Projects = "Watch, HMI": a rounded device body with a circular watch
+   face/display, instead of the old generic PCB-trace grid. */
+.uf-spotlight-item__art--examples {
+  top: 36px; right: 23px; width: 68px; height: 68px; border-radius: 18px;
+  border: 2px solid #a0ffe9;
+  background: linear-gradient(135deg, rgba(160, 255, 233, .16), transparent 70%);
+  box-shadow: 0 0 22px rgba(160, 255, 233, .32);
+}
+.uf-spotlight-item__art--examples::before {
+  content: ""; position: absolute; inset: 13px; border-radius: 50%; border: 2px solid #a0ffe9;
+}
+.uf-spotlight-item__art--examples::after {
+  content: ""; position: absolute; top: 31px; left: 31px; width: 6px; height: 6px; border-radius: 50%;
+  background: #a0ffe9; box-shadow: 0 0 10px #7cf6dc;
+}
+
+@media (max-width: 1050px) {
+  .uf-spotlight-hero { min-height: 520px; }
+  .uf-spotlight-item--sdk { left: calc(70% - 5em); }
+  .uf-spotlight-item--board { left: calc(84% - 5em); }
+  .uf-spotlight-item--examples { display: none; }
+}
+@media (max-width: 780px), (hover: none), (pointer: coarse) {
+  .uf-spotlight-hero { min-height: 0; padding-bottom: 2.5rem !important; }
+  .uf-spotlight-hero::after { display: none; }
+  .uf-spotlight-hero .uf-hero-content { max-width: none; }
+  .uf-spotlight-field { position: relative; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: .7rem; margin-top: 2.3rem; pointer-events: auto; }
+  .uf-spotlight-item,
+  .uf-spotlight-item:hover { position: relative; top: auto; left: auto; width: auto; min-height: 142px; opacity: 1; transform: none; }
+  .uf-spotlight-item--examples { display: block; }
+  .uf-spotlight-item__copy { font-size: .66rem; }
+  /* Cards are already always-visible in this layout, and the toggle's
+     click handler never gets wired up on touch/coarse-pointer devices
+     (see spotlight-hero.js's early return) — hide the now-nonfunctional
+     button rather than leave a dead control on screen. */
+  .uf-spotlight-toggle { display: none; }
+}
+@media (max-width: 520px) {
+  .uf-spotlight-hero { margin-top: -16px; padding: 3.25rem 1.25rem 2rem !important; }
+  .uf-spotlight-field { grid-template-columns: 1fr; }
+  .uf-spotlight-item { min-height: 125px; }
+}
+
+/* Carry the hero's dark teal atmosphere down the whole homepage. */
+body:has(.uf-spotlight-hero) {
+  --md-default-bg-color: #081923;
+  --md-typeset-color: #c7dce1;
+  --uf-gray-50: #0c202b;
+  --uf-gray-100: #102a36;
+  --uf-gray-200: #244651;
+  --uf-gray-400: #8eabb4;
+  --uf-gray-500: #b5ced4;
+  --uf-gray-700: #deeff1;
+  --uf-gray-900: #f2ffff;
+  background: #081923;
+}
+body:has(.uf-spotlight-hero) .md-container,
+body:has(.uf-spotlight-hero) .md-main,
+body:has(.uf-spotlight-hero) .md-content,
+body:has(.uf-spotlight-hero) .md-content__inner {
+  background: #081923;
+}
+body:has(.uf-spotlight-hero) .md-typeset {
+  color: #c7dce1;
+}
+body:has(.uf-spotlight-hero) .md-typeset h2,
+body:has(.uf-spotlight-hero) .md-typeset h3 {
+  color: #f2ffff;
+}
+body:has(.uf-spotlight-hero) .uf-quicklinks.grid.cards,
+body:has(.uf-spotlight-hero) .uf-why-grid.grid.cards > ul > li,
+body:has(.uf-spotlight-hero) .uf-mcu-grid.grid.cards > ul > li {
+  background: linear-gradient(145deg, #102a36, #0b202a);
+}
+body:has(.uf-spotlight-hero) .uf-quicklinks.grid.cards > ul > li:hover {
+  background: #153440;
+}
+body:has(.uf-spotlight-hero) .uf-why-grid.grid.cards > ul > li:hover,
+body:has(.uf-spotlight-hero) .uf-mcu-grid.grid.cards > ul > li:hover {
+  box-shadow: 0 10px 32px rgba(0, 0, 0, .26);
+}
+
+/* Use the same surface and readable light foregrounds for the site chrome. */
+body:has(.uf-spotlight-hero) .md-header {
+  background: rgba(8, 25, 35, .96);
+  color: #effffd;
+  box-shadow: 0 1px rgba(170, 255, 238, .12);
+}
+body:has(.uf-spotlight-hero) .md-header__topic,
+body:has(.uf-spotlight-hero) .md-header__button,
+body:has(.uf-spotlight-hero) .md-header__button svg,
+body:has(.uf-spotlight-hero) .md-header__title,
+body:has(.uf-spotlight-hero) .md-header__ellipsis {
+  color: #effffd;
+}
+body:has(.uf-spotlight-hero) .md-header__button:hover {
+  color: #9dffe9;
+}
+body:has(.uf-spotlight-hero) .md-search__input {
+  color: #effffd;
+  background: #102a36;
+}
+body:has(.uf-spotlight-hero) .md-search__input::placeholder { color: #a9c4cb; }
+body:has(.uf-spotlight-hero) .md-tabs {
+  background: #081923;
+  border-top: 1px solid rgba(170, 255, 238, .08);
+  border-bottom: 1px solid rgba(170, 255, 238, .11);
+}
+body:has(.uf-spotlight-hero) .md-tabs__link {
+  color: #c7dce1;
+  opacity: 1;
+}
+body:has(.uf-spotlight-hero) .md-tabs__link:is(:hover, :focus),
+body:has(.uf-spotlight-hero) .md-tabs__link--active {
+  color: #a3ffe9;
+}
+body:has(.uf-spotlight-hero) .md-footer {
+  color: #d7f0f1;
+  background: #081923;
+  border-top: 1px solid rgba(170, 255, 238, .13);
+}
+body:has(.uf-spotlight-hero) .md-footer__link,
+body:has(.uf-spotlight-hero) .md-footer__title,
+body:has(.uf-spotlight-hero) .md-footer__direction,
+body:has(.uf-spotlight-hero) .md-footer__button,
+body:has(.uf-spotlight-hero) .md-footer__button svg {
+  color: #effffd;
+}
+body:has(.uf-spotlight-hero) .md-footer-meta {
+  color: #b8d4d8;
+  background: #081923;
+}
+body:has(.uf-spotlight-hero) .md-footer-meta a,
+body:has(.uf-spotlight-hero) .md-footer-meta__inner {
+  color: #d7f0f1;
+}
+/* Material applies separate, scheme-dependent opacity colors to these nested
+   footer elements. Pin them to the homepage's light footer foreground so the
+   text stays readable even when the site palette is set to the light scheme. */
+body:has(.uf-spotlight-hero) .md-footer .md-copyright,
+body:has(.uf-spotlight-hero) .md-footer .md-copyright__highlight,
+body:has(.uf-spotlight-hero) .md-footer .md-copyright a,
+body:has(.uf-spotlight-hero) .md-footer .md-social__link,
+body:has(.uf-spotlight-hero) .md-footer .md-social__link svg {
+  color: #d7f0f1 !important;
+}
+
+/* The homepage follows the selected Material palette instead of forcing its
+   own dark mode. The light scheme stays airy; slate restores the immersive
+   low-light treatment for extended desktop use. */
+body:has(.uf-spotlight-hero) {
+  --md-default-bg-color: #f4fbfa;
+  --md-typeset-color: #2a4850;
+  --uf-gray-50: #eef8f7;
+  --uf-gray-100: #e1f1ef;
+  --uf-gray-200: #c9e2df;
+  --uf-gray-400: #6c9097;
+  --uf-gray-500: #57767d;
+  --uf-gray-700: #25464e;
+  --uf-gray-900: #102f38;
+  background: #f4fbfa;
+}
+body:has(.uf-spotlight-hero) .md-container,
+body:has(.uf-spotlight-hero) .md-main,
+body:has(.uf-spotlight-hero) .md-content,
+body:has(.uf-spotlight-hero) .md-content__inner { background: #f4fbfa; }
+body:has(.uf-spotlight-hero) .md-typeset { color: #2a4850; }
+body:has(.uf-spotlight-hero) .md-typeset h2,
+body:has(.uf-spotlight-hero) .md-typeset h3 { color: #102f38; }
+body:has(.uf-spotlight-hero) .uf-spotlight-hero {
+  color: #10333c;
+  background:
+    radial-gradient(circle 42rem at var(--spotlight-x) var(--spotlight-y), rgba(35, 183, 157, .18), transparent 36%),
+    radial-gradient(ellipse 72% 100% at 73% 4%, #d5f3ee 0%, #e9f8f6 47%, #f4fbfa 100%);
+}
+body:has(.uf-spotlight-hero) .uf-spotlight-hero::before { opacity: .42; }
+body:has(.uf-spotlight-hero) .uf-spotlight-hero::after { background: radial-gradient(circle 150px at var(--spotlight-x) var(--spotlight-y), rgba(255,255,255,.82), rgba(76,213,184,.13) 43%, transparent 72%); }
+body:has(.uf-spotlight-hero) .uf-spotlight-hero .uf-hero-content h1 { color: #10333c !important; }
+body:has(.uf-spotlight-hero) .uf-spotlight-hero .uf-hero-content > p { color: #456d74; }
+body:has(.uf-spotlight-hero) .uf-spotlight-hero .uf-badge { color: #087d6e; background: rgba(57, 198, 170, .12); border-color: rgba(15, 139, 121, .24); }
+body:has(.uf-spotlight-hero) .uf-spotlight-hero .uf-hero-actions .md-button { color: #17484f; border-color: rgba(21, 104, 97, .36); }
+body:has(.uf-spotlight-hero) .uf-spotlight-toggle { color: #17484f; }
+body:has(.uf-spotlight-hero) .uf-spotlight-toggle[aria-pressed="true"] { color: #0f8b79; }
+body:has(.uf-spotlight-hero) .uf-spotlight-toggle[aria-pressed="true"] svg { filter: drop-shadow(0 0 6px rgba(15, 139, 121, .45)); }
+body:has(.uf-spotlight-hero) .uf-spotlight-hero .uf-trust-bar { color: #53777e; }
+body:has(.uf-spotlight-hero) .uf-spotlight-item {
+  color: #123940 !important;
+  border-color: rgba(15, 139, 121, .4);
+  background: linear-gradient(145deg, rgba(246, 255, 253, .9), rgba(208, 239, 234, .82));
+  box-shadow: 0 20px 44px rgba(26, 86, 90, .16), inset 0 1px rgba(255, 255, 255, .76);
+}
+body:has(.uf-spotlight-hero) .uf-spotlight-item::before { background: radial-gradient(circle, rgba(65, 213, 183, .24), transparent 61%); }
+body:has(.uf-spotlight-hero) .uf-spotlight-item__eyebrow { color: #087d6e; }
+body:has(.uf-spotlight-hero) .uf-spotlight-item__copy { color: #3a5c62; }
+/* The decorative art pieces (chip/board/sdk/signal/paths) were tuned as
+   pale cyan glows meant to pop against the dark-mode card — on the light
+   card background those same colors are nearly invisible. Recolor them to
+   the light theme's dark-teal accent so they actually read as artwork. */
+body:has(.uf-spotlight-hero) .uf-spotlight-item__art--silicon {
+  background: linear-gradient(135deg, #39c6aa, #0f8b79 58%, #2f4f9c);
+  box-shadow: 0 0 0 9px #eafaf6, 0 0 0 11px rgba(15, 139, 121, .35), 0 0 26px rgba(15, 139, 121, .4);
+}
+body:has(.uf-spotlight-hero) .uf-spotlight-item__art--board {
+  border-color: #0f8b79;
+  background: linear-gradient(135deg, #cfeee6, #eafaf6);
+  box-shadow: 0 0 20px rgba(15, 139, 121, .28);
+}
+body:has(.uf-spotlight-hero) .uf-spotlight-item__art--board::after {
+  background: #0f8b79;
+  box-shadow: 0 0 0 5px #eafaf6;
+}
+body:has(.uf-spotlight-hero) .uf-spotlight-item__art--sdk {
+  background: #0f8b79;
+  box-shadow: 0 0 12px rgba(15, 139, 121, .4);
+}
+body:has(.uf-spotlight-hero) .uf-spotlight-item__art--sdk::before,
+body:has(.uf-spotlight-hero) .uf-spotlight-item__art--sdk::after {
+  border-color: #0f8b79;
+}
+body:has(.uf-spotlight-hero) .uf-spotlight-item__art--learn {
+  border-color: #0f8b79;
+  background:
+    repeating-linear-gradient(0deg, rgba(15, 139, 121, .22) 0 2px, transparent 2px 12px),
+    repeating-linear-gradient(90deg, rgba(15, 139, 121, .22) 0 2px, transparent 2px 12px);
+  box-shadow: 0 0 0 13px rgba(15, 139, 121, .06), 0 0 20px rgba(15, 139, 121, .3);
+}
+body:has(.uf-spotlight-hero) .uf-spotlight-item__art--learn::after {
+  background: #0f8b79;
+  box-shadow: 0 0 14px rgba(15, 139, 121, .4);
+}
+body:has(.uf-spotlight-hero) .uf-spotlight-item__art--examples {
+  border-color: #0f8b79;
+  background: linear-gradient(135deg, rgba(15, 139, 121, .14), transparent 70%);
+  box-shadow: 0 0 18px rgba(15, 139, 121, .26);
+}
+body:has(.uf-spotlight-hero) .uf-spotlight-item__art--examples::before,
+body:has(.uf-spotlight-hero) .uf-spotlight-item__art--examples::after { border-color: #0f8b79; background: #0f8b79; }
+body:has(.uf-spotlight-hero) .uf-spotlight-item__art--examples::before { background: transparent; }
+body:has(.uf-spotlight-hero) .uf-quicklinks.grid.cards,
+body:has(.uf-spotlight-hero) .uf-why-grid.grid.cards > ul > li,
+body:has(.uf-spotlight-hero) .uf-mcu-grid.grid.cards > ul > li { background: linear-gradient(145deg, #fff, #edf8f6); }
+body:has(.uf-spotlight-hero) .uf-quicklinks.grid.cards > ul > li:hover { background: #e1f3ef; }
+body:has(.uf-spotlight-hero) .md-header { color: #10333c; background: rgba(244, 251, 250, .94); box-shadow: 0 1px rgba(16, 85, 79, .12); }
+body:has(.uf-spotlight-hero) .md-header__topic,
+body:has(.uf-spotlight-hero) .md-header__button,
+body:has(.uf-spotlight-hero) .md-header__button svg,
+body:has(.uf-spotlight-hero) .md-header__title,
+body:has(.uf-spotlight-hero) .md-header__ellipsis { color: #10333c; }
+body:has(.uf-spotlight-hero) .md-search__input { color: #10333c; background: #fff; }
+body:has(.uf-spotlight-hero) .md-tabs { background: #eaf7f5; border-color: #c9e2df; }
+body:has(.uf-spotlight-hero) .md-tabs__link { color: #365c63; }
+body:has(.uf-spotlight-hero) .md-tabs__link:is(:hover, :focus),
+body:has(.uf-spotlight-hero) .md-tabs__link--active { color: #087d6e; }
+body:has(.uf-spotlight-hero) .md-footer,
+body:has(.uf-spotlight-hero) .md-footer-meta { color: #385d64; background: #e1f2ef; border-color: #c9e2df; }
+body:has(.uf-spotlight-hero) .md-footer__link,
+body:has(.uf-spotlight-hero) .md-footer__title,
+body:has(.uf-spotlight-hero) .md-footer__direction,
+body:has(.uf-spotlight-hero) .md-footer__button,
+body:has(.uf-spotlight-hero) .md-footer__button svg,
+body:has(.uf-spotlight-hero) .md-footer-meta a,
+body:has(.uf-spotlight-hero) .md-footer-meta__inner,
+body:has(.uf-spotlight-hero) .md-footer .md-copyright,
+body:has(.uf-spotlight-hero) .md-footer .md-copyright__highlight,
+body:has(.uf-spotlight-hero) .md-footer .md-copyright a,
+body:has(.uf-spotlight-hero) .md-footer .md-social__link,
+body:has(.uf-spotlight-hero) .md-footer .md-social__link svg { color: #244b53 !important; }
+
+[data-md-color-scheme="slate"] body:has(.uf-spotlight-hero) {
+  --md-default-bg-color: #081923;
+  --md-typeset-color: #c7dce1;
+  --uf-gray-50: #0c202b;
+  --uf-gray-100: #102a36;
+  --uf-gray-200: #244651;
+  --uf-gray-400: #8eabb4;
+  --uf-gray-500: #b5ced4;
+  --uf-gray-700: #deeff1;
+  --uf-gray-900: #f2ffff;
+  background: #081923;
+}
+[data-md-color-scheme="slate"] body:has(.uf-spotlight-hero) .md-container,
+[data-md-color-scheme="slate"] body:has(.uf-spotlight-hero) .md-main,
+[data-md-color-scheme="slate"] body:has(.uf-spotlight-hero) .md-content,
+[data-md-color-scheme="slate"] body:has(.uf-spotlight-hero) .md-content__inner { background: #081923; }
+[data-md-color-scheme="slate"] body:has(.uf-spotlight-hero) .md-typeset { color: #c7dce1; }
+[data-md-color-scheme="slate"] body:has(.uf-spotlight-hero) .md-typeset h2,
+[data-md-color-scheme="slate"] body:has(.uf-spotlight-hero) .md-typeset h3 { color: #f2ffff; }
+[data-md-color-scheme="slate"] body:has(.uf-spotlight-hero) .uf-spotlight-hero {
+  color: #ecffff;
+  background:
+    radial-gradient(circle 42rem at var(--spotlight-x) var(--spotlight-y), rgba(61, 236, 201, .18), transparent 36%),
+    radial-gradient(ellipse 72% 100% at 73% 4%, #173c4c 0%, #0d2634 43%, #07151e 100%);
+}
+[data-md-color-scheme="slate"] body:has(.uf-spotlight-hero) .uf-spotlight-hero::after { background: radial-gradient(circle 150px at var(--spotlight-x) var(--spotlight-y), rgba(210,255,248,.17), rgba(72,238,207,.04) 43%, transparent 72%); }
+[data-md-color-scheme="slate"] body:has(.uf-spotlight-hero) .uf-spotlight-hero .uf-hero-content h1 { color: #f3ffff !important; }
+[data-md-color-scheme="slate"] body:has(.uf-spotlight-hero) .uf-spotlight-hero .uf-hero-content > p { color: #c4dbe1; }
+[data-md-color-scheme="slate"] body:has(.uf-spotlight-hero) .uf-spotlight-hero .uf-badge { color: #c3fff3; background: rgba(89,234,202,.12); border-color: rgba(145,255,232,.26); }
+[data-md-color-scheme="slate"] body:has(.uf-spotlight-hero) .uf-spotlight-hero .uf-hero-actions .md-button { color: #ddfff8; border-color: rgba(191,255,244,.38); }
+[data-md-color-scheme="slate"] body:has(.uf-spotlight-hero) .uf-spotlight-toggle { color: #ddfff8; }
+[data-md-color-scheme="slate"] body:has(.uf-spotlight-hero) .uf-spotlight-toggle[aria-pressed="true"] { color: #71f5d9; }
+[data-md-color-scheme="slate"] body:has(.uf-spotlight-hero) .uf-spotlight-item { color: #ecfffb !important; border-color: rgba(176,255,239,.34); background: linear-gradient(145deg, rgba(31,91,101,.86), rgba(9,34,47,.8)); box-shadow: 0 23px 55px rgba(0,0,0,.32), inset 0 1px rgba(255,255,255,.13); }
+[data-md-color-scheme="slate"] body:has(.uf-spotlight-hero) .uf-spotlight-item__eyebrow { color: #9dffea; }
+[data-md-color-scheme="slate"] body:has(.uf-spotlight-hero) .uf-spotlight-item__copy { color: #c2d9dd; }
+[data-md-color-scheme="slate"] body:has(.uf-spotlight-hero) .uf-quicklinks.grid.cards,
+[data-md-color-scheme="slate"] body:has(.uf-spotlight-hero) .uf-why-grid.grid.cards > ul > li,
+[data-md-color-scheme="slate"] body:has(.uf-spotlight-hero) .uf-mcu-grid.grid.cards > ul > li { background: linear-gradient(145deg, #102a36, #0b202a); }
+[data-md-color-scheme="slate"] body:has(.uf-spotlight-hero) .uf-quicklinks.grid.cards > ul > li:hover { background: #153440 !important; }
+[data-md-color-scheme="slate"] body:has(.uf-spotlight-hero) .md-header { color: #effffd; background: rgba(8,25,35,.96); }
+[data-md-color-scheme="slate"] body:has(.uf-spotlight-hero) .md-header__topic,
+[data-md-color-scheme="slate"] body:has(.uf-spotlight-hero) .md-header__button,
+[data-md-color-scheme="slate"] body:has(.uf-spotlight-hero) .md-header__button svg,
+[data-md-color-scheme="slate"] body:has(.uf-spotlight-hero) .md-header__title,
+[data-md-color-scheme="slate"] body:has(.uf-spotlight-hero) .md-header__ellipsis { color: #effffd; }
+[data-md-color-scheme="slate"] body:has(.uf-spotlight-hero) .md-search__input { color: #effffd; background: #102a36; }
+[data-md-color-scheme="slate"] body:has(.uf-spotlight-hero) .md-tabs { background: #081923; border-color: rgba(170,255,238,.11); }
+[data-md-color-scheme="slate"] body:has(.uf-spotlight-hero) .md-tabs__link { color: #c7dce1; }
+[data-md-color-scheme="slate"] body:has(.uf-spotlight-hero) .md-footer,
+[data-md-color-scheme="slate"] body:has(.uf-spotlight-hero) .md-footer-meta { color: #d7f0f1; background: #081923; border-color: rgba(170,255,238,.13); }
+[data-md-color-scheme="slate"] body:has(.uf-spotlight-hero) .md-footer__link,
+[data-md-color-scheme="slate"] body:has(.uf-spotlight-hero) .md-footer__title,
+[data-md-color-scheme="slate"] body:has(.uf-spotlight-hero) .md-footer__direction,
+[data-md-color-scheme="slate"] body:has(.uf-spotlight-hero) .md-footer__button,
+[data-md-color-scheme="slate"] body:has(.uf-spotlight-hero) .md-footer__button svg,
+[data-md-color-scheme="slate"] body:has(.uf-spotlight-hero) .md-footer-meta a,
+[data-md-color-scheme="slate"] body:has(.uf-spotlight-hero) .md-footer-meta__inner,
+[data-md-color-scheme="slate"] body:has(.uf-spotlight-hero) .md-footer .md-copyright,
+[data-md-color-scheme="slate"] body:has(.uf-spotlight-hero) .md-footer .md-copyright__highlight,
+[data-md-color-scheme="slate"] body:has(.uf-spotlight-hero) .md-footer .md-copyright a,
+[data-md-color-scheme="slate"] body:has(.uf-spotlight-hero) .md-footer .md-social__link,
+[data-md-color-scheme="slate"] body:has(.uf-spotlight-hero) .md-footer .md-social__link svg { color: #d7f0f1 !important; }
+
+/* Zensical places the scheme attribute on <body>, so keep this explicit
+   fallback alongside the generic selector above. */
+body[data-md-color-scheme="slate"]:has(.uf-spotlight-hero) {
+  --md-default-bg-color: #081923;
+  --md-typeset-color: #c7dce1;
+  --uf-gray-50: #0c202b;
+  --uf-gray-100: #102a36;
+  --uf-gray-200: #244651;
+  --uf-gray-400: #8eabb4;
+  --uf-gray-500: #b5ced4;
+  --uf-gray-700: #deeff1;
+  --uf-gray-900: #f2ffff;
+  background: #081923;
+}
+body[data-md-color-scheme="slate"]:has(.uf-spotlight-hero) .md-container,
+body[data-md-color-scheme="slate"]:has(.uf-spotlight-hero) .md-main,
+body[data-md-color-scheme="slate"]:has(.uf-spotlight-hero) .md-content,
+body[data-md-color-scheme="slate"]:has(.uf-spotlight-hero) .md-content__inner { background: #081923; }
+body[data-md-color-scheme="slate"]:has(.uf-spotlight-hero) .md-typeset { color: #c7dce1; }
+body[data-md-color-scheme="slate"]:has(.uf-spotlight-hero) .md-typeset :is(h2, h3) { color: #f2ffff; }
+body[data-md-color-scheme="slate"]:has(.uf-spotlight-hero) .uf-spotlight-hero {
+  color: #ecffff;
+  background: radial-gradient(circle 42rem at var(--spotlight-x) var(--spotlight-y), rgba(61,236,201,.18), transparent 36%), radial-gradient(ellipse 72% 100% at 73% 4%, #173c4c 0%, #0d2634 43%, #07151e 100%);
+}
+body[data-md-color-scheme="slate"]:has(.uf-spotlight-hero) .uf-spotlight-hero::after { background: radial-gradient(circle 150px at var(--spotlight-x) var(--spotlight-y), rgba(210,255,248,.17), rgba(72,238,207,.04) 43%, transparent 72%); }
+body[data-md-color-scheme="slate"]:has(.uf-spotlight-hero) .uf-spotlight-hero .uf-hero-content h1 { color: #f3ffff !important; }
+body[data-md-color-scheme="slate"]:has(.uf-spotlight-hero) .uf-spotlight-hero .uf-hero-content > p { color: #c4dbe1; }
+body[data-md-color-scheme="slate"]:has(.uf-spotlight-hero) .uf-spotlight-hero .uf-badge { color: #c3fff3; background: rgba(89,234,202,.12); border-color: rgba(145,255,232,.26); }
+body[data-md-color-scheme="slate"]:has(.uf-spotlight-hero) .uf-spotlight-hero .uf-hero-actions .md-button { color: #ddfff8; border-color: rgba(191,255,244,.38); }
+body[data-md-color-scheme="slate"]:has(.uf-spotlight-hero) .uf-spotlight-toggle { color: #ddfff8; }
+body[data-md-color-scheme="slate"]:has(.uf-spotlight-hero) .uf-spotlight-toggle[aria-pressed="true"] { color: #71f5d9; }
+body[data-md-color-scheme="slate"]:has(.uf-spotlight-hero) .uf-spotlight-item { color: #ecfffb !important; border-color: rgba(176,255,239,.34); background: linear-gradient(145deg, rgba(31,91,101,.86), rgba(9,34,47,.8)); box-shadow: 0 23px 55px rgba(0,0,0,.32), inset 0 1px rgba(255,255,255,.13); }
+body[data-md-color-scheme="slate"]:has(.uf-spotlight-hero) .uf-spotlight-item__eyebrow { color: #9dffea; }
+body[data-md-color-scheme="slate"]:has(.uf-spotlight-hero) .uf-spotlight-item__copy { color: #c2d9dd; }
+body[data-md-color-scheme="slate"]:has(.uf-spotlight-hero) :is(.uf-quicklinks.grid.cards, .uf-why-grid.grid.cards > ul > li, .uf-mcu-grid.grid.cards > ul > li) { background: linear-gradient(145deg, #102a36, #0b202a); }
+body[data-md-color-scheme="slate"]:has(.uf-spotlight-hero) .uf-quicklinks.grid.cards > ul > li:hover { background: #153440 !important; }
+body[data-md-color-scheme="slate"]:has(.uf-spotlight-hero) .md-header { color: #effffd; background: rgba(8,25,35,.96); }
+body[data-md-color-scheme="slate"]:has(.uf-spotlight-hero) .md-header :is(.md-header__topic, .md-header__button, .md-header__button svg, .md-header__title, .md-header__ellipsis) { color: #effffd; }
+body[data-md-color-scheme="slate"]:has(.uf-spotlight-hero) .md-search__input { color: #effffd; background: #102a36; }
+body[data-md-color-scheme="slate"]:has(.uf-spotlight-hero) .md-tabs { background: #081923; border-color: rgba(170,255,238,.11); }
+body[data-md-color-scheme="slate"]:has(.uf-spotlight-hero) .md-tabs__link { color: #c7dce1; }
+body[data-md-color-scheme="slate"]:has(.uf-spotlight-hero) :is(.md-footer, .md-footer-meta) { color: #d7f0f1; background: #081923; border-color: rgba(170,255,238,.13); }
+body[data-md-color-scheme="slate"]:has(.uf-spotlight-hero) .md-footer :is(.md-footer__link, .md-footer__title, .md-footer__direction, .md-footer__button, .md-footer__button svg, .md-footer-meta a, .md-footer-meta__inner, .md-copyright, .md-copyright__highlight, .md-copyright a, .md-social__link, .md-social__link svg) { color: #d7f0f1 !important; }
+
+/* Defense-in-depth: the two blocks above only fire once Material's palette
+   JS has actually written data-md-color-scheme="slate" onto <body>. If the
+   "System" (auto) palette is in use and that attribute isn't set the way
+   these selectors expect, this quicklinks-card hover still needs to not be
+   a stark white flash against the dark hero — fall back to the OS-level
+   dark preference directly, independent of the data-attribute mechanism. */
+@media (prefers-color-scheme: dark) {
+  /* :not([data-md-color-scheme]) is the important part here: this must only
+     act as a fallback for the moment before Material's palette JS has set
+     an explicit scheme attribute (or a truly attribute-less "auto" state).
+     Without that guard, this fired purely off the OS preference regardless
+     of what the visitor explicitly chose in the site's own toggle — so
+     switching the site to light mode while the OS prefers dark still forced
+     this dark hover color, which is the exact bug this rule was meant to
+     prevent, just inverted. */
+  body:not([data-md-color-scheme]):has(.uf-spotlight-hero) .uf-quicklinks.grid.cards > ul > li:hover { background: #153440 !important; }
+}

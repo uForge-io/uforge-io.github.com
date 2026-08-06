@@ -199,7 +199,7 @@ Do not move from a porting demonstration to custom hardware or a field trial unt
 
 ## Handoff to Product Design
 
-Carry the selected SF32 device, display and input architecture, audio/timer plan, flash and asset layout, power measurements, recovery method, and production-test assumptions into the [Hardware](../hardware/index.md) section. Use the [SF32 Product Selector](../explore-sf32/product-selector.md) when the game’s display, memory, package, power, or connectivity requirements change the device shortlist. For the software baseline, start with [Getting Started with Arduino](../getting-started/arduino/getting-started-arduino.md) and continue with the [Arduino platform overview](../develop/platforms/arduino/overview.md).
+Carry the selected SF32 device, display and input architecture, audio/timer plan, flash and asset layout, power measurements, recovery method, and production-test assumptions into the [Hardware](../hardware/index.md) section. Use the [SF32 Product Selector](../sf32-products/product-selector.md) when the game’s display, memory, package, power, or connectivity requirements change the device shortlist. For the software baseline, start with [Getting Started with Arduino](../getting-started/arduino/getting-started-arduino.md) and continue with the [Arduino platform overview](../develop/platforms/arduino/overview.md).
 
 The reference has served its product-development purpose when another engineer can rebuild the port, reproduce the peripheral results, explain every board-specific adaptation, and review the evidence before a custom board or expanded game library is approved.
 
@@ -210,4 +210,4 @@ The reference has served its product-development purpose when another engineer c
 - [OpenSiFli/ArduinoCore-zephyr](https://github.com/OpenSiFli/ArduinoCore-zephyr)
 - [Getting Started with Arduino on SF32](../getting-started/arduino/getting-started-arduino.md)
 - [Arduino platform overview](../develop/platforms/arduino/overview.md)
-- [SF32 Product Selector](../explore-sf32/product-selector.md)
+- [SF32 Product Selector](../sf32-products/product-selector.md)

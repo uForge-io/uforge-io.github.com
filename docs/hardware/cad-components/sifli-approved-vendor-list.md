@@ -372,4 +372,4 @@ This checklist is intentionally stricter than "the part appears in the AVL." The
 
 - [SF32LB52x Hardware Design Guide](../chip-guides/SF32LB52x_hardware_design_guide.md) — schematic and layout guidance that references several parts on this list directly.
 - SF32LB57x Hardware Design Guide (English)
-- [SF32 Family Overview](../../explore-sf32/family/SF32_family.md)
+- [SF32 Family Overview](../../sf32-products/family/SF32_family.md)

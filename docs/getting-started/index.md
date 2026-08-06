@@ -11,7 +11,7 @@ tags:
 
 SF32 devices support several software paths. SiFli-SDK and CodeKit are the official first-run paths today. OpenSiFli also has active downstream Zephyr, beta ArduinoCore-zephyr, and work-in-progress Rust support for SF32LB52. MicroPython still needs official firmware images and board-specific instructions before it can become a verified tutorial.
 
-For the current board-by-platform coverage, maturity, and recommended first example, consult the shared [Software Support Matrix](../develop/software-support-matrix.md). Use the table below only to choose where to begin; the matrix is the canonical support reference.
+For the reference development workflow and the current scope of each development path, consult [Develop Overview](../develop/index.md). Use the table below only to choose where to begin; each platform page is the canonical reference for its supported boards and limits.
 
 ## Choose Your Path
 

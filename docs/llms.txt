@@ -18,17 +18,17 @@ Only the pages listed below are published on this site. Internal working notes (
 
 ## Hardware — Task Hubs
 
-- [Plan a Product](https://uForge.io/explore-sf32/family/product-planning/): End-to-end path from requirements and device selection through board validation and production design.
+- [Plan a Product](https://uForge.io/sf32-products/family/product-planning/): End-to-end path from requirements and device selection through board validation and production design.
 - [Reference Designs](https://uForge.io/hardware/reference-designs/reference-designs/): Reference-design journeys for μForge — compare reproducible hardware and software validation paths, then follow the one closest to your product.
 - [Connected Wearable Reference-Design Journey](https://uForge.io/hardware/reference-designs/connected-wearable-journey/): A practical SF32 reference-design journey from SF32LB52 development-board validation to a custom connected wearable hardware and firmware release plan.
-- [SF32 Product Selector](https://uForge.io/explore-sf32/choose-hardware/): Select an SF32 chip or module by product constraints, integration level, and software-validation path.
+- [SF32 Product Selector](https://uForge.io/sf32-products/choose-hardware/): Select an SF32 chip or module by product constraints, integration level, and software-validation path.
 - [Design for Production](https://uForge.io/hardware/design-for-production/): Production-design path for SF32 hardware design guides, checklists, interface definitions, approved components, and EDA libraries.
 
 ## Hardware — Chips
 
-- [SF32 Family Overview](https://uForge.io/explore-sf32/family/SF32_family/): Portfolio overview of the SF32LB5xx series of highly integrated, ultra-low-power 32-bit microcontrollers for battery-powered AIoT and wearable applications.
-- [SF32 Naming Rule](https://uForge.io/explore-sf32/family/SF32_namingrule/): How to read SF32 part numbers, including the numeric/alphabetic variant placeholders used across chip families.
-- [SF32LB52x Introduction](https://uForge.io/explore-sf32/chips/SF32LB52x/): Cost-optimized dual-core Arm Cortex-M33 AIoT MCU with Bluetooth, ePicasso graphics, and low power for smart wearables.
+- [SF32 Family Overview](https://uForge.io/sf32-products/family/SF32_family/): Portfolio overview of the SF32LB5xx series of highly integrated, ultra-low-power 32-bit microcontrollers for battery-powered AIoT and wearable applications.
+- [SF32 Naming Rule](https://uForge.io/sf32-products/family/SF32_namingrule/): How to read SF32 part numbers, including the numeric/alphabetic variant placeholders used across chip families.
+- [SF32LB52x Introduction](https://uForge.io/sf32-products/chips/SF32LB52x/): Cost-optimized dual-core Arm Cortex-M33 AIoT MCU with Bluetooth, ePicasso graphics, and low power for smart wearables.
 - [SF32LB52x Hardware Design Guide](https://uForge.io/hardware/chip-guides/SF32LB52x_hardware_design_guide/): Device overview, design flow, and links to the schematic, PCB layout, and review/reference pages for SF32LB52x designs.
 - [SF32LB52x Hardware Design Guide — Schematic Design Guidelines: Minimum System, Power & Clock](https://uForge.io/hardware/chip-guides/SF32LB52x_schematic_design/): Schematic design guidelines for the SF32LB52x MCU: minimum system design, power system, and clock generation.
 - [SF32LB52x Hardware Design Guide — RF & User Interfaces](https://uForge.io/hardware/chip-guides/SF32LB52x_schematic_rf_interfaces/): RF and user-interface schematic design guidelines for the SF32LB52x MCU: antenna matching, display, audio, buttons, and vibration motor.
@@ -37,19 +37,19 @@ Only the pages listed below are published on this site. Internal working notes (
 - [SF32LB52x Hardware Design Guide — PCB Layout Guidelines](https://uForge.io/hardware/chip-guides/SF32LB52x_pcb_layout/): PCB layout guidelines for the SF32LB52x MCU: footprint, stack-up, routing, power, and EMI/ESD.
 - [SF32LB52x Hardware Design Guide — PCB Layout Checklist](https://uForge.io/hardware/chip-guides/SF32LB52x_pcb_layout_checklist/): Item-by-item PCB layout review checklist for the SF32LB52x MCU, covering package, routing, power, and grounding checks.
 - [SF32LB52x Hardware Design Guide — Design Review Checklist and References](https://uForge.io/hardware/chip-guides/SF32LB52x_review_and_reference/): Design review checklist, related documents and references, appendices, and revision history for the SF32LB52x hardware design guide.
-- [SF32LB55x Introduction](https://uForge.io/explore-sf32/chips/SF32LB55x/): Mainstream ultra-low-power AIoT MCU with big.LITTLE dual-core architecture and BLE connectivity for wearables.
+- [SF32LB55x Introduction](https://uForge.io/sf32-products/chips/SF32LB55x/): Mainstream ultra-low-power AIoT MCU with big.LITTLE dual-core architecture and BLE connectivity for wearables.
 - [SF32LB55x Hardware Design Guide](https://uForge.io/hardware/chip-guides/SF32LB55x_hardware_design_guide/): Device overview, design flow, and links to the schematic, PCB layout, and review/reference pages for SF32LB55x designs.
 - [SF32LB55x Hardware Design Guide — Schematic Design Guidelines](https://uForge.io/hardware/chip-guides/SF32LB55x_schematic_design/): Schematic design guidelines for the SF32LB55x MCU: power system, boot mode, clock generation, RF, storage interfaces, display and touch interfaces, and wake/GPADC/manufacturing interfaces.
 - [SF32LB55x Hardware Design Guide — Schematic Checklist](https://uForge.io/hardware/chip-guides/SF32LB55x_schematic_checklist/): Item-by-item schematic review checklist for the SF32LB55x MCU, covering power, clock, RF, storage, display, and manufacturing checks.
 - [SF32LB55x Hardware Design Guide — PCB Layout Guidelines](https://uForge.io/hardware/chip-guides/SF32LB55x_pcb_layout/): PCB layout guidelines for the SF32LB55x MCU: footprint, stack-up, general PCB rules, interface routing, and the item-by-item PCB layout checklist.
 - [SF32LB55x Hardware Design Guide — Design Review Checklist and References](https://uForge.io/hardware/chip-guides/SF32LB55x_review_and_reference/): Design review checklist, related documents and references, appendices, and revision history for the SF32LB55x hardware design guide.
-- [SF32LB56x Introduction](https://uForge.io/explore-sf32/chips/SF32LB56x/): Advanced AIoT MCU with dual-mode Bluetooth, big.LITTLE dual-core architecture, and rich graphics, audio, and memory options.
+- [SF32LB56x Introduction](https://uForge.io/sf32-products/chips/SF32LB56x/): Advanced AIoT MCU with dual-mode Bluetooth, big.LITTLE dual-core architecture, and rich graphics, audio, and memory options.
 - [SF32LB56x Hardware Design Guide](https://uForge.io/hardware/chip-guides/SF32LB56x_hardware_design_guide/): Device overview, design flow, and links to the schematic, PCB layout, and review/reference pages for SF32LB56x designs.
 - [SF32LB56x Hardware Design Guide — Schematic Design Guidelines](https://uForge.io/hardware/chip-guides/SF32LB56x_schematic_design/): Schematic design guidelines for the SF32LB56x MCU: power system, operating modes and wake sources, clock generation, RF, display/touch/backlight interfaces, storage/sensors/audio/connectivity, and manufacturing.
 - [SF32LB56x Hardware Design Guide — Schematic Checklist](https://uForge.io/hardware/chip-guides/SF32LB56x_schematic_checklist/): Item-by-item schematic review checklist for the SF32LB56x MCU, covering power, clock, RF, storage, display, and manufacturing checks.
 - [SF32LB56x Hardware Design Guide — PCB Layout Guidelines](https://uForge.io/hardware/chip-guides/SF32LB56x_pcb_layout/): PCB layout guidelines for the SF32LB56x MCU: footprint, stack-up, critical routing, and the item-by-item PCB layout checklist.
 - [SF32LB56x Hardware Design Guide — Design Review Checklist and References](https://uForge.io/hardware/chip-guides/SF32LB56x_review_and_reference/): Design review checklist, related documents and references, appendices, and revision history for the SF32LB56x hardware design guide.
-- [SF32LB58x Introduction](https://uForge.io/explore-sf32/chips/SF32LB58x/): Flagship AIoT MCU with heterogeneous triple-core architecture, dual-mode Bluetooth, large memory, and rich display and audio I/O.
+- [SF32LB58x Introduction](https://uForge.io/sf32-products/chips/SF32LB58x/): Flagship AIoT MCU with heterogeneous triple-core architecture, dual-mode Bluetooth, large memory, and rich display and audio I/O.
 - [SF32LB58x Hardware Design Guide](https://uForge.io/hardware/chip-guides/SF32LB58x_hardware_design_guide/): Device overview, design flow, and links to the schematic, PCB layout, and review/reference pages for SF32LB58x designs.
 - [SF32LB58x Hardware Design Guide — Schematic Design Guidelines](https://uForge.io/hardware/chip-guides/SF32LB58x_schematic_design/): Schematic design guidelines for the SF32LB58x MCU: power system, clock generation, RF, user interfaces, storage and connectivity, and manufacturing.
 - [SF32LB58x Hardware Design Guide — Schematic Checklist](https://uForge.io/hardware/chip-guides/SF32LB58x_schematic_checklist/): Item-by-item schematic review checklist for the SF32LB58x MCU, covering power, clock, RF, storage, display, and manufacturing checks.
@@ -62,21 +62,21 @@ Only the pages listed below are published on this site. Internal working notes (
 - [Module Interface Standards](https://uForge.io/hardware/m2-modules/interface-standards-overview/): μForge M2 module-interface conventions — use the naming rules for stable terminology and treat the pin-level interface definition as a draft to validate before carrier-board commitment.
 - [M2 Interface Naming Rules](<https://uForge.io/hardware/m2-modules/M2 Interface Naming Rules/>): The mandatory base module interface identifier implemented by every μForge module; electrical/mechanical pinout is still in development.
 - [M2 Interface Definition](https://uForge.io/hardware/m2-modules/M2-interface-definition/): Draft M2 interface definition — connector, pinout, and electrical limits — a working proposal, not yet a released standard.
-- [SF32LB52-MOD-1 Introduction](https://uForge.io/explore-sf32/modules/SF32LB52-MOD-1/): Certified Bluetooth 6.3 MCU module built on SF32LB525UC6, reducing RF certification and layout risk for wearable products.
+- [SF32LB52-MOD-1 Introduction](https://uForge.io/sf32-products/modules/SF32LB52-MOD-1/): Certified Bluetooth 6.3 MCU module built on SF32LB525UC6, reducing RF certification and layout risk for wearable products.
 - [SF32LB52-MOD-1 Hardware Design Guide](https://uForge.io/hardware/chip-guides/SF32LB52-MOD-1_hardware_design_guide/): Power, interfaces, and PCB integration guidance for the SF32LB52-MOD-1 module.
-- [SF32LB56-MOD Introduction](https://uForge.io/explore-sf32/modules/SF32LB56-MOD/): General-purpose Bluetooth 6.3 MCU module family based on SF32LB56xV, with graphics, audio, and reduced RF layout risk.
+- [SF32LB56-MOD Introduction](https://uForge.io/sf32-products/modules/SF32LB56-MOD/): General-purpose Bluetooth 6.3 MCU module family based on SF32LB56xV, with graphics, audio, and reduced RF layout risk.
 - [SF32LB56-MOD Hardware Design Guide](https://uForge.io/hardware/chip-guides/SF32LB56-MOD_hardware_design_guide/): Power, interfaces, and PCB integration guidance for the SF32LB56-MOD module.
-- [SF32LB58-MOD Introduction](https://uForge.io/explore-sf32/modules/SF32LB58-MOD/): Certified flagship Bluetooth MCU module built on SF32LB586VDD36, with graphics, storage, and reduced RF/BGA layout risk.
+- [SF32LB58-MOD Introduction](https://uForge.io/sf32-products/modules/SF32LB58-MOD/): Certified flagship Bluetooth MCU module built on SF32LB586VDD36, with graphics, storage, and reduced RF/BGA layout risk.
 - [SF32LB58-MOD Hardware Design Guide](https://uForge.io/hardware/chip-guides/SF32LB58-MOD_hardware_design_guide/): Power, interfaces, and PCB integration guidance for the SF32LB58-MOD module.
 
 ## Hardware — Development Boards
 
-- [SF32LB52-DevKit-LCD](https://uForge.io/explore-sf32/devkits/SF32LB52-DevKit-LCD/): SF32LB52-based development board with LCD, audio amplifier, TF-card slot, and battery charger for evaluation and firmware bring-up.
-- [SF32LB52-DevKit-Core-3p3](https://uForge.io/explore-sf32/devkits/SF32LB52-DevKit-Core-3p3/): SF32LB52-based 3.3 V core development board with maximum pin breakout for direct signal access.
-- [SF32LB52-DevKit-Nano](https://uForge.io/explore-sf32/devkits/SF32LB52-DevKit-Nano/): Smallest SF32LB52-based development board, for size-constrained product prototyping.
-- [SF32LB52-DevKit-ULP](https://uForge.io/explore-sf32/devkits/SF32LB52-DevKit-ULP/): Ultra-low-power-focused SF32LB52-based development board for battery-life evaluation.
-- [SF32LB56-DevKit-LCD](https://uForge.io/explore-sf32/devkits/SF32LB56-DevKit-LCD/): SF32LB56-DevKit-LCD development board — an SF32LB56xV module-based display, audio, storage, and peripheral-development platform.
-- [SF32LB58-DevKit-LCD](https://uForge.io/explore-sf32/devkits/SF32LB58-DevKit-LCD/): SF32LB58-based development board with LCD for flagship-tier evaluation and firmware bring-up.
+- [SF32LB52-DevKit-LCD](https://uForge.io/sf32-products/devkits/SF32LB52-DevKit-LCD/): SF32LB52-based development board with LCD, audio amplifier, TF-card slot, and battery charger for evaluation and firmware bring-up.
+- [SF32LB52-DevKit-Core-3p3](https://uForge.io/sf32-products/devkits/SF32LB52-DevKit-Core-3p3/): SF32LB52-based 3.3 V core development board with maximum pin breakout for direct signal access.
+- [SF32LB52-DevKit-Nano](https://uForge.io/sf32-products/devkits/SF32LB52-DevKit-Nano/): Smallest SF32LB52-based development board, for size-constrained product prototyping.
+- [SF32LB52-DevKit-ULP](https://uForge.io/sf32-products/devkits/SF32LB52-DevKit-ULP/): Ultra-low-power-focused SF32LB52-based development board for battery-life evaluation.
+- [SF32LB56-DevKit-LCD](https://uForge.io/sf32-products/devkits/SF32LB56-DevKit-LCD/): SF32LB56-DevKit-LCD development board — an SF32LB56xV module-based display, audio, storage, and peripheral-development platform.
+- [SF32LB58-DevKit-LCD](https://uForge.io/sf32-products/devkits/SF32LB58-DevKit-LCD/): SF32LB58-based development board with LCD for flagship-tier evaluation and firmware bring-up.
 
 ## Hardware — Other Resources
 
@@ -87,7 +87,7 @@ Only the pages listed below are published on this site. Internal working notes (
 ## Develop
 
 - [Develop Overview](https://uForge.io/develop/): Entry point for firmware developers building, flashing, debugging, updating, and shipping software on SF32 devices.
-- [Software Support Matrix](https://uForge.io/develop/software-support-matrix/): Canonical SF32 software-support matrix — compare board and SoC coverage for SiFli-SDK, CodeKit, Zephyr, Arduino, Rust, and MicroPython before choosing a development path.
+- [Develop Overview](https://uForge.io/develop/): Canonical SF32 software-support matrix and development-path guide — compare board and SoC coverage for SiFli-SDK, CodeKit, Zephyr, Arduino, Rust, and MicroPython before choosing a development path.
 - [SiFli-SDK Platform Overview](https://uForge.io/develop/platforms/sifli-sdk/overview/): How to use SiFli-SDK day to day once the toolchain works — the reference RT-Thread-based path for SF32 firmware.
 - [Build, Flash, Monitor](https://uForge.io/develop/platforms/sifli-sdk/build-flash-monitor/): The daily SiFli-SDK loop — activate the environment, build with scons, flash the board, and watch logs.
 - [Board Configuration](https://uForge.io/develop/platforms/sifli-sdk/board-configuration/): How the --board value selects the board support package controlling flash layout, PSRAM, pins, display, audio, clocking, and power rails.

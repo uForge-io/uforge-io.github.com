@@ -76,6 +76,3 @@ Before committing, follow the result link to the product introduction and then v
 1. **Inspect the exact part.** Use the [SF32 Family Overview](family/SF32_family.md), the result's product introduction, and the [naming rules](family/SF32_namingrule.md) to confirm the orderable part number, package, power topology, memory organization, interface assignment, and reference hardware. Do not choose a part from one headline feature alone: confirm that the required display, audio, storage, sensor, Bluetooth, and low-power features can coexist in the selected package and board design.
 2. **Prove the software path.** Use [Getting Started](../getting-started/index.md), [Tutorials](../getting-started/tutorials/overview.md), and [Develop](../develop/index.md) on the closest available board before finalizing hardware.
 3. **Check production constraints.** Move to [Design for Production](../hardware/design-for-production.md) before freezing the schematic, layout, BOM, or display and storage choices.
-
-!!! note "Auto-generated content"
-    This page was compiled/drafted without an existing source document. Verify technical claims against SiFli's official documentation before relying on them.

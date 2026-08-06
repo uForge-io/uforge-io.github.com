@@ -10,7 +10,7 @@ tags:
 
 This reference journey provides a repeatable path for a compact connected product with a display, BLE, a sensor input, and battery power. It is not a released schematic; use it to organize validation before designing custom hardware.
 
-1. **Select and baseline.** Use [SF32 Family](../../explore-sf32/family/SF32_family.md) and the [SF32 Product Selector](../../explore-sf32/product-selector.md), then run SiFli-SDK `hello_world` on an [SF32LB52-DevKit-LCD](../../explore-sf32/devkits/SF32LB52-DevKit-LCD.md) or the closest available board.
+1. **Select and baseline.** Use [SF32 Family](../../sf32-products/family/SF32_family.md) and the [SF32 Product Selector](../../sf32-products/product-selector.md), then run SiFli-SDK `hello_world` on an [SF32LB52-DevKit-LCD](../../sf32-products/devkits/SF32LB52-DevKit-LCD.md) or the closest available board.
 2. **Prove product functions.** Follow [Tutorials](../../getting-started/tutorials/overview.md) to validate input/sensor handling, BLE, a simple UI, storage if needed, and the serial recovery path.
 3. **Validate system interactions.** Use [Graphics](../../learn/graphics/overview.md), [Bluetooth](../../learn/bluetooth/overview.md), and [Low Power](../../learn/low-power/overview.md) to test display refresh, wireless activity, and sleep/wake together.
 4. **Prepare custom hardware.** Use the selected chip's design guide and checklist through [Design for Production](../design-for-production.md); confirm display, storage, battery, antenna/RF, and programming/test assumptions.

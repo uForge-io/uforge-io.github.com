@@ -166,6 +166,6 @@ Typical examples include:
 
 ---
 
-See also: [SF32 Family Overview](../../explore-sf32/family/SF32_family.md) for how STAR-MC1 fits into the broader SF32LB5x chip lineup.
+See also: [SF32 Family Overview](../../sf32-products/family/SF32_family.md) for how STAR-MC1 fits into the broader SF32LB5x chip lineup.
 
 Primary reference: [Arm China STAR-MC1 Technical Reference Manual](https://www.armchina.com/webarm/arm/common/download/profile/resource/file/Documents/Application-Notes/Technical-Reference-Manual/Star_Technical_Reference_Manual_00903001_0100_00_en.pdf).

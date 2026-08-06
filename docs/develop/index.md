@@ -1,7 +1,7 @@
 ---
 icon: lucide/code-2
 title: "Develop Overview"
-description: "Develop section overview: choosing between SiFli-SDK, CodeKit, Zephyr, Arduino, MicroPython, and Rust for SF32 firmware, tools, and firmware-topic guidance."
+description: "A task-first map for developing SF32 products with SiFli-SDK: daily workflow, application notes, examples, tools, firmware topics, and community paths."
 tags:
     - Develop
     - Software
@@ -9,96 +9,105 @@ tags:
 
 # Develop Overview { #develop }
 
-This section is for firmware developers who have moved past the first `hello_world` run and need to build, flash, debug, update, and ship software on SF32 devices.
+Develop turns a working SF32 board into maintainable product firmware. Use it after the first successful `hello_world` to select a board configuration, build and flash repeatably, adapt a close example, integrate product features, diagnose failures, and plan updates and recovery.
 
-Use [Getting Started](../getting-started/index.md) for the first successful board run. Use [Tutorials](../getting-started/tutorials/beginner.md) for guided hands-on learning, the [SF32 Family](../explore-sf32/family/SF32_family.md) to choose chips, modules, and dev kits, and [Learn](../learn/index.md) for conceptual guides. Use **Develop** when you need the working details: platform maturity, toolchains, board names, flash flows, examples, and firmware architecture.
+Use [Getting Started](../getting-started/index.md) for the first board run, [SF32 Products](../sf32-products/index.md) to select the device and development board, [Hardware](../hardware/index.md) for schematics and production hardware, and [Learn](../learn/index.md) for architectural background. Use this section when you need the engineering workflow and task-specific implementation guidance.
 
-For the current board-by-platform status, use the canonical [Software Support Matrix](software-support-matrix.md). It is the shared support reference for Getting Started and Develop; platform pages provide the detailed setup and limitations.
+!!! info "SiFli-Solution"
+    SiFli-Solution is a separate SiFli software package that μForge.io does not currently document. The guidance here is limited to SiFli-SDK and the community paths listed below. If your product needs a more complete display-device solution, consult the official [SiFli Solution Documentation](https://docs.sifli.com/projects/solution/index.html) and engage SiFli directly. A complex product using this route may need deep, direct SiFli involvement.
 
-## Choose a Development Path
+## Establish a SiFli-SDK Baseline
 
-<div align="center"><em>Table: Choose a Development Path</em></div>
+[SiFli-SDK](platforms/sifli-sdk/overview.md) is SiFli's official, RT-Thread-based software package and the reference development path for SF32 firmware. Start there unless you have a deliberate reason to evaluate another ecosystem: it provides the broadest documented baseline for board support, Bluetooth, graphics, audio, storage, power management, and production work.
 
-<div align="center" markdown>
+Before building product features, establish and record one reproducible baseline:
 
-| Path | Best for | Status |
-|:-----|:---------|:-------|
-| [SiFli-SDK](platforms/sifli-sdk/overview.md) | Reference SF32 firmware, RT-Thread, Bluetooth, graphics, audio, storage, power, and production board support. | Official SiFli path. |
-| [CodeKit](tools/codekit.md) | SiFli-SDK development inside VS Code. | Official SiFli extension. |
-| [Zephyr](platforms/zephyr/overview.md) | Zephyr APIs, devicetree, downstream board work, and portable RTOS experiments. | OpenSiFli downstream work exists for SF32LB52 DevKit LCD. |
-| [Arduino](platforms/arduino/overview.md) | Sketches and quick tests through Arduino IDE or Arduino CLI. | OpenSiFli beta ArduinoCore-zephyr package exists for SF32LB52 DevKit LCD. |
-| [MicroPython](platforms/micropython/status.md) | REPL-driven scripting and quick experiments. | No official SF32 MicroPython flow found yet. |
-| [Rust](platforms/rust/overview.md) | Embedded Rust exploration with `sifli-hal` / `sifli-pac`. | Community / work-in-progress. |
+1. Select the exact SDK board configuration in [Board Configuration](platforms/sifli-sdk/board-configuration.md).
+2. Run the [Build, Flash, Monitor](platforms/sifli-sdk/build-flash-monitor.md) loop successfully.
+3. Save the SDK release or commit, board name, build command, flash command, serial settings, and a boot log.
+4. Start from the closest [example](examples/index.md), especially one that already exercises the product's hardest subsystem.
 
-</div>
+The resulting record is the reference point for later application changes, board ports, test failures, and field recovery.
 
-## Recommended Default
+## Find Guidance by Task
 
-Start with **SiFli-SDK** unless you have a clear reason not to. It is the vendor reference path and the best place to validate boards, flash flows, serial output, and hardware features before you evaluate another ecosystem.
-
-Move to another platform when the tradeoff is worth it:
-
-<div align="center"><em>Table: Recommended Default</em></div>
+<div align="center"><em>Table: SF32 development tasks</em></div>
 
 <div align="center" markdown>
 
-| If you need | Consider |
-|:-----------|:---------|
-| Official SF32 feature coverage and production firmware | SiFli-SDK |
-| SiFli-SDK with a guided editor workflow | CodeKit |
-| Zephyr devicetree, Kconfig, and RTOS APIs | Zephyr downstream |
-| Arduino IDE sketches on SF32LB52 DevKit LCD | ArduinoCore-zephyr beta |
-| Interactive Python scripting | Wait for official MicroPython artifacts |
-| Embedded Rust experimentation | `sifli-rs`, with production caution |
+| Task | Start here | Then use |
+|:----------------|:-----------|:---------|
+| Build, download, and read serial output every day | [Build, Flash, Monitor](platforms/sifli-sdk/build-flash-monitor.md) | [Tools](tools/index.md) for scripted download, trace, and crash utilities. |
+| Match firmware to a development board, module, or custom hardware | [Board Configuration](platforms/sifli-sdk/board-configuration.md) | The relevant Hardware guide and the closest board-specific example. |
+| Reuse a driver or middleware layer across projects | [Components and `sf_pkg`](platforms/sifli-sdk/components.md) | A minimal example and a documented configuration boundary. |
+| Implement a concrete peripheral or subsystem | [SiFli-SDK App Notes](platforms/sifli-sdk/sdk-application-notes.md) | The linked official SDK usage guide for exact APIs, configuration symbols, and commands. |
+| Start product work from code that already runs | [Examples](examples/index.md) | The matching board configuration, then test after each change. |
+| Diagnose a failure or collect product evidence | [Debugging and Diagnostics](platforms/sifli-sdk/debugging-diagnostics.md) | [Logging and Crash Analysis](firmware-topics/logging-crash-analysis.md). |
+| Change boot layout, storage, updates, USB, or power behavior | [Firmware Topics](firmware-topics/index.md) | The relevant partition, update, USB, power, or logging topic before changing code. |
 
 </div>
 
-## Develop Section Map
+## SiFli-SDK Application Notes
 
-<div align="center"><em>Table: Develop Section Map</em></div>
+The application-note collection is organized by integration task rather than SDK catalogue order. Begin with the immediate subsystem. Before adapting a configuration or command, check the stated chip-family scope, board configuration, SDK release, and hardware prerequisites.
+
+<div align="center"><em>Table: SiFli-SDK application-note paths</em></div>
 
 <div align="center" markdown>
 
-| Area | Use it when |
-|:-----|:------------|
-| [Software Paths](platforms/sifli-sdk/overview.md) | You need framework-specific setup, build, flash, and limitations. |
-| [Tools](tools/index.md) | You need flashing, logs, crash analysis, image tooling, RF/audio tools, or factory utilities. |
-| [Firmware Topics](firmware-topics/index.md) | You need boot layout, partitions, OTA, USB, power, logging, or crash-analysis guidance. |
-| [Examples](examples/index.md) | You need a known SDK or Zephyr sample to start from. |
+| Engineering area | Application-note starting point |
+|:-----------------|:--------------------------------|
+| Analog and sensors | [Sample with GPADC](platforms/sifli-sdk/application-notes/adc-sampling.md) · [Integrate and Read Sensors](platforms/sifli-sdk/application-notes/sensor-integration.md) |
+| Storage and graphics assets | [Use External Flash](platforms/sifli-sdk/application-notes/external-flash.md) · [Compress Graphics Assets with EZIP](platforms/sifli-sdk/application-notes/ezip-image-assets.md) |
+| Reliability, power, and debugging | [Configure the Watchdog](platforms/sifli-sdk/application-notes/watchdog.md) · [Configure and Measure Low Power](platforms/sifli-sdk/application-notes/low-power-measurement.md) · [Capture Logs and Analyze Crashes](platforms/sifli-sdk/application-notes/crash-analysis.md) |
+| RF and Bluetooth validation | [Run SiFli SDK RF Tests](platforms/sifli-sdk/application-notes/rf-performance-tests.md) · [Run Bluetooth Signaling Tests](platforms/sifli-sdk/application-notes/bluetooth-signalling-tests.md) · [Run Bluetooth Single-Item RF Tests](platforms/sifli-sdk/application-notes/bluetooth-single-tone-tests.md) |
 
 </div>
 
-## Recommended Progression
+## Navigate the Develop Section
 
-1. Validate the board with [SiFli-SDK](../getting-started/sifli/getting-started-sifli-sdk.md).
-2. Decide whether the product should stay on SiFli-SDK, move to Zephyr, use Arduino for prototyping, or wait for a more mature path.
-3. Learn the flash and monitor tools before changing application code.
-4. Understand the partition table before touching OTA, filesystem, or bootloader behavior.
-5. Start product features from a close example, not from a blank project.
-6. Record the exact board name, SDK/package version, flash command, and serial port that worked.
+<div align="center"><em>Table: Develop section map</em></div>
 
-## What Good Looks Like
+<div align="center" markdown>
 
-Before a platform path is ready for a product decision, you should be able to answer:
+| Area | Purpose |
+|:-----|:--------|
+| [SiFli-SDK](platforms/sifli-sdk/overview.md) | Establish the supported reference workflow: configuration, build, flashing, reusable components, and diagnostics. |
+| [SiFli-SDK App Notes](platforms/sifli-sdk/sdk-application-notes.md) | Apply the SDK to a focused task such as ADC, sensors, external Flash, low power, diagnostics, RF, or Bluetooth testing. |
+| [Examples](examples/index.md) | Select and adapt a working implementation for the exact board and hardest product subsystem. |
+| [Tools](tools/index.md) | Choose download, monitor, trace, crash, asset, and production tools for the workflow. |
+| [Firmware Topics](firmware-topics/index.md) | Make cross-cutting product decisions about partitions, OTA/DFU, USB, power management, and diagnostic evidence. |
+| [Experimental / Community](platforms/zephyr/overview.md) | Evaluate Zephyr, Arduino, MicroPython, or Rust with the scope and maturity limits stated on each page. |
 
-- Which exact board name or FQBN is used?
-- Which release, branch, package version, or commit was tested?
-- Which command builds the firmware?
-- Which command flashes the firmware?
-- Which serial port and baud rate show logs?
-- Which examples are known to run on the target board?
-- Which peripherals are supported, experimental, or missing?
-- How do you recover a board after a failed flash?
+</div>
 
-If any answer is missing, treat that platform as exploratory until the gap is closed.
+## Evaluate Community Paths Deliberately
 
-## Source Policy
+The [Experimental / Community](platforms/zephyr/overview.md) group is for teams with a reason to work beyond the reference SDK path. It does not imply equivalent production support.
 
-Concrete commands, package names, board names, baud rates, and runner details in this section come from public SiFli/OpenSiFli materials where available. If a page recommends work that SiFli still needs to finish, it says so in a **SiFli Team Should Add** section or in Documentation Assumptions and Open Items.
+<div align="center"><em>Table: Community-path fit</em></div>
 
-## Accuracy Notes
+<div align="center" markdown>
 
-This section avoids presenting undocumented work as finished product support. Where a path is beta, downstream-only, or not found, the page says so directly. The companion page Documentation Assumptions and Open Items records items that need SiFli confirmation before they should be treated as official user guidance.
+| Path | Consider it when | Treat it as |
+|:-----|:-----------------|:------------|
+| [Zephyr](platforms/zephyr/overview.md) | You need Zephyr APIs, devicetree, Kconfig, or downstream board work. | A downstream, board-specific evaluation path. |
+| [Arduino](platforms/arduino/overview.md) | You need sketches or a quick peripheral prototype on its supported board. | A beta, board-scoped path. |
+| [MicroPython](platforms/micropython/status.md) | You are assessing future scripting support. | A status page until a reproducible public port exists. |
+| [Rust](platforms/rust/overview.md) | You can evaluate HAL/PAC work and contribute upstream fixes. | A community work-in-progress path. |
 
-!!! note "Auto-generated content"
-    This page was compiled/drafted without an existing source document. Verify technical claims against SiFli's official documentation before relying on them.
+</div>
+
+Before committing a product to one of these paths, validate every required peripheral, Flash layout, debug method, and recovery procedure on the exact board. Keep the tested revision, configuration, commands, and results with the product source.
+
+## Product-Ready Development Evidence
+
+Before treating a firmware path as product-ready, make sure you can answer:
+
+- Which chip, board or custom-hardware revision, and configuration were tested?
+- Which SDK, package, branch, or commit produced the firmware?
+- Which build, flash, monitoring, and full-recovery commands work?
+- Which example or test proves each required peripheral and product subsystem?
+- Which partition layout, update behavior, power target, and crash-decoding path have been validated?
+
+If an answer is missing, the work may still be a useful prototype, but it is not yet a repeatable product baseline.

@@ -77,14 +77,5 @@ When reporting a crash, include:
 - Crash dump or assert output.
 - Whether the issue reproduces on a clean SDK example.
 
-## SiFli Team Should Add
-
-- Links from SDK docs to each diagnostic tool.
-- Minimal examples for `AssertDump`, `SiFli_Trace`, and `UsartServer`.
-- A standard crash-report template.
-- A guide showing how to map fault addresses back to symbols.
-- Known limitations for debug probes, UART logs, and shell availability by board.
-- A decision tree for "build failure, flash failure, boot failure, runtime failure."
-
 !!! note "Auto-generated content"
     This page was compiled/drafted without an existing source document. Verify technical claims against SiFli's official documentation before relying on them.

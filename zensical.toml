@@ -19,32 +19,32 @@ Copyright &copy; 2026 μForge.io · <a href='/about/'>About</a> · <a href='/abo
 # Nav structure (controls sidebar only -- Zensical builds every .md under
 # docs_dir regardless of nav). Read more: https://zensical.org/docs/setup/navigation/
 nav = [
-  { "Explore SF32" = [
-    { "Overview" = "explore-sf32/index.md" },
+  { "SF32 Products" = [
+    { "Overview" = "sf32-products/index.md" },
     { "SF32 Family" = [
-      "explore-sf32/family/SF32_family.md",
-      "explore-sf32/family/SF32_namingrule.md",
-      "explore-sf32/family/product-planning.md"
+      "sf32-products/family/SF32_family.md",
+      "sf32-products/family/SF32_namingrule.md",
+      "sf32-products/family/product-planning.md"
     ]},
-    { "SF32 Product Selector" = "explore-sf32/product-selector.md" },
+    { "SF32 Product Selector" = "sf32-products/product-selector.md" },
     { "Chips" = [
-      "explore-sf32/chips/SF32LB52x.md",
-      "explore-sf32/chips/SF32LB55x.md",
-      "explore-sf32/chips/SF32LB56x.md",
-      "explore-sf32/chips/SF32LB58x.md"
+      "sf32-products/chips/SF32LB52x.md",
+      "sf32-products/chips/SF32LB55x.md",
+      "sf32-products/chips/SF32LB56x.md",
+      "sf32-products/chips/SF32LB58x.md"
     ]},
     { "Modules" = [
-      "explore-sf32/modules/SF32LB52-MOD-1.md",
-      "explore-sf32/modules/SF32LB56-MOD.md",
-      "explore-sf32/modules/SF32LB58-MOD.md"
+      "sf32-products/modules/SF32LB52-MOD-1.md",
+      "sf32-products/modules/SF32LB56-MOD.md",
+      "sf32-products/modules/SF32LB58-MOD.md"
     ]},
     { "Dev Boards" = [
-      "explore-sf32/devkits/SF32LB52-DevKit-LCD.md",
-      "explore-sf32/devkits/SF32LB52-DevKit-Core-3p3.md",
-      "explore-sf32/devkits/SF32LB52-DevKit-Nano.md",
-      "explore-sf32/devkits/SF32LB52-DevKit-ULP.md",
-      "explore-sf32/devkits/SF32LB56-DevKit-LCD.md",
-      "explore-sf32/devkits/SF32LB58-DevKit-LCD.md"
+      "sf32-products/devkits/SF32LB52-DevKit-LCD.md",
+      "sf32-products/devkits/SF32LB52-DevKit-Core-3p3.md",
+      "sf32-products/devkits/SF32LB52-DevKit-Nano.md",
+      "sf32-products/devkits/SF32LB52-DevKit-ULP.md",
+      "sf32-products/devkits/SF32LB56-DevKit-LCD.md",
+      "sf32-products/devkits/SF32LB58-DevKit-LCD.md"
     ]}
   ]},
   { "Getting Started" = [
@@ -68,22 +68,27 @@ nav = [
   ]},
   { "Develop" = [
     { "Overview" = "develop/index.md" },
-    "develop/software-support-matrix.md",
-    { "Software Paths" = [
-      { "SiFli-SDK" = [
-        "develop/platforms/sifli-sdk/overview.md",
-        "develop/platforms/sifli-sdk/build-flash-monitor.md",
-        "develop/platforms/sifli-sdk/board-configuration.md",
-        "develop/platforms/sifli-sdk/components.md",
-        "develop/platforms/sifli-sdk/debugging-diagnostics.md"
-      ]},
-      { "Experimental / Community" = [
-        "develop/platforms/zephyr/overview.md",
-        "develop/platforms/arduino/overview.md",
-        "develop/platforms/micropython/status.md",
-        "develop/platforms/rust/overview.md"
-      ]}
+    { "SiFli-SDK" = [
+      "develop/platforms/sifli-sdk/overview.md",
+      "develop/platforms/sifli-sdk/build-flash-monitor.md",
+      "develop/platforms/sifli-sdk/board-configuration.md",
+      "develop/platforms/sifli-sdk/components.md",
+      "develop/platforms/sifli-sdk/debugging-diagnostics.md"
     ]},
+    { "SiFli-SDK App Notes" = [
+      "develop/platforms/sifli-sdk/sdk-application-notes.md",
+      "develop/platforms/sifli-sdk/application-notes/adc-sampling.md",
+      "develop/platforms/sifli-sdk/application-notes/sensor-integration.md",
+      "develop/platforms/sifli-sdk/application-notes/external-flash.md",
+      "develop/platforms/sifli-sdk/application-notes/watchdog.md",
+      "develop/platforms/sifli-sdk/application-notes/ezip-image-assets.md",
+      "develop/platforms/sifli-sdk/application-notes/low-power-measurement.md",
+      "develop/platforms/sifli-sdk/application-notes/crash-analysis.md",
+      "develop/platforms/sifli-sdk/application-notes/rf-performance-tests.md",
+      "develop/platforms/sifli-sdk/application-notes/bluetooth-signalling-tests.md",
+      "develop/platforms/sifli-sdk/application-notes/bluetooth-single-tone-tests.md"
+    ]},
+    { "Examples" = [ "develop/examples/index.md" ] },
     { "Tools" = [
       "develop/tools/index.md",
       "develop/tools/codekit.md"
@@ -96,7 +101,12 @@ nav = [
       "develop/firmware-topics/power-management.md",
       "develop/firmware-topics/logging-crash-analysis.md"
     ]},
-    { "Examples" = [ "develop/examples/index.md" ] }
+    { "Experimental / Community" = [
+      "develop/platforms/zephyr/overview.md",
+      "develop/platforms/arduino/overview.md",
+      "develop/platforms/micropython/status.md",
+      "develop/platforms/rust/overview.md"
+    ]}
   ]},
   { "Hardware" = [
     { "Overview" = "hardware/index.md" },
@@ -159,8 +169,19 @@ nav = [
   ]},
   { "Projects" = [
     { "Overview" = "projects/index.md" },
-    "projects/sf32-xiaozhi.md",
-    "projects/arduboy2-sifli.md"
+    { "SiFli-SDK Projects" = [
+      "projects/sf32-xiaozhi.md",
+      "projects/sf32-ble-talkback.md",
+      "projects/sf32-epd-reader.md",
+      "projects/superkey.md",
+      "projects/radiation-monitor.md",
+      "projects/pocket-pi.md",
+      "projects/lilygo-t-display-sf32.md"
+    ]},
+    { "Zephyr Projects" = [
+      "projects/arduboy2-sifli.md",
+      "projects/zmk-sf32.md"
+    ]}
   ]},
   { "Learn" = [
     { "Overview" = "learn/index.md" },
@@ -216,7 +237,7 @@ extra_css = [
     "stylesheets/extra.css",
     "stylesheets/product-selector.css",
 ]
-extra_javascript = ["javascripts/product-selector.js", "javascripts/palette-sync.js"]
+extra_javascript = ["javascripts/product-selector.js", "javascripts/palette-sync.js", "javascripts/spotlight-hero.js"]
 
 #last_updated = "true"
 #[project.last_updated]
