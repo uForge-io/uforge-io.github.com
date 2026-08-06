@@ -57,14 +57,14 @@ Choose the chip or module at the center of your design, then open the matching i
 ## Follow the Hardware Path
 
 1. **Reuse a reference baseline when it fits.** Reproduce its stated board and software baseline before adapting it; otherwise, begin directly with the selected device guide.
-2. **Implement and review.** Use the matching guide before schematic capture, then apply its checklist during schematic and layout review. Validate the intended software and peripheral path on the closest [development board](../explore-sf32/index.md) before freezing hardware.
+2. **Implement and review.** Use the matching guide before schematic capture, then apply its checklist during schematic and layout review. Validate the intended software and peripheral path on the closest [development board](../sf32-products/index.md) before freezing hardware.
 3. **Use M2 Modules when the carrier interface is in scope.** Apply the [M2 naming rules](m2-modules/M2%20Interface%20Naming%20Rules.md) and confirm the [interface definition](m2-modules/M2-interface-definition.md) before committing to the module interface.
 4. **Verify CAD and component choices.** Use [CAD & Components](cad-components/components-and-cad-libraries.md) to cross-check the symbol, footprint, package drawing, AVL, and critical component assumptions for the exact part.
 5. **Close the release gate.** Move to [Design for Production](design-for-production.md) with the design evidence, approved deviations, remaining risks, and manufacturing-test assumptions.
 
 ## Stay Connected to the Platform Path
 
-If the part, module, or board direction is still uncertain, return to [Explore SF32](../explore-sf32/index.md). For a repeatable toolchain, flash, and serial-log baseline, use [Getting Started](../getting-started/index.md). Continue to [Develop](../develop/index.md) for software implementation guidance that must be validated alongside the hardware.
+If the part, module, or board direction is still uncertain, return to [SF32 Products](../sf32-products/index.md). For a repeatable toolchain, flash, and serial-log baseline, use [Getting Started](../getting-started/index.md). Continue to [Develop](../develop/index.md) for software implementation guidance that must be validated alongside the hardware.
 
 !!! note "Auto-generated content"
     This page was compiled/drafted without an existing source document. Verify technical claims against SiFli's official documentation before relying on them.

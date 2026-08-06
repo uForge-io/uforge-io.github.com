@@ -14,10 +14,10 @@ The SF32LB52-DevKit-Core-3p3 is a compact 3.3V development board for direct eval
 
 The board is only 30.88mm x 68mm, making it small enough for breadboard-style prototypes while still providing a practical set of interfaces for SF32LB52x firmware and hardware bring-up.
 
-![SF32LB52-DevKit-Core-3p3 front view](assets/sf32lb52x/Core-3p3_Front_look.png){ loading="lazy" }
+![SF32LB52-DevKit-Core-3p3 front view](assets/sf32lb52x/Core-3p3_Front_look.png){ width="50%" loading="lazy" }
 <div align="center"><em>SF32LB52-DevKit-Core-3p3 — Front View</em></div>
 
-![SF32LB52-DevKit-Core-3p3 back view](assets/sf32lb52x/Core-3p3_Back_look.png){ loading="lazy" }
+![SF32LB52-DevKit-Core-3p3 back view](assets/sf32lb52x/Core-3p3_Back_look.png){ width="50%" loading="lazy" }
 <div align="center"><em>SF32LB52-DevKit-Core-3p3 — Back View</em></div>
 
 ## Board Variants

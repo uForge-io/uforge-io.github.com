@@ -111,20 +111,12 @@ Start with the first-run guide when a board cannot be detected, flashed, or made
 
 For a useful issue report, include the package version, IDE or CLI version, operating system, FQBN, build mode, link mode, board revision, complete upload output, and serial log.
 
-## What SiFli Should Add
-
-- A versioned compatibility matrix for the Arduino package, Zephyr loader, `sftool`, and supported board revisions.
-- A tested Arduino-library and peripheral-support matrix, including known limitations.
-- Loader update, rollback, and recovery instructions for every supported board.
-- Minimal, release-tested examples for GPIO, serial I/O, I2C, SPI, display, storage, and low-power behavior.
-- A support bundle format that captures the package version, FQBN, modes, upload log, and serial log.
-
 ## Related Pages
 
 - [Getting Started with Arduino](../../../getting-started/arduino/getting-started-arduino.md)
 - [Zephyr](../zephyr/overview.md)
 - [SiFli-SDK](../sifli-sdk/overview.md)
-- [SF32LB52 DevKit LCD](../../../explore-sf32/devkits/SF32LB52-DevKit-LCD.md)
+- [SF32LB52 DevKit LCD](../../../sf32-products/devkits/SF32LB52-DevKit-LCD.md)
 
 !!! note "Auto-generated content"
     This page was compiled/drafted without an existing source document. Verify technical claims against SiFli's official documentation before relying on them.

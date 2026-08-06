@@ -68,13 +68,5 @@ For every product build, document:
 
 </div>
 
-## SiFli Team Should Add
-
-- A beginner partition-table guide.
-- Examples for no-OTA, single-slot OTA, dual-slot OTA, filesystem, and factory-data layouts.
-- Migration notes for partition table syntax versions.
-- A validation tool or checklist for overlapping regions.
-- A visual map generator for release documentation.
-
 !!! note "Auto-generated content"
     This page was compiled/drafted without an existing source document. Verify technical claims against SiFli's official documentation before relying on them.

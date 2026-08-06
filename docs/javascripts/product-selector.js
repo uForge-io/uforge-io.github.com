@@ -1,4 +1,4 @@
-/* Interactive SF32 product-selection table (docs/explore-sf32/product-selector.md
+/* Interactive SF32 product-selection table (docs/sf32-products/product-selector.md
    and its Chinese twin). Loads docs/assets/data/product-selector.json (shared
    between both languages via tools/link-shared-assets.sh) and renders a
    filterable table client-side -- there's no backend, so filtering,

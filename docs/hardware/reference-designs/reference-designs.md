@@ -10,7 +10,7 @@ tags:
 
 Reference designs turn the μForge product-planning path into a repeatable, evidence-based implementation journey. Each one is a reusable hardware and software baseline: it identifies the starting hardware, software baseline, available design material, bring-up evidence, and reuse limits. It is not interchangeable with a released schematic, BOM, or production qualification package.
 
-Use [Plan an SF32 Product](../../explore-sf32/family/product-planning.md) to form the initial shortlist, then choose the closest journey below to organize board validation and product-risk reduction.
+Use [Plan an SF32 Product](../../sf32-products/family/product-planning.md) to form the initial shortlist, then choose the closest journey below to organize board validation and product-risk reduction.
 
 ## Reference Designs and Projects
 

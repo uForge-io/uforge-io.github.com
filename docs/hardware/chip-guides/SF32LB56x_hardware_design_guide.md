@@ -22,7 +22,7 @@ This document assumes a basic understanding of embedded hardware design, schemat
 [SF32LB56xV Hardware Application Note]: https://wiki.sifli.com/en/hardware/SF32LB56xV-HW-Application.html
 [SF32LB56xU Hardware Application Source]: https://github.com/OpenSiFli/SiFli-Wiki/blob/main/source/en/hardware/SF32LB56xU-HW-Application.md
 [SF32LB56xV Hardware Application Source]: https://github.com/OpenSiFli/SiFli-Wiki/blob/main/source/en/hardware/SF32LB56xV-HW-Application.md
-[SF32 Family Overview]: ../../explore-sf32/family/SF32_family.md
+[SF32 Family Overview]: ../../sf32-products/family/SF32_family.md
 [SiFli Approved Vendor List (AVL)]: ../cad-components/sifli-approved-vendor-list.md
 [Buy Samples]: https://sifli.taobao.com/
 [Buy Dev Kits]: https://sifli.taobao.com/
@@ -59,11 +59,11 @@ SF32LB56x targets richer display and HMI products than BLE-only sensor nodes. Th
 
 The U variant uses a QFN68L package. The V variant uses a WBBGA175 package and requires more careful fanout, via, and HDI-process planning.
 
-![Figure 3.2-1: SF32LB56xU QFN68L Pin Distribution](../../explore-sf32/chips/assets/56x/sf32lb56xU-ballmap.png){ width="100%" loading="lazy" }
+![Figure 3.2-1: SF32LB56xU QFN68L Pin Distribution](../../sf32-products/chips/assets/56x/sf32lb56xU-ballmap.png){ width="100%" loading="lazy" }
 
 <div align="center"><em>Figure 3.2-1: SF32LB56xU QFN68L Pin Distribution</em></div>
 
-![Figure 3.2-2: SF32LB56xV WBBGA175 Pin Distribution](../../explore-sf32/chips/assets/56x/sf32lb56xV-ballmap.png){ width="100%" loading="lazy" }
+![Figure 3.2-2: SF32LB56xV WBBGA175 Pin Distribution](../../sf32-products/chips/assets/56x/sf32lb56xV-ballmap.png){ width="100%" loading="lazy" }
 
 <div align="center"><em>Figure 3.2-2: SF32LB56xV WBBGA175 Pin Distribution</em></div>
 
@@ -78,11 +78,11 @@ The U variant uses a QFN68L package. The V variant uses a WBBGA175 package and r
 
 ### 3.4. Typical Applications
 
-![Figure 3.4-1: SF32LB56xU Smart Watch Application Block Diagram](../../explore-sf32/chips/assets/56x/sf32lb56xU-watch-app-diagram.png){ width="100%" loading="lazy" }
+![Figure 3.4-1: SF32LB56xU Smart Watch Application Block Diagram](../../sf32-products/chips/assets/56x/sf32lb56xU-watch-app-diagram.png){ width="100%" loading="lazy" }
 
 <div align="center"><em>Figure 3.4-1: SF32LB56xU Smart Watch Application Block Diagram</em></div>
 
-![Figure 3.4-2: SF32LB56xV Smart Watch Application Block Diagram](../../explore-sf32/chips/assets/56x/sf32lb56xV-watch-app-diagram.png){ width="100%" loading="lazy" }
+![Figure 3.4-2: SF32LB56xV Smart Watch Application Block Diagram](../../sf32-products/chips/assets/56x/sf32lb56xV-watch-app-diagram.png){ width="100%" loading="lazy" }
 
 <div align="center"><em>Figure 3.4-2: SF32LB56xV Smart Watch Application Block Diagram</em></div>
 

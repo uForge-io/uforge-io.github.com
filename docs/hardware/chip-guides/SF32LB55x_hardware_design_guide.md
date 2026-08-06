@@ -26,7 +26,7 @@ SiFli's chip model guide notes one important caveat: the 55x suffix naming preda
 [SF32LB55x User Manual]: https://downloads.sifli.com/docs/user%20manual/SF32LB55x/UM5501%E2%80%90SF32LB55x%E2%80%90EN.pdf
 [SF32LB55x SDK Documentation]: https://docs.sifli.com/projects/sdk/latest/sf32lb55x/index.html
 [SF32LB55x API Reference]: https://docs.sifli.com/projects/sdk/latest/sf32lb55x/api/index.html
-[SF32 Family Overview]: ../../explore-sf32/family/SF32_family.md
+[SF32 Family Overview]: ../../sf32-products/family/SF32_family.md
 [SiFli Approved Vendor List (AVL)]: ../cad-components/sifli-approved-vendor-list.md
 [Buy Samples]: https://sifli.taobao.com/
 [Buy Dev Kits]: https://sifli.taobao.com/
@@ -68,19 +68,19 @@ SF32LB55x is a mainstream AIoT MCU family for BLE-connected, sensor-rich, low-po
 
 SF32LB55x supports QFN68L and multiple BGA packages. Select the package early because memory interfaces, fanout, PCB process requirements, and available GPIO differ by package.
 
-![Figure 3.2-1: QFN68L Pin Distribution](../../explore-sf32/chips/assets/55x/SF32LB55x-QFN68-Leadmap.svg){ width="100%" loading="lazy" }
+![Figure 3.2-1: QFN68L Pin Distribution](../../sf32-products/chips/assets/55x/SF32LB55x-QFN68-Leadmap.svg){ width="100%" loading="lazy" }
 
 <div align="center"><em>Figure 3.2-1: QFN68L Pin Distribution</em></div>
 
-![Figure 3.2-2: BGA145 Pin Distribution](../../explore-sf32/chips/assets/55x/SF32LB55x-BGA145-Ballmap.svg){ width="100%" loading="lazy" }
+![Figure 3.2-2: BGA145 Pin Distribution](../../sf32-products/chips/assets/55x/SF32LB55x-BGA145-Ballmap.svg){ width="100%" loading="lazy" }
 
 <div align="center"><em>Figure 3.2-2: BGA145 Pin Distribution</em></div>
 
-![Figure 3.2-3: BGA169 SF32LB557V8N6 Pin Distribution](../../explore-sf32/chips/assets/55x/SF32LB55x-BGA169-1-Ballmap.svg){ width="100%" loading="lazy" }
+![Figure 3.2-3: BGA169 SF32LB557V8N6 Pin Distribution](../../sf32-products/chips/assets/55x/SF32LB55x-BGA169-1-Ballmap.svg){ width="100%" loading="lazy" }
 
 <div align="center"><em>Figure 3.2-3: BGA169 SF32LB557V8N6 Pin Distribution</em></div>
 
-![Figure 3.2-4: BGA169 SF32LB557VD3A6 Pin Distribution](../../explore-sf32/chips/assets/55x/SF32LB55x-BGA169-2-Ballmap.svg){ width="100%" loading="lazy" }
+![Figure 3.2-4: BGA169 SF32LB557VD3A6 Pin Distribution](../../sf32-products/chips/assets/55x/SF32LB55x-BGA169-2-Ballmap.svg){ width="100%" loading="lazy" }
 
 <div align="center"><em>Figure 3.2-4: BGA169 SF32LB557VD3A6 Pin Distribution</em></div>
 

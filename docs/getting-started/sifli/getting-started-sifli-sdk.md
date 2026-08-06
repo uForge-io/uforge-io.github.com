@@ -16,7 +16,7 @@ If you plan to use Arduino, Zephyr, or MicroPython, it is still worth running th
 
 **Hardware**
 
-- An SF32 development board, such as the [SF32LB52-DevKit-LCD](../../explore-sf32/devkits/SF32LB52-DevKit-LCD.md), or another board identified from the [SF32 Family](../../explore-sf32/family/SF32_family.md).
+- An SF32 development board, such as the [SF32LB52-DevKit-LCD](../../sf32-products/devkits/SF32LB52-DevKit-LCD.md), or another board identified from the [SF32 Family](../../sf32-products/family/SF32_family.md).
 - A USB Type-C **data** cable connected to the board's USB-to-UART port, not a charge-only cable or a secondary USB-function port.
 - A computer running Windows, macOS, or Linux.
 
@@ -92,6 +92,27 @@ If you plan to use Arduino, Zephyr, or MicroPython, it is still worth running th
 
 `install.sh` / `install.bat` downloads the matching compiler, debugger, and Python dependencies. Re-run it when the SDK version changes. `export.sh` / `export.bat` activates that environment in your current terminal; run it each time you open a new terminal to build.
 
+## Choose the Board Target
+
+The value supplied to `scons --board` is the board directory name under `customer/boards`. Choose the target that matches the memory and display configuration fitted to your kit; the names below are case-sensitive.
+
+<div align="center" markdown>
+
+*SiFli-SDK Development Kit Build Targets*
+
+| Development kit | Exact `scons --board` target(s) |
+| --- | --- |
+| SF32LB52-DevKit-Core-3p3 | `sf32lb52-core_e8r16`<br>`sf32lb52-core_n16r16` |
+| SF32LB52-DevKit-LCD | `sf32lb52-lcd_52d`<br>`sf32lb52-lcd_n16r8`<br>`sf32lb52-lcd_a128r16` |
+| SF32LB52-DevKit-Nano | `sf32lb52-nano_n4`<br>`sf32lb52-nano_n16r16` |
+| SF32LB52-DevKit-ULP | `sf32lb52-lchspi-ulp` |
+| SF32LB56-DevKit-LCD | `sf32lb56-lcd_a128r12n1`<br>`sf32lb56-lcd_n16r12n1` |
+| SF32LB58-DevKit-LCD | `sf32lb58-lcd_a128r32n1_dsi`<br>`sf32lb58-lcd_a128r32n1_qspi`<br>`sf32lb58-lcd_e4r32n1_dsi`<br>`sf32lb58-lcd_n16r32n1_dpi`<br>`sf32lb58-lcd_n16r32n1_dsi`<br>`sf32lb58-lcd_n16r32n1_qspi`<br>`sf32lb58-lcd_n16r64n4` |
+
+</div>
+
+For a dual-core board, omitting a core suffix builds the HCPU configuration. Use `_hcpu` explicitly when helpful, or add `_lcpu` to build the LCPU configuration; for example, `scons --board=eh-lb551_lcpu`. If your board configuration is absent from this table, use SiFli's [supported boards list](https://docs.sifli.com/projects/sdk/latest/sf32lb52x/supported_boards/index.html) as the current source of truth.
+
 ## Build the "Hello World" Example
 
 With the environment loaded, build the RT-Thread `hello_world` example for your board:
@@ -144,7 +165,7 @@ You are ready to move on when:
 
 ## Where to Go Next
 
-- **Pick your chip:** compare the LB52, LB55, LB56, and LB58 series on the [SF32 Family Overview](../../explore-sf32/family/SF32_family.md).
+- **Pick your chip:** compare the LB52, LB55, LB56, and LB58 series on the [SF32 Family Overview](../../sf32-products/family/SF32_family.md).
 - **Explore more examples:** beyond `hello_world`, the SDK ships examples for BLE, classic Bluetooth, LVGL graphics, audio, and low-power modes.
 - **Prefer a different framework:** continue with [Arduino](../arduino/getting-started-arduino.md), [Zephyr](../zephyr/getting-started-zephyr-upstream.md), or [MicroPython](../micropython/getting-started-micropython.md).
 - **Stuck:** check the [SiFli FAQ](https://wiki.sifli.com/en/faq/index.html) for common toolchain, J-Link, and debugging issues.
@@ -153,7 +174,6 @@ You are ready to move on when:
 
 This guide is usable today, but it would be stronger if SiFli added:
 
-- A short table mapping each dev kit to its exact `scons --board` name.
 - The default UART baud rate for each first-run board.
 - Screenshots or sample logs for a successful `hello_world` boot.
 - A recovery recipe for interrupted UART downloads.

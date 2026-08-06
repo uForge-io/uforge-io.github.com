@@ -27,7 +27,7 @@ Maximize Bluetooth sensitivity and radiated performance by preserving impedance 
 
 RF trace characteristic impedance is 50 Ω. If the antenna is already matched, no additional RF components are required, but a reserved π-type matching network is still recommended for spurious filtering or antenna tuning.
 
-![Figure 5.4-1: RF Circuit Diagram](../../explore-sf32/chips/assets/52xB/sf32lb52X-B-rf-diagram.png){ width="100%" loading="lazy" }
+![Figure 5.4-1: RF Circuit Diagram](../../sf32-products/chips/assets/52xB/sf32lb52X-B-rf-diagram.png){ width="100%" loading="lazy" }
 
 <div align="center"><em>Figure 5.4-1: RF Circuit Diagram</em></div>
 
@@ -227,15 +227,15 @@ The shared audio interface provides:
 
 </div>
 
-![Figure 5.5-1: Analog MEMS MIC Single-Ended Input Circuit](../../explore-sf32/chips/assets/52xB/sf32lb52X-B-MEMS-MIC.png){ width="100%" loading="lazy" }
+![Figure 5.5-1: Analog MEMS MIC Single-Ended Input Circuit](../../sf32-products/chips/assets/52xB/sf32lb52X-B-MEMS-MIC.png){ width="100%" loading="lazy" }
 
 <div align="center"><em>Figure 5.5-1: Analog MEMS MIC Single-Ended Input Circuit</em></div>
 
-![Figure 5.5-2: Analog ECM MIC Single-Ended Input Circuit](../../explore-sf32/chips/assets/52xB/sf32lb52X-B-ECM-MIC.png){ width="100%" loading="lazy" }
+![Figure 5.5-2: Analog ECM MIC Single-Ended Input Circuit](../../sf32-products/chips/assets/52xB/sf32lb52X-B-ECM-MIC.png){ width="100%" loading="lazy" }
 
 <div align="center"><em>Figure 5.5-2: Analog ECM MIC Single-Ended Input Circuit</em></div>
 
-![Figure 5.5-3: Analog Audio PA Circuit](../../explore-sf32/chips/assets/52xB/sf32lb52X-B-DAC-PA.png){ width="100%" loading="lazy" }
+![Figure 5.5-3: Analog Audio PA Circuit](../../sf32-products/chips/assets/52xB/sf32lb52X-B-DAC-PA.png){ width="100%" loading="lazy" }
 
 <div align="center"><em>Figure 5.5-3: Analog Audio PA Circuit</em></div>
 
@@ -268,7 +268,7 @@ Provide reliable user-input and reset behavior without false wake events, stuck 
 
 PA34 supports long-press reset and can be designed as a combined power on/off and long-press-reset button. The long-press reset function is active-high, so the default state should be pulled low and driven high when the button is pressed.
 
-![Figure 5.5-4: Power / Long-Press-Reset Button Circuit](../../explore-sf32/chips/assets/52xB/sf32lb52X-B-PWKEY.png){ width="100%" loading="lazy" }
+![Figure 5.5-4: Power / Long-Press-Reset Button Circuit](../../sf32-products/chips/assets/52xB/sf32lb52X-B-PWKEY.png){ width="100%" loading="lazy" }
 
 <div align="center"><em>Figure 5.5-4: Power / Long-Press-Reset Button Circuit</em></div>
 
@@ -276,7 +276,7 @@ PA34 supports long-press reset and can be designed as a combined power on/off an
 
 Use the reference design as the baseline for the rotary encoder button circuit.
 
-![Figure 5.5-5: Mechanical Rotary Encoder Button Circuit](../../explore-sf32/chips/assets/52xB/sf32lb52X-B-XNKEY.png){ width="100%" loading="lazy" }
+![Figure 5.5-5: Mechanical Rotary Encoder Button Circuit](../../sf32-products/chips/assets/52xB/sf32lb52X-B-XNKEY.png){ width="100%" loading="lazy" }
 
 <div align="center"><em>Figure 5.5-5: Mechanical Rotary Encoder Button Circuit</em></div>
 
@@ -306,11 +306,11 @@ Deliver repeatable haptic feedback while keeping motor surge current, switching 
 
 The SF32LB52x supports a PWM output for driving a vibration motor through an external driver stage.
 
-![Figure 5.5-6: Vibration Motor Driver Circuit (SF32LB520/3/5/7 reference; functionally equivalent on the regular-powered variant)](../../explore-sf32/chips/assets/52xA/sf32lb52x-A-VIB.png){ width="100%" loading="lazy" }
+![Figure 5.5-6: Vibration Motor Driver Circuit (SF32LB520/3/5/7 reference; functionally equivalent on the regular-powered variant)](../../sf32-products/chips/assets/52xA/sf32lb52x-A-VIB.png){ width="100%" loading="lazy" }
 
 <div align="center"><em>Figure 5.5-6: Vibration Motor Driver Circuit (SF32LB520/3/5/7 reference; functionally equivalent on the regular-powered variant)</em></div>
 
-![Figure 5.5-7: Vibration Motor Driver Circuit (52B/D/E/G/J Reference)](../../explore-sf32/chips/assets/52xB/sf32lb52X-B-VIB.png){ width="100%" loading="lazy" }
+![Figure 5.5-7: Vibration Motor Driver Circuit (52B/D/E/G/J Reference)](../../sf32-products/chips/assets/52xB/sf32lb52X-B-VIB.png){ width="100%" loading="lazy" }
 
 <div align="center"><em>Figure 5.5-7: Vibration Motor Driver Circuit (52B/D/E/G/J Reference)</em></div>
 

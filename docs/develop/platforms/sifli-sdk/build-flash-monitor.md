@@ -92,6 +92,12 @@ Keep a note of:
 
 </div>
 
+## Start from a Matching Example
+
+Before creating or heavily modifying a project, choose the closest [SDK example](../../examples/index.md) that matches the board and critical subsystem. Build, flash, and monitor that unmodified baseline first; then keep its board name, SDK release, commands, and expected output with the adapted project.
+
+If you use [CodeKit](../../tools/codekit.md), preserve the same evidence and confirm that its editor actions can be reproduced through the SDK command flow.
+
 ## Troubleshooting
 
 <div align="center"><em>Table: Troubleshooting</em></div>
@@ -120,13 +126,6 @@ Before handing a project to another developer, include:
 - Monitor settings.
 - Expected first log lines.
 - Recovery command.
-
-## SiFli Team Should Add
-
-- Official `sftool` install and command examples for each dev kit.
-- A table of default console baud rates by board.
-- Download-mode button timing for every board.
-- Common `uart_download` and `sftool` error messages with fixes.
 
 !!! note "Auto-generated content"
     This page was compiled/drafted without an existing source document. Verify technical claims against SiFli's official documentation before relying on them.

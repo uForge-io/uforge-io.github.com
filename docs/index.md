@@ -10,23 +10,19 @@ hide:
   - generator
 ---
 
-<div class="uf-hero" markdown>
+<div class="uf-hero uf-spotlight-hero" markdown>
 <div class="uf-hero-content" markdown>
 
 <span class="uf-badge">OPEN SOURCE · SILICON TO PRODUCTION · FOR EMBEDDED DEVELOPERS</span>
 
-# Build the Next Generation<br> of Embedded Devices
-
-<!-- 
-***μForge.io*** is an open-source development platform for innovative semiconductor platforms, starting with the SF32 family of ultra-low-power microcontrollers from SiFli. High performance, rich peripherals, and modern development tools—everything you need to build smarter products-faster.
---->
+# Build the Next Generation<br>of Embedded Devices
 
 ***μForge.io*** is an open-source development platform for innovative semiconductor solutions, beginning with SiFli's SF32 family of ultra-low-power microcontrollers. From silicon and modules to development boards, SDKs, documentation, and production-ready reference designs, ***μForge.io*** brings the full stack together in one place, helping developers take connected, intelligent, and energy-efficient embedded products from idea to production faster and with less friction.
 
 <div class="uf-hero-actions" markdown>
 
 [Get Started :material-arrow-right:](getting-started/index.md){ .md-button .md-button--primary }
-[Explore SF32 :material-file-document-outline:](explore-sf32/family/SF32_family.md){ .md-button }
+[SF32 Products :material-file-document-outline:](sf32-products/family/SF32_family.md){ .md-button }
 [GitHub :fontawesome-brands-github:](https://github.com/uforge-io){ .md-button }
 
 </div>
@@ -44,9 +40,44 @@ hide:
 </div>
 
 </div>
-<div class="uf-hero-visual" markdown>
+<div class="uf-spotlight-field" aria-label="Explore the μForge platform" markdown>
 
-![SF32 MCU — Bluetooth 6.3, 2D/2.5D GPU, multiple display interfaces, AI accelerator, ultra-low power, audio codec](assets/home/sf32-chip-hero.png){ .uf-chip-scene title="SF32 MCU platform visual" style="position: relative; top: -6px; width: 136%; max-width: none; margin-left: -36%; height: auto; border-radius: 16px;" }
+<button type="button" class="uf-spotlight-toggle" id="uf-spotlight-toggle" aria-pressed="false" aria-label="Reveal all cards"><svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor" aria-hidden="true"><g class="uf-wand-shake"><line x1="6" y1="18.5" x2="14.3" y2="10.2" stroke="currentColor" stroke-width="2" stroke-linecap="round" fill="none"/><path class="uf-wand-star" d="M17.5 3.2c.18 0 .34.12.38.3l.5 2.1c.15.6.62 1.07 1.22 1.22l2.1.5c.18.04.3.2.3.38s-.12.34-.3.38l-2.1.5c-.6.15-1.07.62-1.22 1.22l-.5 2.1a.39.39 0 0 1-.76 0l-.5-2.1c-.15-.6-.62-1.07-1.22-1.22l-2.1-.5a.39.39 0 0 1 0-.76l2.1-.5c.6-.15 1.07-.62 1.22-1.22l.5-2.1c.04-.18.2-.3.38-.3Z"/><circle class="uf-wand-dot uf-wand-dot--a" cx="20.6" cy="11.2" r=".75"/><circle class="uf-wand-dot uf-wand-dot--b" cx="14.6" cy="4.4" r=".55"/></g></svg></button>
+
+<a class="uf-spotlight-item uf-spotlight-item--silicon" href="sf32-products/family/SF32_family.md" data-radius="260">
+  <span class="uf-spotlight-item__art uf-spotlight-item__art--silicon" aria-hidden="true"></span>
+  <span class="uf-spotlight-item__eyebrow">Silicon</span>
+  <span class="uf-spotlight-item__title">SF32 Family</span>
+  <span class="uf-spotlight-item__copy">Ultra-low-power, connected, intelligent embedded products.</span>
+</a>
+
+<a class="uf-spotlight-item uf-spotlight-item--board" href="sf32-products/index.md" data-radius="250">
+  <span class="uf-spotlight-item__art uf-spotlight-item__art--board" aria-hidden="true"></span>
+  <span class="uf-spotlight-item__eyebrow">Hardware</span>
+  <span class="uf-spotlight-item__title">Modules &amp; Dev Boards</span>
+  <span class="uf-spotlight-item__copy">Tested hardware, faster design to production.</span>
+</a>
+
+<a class="uf-spotlight-item uf-spotlight-item--sdk" href="develop/index.md" data-radius="245">
+  <span class="uf-spotlight-item__art uf-spotlight-item__art--sdk" aria-hidden="true"></span>
+  <span class="uf-spotlight-item__eyebrow">Software</span>
+  <span class="uf-spotlight-item__title">SDK &amp; Tools</span>
+  <span class="uf-spotlight-item__copy">Toolchains, middleware, and drivers.</span>
+</a>
+
+<a class="uf-spotlight-item uf-spotlight-item--learn" href="learn/index.md" data-radius="255">
+  <span class="uf-spotlight-item__art uf-spotlight-item__art--learn" aria-hidden="true"></span>
+  <span class="uf-spotlight-item__eyebrow">Learn</span>
+  <span class="uf-spotlight-item__title">CPU, GPU</span>
+  <span class="uf-spotlight-item__copy">Guidance for graphics, Bluetooth, audio, and low power.</span>
+</a>
+
+<a class="uf-spotlight-item uf-spotlight-item--examples" href="projects/index.md" data-radius="230">
+  <span class="uf-spotlight-item__art uf-spotlight-item__art--examples" aria-hidden="true"></span>
+  <span class="uf-spotlight-item__eyebrow">Projects</span>
+  <span class="uf-spotlight-item__title">Watch, HMI</span>
+  <span class="uf-spotlight-item__copy">Production-quality application examples.</span>
+</a>
 
 </div>
 </div>
@@ -57,7 +88,7 @@ hide:
 
     Microcontrollers, modules, development boards, and production-ready reference designs.
 
-    [See Hardware :material-arrow-right:](explore-sf32/family/SF32_family.md){ .uf-link-purple }
+    [See Hardware :material-arrow-right:](sf32-products/family/SF32_family.md){ .uf-link-purple }
 
 - :fontawesome-solid-code:{ .uf-ql-icon .uf-green } **SDK & Tools**
 
@@ -131,7 +162,7 @@ hide:
     - :fontawesome-solid-circle:{ .uf-dot-blue } 576 KB SRAM, up to 16 MB PSRAM
     - :fontawesome-solid-circle:{ .uf-dot-blue } QFN68 package, with up to 45 GPIOs and optional integrated linear charger
 
-    [View Series :material-arrow-right:](explore-sf32/chips/SF32LB52x.md){ .uf-link-blue }
+    [View Series :material-arrow-right:](sf32-products/chips/SF32LB52x.md){ .uf-link-blue }
 
 - <span class="uf-mcu-chip">SF32LB55</span>
 
@@ -147,7 +178,7 @@ hide:
     - :fontawesome-solid-circle:{ .uf-dot-blue } 1.4 MB SRAM, up to 18 MB PSRAM
     - :fontawesome-solid-circle:{ .uf-dot-blue } Available in QFN68, BGA145, and BGA169 packages, with up to 49 / 95 / 119 GPIOs
 
-    [View Series :material-arrow-right:](explore-sf32/chips/SF32LB55x.md){ .uf-link-blue }
+    [View Series :material-arrow-right:](sf32-products/chips/SF32LB55x.md){ .uf-link-blue }
 
 - <span class="uf-mcu-chip">SF32LB56</span>
 
@@ -163,7 +194,7 @@ hide:
     - :fontawesome-solid-circle:{ .uf-dot-blue } 960 KB SRAM, up to 16 MB PSRAM
     - :fontawesome-solid-circle:{ .uf-dot-blue } Available in QFN68 and BGA175 packages, with up to 44 / 120 GPIOs
 
-    [View Series :material-arrow-right:](explore-sf32/chips/SF32LB56x.md){ .uf-link-blue }
+    [View Series :material-arrow-right:](sf32-products/chips/SF32LB56x.md){ .uf-link-blue }
 
 - <span class="uf-mcu-chip">SF32LB58</span>
 
@@ -179,11 +210,11 @@ hide:
     - :fontawesome-solid-circle:{ .uf-dot-blue } 3.7 MB SRAM, up to 64 MB PSRAM
     - :fontawesome-solid-circle:{ .uf-dot-blue } Available in BGA256 package, up to 154 GPIOs
 
-    [View Series :material-arrow-right:](explore-sf32/chips/SF32LB58x.md){ .uf-link-blue }
+    [View Series :material-arrow-right:](sf32-products/chips/SF32LB58x.md){ .uf-link-blue }
 
 </div>
 
-[^1]: See the [SF32 Family Overview](explore-sf32/family/SF32_family.md) for a detailed comparison of all devices.
+[^1]: See the [SF32 Family Overview](sf32-products/family/SF32_family.md) for a detailed comparison of all devices.
 
 <!--
 ---

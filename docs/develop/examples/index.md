@@ -106,14 +106,5 @@ Then add the other subsystems one by one.
 
 If you are new to the SDK, begin with [Beginner Tutorials](../../getting-started/tutorials/beginner.md), then move to [Intermediate Tutorials](../../getting-started/tutorials/intermediate.md) when a single peripheral is stable. Use [Advanced Tutorials](../../getting-started/tutorials/advanced.md) for measured power work, OTA, custom display bring-up, failure analysis, multi-connection Bluetooth, and custom drivers. The topic overviews explain the architecture and trade-offs behind those examples.
 
-## SiFli Team Should Add
-
-- A searchable example index.
-- Example status by chip/board.
-- Expected output for each example.
-- Memory and peripheral requirements.
-- Links from examples to relevant tools and firmware topics.
-- A "recommended base example" table by product type.
-
 !!! note "Auto-generated content"
     This page was compiled/drafted without an existing source document. Verify technical claims against SiFli's official documentation before relying on them.

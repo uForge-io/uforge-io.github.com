@@ -81,13 +81,5 @@ Display-heavy products should document the asset conversion path, especially whe
 - Use `sftool` when you need repeatable command-line flashing across Zephyr, Arduino, or automation.
 - Add crash-analysis tooling before the first hard-to-reproduce bug.
 
-## SiFli Team Should Add
-
-- One page per official tool with install, command examples, supported OSes, and common errors.
-- A unified "which flashing tool should I use?" decision table.
-- Links from crash tutorials to `AssertDump` and trace tools.
-- Version compatibility between tools, SDK releases, and boards.
-- A factory-safe programming flow that is separate from developer experimentation.
-
 !!! note "Auto-generated content"
     This page was compiled/drafted without an existing source document. Verify technical claims against SiFli's official documentation before relying on them.

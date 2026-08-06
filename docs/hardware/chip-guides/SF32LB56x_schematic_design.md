@@ -161,35 +161,35 @@ Review processor rails, required local capacitors, PMIC output assignments, rese
 
 </div>
 
-![Figure 5.1-1: SF32LB56xU POR/BOR Timing](../../explore-sf32/chips/assets/56x/SF32LB56xU-PORBOR.png){ width="100%" loading="lazy" }
+![Figure 5.1-1: SF32LB56xU POR/BOR Timing](../../sf32-products/chips/assets/56x/SF32LB56xU-PORBOR.png){ width="100%" loading="lazy" }
 
 <div align="center"><em>Figure 5.1-1: SF32LB56xU POR/BOR Timing</em></div>
 
-![Figure 5.1-2: SF32LB56xV POR/BOR Timing](../../explore-sf32/chips/assets/56x/sf32lb56xV-PORBOR.png){ width="100%" loading="lazy" }
+![Figure 5.1-2: SF32LB56xV POR/BOR Timing](../../sf32-products/chips/assets/56x/sf32lb56xV-PORBOR.png){ width="100%" loading="lazy" }
 
 <div align="center"><em>Figure 5.1-2: SF32LB56xV POR/BOR Timing</em></div>
 
-![Figure 5.1-3: SF32LB56xU BUCK Reference Circuit](../../explore-sf32/chips/assets/56x/SF32LB56xU-BUCK.png){ width="100%" loading="lazy" }
+![Figure 5.1-3: SF32LB56xU BUCK Reference Circuit](../../sf32-products/chips/assets/56x/SF32LB56xU-BUCK.png){ width="100%" loading="lazy" }
 
 <div align="center"><em>Figure 5.1-3: SF32LB56xU BUCK Reference Circuit</em></div>
 
-![Figure 5.1-4: SF32LB56xV BUCK Reference Circuit](../../explore-sf32/chips/assets/56x/sf32lb56xV-BUCK.png){ width="100%" loading="lazy" }
+![Figure 5.1-4: SF32LB56xV BUCK Reference Circuit](../../sf32-products/chips/assets/56x/sf32lb56xV-BUCK.png){ width="100%" loading="lazy" }
 
 <div align="center"><em>Figure 5.1-4: SF32LB56xV BUCK Reference Circuit</em></div>
 
-![Figure 5.1-5: SF32LB56xU LDO Reference Circuit](../../explore-sf32/chips/assets/56x/SF32LB56xU-LDO.png){ width="100%" loading="lazy" }
+![Figure 5.1-5: SF32LB56xU LDO Reference Circuit](../../sf32-products/chips/assets/56x/SF32LB56xU-LDO.png){ width="100%" loading="lazy" }
 
 <div align="center"><em>Figure 5.1-5: SF32LB56xU LDO Reference Circuit</em></div>
 
-![Figure 5.1-6: SF32LB56xV LDO Reference Circuit](../../explore-sf32/chips/assets/56x/sf32lb56xV-LDO.png){ width="100%" loading="lazy" }
+![Figure 5.1-6: SF32LB56xV LDO Reference Circuit](../../sf32-products/chips/assets/56x/sf32lb56xV-LDO.png){ width="100%" loading="lazy" }
 
 <div align="center"><em>Figure 5.1-6: SF32LB56xV LDO Reference Circuit</em></div>
 
-![Figure 5.1-7: SF32LB56xU Charging Reference Circuit](../../explore-sf32/chips/assets/56x/sf32lb56xU-CHG-1.png){ width="100%" loading="lazy" }
+![Figure 5.1-7: SF32LB56xU Charging Reference Circuit](../../sf32-products/chips/assets/56x/sf32lb56xU-CHG-1.png){ width="100%" loading="lazy" }
 
 <div align="center"><em>Figure 5.1-7: SF32LB56xU Charging Reference Circuit</em></div>
 
-![Figure 5.1-8: SF32LB56xV Charging Reference Circuit](../../explore-sf32/chips/assets/56x/sf32lb56xV-CHG-1.png){ width="100%" loading="lazy" }
+![Figure 5.1-8: SF32LB56xV Charging Reference Circuit](../../sf32-products/chips/assets/56x/sf32lb56xV-CHG-1.png){ width="100%" loading="lazy" }
 
 <div align="center"><em>Figure 5.1-8: SF32LB56xV Charging Reference Circuit</em></div>
 

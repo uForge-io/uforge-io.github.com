@@ -78,6 +78,6 @@ The KiCad README currently marks KiCad Package and Content Manager installation 
 
 ## Related Pages
 
-- [SF32 Family Overview](../../explore-sf32/family/SF32_family.md)
-- [SF32 Naming Convention](../../explore-sf32/family/SF32_namingrule.md)
+- [SF32 Family Overview](../../sf32-products/family/SF32_family.md)
+- [SF32 Naming Convention](../../sf32-products/family/SF32_namingrule.md)
 - [SF32 Approved Vendor List](sifli-approved-vendor-list.md)

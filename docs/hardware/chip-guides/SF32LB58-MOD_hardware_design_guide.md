@@ -14,7 +14,7 @@ tags:
 
 This guide covers module-level hardware integration: pin definitions, peripheral interfaces, electrical characteristics, power-supply requirements, reference schematics, a schematic design checklist, mechanical dimensions and PCB footprint, and product handling requirements. It is based on SiFli datasheet **DS5802-SF32LB58-MOD V0.1**.
 
-For the underlying chip architecture (cores, graphics, memory subsystem, and peripherals in more depth), see [SF32LB58x](../../explore-sf32/chips/SF32LB58x.md) and the [SF32LB58x Hardware Design Guide](../chip-guides/SF32LB58x_hardware_design_guide.md).
+For the underlying chip architecture (cores, graphics, memory subsystem, and peripherals in more depth), see [SF32LB58x](../../sf32-products/chips/SF32LB58x.md) and the [SF32LB58x Hardware Design Guide](../chip-guides/SF32LB58x_hardware_design_guide.md).
 
 !!! note "Source and figure handling"
     This guide follows **DS5802-SF32LB58-MOD V0.1** for module-specific technical data. Some pinout, schematic, and mechanical drawings in the datasheet are raster images and are referenced rather than redrawn here. Figure and table numbers below follow this site's guide-local numbering; captions for non-reproduced diagrams cite the corresponding figure number in the official datasheet.
@@ -487,9 +487,9 @@ Avoid exposing SiFli modules to vibration from ultrasonic welding or ultrasonic 
 ## 12. Related Documents
 
 - [DS5802-SF32LB58-MOD Datasheet (V0.1)](https://downloads.sifli.com/user%20manual/DS5802-SF32LB58-MOD%E6%8A%80%E6%9C%AF%E8%A7%84%E6%A0%BC%E4%B9%A6%20V0p1.pdf)
-- [SF32LB58x Chip Introduction](../../explore-sf32/chips/SF32LB58x.md)
+- [SF32LB58x Chip Introduction](../../sf32-products/chips/SF32LB58x.md)
 - [SF32LB58x Hardware Design Guide](../chip-guides/SF32LB58x_hardware_design_guide.md)
-- [SF32LB58-DevKit-LCD](../../explore-sf32/devkits/SF32LB58-DevKit-LCD.md)
+- [SF32LB58-DevKit-LCD](../../sf32-products/devkits/SF32LB58-DevKit-LCD.md)
 
 ## 13. Revision History
 

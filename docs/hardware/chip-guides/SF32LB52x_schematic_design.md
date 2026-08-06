@@ -144,11 +144,11 @@ Both design groups use the same inductor specification.
 
     External charging chips come in two common types: without PPM (power path management) and with PPM. Without PPM, the battery directly supplies the VBAT and VCC pins. With PPM, the charger's VSYS supplies VCC, and the charger's VBAT connects to both the battery and the chip's VBAT pin. Both approaches measure battery voltage through the VBAT pin, which has an integrated GPADC channel with sampling accuracy within ±30 mV.
 
-    ![Figure 5.2-1: External Charging Circuit without PPM](../../explore-sf32/chips/assets/52xA/sf32lb52x-CHG-NPPM.png){ width="100%" loading="lazy" }
+    ![Figure 5.2-1: External Charging Circuit without PPM](../../sf32-products/chips/assets/52xA/sf32lb52x-CHG-NPPM.png){ width="100%" loading="lazy" }
 
     <div align="center"><em>Figure 5.2-1: External Charging Circuit without PPM</em></div>
 
-    ![Figure 5.2-2: External Charging Circuit with PPM](../../explore-sf32/chips/assets/52xA/sf32lb52x-CHG-PPM.png){ width="100%" loading="lazy" }
+    ![Figure 5.2-2: External Charging Circuit with PPM](../../sf32-products/chips/assets/52xA/sf32lb52x-CHG-PPM.png){ width="100%" loading="lazy" }
 
     <div align="center"><em>Figure 5.2-2: External Charging Circuit with PPM</em></div>
 
@@ -156,7 +156,7 @@ Both design groups use the same inductor specification.
 
     When using the integrated charging module, if the battery is low and the device is off, plugging in a charger requires the battery to charge up to the power-on threshold before the system can boot and display the charging screen.
 
-    ![Figure 5.2-3: Integrated Charging Management Circuit](../../explore-sf32/chips/assets/52xA/sf32lb52x-CHG-INNER.png){ width="100%" loading="lazy" }
+    ![Figure 5.2-3: Integrated Charging Management Circuit](../../sf32-products/chips/assets/52xA/sf32lb52x-CHG-INNER.png){ width="100%" loading="lazy" }
 
     <div align="center"><em>Figure 5.2-3: Integrated Charging Management Circuit</em></div>
 
@@ -167,15 +167,15 @@ Both design groups use the same inductor specification.
     - Adjustable-OVLO OVP chip, e.g. AW32905FCR — set OVLO between 5.2 V and 5.5 V (VOVLO_TH tolerance ≤3%, resistor tolerance ≤1%)
     - Regulated-output OVP chip, e.g. SGM4064YDE8G or LP5305AQVF — regulator output must be between 4.5 V and 5.5 V
 
-    ![Figure 5.2-4: OVLO Set-Point Formula](../../explore-sf32/chips/assets/52xA/sf32lb52x-OVP-SET.png){ width="100%" loading="lazy" }
+    ![Figure 5.2-4: OVLO Set-Point Formula](../../sf32-products/chips/assets/52xA/sf32lb52x-OVP-SET.png){ width="100%" loading="lazy" }
 
     <div align="center"><em>Figure 5.2-4: OVLO Set-Point Formula</em></div>
 
-    ![Figure 5.2-5: Adjustable-OVLO OVP Application Circuit](../../explore-sf32/chips/assets/52xA/sf32lb52x-OVP-OVLO.png){ width="100%" loading="lazy" }
+    ![Figure 5.2-5: Adjustable-OVLO OVP Application Circuit](../../sf32-products/chips/assets/52xA/sf32lb52x-OVP-OVLO.png){ width="100%" loading="lazy" }
 
     <div align="center"><em>Figure 5.2-5: Adjustable-OVLO OVP Application Circuit</em></div>
 
-    ![Figure 5.2-6: Regulated-Output OVP Application Circuit](../../explore-sf32/chips/assets/52xA/sf32lb52x-OVP-REGU.png){ width="100%" loading="lazy" }
+    ![Figure 5.2-6: Regulated-Output OVP Application Circuit](../../sf32-products/chips/assets/52xA/sf32lb52x-OVP-REGU.png){ width="100%" loading="lazy" }
 
     <div align="center"><em>Figure 5.2-6: Regulated-Output OVP Application Circuit</em></div>
 
@@ -205,7 +205,7 @@ Both design groups use the same inductor specification.
 
     Recommended power structure: **VDD33_VOUT2** supplies the vibration motor, **VDD33_VOUT1** supplies external Flash and sensors, and the LCD uses an external LDO.
 
-    ![Figure 5.2-7: SF32LB52x System Power Structure Diagram](../../explore-sf32/chips/assets/52xA/sf32lb52x-PWR-diagram.png){ width="100%" loading="lazy" }
+    ![Figure 5.2-7: SF32LB52x System Power Structure Diagram](../../sf32-products/chips/assets/52xA/sf32lb52x-PWR-diagram.png){ width="100%" loading="lazy" }
 
     <div align="center"><em>Figure 5.2-7: SF32LB52x System Power Structure Diagram</em></div>
 

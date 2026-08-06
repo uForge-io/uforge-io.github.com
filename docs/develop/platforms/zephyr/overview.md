@@ -86,14 +86,5 @@ After the first-run baseline, validate one subsystem at a time: board I/O, UART 
 - Are required overlays included for the sample?
 - Is the driver marked supported by tests or only present in-tree?
 
-## SiFli Team Should Add
-
-- A public support statement for downstream vs. upstream Zephyr.
-- Exact setup instructions for `west init` / `west update`.
-- A sample status matrix for `sf32lb52_devkit_lcd`.
-- Console wiring diagrams and download-mode photos.
-- CI artifacts for hello world, blinky, UART, LVGL, filesystem, Bluetooth, and audio smoke tests.
-- A clear upstreaming roadmap.
-
 !!! note "Auto-generated content"
     This page was compiled/drafted without an existing source document. Verify technical claims against SiFli's official documentation before relying on them.

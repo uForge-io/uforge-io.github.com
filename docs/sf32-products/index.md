@@ -1,15 +1,15 @@
 ---
 icon: lucide/cpu
-title: "Explore SF32"
+title: "SF32 Products"
 description: "Start here to explore SF32 hardware, plan a product, choose a chip, module, or development board, reuse a reference design, and prepare a production design."
 tags:
     - Hardware
     - Overview
 ---
 
-# Explore SF32
+# SF32 Products
 
-The Explore SF32 section helps you move from a product idea to an implementable SF32 design. Use it to understand the SF32 family, make and verify a hardware choice, find a reusable baseline, and reach the design material needed for production.
+The SF32 Products section helps you move from a product idea to an implementable SF32 design. Use it to understand the SF32 family, make and verify a hardware choice, find a reusable baseline, and reach the design material needed for production.
 
 ## Choose Your Starting Point
 

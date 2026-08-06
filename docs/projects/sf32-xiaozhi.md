@@ -42,6 +42,48 @@ This page is a complete engineering path for adapting that reference into a prod
 
 </div>
 
+## Hardware and Software Specifications
+
+The manifest below defines one concrete source-build reference: **SF32LB52-DevKit-Nano-R16N16 V1.0.0** with the external display and audio circuit documented by SiFli. It is not a universal BOM for every supported Xiaozhi board. If you choose DevKit-ULP, DevKit-LCD, or Xiaotangyuan, replace this entire hardware manifest with that board's documented assembly and retain its exact supplier parts and board revision.
+
+### Hardware Specification
+
+<div align="center"><em>Table: Xiaozhi Nano Reference Hardware Specification</em></div>
+
+<div align="center" markdown>
+
+| Component | Required specification | Role | Status | Where to get it | Compatibility and substitution notes |
+|:----------|:-----------------------|:-----|:-------|:----------------|:-------------------------------------|
+| SF32LB52-DevKit-Nano-R16N16 V1.0.0 | SF32LB52JUD6, 16 MB OPI PSRAM, and 16 MB SPI NOR Flash | SF32 compute, Bluetooth PAN, USB download/debug, UI, and audio interfaces | Required | [SiFli product page](https://www.sifli.com/zh-hans/SF32LB52_DevKit_Nano); [SiFli official store](https://sifli.taobao.com/) | Do not substitute the Nano N4 variant without rechecking the firmware target and memory budget. Record the board PCB revision and supplier order link. |
+| 1.85-inch 390 × 450 AMOLED plus 16-pin-to-22-pin FPC adapter | QSPI display assembly and FPC pinout used by the official Nano Xiaozhi wiring | User interface | Required | [Official Nano Xiaozhi hardware page](https://docs.sifli.com/projects/xiaozhi/get-started/SF32LB52-DevKit-Nano/) | The official page does not publish an order link. Freeze the panel controller, FPC orientation, supplier part number, and purchase link before calling the baseline reproducible. |
+| Analog MEMS microphone module | Analog output compatible with `MIC_BIAS`, `MIC_ADC`, and GND | Voice capture | Required | [Component link published by the official guide](https://item.taobao.com/item.htm?id=595237371680) | A substitute requires bias, output-level, noise, and acoustic validation. |
+| PAM8302 amplifier module | Differential input from `DACP`/`DACN`; shutdown controlled by `PA30` | Speaker drive | Required | [Component link published by the official guide](https://item.taobao.com/item.htm?id=535743493142) | Treat another amplifier as a hardware adaptation and recheck enable polarity, gain, idle current, and noise. |
+| Enclosed speaker | 8 Ω, 2–3 W | Voice playback | Required | [Component link published by the official guide](https://item.taobao.com/item.htm?id=895176389650) | Revalidate acoustic output, amplifier temperature, and current for any replacement enclosure or impedance. |
+| Jumper wires and 400-point breadboard | Wiring set and breadboard matching the documented Nano prototype | Prototype interconnect | Required for the documented prototype | [Jumper wires](https://item.taobao.com/item.htm?id=39961676503); [400-point breadboard](https://item.taobao.com/item.htm?id=39828824454) | Replace with a reviewed PCB only after the reference wiring has passed and the pin map has been transferred exactly. |
+| USB Type-C data cable and development computer | Data-capable Type-C cable; Windows, Linux, or macOS host | Power, flash, build, and serial logs | Required | [SiFli SDK preparation requirements](https://docs.sifli.com/projects/sdk/latest/en/sf32lb52x/quickstart/get-started.html) | A charge-only cable cannot flash or capture logs. Record host OS and architecture. |
+| Android or iOS phone with Bluetooth Internet sharing | Must pair with `sifli-pan` and provide Classic Bluetooth PAN Internet access | Network companion | Required | [Official Xiaozhi PAN onboarding](https://docs.sifli.com/projects/xiaozhi/get-started/) | Record phone model and OS version. Validate loss, re-pairing, and sharing behavior on every supported phone/OS baseline. |
+
+</div>
+
+The third-party component URLs above are marketplace links published by the official SiFli Nano guide, not permanent manufacturer part-number guarantees. Preserve screenshots or order records for the evaluated parts, then replace each marketplace dependency with a qualified supplier part number and datasheet before product design.
+
+### Software Specification
+
+<div align="center"><em>Table: Xiaozhi Reference Software Specification</em></div>
+
+<div align="center" markdown>
+
+| Package or service | Required version or revision | Role | Status | Where to get it | Compatibility and update notes |
+|:-------------------|:-----------------------------|:-----|:-------|:----------------|:-------------------------------|
+| Xiaozhi SF32 prebuilt firmware | v1.4.0 | Untouched reference image for baseline and recovery | Required for Stages 1–2 | [v1.4.0 release](https://github.com/78/xiaozhi-sf32/releases/tag/v1.4.0) | Select `sf32lb52-nano_52j.zip` for the Nano R16N16 baseline. Do not mix board archives. |
+| `78/xiaozhi-sf32` source | Commit [`1d3ef641ace47fae68227e9173647fd5db01f6f5`](https://github.com/78/xiaozhi-sf32/commit/1d3ef641ace47fae68227e9173647fd5db01f6f5) | Application source and board configuration | Required for Stages 3–4 | [Repository](https://github.com/78/xiaozhi-sf32) | This is the reviewed source snapshot for this article. Record any later commit as a new baseline and rerun all gates. |
+| SiFli-SDK submodule | Commit [`0d2de1480f735e05017c41436e655a1688063881`](https://github.com/OpenSiFli/SiFli-SDK/tree/0d2de1480f735e05017c41436e655a1688063881) | SF32 drivers, RTOS, middleware, toolchain scripts, and SCons build environment | Required for Stages 3–4 | [OpenSiFli/SiFli-SDK](https://github.com/OpenSiFli/SiFli-SDK) through the repository's `sdk` submodule | Use the submodule revision recorded by the selected application commit; do not independently update the SDK inside a retained baseline. |
+| sftool GUI | v1.2.1; retain the selected OS asset SHA-256 from the release page | Prebuilt-image flashing and local recovery | Required for the documented v1.4.0 GUI path | [v1.2.1 release and platform assets](https://github.com/OpenSiFli/sftool-gui/releases/tag/v1.2.1) | Record host OS, asset filename, and checksum. Qualify a later release before replacing it. |
+| Build host tools | Install/export scripts supplied by the pinned SiFli-SDK; SCons environment created by those scripts | Source configuration and compilation | Required for Stages 3–4 | [Official Xiaozhi source-build guide](https://docs.sifli.com/projects/xiaozhi/source-build/) | Record host OS, architecture, script result, and exported environment. A globally installed tool must not silently override the pinned SDK environment. |
+| Xiaozhi cloud console and service | Hosted service at `xiaozhi.me`; record validation date, account owner, agent configuration, and endpoint | Activation, streaming ASR/LLM/TTS, and cloud MCP | Required for dialogue | [Xiaozhi console](https://xiaozhi.me) | The hosted service has no user-pinnable release. Treat service behavior, terms, availability, and regional access as externally controlled dependencies. |
+
+</div>
+
 ## Choose a Supported Baseline
 
 The SiFli Xiaozhi quick-start documentation lists four prebuilt-firmware targets: SF32LB52-DevKit-ULP (Huangshan), SF32LB52-DevKit-LCD, SF32LB52-DevKit-Nano, and the Xiaotangyuan plug-in board. Its source-build documentation currently lists DevKit-ULP, DevKit-LCD, and DevKit-Nano. Choose a board that is in the source-build list if source customization is a project requirement; do not assume a prebuilt image implies a documented source-build target.
@@ -55,7 +97,7 @@ The SiFli Xiaozhi quick-start documentation lists four prebuilt-firmware targets
 | [SF32LB52-DevKit-ULP](https://docs.sifli.com/projects/xiaozhi/get-started/SF32LB52-DevKit-ULP/) | You want the documented ULP source-build example and a battery-oriented evaluation route. | Recalibrate the battery curve for any battery other than the documented baseline. |
 | [SF32LB52-DevKit-LCD](https://docs.sifli.com/projects/xiaozhi/get-started/SF32LB52-DevKit-LCD/) | You want an explicit display-and-speaker integration reference. | Its 390 × 450 AMOLED, FPC orientation, `SPK` connection, `KEY1`, and `KEY2` instructions are board-specific. |
 | [SF32LB52-DevKit-Nano](https://docs.sifli.com/projects/xiaozhi/get-started/SF32LB52-DevKit-Nano/) | You want a smaller documented SF32LB52 baseline. | Confirm the exact display, audio, power, and user-input configuration before reusing any other board's wiring. |
-| Xiaotangyuan plug-in board | You are following the relevant prebuilt quick-start route. | Confirm the current source-build and customization status before using it as the product baseline. |
+| [Xiaotangyuan plug-in board](https://docs.sifli.com/projects/xiaozhi/get-started/SF32LB52-XTY-AI-THT/) | You are following the relevant prebuilt quick-start route. | Confirm the current source-build and customization status before using it as the product baseline. |
 
 </div>
 
@@ -134,7 +176,10 @@ The repository brings SiFli-SDK in as a submodule. Clone it recursively and reco
 
 ```bash
 git clone --recursive https://github.com/78/xiaozhi-sf32.git
-cd xiaozhi-sf32/sdk
+cd xiaozhi-sf32
+git checkout 1d3ef641ace47fae68227e9173647fd5db01f6f5
+git submodule update --init --recursive
+cd sdk
 # Windows: .\install.ps1, then .\export.ps1
 # macOS/Linux: ./install.sh, then . ./export.sh
 ```
@@ -188,7 +233,7 @@ Do not move to custom hardware until the team can answer all of these:
 
 ## Handoff to Product Design
 
-Carry the chosen SF32 part, power architecture, display/audio design, RF strategy, storage/partition plan, production test, and recovery assumptions into [Design for Production](../hardware/design-for-production.md). Use the [SF32LB52 integration path](../explore-sf32/chips/SF32LB52x.md#integration-path) to choose the relevant chip, module, board, guide, and checklist.
+Carry the chosen SF32 part, power architecture, display/audio design, RF strategy, storage/partition plan, production test, and recovery assumptions into [Design for Production](../hardware/design-for-production.md). Use the [SF32LB52 integration path](../sf32-products/chips/SF32LB52x.md#integration-path) to choose the relevant chip, module, board, guide, and checklist.
 
 **Project completion definition:** this reference has served its purpose when a new team member can reproduce the selected baseline, trace each observed failure to its owner or recovery path, rebuild the customized image, and review the evidence required for the custom-hardware decision. It is then a product-development reference—not an unexamined demo to carry into production.
 

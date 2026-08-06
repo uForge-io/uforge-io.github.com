@@ -41,7 +41,7 @@ Neither resource replaces the device-specific hardware design guide, package dra
 - If a component is not listed in the AVL, qualify it against the relevant requirements and validate it on the target hardware before use in volume.
 - For a module-based product, begin with the module's design guide; the carrier-board BOM and layout still require the same review discipline.
 
-Continue with [Design for Production](../design-for-production.md) for the full design-review path, or return to the [SF32 Product Selector](../../explore-sf32/product-selector.md) if the chip, module, or board baseline has not yet been selected.
+Continue with [Design for Production](../design-for-production.md) for the full design-review path, or return to the [SF32 Product Selector](../../sf32-products/product-selector.md) if the chip, module, or board baseline has not yet been selected.
 
 !!! note "Auto-generated content"
     This page was compiled/drafted without an existing source document. Verify technical claims against SiFli's official documentation before relying on them.
