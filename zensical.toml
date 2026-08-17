@@ -214,6 +214,7 @@ nav = [
     ]},
     { "Low Power" = [
       { "Low Power Overview" = "learn/low-power/overview.md" },
+      { "Smartwatch Power Profiling" = "learn/low-power/smartwatch-power-profiling.md" },
       "learn/low-power/measurement-and-validation.md"
     ]},
   ]},
