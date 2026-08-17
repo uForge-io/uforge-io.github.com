@@ -103,7 +103,7 @@ A scenario is a complete user or system event, rather than one isolated part. A 
 
 </div>
 
-\*The workbook labels this factor as power efficiency, but it is a voltage-ratio helper rather than a measured regulator efficiency. [Check the Workbook's Conversion Assumption](#check-the-workbooks-conversion-assumption) explains the consequence for battery-life estimates. Daily-charge and percentage values in this table are rounded from the workbook; use the downloadable file for the exact formulas and values. Use the ranked tables below to set priorities, then return to this matrix when you need to inspect the current or voltage assumption behind a contribution.
+\*The workbook labels this factor as power efficiency, but it is a voltage-ratio helper rather than a measured regulator efficiency. The following section explains the consequence for battery-life estimates. Daily-charge and percentage values in this table are rounded from the workbook; use the downloadable file for the exact formulas and values. Use the ranked tables below to set priorities, then return to this matrix when you need to inspect the current or voltage assumption behind a contribution.
 
 <div align="center"><em>Diagram: Smartwatch Power-Profiling Loop</em></div>
 
