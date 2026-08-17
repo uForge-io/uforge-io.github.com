@@ -21,7 +21,7 @@ Only the pages listed below are published on this site. Internal working notes (
 - [Plan a Product](https://uForge.io/sf32-products/family/product-planning/): End-to-end path from requirements and device selection through board validation and production design.
 - [Reference Designs](https://uForge.io/hardware/reference-designs/reference-designs/): Reference-design journeys for μForge — compare reproducible hardware and software validation paths, then follow the one closest to your product.
 - [Connected Wearable Reference-Design Journey](https://uForge.io/hardware/reference-designs/connected-wearable-journey/): A practical SF32 reference-design journey from SF32LB52 development-board validation to a custom connected wearable hardware and firmware release plan.
-- [SF32 Product Selector](https://uForge.io/sf32-products/choose-hardware/): Select an SF32 chip or module by product constraints, integration level, and software-validation path.
+- [SF32 Product Selector](https://uForge.io/sf32-products/product-selector/): Select an SF32 chip or module by product constraints, integration level, and software-validation path.
 - [Design for Production](https://uForge.io/hardware/design-for-production/): Production-design path for SF32 hardware design guides, checklists, interface definitions, approved components, and EDA libraries.
 
 ## Hardware — Chips

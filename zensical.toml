@@ -201,7 +201,8 @@ nav = [
     { "Bluetooth" = [
       { "Bluetooth Overview" = "learn/bluetooth/overview.md" },
       "learn/bluetooth/processor.md",
-      "learn/bluetooth/pan.md"
+      "learn/bluetooth/pan.md",
+      "learn/bluetooth/at-command-reference.md"
     ]},
     { "AI" = [
       { "AI Overview" = "learn/ai/overview.md" },
