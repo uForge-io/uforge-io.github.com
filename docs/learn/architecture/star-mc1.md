@@ -44,25 +44,38 @@ For developers, the practical benefit is simple: existing Cortex-M33-oriented so
 
 The following table summarizes where STAR-MC1 fits among common Cortex-M processors. Exact capabilities depend on the final SoC implementation, but the positioning is useful when choosing an architecture for a product.
 
+For compactness, the table uses `CM3`, `CM4`, `CM33`, `CM55`, and `CM7` for the corresponding Cortex-M processors.
+
 <div align="center"><em>Table: Cortex-M Family Comparison</em></div>
 
 <div align="center" markdown>
 
-| Feature | Cortex-M3 | Cortex-M4 | Cortex-M33 | STAR-MC1 | Cortex-M7 |
-|:--------|:---------:|:---------:|:----------:|:--------:|:---------:|
-| Arm architecture | Armv7-M | Armv7E-M | Armv8-M | Armv8-M | Armv7E-M |
-| TrustZone support | No | No | Armv8-M feature | When implemented by the SoC | No |
-| DSP instructions | Basic | Yes | Yes | Yes | Yes |
-| Floating-point unit | Optional | Optional | Optional | Optional | Single / double precision |
-| Instruction cache | No | No | Implementation dependent | Optional IP capability | Implementation dependent |
-| Data cache | No | No | Implementation dependent | Optional IP capability | Implementation dependent |
-| Custom Datapath Extension (CDE) | No | No | Armv8-M extension | When implemented by the SoC | No |
-| Software compatibility | Baseline | M3-compatible | New Armv8-M model (M4-like C code, new toolchain) | Cortex-M33 compatible | M4-compatible (same Armv7E-M family) |
-| Typical performance | Low | Medium | Medium | Configuration and SoC dependent | High, implementation dependent |
-| Typical power profile | Very low | Low | Low | Configuration and SoC dependent | Implementation dependent |
-| Typical use cases | General MCU control | DSP, motor control | Secure IoT, connected MCU | AIoT, graphics, audio, wearables | High-end embedded systems |
+| Feature | CM3 | CM4 | CM33 | STAR-MC1 | CM55 | CM7 |
+|:--------|:---------:|:---------:|:----------:|:--------:|:----------:|:---------:|
+| Arm architecture | Armv7-M | Armv7E-M | Armv8-M Mainline | Armv8-M Mainline | Armv8.1-M Mainline | Armv7E-M |
+| Pipeline | 3-stage, in-order | 3-stage, in-order | 3-stage, in-order | 3-stage, in-order | 4-stage, in-order; 5-stage with Helium | 6-stage, superscalar |
+| Primary system-bus interface | 3 × AMBA AHB-Lite (Harvard) | 3 × AMBA AHB-Lite (Harvard) | 2 × AMBA 5 AHB5 interfaces: C-AHB + S-AHB | 2 × AMBA 5 AHB5 interfaces: C-AHB + S-AHB | 64-bit AMBA 5 AXI; 32-bit AHB peripheral | 64-bit AMBA 4 AXI; 32-bit AHB peripheral |
+| TrustZone support | No | No | Optional; SoC dependent | Optional; SoC dependent | Optional; SoC dependent | No |
+| DSP instructions | No dedicated DSP extension | Native DSP extension | Optional DSP extension | Optional DSP extension | Native DSP extension; optional Helium (MVE) | Native DSP extension |
+| Arm Helium (MVE) | Not supported | Not supported | Not supported | Not supported | Optional; integer or floating-point MVE, configuration dependent | Not supported |
+| Floating-point unit | No native IP capability | Optional single-precision | Optional single-precision | Optional single-precision | Optional scalar/vector FP | Optional single/double precision |
+| I-cache / D-cache | No native IP capability | No native IP capability | No native IP capability | Native IP capability; configuration and SoC implementation dependent | Native IP capability; configuration and SoC implementation dependent | Native IP capability; configuration and SoC implementation dependent |
+| Arm Custom Instructions / CDE | No native IP capability | No native IP capability | SoC-defined custom instructions and datapaths; optional integer CDE, plus optional FP CDE with FPU | SoC-defined custom instructions and datapaths; supported, with up to 8 custom-instruction/coprocessor slots | SoC-defined custom instructions and datapaths; optional in r1 and later, unavailable in r0 | No native IP capability |
+| Software compatibility | Baseline | CM3-compatible | Armv8-M software model; requires Armv8-M tools | CM33-compatible | CM33-compatible; Helium requires Armv8.1-M toolchain support | CM4-compatible (same Armv7E-M family) |
+| Arm-published CoreMark/MHz* | 3.34 | 3.42 | 4.02 | 4.02† | 4.20 | 5.01 |
+| Relative power demand (qualitative)‡ | Very low | Low | Low | Low | Medium | High |
+| Compute profile (qualitative) | Low-power scalar control | Real-time scalar DSP | Secure, configurable scalar MCU | CM33-compatible scalar CPU; cache, TCM, and custom instructions can improve system-level performance | Vector DSP/ML when Helium is enabled | High scalar throughput and memory bandwidth |
+| Suggested typical applications | Low-complexity control and simple sensor nodes | Motor control, audio DSP, and sensor processing | Secure connected endpoints and IoT control | UI-rich wearables, Bluetooth audio, and Flash/PSRAM-based IoT products | ML sensor fusion, voice/audio, vision, and DSP | Responsive HMI, high-throughput control, and networking |
 
 </div>
+
+\* Arm publishes these CoreMark/MHz figures for its own core configurations. They are not a direct performance ranking for a finished SoC: compiler, memory system, cache settings, and benchmark configuration affect the result.
+
+† STAR-MC1 uses the CM33 reference figure here because it is CM33-compatible. This is a comparison baseline, not an Arm-published or measured STAR-MC1 result.
+
+‡ This is an architectural positioning guide, not measured silicon data. Actual power depends on process technology, voltage, frequency, memory architecture, enabled features, peripherals, firmware duty cycle, and the final SoC implementation.
+
+The pipeline and bus rows summarize each IP's main execution pipeline and system-memory interface. CM33 and STAR-MC1 share the C-AHB/S-AHB bus arrangement; cache and other optional memory features are separate IP capabilities. These are not a statement of the interfaces enabled on every finished SoC. Debug, trace, coprocessor, and other optional ports are not listed.
 
 ## Architectural Enhancements
 
@@ -83,7 +96,7 @@ Cache behavior also means firmware should follow normal cached-system rules. Dri
 
 ### Armv8-M Custom Datapath Extension
 
-STAR-MC1 supports the **Armv8-M Custom Datapath Extension (CDE)**. CDE allows a processor implementation to expose custom instructions for selected acceleration tasks while remaining inside the Cortex-M software model.
+STAR-MC1 supports the **Armv8-M Custom Datapath Extension (CDE)**. CM33, STAR-MC1, and CM55 share the same core idea: the SoC defines the custom instructions and datapaths, while the CPU and toolchain provide the architectural execution model. Their implementation options differ: CM33 has optional integer CDE and, with an FPU, optional floating-point CDE; STAR-MC1 documents custom-instruction/CDE support with up to eight custom-instruction or coprocessor slots; and CM55 supports optional CDE from revision r1 onward, not in revision r0. CDE allows a processor implementation to expose custom instructions for selected acceleration tasks while remaining inside the Cortex-M software model.
 
 This can be useful for workloads such as:
 
