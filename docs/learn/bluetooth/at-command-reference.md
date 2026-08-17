@@ -19,9 +19,9 @@ tags:
 
 </div>
 
-This document describes the AT command interface exposed externally by the SF32LB57 dual-mode Bluetooth module (SIFLI_AT) V1.2.1 release. Commands and response strings are marked in monospace, where `\r` denotes carriage return (0x0D) and `\n` denotes line feed (0x0A). AT commands are transmitted as ASCII text; binary fields inside PDU frames are laid out in little-endian byte order.
+This reference specifies the external AT command interface provided by version V1.2.1 of the SF32LB57 dual-mode Bluetooth module (SIFLI_AT). Commands and response strings are shown in monospace; `\r` denotes a carriage return (0x0D) and `\n` denotes a line feed (0x0A). AT commands are transmitted as ASCII text, while binary fields in PDU frames use little-endian byte order.
 
-This page is the *AT Command Set* referenced throughout the Bluetooth AT Command Module product definition, and is the authoritative specification for that module's AT interface.
+This is the complete AT interface specification referenced by the Bluetooth AT Command Module page.
 
 <div align="center"><em>Table: Revision History</em></div>
 
@@ -29,13 +29,13 @@ This page is the *AT Command Set* referenced throughout the Bluetooth AT Command
 
 | Version | Changes | Date |
 |:--------|:--------|:-----|
-| V1.2.1 | SF32LB57 V1.2.1 release: added `AT+CFGRESET`; updated Classic Bluetooth name boot-time sync, `CLEARLINKKEY`, connection handle, and PDU documentation; BQB build configuration enabled. | 2026-07-28 |
+| V1.2.1 | SF32LB57 V1.2.1: added `AT+CFGRESET`; updated Classic Bluetooth name synchronization at boot, `CLEARLINKKEY`, connection-handle, and PDU documentation; enabled the BQB build configuration. | 2026-07-28 |
 
 </div>
 
 ## Overview
 
-This module is an SF32LB57 dual-mode Bluetooth module that exposes a UART-based AT command interface to the host, supporting both BLE and Classic Bluetooth (BR/EDR). The host uses AT commands to configure device parameters, manage connections, send and receive data, and receive status indications the module reports on its own.
+The SF32LB57 dual-mode Bluetooth module exposes a UART-based AT command interface to the host, supporting both BLE and Classic Bluetooth (BR/EDR). The host uses AT commands to configure device parameters, manage connections, send and receive data, and receive unsolicited status indications from the module.
 
 ### Default Settings
 
@@ -95,7 +95,7 @@ AT commands are transmitted as ASCII text, terminated by a carriage return `\r` 
 
 ### PDU-Format Command Framing
 
-PDU commands carry binary payloads in command mode. Unless otherwise noted, numeric fields within a frame are little-endian, and `data` is raw binary data.
+PDU commands transfer binary payloads while the module is in command mode. Unless otherwise noted, numeric fields within a frame are little-endian, and `data` is raw binary data.
 
 **Command (host → module)**
 
@@ -138,7 +138,7 @@ The commands below are grouped by capability, in the same categories used by the
 | Item | Content |
 |:-----|:--------|
 | Command | `AT+GFWVER?\r` |
-| Response | Success: `\r\n+GFWVER:SIFLI_AT_<version>_<build date>\r\n\r\nOK\r\n`; set form: `\r\nERROR\r\n` |
+| Response | Success: `\r\n+GFWVER:SIFLI_AT_<version>_<build date>\r\n\r\nOK\r\n`; any set form: `\r\nERROR\r\n` |
 | Parameters | None |
 | Notes | Query only. The return value always begins with `SIFLI_AT_`, followed by the version number and build date. |
 
@@ -170,7 +170,7 @@ The commands below are grouped by capability, in the same categories used by the
 | Command | `AT+NAME=<device name>\r` |
 | Response | Success: `\r\nOK\r\n`; failure: `\r\nERROR\r\n` |
 | Parameters | Device name: a string 1–29 bytes long; empty or over 29 bytes returns `ERROR`. Default `SIFLI_AT`. |
-| Notes | Updates the device name configuration and synchronizes it into the local name and the BLE scan-response name. The final displayed name is also affected by `MACNAME` (see below). |
+| Notes | Updates the device-name configuration and synchronizes it to the local name and BLE scan-response name. `MACNAME` controls the final advertised name. |
 
 </div>
 
@@ -320,7 +320,7 @@ The commands below are grouped by capability, in the same categories used by the
 | Command | `AT+TRIM=<freq_off>\r` |
 | Response | Success: `\r\nOK\r\n`; out-of-range value or calibration interface failure: `\r\nERROR\r\n` |
 | Parameters | `freq_off`: frequency-offset calibration value, in Hz, range -120000 to 120000, default 0. A value of 0 performs a calibration reset (restores the hardware/factory-line original value); a non-zero value sets that value directly. |
-| Notes | Setting it modifies the HXT capacitor bank register and writes to the `FACTORY_CFG_ID_CRYSTAL` partition. After a successful calibration, the echo value in the AT configuration is updated and marked for saving. |
+| Notes | Setting the value updates the HXT capacitor-bank register and writes the result to the `FACTORY_CFG_ID_CRYSTAL` partition. After a successful calibration, the recorded value in the AT configuration is updated and marked for saving. |
 
 </div>
 
@@ -473,7 +473,7 @@ The commands below are grouped by capability, in the same categories used by the
 |:-----|:--------|
 | Command | `AT+DISCOVERABLE?\r` |
 | Response | Success: `\r\n+DISCOVERABLE:<state>\r\n\r\nOK\r\n` |
-| Parameters | `state`: current discoverable state. 0 = not discoverable, 1 = discoverable, 2 = partially discoverable (mixed state). The value depends on the operating mode: in BLE mode (`BTMODE=1`), it reflects BLE advertising intent — 1 = advertising on, 0 = advertising off; in BT mode (`BTMODE=2`), it reflects inquiry/page scan — 1 if both are on, 0 if both are off, 2 otherwise; in dual-mode (`BTMODE=0`), 1 if BLE advertising, inquiry, and page scan are all on, 0 if all off, 2 otherwise. |
+| Parameters | `state`: current discoverable state. 0 = not discoverable, 1 = discoverable, 2 = partially discoverable (mixed state). The meaning depends on the operating mode: in BLE mode (`BTMODE=1`), it reflects the BLE advertising setting — 1 = on, 0 = off; in BT mode (`BTMODE=2`), it reflects inquiry scan and page scan — 1 when both are on, 0 when both are off, and 2 otherwise; in dual-mode (`BTMODE=0`), it is 1 when BLE advertising, inquiry scan, and page scan are all on, 0 when all are off, and 2 otherwise. |
 | Notes | Only queries the current discoverable state — does not change device state. |
 
 </div>
@@ -488,8 +488,8 @@ The commands below are grouped by capability, in the same categories used by the
 |:-----|:--------|
 | Command | `AT+DISCOVERABLE=<mode>\r` |
 | Response | Success: `\r\nOK\r\n`; failure: `\r\nERROR\r\n` |
-| Parameters | `mode`: 0 = turn discoverability off, 1 = turn discoverability on. See Parameters for the value range. |
-| Notes | Acts according to the current operating mode: in BLE mode (`BTMODE=1`), turns BLE advertising on/off; in BT mode (`BTMODE=2`), turns inquiry and page scan on/off; in dual-mode (`BTMODE=0`), acts on BLE advertising as well as inquiry and page scan simultaneously. |
+| Parameters | `mode`: 0 = turn discoverability off, 1 = turn discoverability on. |
+| Notes | Acts according to the current operating mode: in BLE mode (`BTMODE=1`), turns BLE advertising on or off; in BT mode (`BTMODE=2`), turns inquiry scan and page scan on or off; in dual-mode (`BTMODE=0`), controls BLE advertising, inquiry scan, and page scan together. |
 
 </div>
 
@@ -518,7 +518,7 @@ The commands below are grouped by capability, in the same categories used by the
 |:-----|:--------|
 | Command | `AT+GATTDISCOVER=<value>\r` |
 | Response | Success: `\r\nOK\r\n`; failure: `\r\nERROR\r\n` |
-| Parameters | `value`: 0 = stop BLE advertising, 1 = start BLE advertising. See Parameters for the value range. |
+| Parameters | `value`: 0 = stop BLE advertising, 1 = start BLE advertising. |
 | Notes | Directly controls starting and stopping BLE advertising. Unavailable when the operating mode is BT-only (`BTMODE=2`). |
 
 </div>
@@ -533,7 +533,7 @@ The commands below are grouped by capability, in the same categories used by the
 |:-----|:--------|
 | Command | `AT+SPPDISCOVER?\r` |
 | Response | `\r\n+SPPDISCOVER:<state>\r\n\r\nOK\r\n` |
-| Parameters | `<state>`: current inquiry-scan (discoverable) state. 0 = off, 1 = on. |
+| Parameters | `<state>`: current inquiry-scan state, which controls discoverability. 0 = off, 1 = on. |
 | Notes | Returns `ERROR` when `AT+BTMODE` is 1 (BLE-only). |
 
 </div>
@@ -548,8 +548,8 @@ The commands below are grouped by capability, in the same categories used by the
 |:-----|:--------|
 | Command | `AT+SPPDISCOVER=<state>\r` |
 | Response | Success: `\r\nOK\r\n`; failure: `\r\nERROR\r\n` |
-| Parameters | `<state>`: inquiry-scan (discoverable) switch. 0 = off, 1 = on; range 0–1. |
-| Notes | Returns `ERROR` when `AT+BTMODE` is 1 (BLE-only). Changes only the inquiry-scan bit, leaving the page-scan bit unchanged. |
+| Parameters | `<state>`: inquiry-scan switch, which controls discoverability. 0 = off, 1 = on. |
+| Notes | Returns `ERROR` when `AT+BTMODE` is 1 (BLE-only). Changes only the inquiry-scan bit and leaves the page-scan bit unchanged. |
 
 </div>
 
@@ -563,7 +563,7 @@ The commands below are grouped by capability, in the same categories used by the
 |:-----|:--------|
 | Command | `AT+SPPCONNECT?\r` |
 | Response | `\r\n+SPPCONNECT:<state>\r\n\r\nOK\r\n` |
-| Parameters | `<state>`: current page-scan (connectable) state. 0 = off, 1 = on. |
+| Parameters | `<state>`: current page-scan state, which controls connectability. 0 = off, 1 = on. |
 | Notes | Returns `ERROR` when `AT+BTMODE` is 1 (BLE-only). |
 
 </div>
@@ -578,8 +578,8 @@ The commands below are grouped by capability, in the same categories used by the
 |:-----|:--------|
 | Command | `AT+SPPCONNECT=<state>\r` |
 | Response | Success: `\r\nOK\r\n`; failure: `\r\nERROR\r\n` |
-| Parameters | `<state>`: page-scan (connectable) switch. 0 = off, 1 = on; range 0–1. |
-| Notes | Returns `ERROR` when `AT+BTMODE` is 1 (BLE-only). Changes only the page-scan bit, leaving the inquiry-scan bit unchanged. |
+| Parameters | `<state>`: page-scan switch, which controls connectability. 0 = off, 1 = on. |
+| Notes | Returns `ERROR` when `AT+BTMODE` is 1 (BLE-only). Changes only the page-scan bit and leaves the inquiry-scan bit unchanged. |
 
 </div>
 
@@ -638,7 +638,7 @@ The commands below are grouped by capability, in the same categories used by the
 |:-----|:--------|
 | Command | `AT+COMMAND=<mode>\r` |
 | Response | Success: `\r\nOK\r\n`; failure: `\r\nERROR\r\n` |
-| Parameters | `mode`: operating mode. 0 = pass-through mode, 1 = command mode; see Parameters for the value range. Defaults to pass-through mode on power-up. |
+| Parameters | `mode`: operating mode. 0 = pass-through mode, 1 = command mode. The module starts in pass-through mode after power-up. |
 | Notes | Takes effect immediately, not persisted — returns to pass-through mode on reset. In pass-through mode, data received on the serial port is forwarded as-is to the connected peer; in command mode, serial data is parsed as AT commands. |
 
 </div>
@@ -840,7 +840,7 @@ The commands below are grouped by capability, in the same categories used by the
 | Command | `AT+BTMULTICONN=<n>\r` |
 | Response | Success: `\r\nOK\r\n`; failure: `\r\nERROR\r\n` |
 | Parameters | `<n>`: maximum number of concurrent Classic Bluetooth connections, decimal, range 1–7. Default 7. |
-| Notes | Can only be set when the multi-connection switch is on (`AT+MULTICONN=1`). Setting updates the configuration; once the connection count hits the limit, the module stops page scan, and automatically resumes once a link drops back below the limit. |
+| Notes | Can only be set when the multi-connection switch is on (`AT+MULTICONN=1`). Setting updates the configuration. When the connection count reaches the limit, the module stops page scanning and resumes it automatically after the count falls below the limit. |
 
 </div>
 
@@ -870,7 +870,7 @@ The commands below are grouped by capability, in the same categories used by the
 | Command | `AT+CONNLIST?\r` or `AT+CONNLIST\r` |
 | Response | Each active connection is output as one line: `\r\n+CONNLIST:<conn_hdl>,<type>,<addr>,<extra>\r\n`; followed by `\r\nOK\r\n` after all lines; `\r\nOK\r\n` alone if there are no active connections; a non-empty parameter: `\r\nERROR\r\n` |
 | Parameters | Output fields: `<conn_hdl>` — connection handle, 4 hex digits, BLE uses a 1-based external handle; `<type>` — connection type, BLE or BT; `<addr>` — the peer's Bluetooth address, 12 hex digits (most-significant byte first); `<extra>` — the current MTU for BLE connections, or the service channel for BT connections, decimal. |
-| Notes | The set form returns `ERROR` if given a non-empty parameter. Iterates through every connection slot and outputs the active ones. |
+| Notes | The set form returns `ERROR` when a non-empty parameter is supplied. The module checks every connection slot and outputs each active connection. |
 
 </div>
 
@@ -1068,7 +1068,7 @@ The commands below are grouped by capability, in the same categories used by the
 |:-----|:--------|
 | Command | `AT+GATTAUTOSTART?\r` |
 | Response | `\r\n+GATTAUTOSTART:<v>\r\n\r\nOK\r\n` |
-| Parameters | `v`: current switch value, 0 = off, 1 = on. Default 1 |
+| Parameters | `v`: current switch value, 0 = off, 1 = on. Default: 1. |
 | Notes | None |
 
 </div>
@@ -1083,8 +1083,8 @@ The commands below are grouped by capability, in the same categories used by the
 |:-----|:--------|
 | Command | `AT+GATTAUTOSTART=<v>\r` |
 | Response | Success: `\r\nOK\r\n`; failure: `\r\nERROR\r\n` |
-| Parameters | `v`: switch value, 0 or 1, 0 = off, 1 = on. Default 1 |
-| Notes | See Parameters for the value range. Setting updates the configuration. When on, the device automatically loads the saved GATT service configuration on power-up |
+| Parameters | `v`: switch value. 0 = off, 1 = on. Default: 1. |
+| Notes | Setting updates the configuration. When enabled, the device automatically loads the saved GATT service configuration on power-up. |
 
 </div>
 
