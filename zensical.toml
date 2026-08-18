@@ -196,26 +196,32 @@ nav = [
       "learn/graphics/epicasso-gpu.md",
       "learn/graphics/ezip.md",
       "learn/graphics/turbopixel.md",
-      "learn/graphics/display-controller.md"
+      "learn/graphics/display-controller.md",
+      "learn/graphics/lvgl-sdk-examples.md"
     ]},
     { "Bluetooth" = [
       { "Bluetooth Overview" = "learn/bluetooth/overview.md" },
       "learn/bluetooth/processor.md",
       "learn/bluetooth/pan.md",
-      "learn/bluetooth/at-command-reference.md"
+      "learn/bluetooth/at-command-reference.md",
+      "learn/bluetooth/bluetooth-low-power-profiling.md",
+      "learn/bluetooth/bluetooth-sdk-examples.md"
+    ]},
+    { "Low Power" = [
+      { "Low Power Overview" = "learn/low-power/overview.md" },
+      { "Battery Capacity Calculation" = "learn/low-power/battery-capacity-calculation.md" },
+      { "Smartwatch Power Profiling" = "learn/low-power/smartwatch-power-profiling.md" },
+      "learn/low-power/measurement-and-validation.md",
+      "learn/low-power/low-power-sdk-examples.md"
+    ]},
+    { "Audio" = [
+      { "Audio Overview" = "learn/audio/overview.md" },
+      "learn/audio/audio-server-buffering.md",
+      "learn/audio/audio-sdk-examples.md"
     ]},
     { "AI" = [
       { "AI Overview" = "learn/ai/overview.md" },
       "learn/ai/accelerator.md"
-    ]},
-    { "Audio" = [
-      { "Audio Overview" = "learn/audio/overview.md" },
-      "learn/audio/audio-server-buffering.md"
-    ]},
-    { "Low Power" = [
-      { "Low Power Overview" = "learn/low-power/overview.md" },
-      { "Smartwatch Power Profiling" = "learn/low-power/smartwatch-power-profiling.md" },
-      "learn/low-power/measurement-and-validation.md"
     ]},
   ]},
   { "Blog" = [

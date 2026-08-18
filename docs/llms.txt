@@ -119,15 +119,21 @@ Only the pages listed below are published on this site. Internal working notes (
 - [eZip Lossless Compression and Hardware Decoding](https://uForge.io/learn/graphics/ezip/): How SiFli eZip and eZip-A reduce embedded UI asset storage, memory bandwidth, and CPU decode work on supported SF32 devices.
 - [TurboPixel Framebuffer Compression](https://uForge.io/learn/graphics/turbopixel/): How TurboPixel uses fixed-ratio lossy framebuffer compression to reduce PSRAM capacity and bandwidth on supported SF32 devices.
 - [Display Controller](https://uForge.io/learn/graphics/display-controller/): How the SF32 display controller transfers prepared pixels to a panel, including interface selection, flush paths, partial refresh, and panel bring-up.
+- [LVGL SDK Examples](https://uForge.io/learn/graphics/lvgl-sdk-examples/): Choose the right SiFli-SDK LVGL example for UI bring-up, widgets, design tools, compressed assets, animation, media, and wearable interfaces.
 - [Bluetooth Overview](https://uForge.io/learn/bluetooth/overview/): BLE, dual-mode Bluetooth, profiles, security, coexistence, and device selection.
 - [Bluetooth Processor](https://uForge.io/learn/bluetooth/processor/): How SF32's dedicated Bluetooth processor offloads radio timing and link control from the application CPU, enabling low-power always-connected products.
 - [Bluetooth PAN](https://uForge.io/learn/bluetooth/pan/): Bluetooth PAN on SF32 — how BNEP, NAP, GN, and PANU roles work, when to use a phone-tethered PAN link instead of adding Wi-Fi, and how to bring up SiFli-SDK's PAN example, including PAN-based OTA delivery.
+- [Bluetooth SDK Examples](https://uForge.io/learn/bluetooth/bluetooth-sdk-examples/): Choose the right SiFli-SDK Bluetooth example for BLE services, Classic Bluetooth profiles, phone integration, OTA, data transfer, or LE Audio broadcast.
+- [Bluetooth Low-Power Profiling](https://uForge.io/learn/bluetooth/bluetooth-low-power-profiling/): A practical method to measure the actual Bluetooth LE power consumption of an SF32 device, attribute the trace to firmware behavior, and turn the result into a daily-use energy budget.
 - [AI Overview](https://uForge.io/learn/ai/overview/): Product-level planning for on-device AI, including model fit, memory, latency, and power.
 - [AI Accelerator](https://uForge.io/learn/ai/accelerator/): How the SF32 AI accelerator hardware speeds up on-device machine learning and signal processing, and why edge AI matters for wearables and AIoT products.
 - [Audio Overview](https://uForge.io/learn/audio/overview/): Local audio architecture, interfaces, buffering, Audio Server middleware, and power tradeoffs.
 - [Audio Server and Buffering](https://uForge.io/learn/audio/audio-server-buffering/): Practical SF32 Audio Server and DMA-buffering guidance for glitch-free playback, recording, and coexistence with Bluetooth and graphics.
+- [Audio SDK Examples](https://uForge.io/learn/audio/audio-sdk-examples/): Choose the right SiFli-SDK audio example for PDM microphone capture, recording, playback, codecs, storage, and mixing.
 - [Low-Power Overview](https://uForge.io/learn/low-power/overview/): System-level low-power design and measured battery-life validation.
 - [Power Measurement and Validation](https://uForge.io/learn/low-power/measurement-and-validation/): A repeatable SF32 power-measurement and validation workflow for active, connected-idle, display-off, sleep, and wake scenarios.
+- [Low-Power SDK Examples](https://uForge.io/learn/low-power/low-power-sdk-examples/): Choose the right SiFli-SDK power-management example for sleep, wake sources, GPIO, CPU, Bluetooth, displays, UI, and wearable power scenarios.
+- [Battery Capacity Calculation](https://uForge.io/learn/low-power/battery-capacity-calculation/): Estimate battery percentage on SF32 products from battery voltage using the SiFli-SDK battery calculator, matched charge/discharge curves, charger-state detection, and multi-stage filtering.
 
 ## Projects
 

@@ -91,6 +91,10 @@ A small SPI or QSPI AMOLED behaves very differently from an RGB panel, MIPI DSI 
 
 For detailed interface selection, flush-path design, and panel bring-up, see [Display Controller](display-controller.md).
 
+## Start from a Verified LVGL Example
+
+Choose an SDK example that already proves the product's riskiest graphics boundary before composing screens around it. [LVGL SDK Examples](lvgl-sdk-examples.md) organizes the official baseline, design-tool, widget, compressed-asset, animation/media, compass, game, and watch-interface examples by the engineering task they establish. It also makes clear which board, version, display, memory, and performance assumptions must be revalidated during product adaptation.
+
 ## Pick the Right SF32 Device
 
 Choose the chip based on the display and UI workload, not just CPU frequency.

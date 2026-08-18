@@ -22,10 +22,10 @@ The best example is not always the smallest example. Choose the one that already
 |:-----|:-----------|
 | First run | `example/get-started/hello_world/rtt/project` |
 | Blink / GPIO | `example/get-started/blink/rtt` or GPIO HAL/device examples. |
-| Bluetooth | BLE, BT Classic, LE Audio, throughput, beacon, OTA, and profile examples. |
-| Graphics | LVGL demos and display-specific examples. |
-| Audio | Playback, record, codec, Opus, MP3, and USB audio where supported. |
-| Power | SDK power-management examples and measurement templates. |
+| Bluetooth | BLE, BT Classic, LE Audio, throughput, beacon, OTA, and profile examples. Start with the [Bluetooth SDK Examples](../../learn/bluetooth/bluetooth-sdk-examples.md) task map. |
+| Graphics | LVGL demos, design-tool integrations, widgets, compressed assets, animation/media, and display-specific examples. Start with the [LVGL SDK Examples](../../learn/graphics/lvgl-sdk-examples.md) task map. |
+| Audio | Playback, record, PDM capture, codec, Opus, MP3, mixing, and USB audio where supported. Start with the [Audio SDK Examples](../../learn/audio/audio-sdk-examples.md) task map. |
+| Power | PM state, GPIO, processor, Bluetooth, display, UI, and wearable-scenario examples. Start with the [Low-Power SDK Examples](../../learn/low-power/low-power-sdk-examples.md) task map. |
 | Storage | Filesystem, flash, SD, and partition examples. |
 | USB | CherryUSB device and host examples. |
 | AI | NNACC HAL and RT-device examples. |
