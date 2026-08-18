@@ -7,6 +7,18 @@ permissions:
   contents: read
   pages: write
   id-token: write
+
+# Only one Pages deployment may run at a time; queue (don't cancel) whatever
+# is waiting, so every push to main still gets deployed rather than being
+# dropped by a later one. This is GitHub's own recommended block for the
+# Pages deploy-pages action -- omitting it lets overlapping runs (e.g. two
+# merges landing close together) leave stale artifacts attached to a run,
+# which is what caused deploy-pages to fail with "Multiple artifacts named
+# 'github-pages' were unexpectedly found for this workflow run."
+concurrency:
+  group: "pages"
+  cancel-in-progress: false
+
 jobs:
   deploy:
     environment:
