@@ -72,6 +72,10 @@ Speaker / Line-out / DAC, or onward to Bluetooth audio
 
 Mixing AMIC and DMIC inputs is common in multi-microphone designs (for example, one AMIC for general capture and multiple DMICs for a voice-focused array) — confirm exactly how many of each the target device supports before finalizing the microphone layout.
 
+## Start from a Verified Audio Example
+
+Choose and validate the closest SiFli-SDK baseline before designing application behavior around it. [Audio SDK Examples](audio-sdk-examples.md) maps the official PDM, analog capture, record/playback, local music, SD-card, FLAC, Opus, and mixing examples to the engineering task they prove. It also identifies the board, pin-mux, storage, and configuration boundaries to re-check before adapting a sample to a product.
+
 ## Pick the Right SF32 Device
 
 Audio capability varies across the family — check the datasheet for the exact part, but as a starting point:

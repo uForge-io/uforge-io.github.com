@@ -86,6 +86,10 @@ The biggest power wins usually come from firmware structure, not clever low-leve
 - **Design the UI and audio paths to be event-driven**, not timer-polled, wherever the framework allows it.
 - **Audit timers.** Every periodic timer is a scheduled wakeup; each one has a cost, and it's easy to accumulate several "harmless" timers that add up to a meaningfully worse sleep profile.
 
+## Start from a Verified Power Example
+
+Choose an SDK example that establishes the most uncertain power boundary before estimating product battery life. [Low-Power SDK Examples](low-power-sdk-examples.md) maps the official PM, GPIO, processor, Bluetooth, display, GUI, screen-refresh, and raise-to-wake projects to the scenario they prove. It also explains which supply connection, board, configuration, wake source, external circuit, and workload assumptions must be revalidated before using an example as product evidence.
+
 ## Bluetooth Power Tuning
 
 Connection and advertising parameters are the primary levers for Bluetooth power (see the full table in the [Bluetooth Overview](../bluetooth/overview.md#advertising-and-connection-parameters)):
@@ -94,6 +98,8 @@ Connection and advertising parameters are the primary levers for Bluetooth power
 - Reduce TX power to the lowest level that still meets the range requirement.
 - Advertise less aggressively once a product expects reconnection rather than first-time discovery.
 - Remember that the dedicated Bluetooth/low-power processor is what allows the main CPU to sleep through connection events — application code that wakes the main CPU for every Bluetooth callback defeats much of that benefit.
+
+For a practical scenario-by-scenario method to measure actual Bluetooth LE device consumption, see [Bluetooth Low-Power Profiling](../bluetooth/bluetooth-low-power-profiling.md).
 
 ## Display and Backlight Power
 
