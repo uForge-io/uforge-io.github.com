@@ -45,6 +45,13 @@ Most SF32 firmware power policy is expressed as a small set of operating modes, 
 
 </div>
 
+Real work does not stay in one mode. A wake source brings the system out of sleep, clocks and peripherals become available, the product does its work, and the PM framework should release its constraints so the system can return to the deepest safe mode. The trace below is illustrative: its shape shows the relative transition between modes, not device-specific current values or timing.
+
+<div align="center">
+<img src="assets/power-mode-transition.svg" alt="Illustrative relative-current trace showing deep sleep, wake, active work, idle, and return to low power" width="960">
+<br><em>Diagram: Illustrative Power-Mode Transitions During a Short Workload</em>
+</div>
+
 The PM middleware's job is to pick the deepest mode that's safe given every subsystem's current requirements — a peripheral or driver votes for the power state it needs, and the system sleeps as deeply as the most demanding active vote allows. Practically, this means: **the more subsystems you keep truly idle, the deeper the system can actually sleep.** A single misbehaving driver that never releases its "stay active" vote can silently keep the whole system out of deep sleep.
 
 ## What Drains Power on an SF32 Product
@@ -151,6 +158,33 @@ Convert the product goal into numbers before tuning firmware. A simple worksheet
 
 For each row, estimate `average current = state current x duty cycle`, then sum the rows. This exposes design problems early: a 20 uA sleep target will not rescue a product that spends too much time with a bright backlight or fixed-interval inference loop active.
 
+## Power Profiling: Model, Measure, Update
+
+Power profiling turns the budget into a repeatable engineering loop. Define representative product scenarios, assign a current and duration to each load within each scenario, and sum their battery-side energy over a day. The result estimates average current, daily charge consumption, and battery life. More usefully, it ranks the scenarios that deserve measurement and optimization first.
+
+<div align="center"><em>Diagram: Power-Profiling Loop</em></div>
+
+```mermaid
+flowchart LR
+    A["Define representative product scenarios"] --> B["Set current, voltage, duration, and frequency assumptions"]
+    B --> C["Calculate energy per event and per day"]
+    C --> D["Compare against the battery budget and rank contributors"]
+    D --> E["Measure priority scenarios on target hardware"]
+    E --> F["Update the model with measured current and timing"]
+    F --> B
+```
+
+Treat a profile as an estimate, not a meter. Nordic's [Online Power Profiler for Bluetooth LE](https://devzone.nordicsemi.com/power/w/opp/2/online-power-profiler-for-bluetooth-le) follows the same principle: it is based on models derived from measurements, but its outputs remain expected values rather than a measurement of a specific product. Current can vary with silicon, board design, battery voltage, temperature, RF conditions, firmware timing, and the use case.
+
+For every scenario, capture the assumptions that materially affect energy:
+
+- Which subsystems are on, and which power mode does the MCU actually enter?
+- What is the current at the battery input or at each regulated rail?
+- How long does the work last, and how often does it occur in a typical day?
+- Which current spikes are expected, and which indicate unintended work or missed sleep?
+
+Use the estimate to identify the largest budget items, then validate those scenes on hardware before making a battery-life claim. The [Smartwatch Power Profiling](smartwatch-power-profiling.md) article works through this method with a daily-use model, while [Power Measurement and Validation](measurement-and-validation.md) defines the repeatable capture workflow.
+
 ## PM Ownership and Wake-Source Review
 
 A reliable low-power design needs a clear owner for every wake source and every PM vote. Track these items in the design review:
@@ -248,6 +282,3 @@ Record firmware version, board revision, battery/supply voltage, temperature, an
 - Event-driven, interrupt-based design beats polling almost everywhere power matters.
 - Bluetooth connection parameters and display refresh strategy are usually the two biggest levers on a connected wearable product.
 - Measure real energy under realistic combined workloads, on real hardware in the final enclosure — bench numbers and single-subsystem numbers both under-represent real product power.
-
-!!! note "Auto-generated content"
-    This page was compiled/drafted without an existing source document. Verify technical claims against SiFli's official documentation before relying on them.
