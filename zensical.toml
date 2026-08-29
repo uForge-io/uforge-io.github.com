@@ -227,6 +227,7 @@ nav = [
   { "Blog" = [
     "blog/index.md",
     { "Posts" = [
+      "blog/posts/2026-08-24-august-progress.md",
       "blog/posts/2026-07-31-the-first-blog.md"
     ]}
   ]},
