@@ -3,6 +3,10 @@
 {% block extrahead %}
   {{ super() }}
   {% include "partials/seo.html" %}
+  {% set offline = config.extra.offline and config.extra.offline.enabled %}
+  {% if config.extra.alternate is iterable and not offline and (config.extra.alternate | length) > 1 %}
+    {% include "partials/language-detect.html" %}
+  {% endif %}
 {% endblock %}
 
 {#-

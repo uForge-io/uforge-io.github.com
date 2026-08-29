@@ -44,16 +44,26 @@
     </div>
   {% endif %}
 {% endfor %}
-{% if not offline %}
+{% if not offline and (config.extra.alternate | length) > 1 %}
 <script>
   // Build the target from the page that is actually visible at click time.
   // This preserves deep links even when a preview server rewrites navigation.
+  //
+  // Persist a manual choice separately from automatic browser-language
+  // detection. The detector redirects future direct links to this language
+  // until the visitor switches again or clears site storage.
   document.addEventListener("DOMContentLoaded", function () {
     document.querySelectorAll(".uf-lang-switch[data-uf-language-target]").forEach(function (link) {
       link.addEventListener("click", function () {
         var pagePath = window.location.pathname.replace(/^\/zh(?=\/|$)/, "") || "/";
         var targetPath = link.dataset.ufLanguageTarget === "zh" ? "/zh" + pagePath : pagePath;
         link.href = targetPath + window.location.search + window.location.hash;
+        try {
+          localStorage.setItem("uf-lang-manual-preference", link.dataset.ufLanguageTarget);
+        } catch (e) {
+          // localStorage unavailable -- the click still navigates normally,
+          // it just won't be remembered on the next visit.
+        }
       });
     });
   });
